@@ -1,0 +1,131 @@
+# OfficePrism 配置文件
+
+# ===================================================================
+# 评测配置
+# ===================================================================
+evaluation:
+  simulation:
+    max_steps: 200
+    max_errors: 10
+    num_trials: 1
+    seed: 300
+
+  llm:
+    agent:
+      implementation: "react_agent"  # react_agent, fc_agent, plan_execute_agent
+      model: "qwen4-max"
+      temperature: 1.0
+      enable_thinking: false
+      langgraph_recursion_limit: 20
+      api_key: YOUR_DASHSCOPE_API_KEY
+      base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      # OpenClaw 外部网关服务（bench 只通过 HTTP 发任务，不管理 OpenClaw 进程）。
+      # base_url: OpenClaw 网关的 /v1 端点
+      # api_key: 网关认证 token
+      # agent_id: OpenClaw agent 标识
+      # provider_model: 网关使用的模型（可通过 OPENCLAW_PROVIDER_MODEL 环境变量覆盖）
+      # tool_server_host: OpenClaw 回调 bench tool server 的地址（远端网关需能访问此地址）
+      openclaw_base_url: "http://127.0.0.1:18789/v1"
+      openclaw_api_key: "YOUR_OPENCLAW_TOKEN"
+      openclaw_agent_id: "main"
+      openclaw_http_max_tokens: 8192
+      openclaw_tool_server_host: "127.0.0.1"
+      # Claude Code CLI baseline (方案A：curl-over-Bash headless)
+      claude_code_bin: "claude"
+      claude_code_model: "claude-opus-4-8"
+      claude_code_timeout: 600
+      claude_code_permission_mode: "bypassPermissions"
+      claude_code_extra_args: []
+      # 留空则继承当前进程环境的认证；如需指定官方 API / 自定义网关再填。
+      claude_code_api_key: ""
+      claude_code_base_url: ""
+      # 多模型 sweep 的两条 API 路线（国外模型走原生/官方网关，国内模型走兼容代理）。
+      #   external：国外模型（Opus/Sonnet/GPT），走 Anthropic 原生/官方网关；
+      #             base_url/api_key 留空则继承当前已登录的 claude 凭证。
+      #   internal：国内模型（qwen/glm/deepseek），走 Anthropic 兼容代理网关。
+      claude_code_routes:
+        external:
+          base_url: ""
+          api_key: ""
+        internal:
+          base_url: "https://dashscope.aliyuncs.com/apps/anthropic"
+          api_key: "YOUR_DASHSCOPE_API_KEY"
+        # kimi 系模型走网关的 Anthropic 协议端点（根路径，不带 /v1）。
+        # api_key 留空、运行时用 CLAUDE_CODE_API_KEY 环境变量注入 网关 key，
+        # 避免把内部网关凭证固化进版本库。
+        kimi_gateway:
+          base_url: ""
+        # opus 走 网关 的 Anthropic 协议端点（根路径，CLI 自加 /v1/messages）。
+        # api_key 留空、运行时用 CLAUDE_CODE_API_KEY 环境变量注入 网关 key，
+        # 避免把内部网关凭证固化进版本库。
+        opus_gateway:
+          base_url: ""
+          api_key: ""
+        # gpt-5.5 走 网关 的 Anthropic 协议端点（根路径）。
+        # api_key 留空，运行时用 CLAUDE_CODE_API_KEY 注入 网关 key。
+        gpt_gateway:
+          base_url: ""
+          api_key: ""
+      hermes_model: "qwen4-max"
+      hermes_max_iterations: 60
+      hermes_provider: "custom"
+      hermes_api_key: YOUR_DASHSCOPE_API_KEY
+      hermes_base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      deerflow_base_url: "http://localhost:8001"
+      # 直连 Gateway（无 Nginx）时 LangGraph API 根就是 /api
+      deerflow_langgraph_url: "http://localhost:8001/api"
+      deerflow_model: "qwen4-max"
+      deerflow_recursion_limit: 100
+      # DeerFlow 与 bench 同机直跑，工具服务走本机回环
+      deerflow_tool_server_host: "127.0.0.1"
+      deerflow_tool_server_bind_host: "0.0.0.0"
+      deerflow_tool_server_port: 0
+      deerflow_tool_server_base_url: null
+      deerflow_api_retries: 2
+      deerflow_api_retry_backoff: 1.5
+      deerflow_enable_fallback: false
+      deerflow_enable_proxy_tool_execution: true
+      deerflow_auth_email: "admin@example.com"
+      deerflow_auth_password: "YOUR_DEERFLOW_PASSWORD"
+      agentzero_base_url: "http://localhost:50001"
+      agentzero_api_key: ""
+      agentzero_lifetime_hours: 24
+      agentzero_tool_server_host: "127.0.0.1"
+      agentzero_tool_server_bind_host: "0.0.0.0"
+      xagent_api_url: "http://localhost:8000"
+      xagent_username: "admin"
+      xagent_password: ""
+      xagent_agent_id: null
+      timeout: 600
+
+    evaluator:
+      # judge 模型默认开思考 → 判分直出 JSON 必须显式 enable_thinking: false
+      # （llm_utils.generate 会转成 extra_body 顶层键），否则判定会被思考内容污染。
+      model: "qwen4-max"
+      temperature: 0.0
+      enable_thinking: false
+      api_key: YOUR_DASHSCOPE_API_KEY
+      base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      timeout: 600
+
+  paths:
+    data_dir: "data"
+    output_dir: "data/results"
+
+    domains:
+      hr:
+        data_dir: "data/domains/hr"
+        db_path: "data/domains/hr/db.json"
+        policy_path: "data/domains/hr/policy.md"
+
+# ===================================================================
+# 合成配置（synthesis pipeline 用，评测不读）
+# ===================================================================
+synthesis:
+  llm:
+    api_key: YOUR_DASHSCOPE_API_KEY
+    base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+    model_name: qwen4-max
+    temperature: 0.7
+    max_tokens: 64000
+    timeout: 600

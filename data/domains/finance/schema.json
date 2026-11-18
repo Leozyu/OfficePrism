@@ -1,0 +1,588 @@
+{
+    "finance_account": {
+        "FACC001": {
+            "finance_account_ref": "FACC001",
+            "account_name": "...",
+            "account_number": "...",
+            "bank_name": "...",
+            "bank_branch": "...",
+            "swift_code": null,
+            "currency": "CNY",
+            "account_type": "settlement",
+            "account_purpose": "general",
+            "account_status": "active",
+            "balance": 0.00,
+            "balance_updated_at": "2025-01-15 09:00:00",
+            "department_ref": null,
+            "managed_by_ref": "EMP001",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "budget": {
+        "BDGT001": {
+            "budget_ref": "BDGT001",
+            "budget_name": "...",
+            "budget_code": "...",
+            "fiscal_year": 2025,
+            "fiscal_period": "Q1",
+            "budget_type": "department",
+            "scope_type": "department",
+            "scope_ref": "DEPT001",
+            "parent_budget_ref": null,
+            "currency": "CNY",
+            "total_amount": 0.00,
+            "allocated_amount": 0.00,
+            "spent_amount": 0.00,
+            "frozen_amount": 0.00,
+            "budget_status": "approved",
+            "approved_by_ref": "EMP001",
+            "approved_at": null,
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "budget_line": {
+        "BLIN001": {
+            "budget_line_ref": "BLIN001",
+            "budget_ref": "BDGT001",
+            "expense_category": "travel",
+            "line_label": "...",
+            "planned_amount": 0.00,
+            "spent_amount": 0.00,
+            "frozen_amount": 0.00,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "expense_report": {
+        "EXPR001": {
+            "expense_report_ref": "EXPR001",
+            "report_number": "ER-2025-000001",
+            "applicant_ref": "EMP001",
+            "department_ref": "DEPT001",
+            "expense_type": "travel",
+            "title": "...",
+            "currency": "CNY",
+            "total_amount": 0.00,
+            "approved_amount": 0.00,
+            "trip_ref": null,
+            "budget_ref": null,
+            "report_status": "draft",
+            "current_approver_ref": null,
+            "submitted_at": null,
+            "approved_at": null,
+            "paid_at": null,
+            "rejected_reason": null,
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "expense_line": {
+        "EXLN001": {
+            "expense_line_ref": "EXLN001",
+            "expense_report_ref": "EXPR001",
+            "expense_category": "transportation",
+            "expense_subcategory": "taxi",
+            "description": "...",
+            "currency": "CNY",
+            "amount": 0.00,
+            "approved_amount": 0.00,
+            "expense_date": "2025-01-15",
+            "invoice_ref": null,
+            "receipt_file_ref": null,
+            "line_status": "pending",
+            "rejection_reason": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "invoice": {
+        "INVC001": {
+            "invoice_ref": "INVC001",
+            "invoice_number": "...",
+            "invoice_code": "...",
+            "invoice_type": "vat_special",
+            "invoice_direction": "inbound",
+            "invoice_date": "2025-01-15",
+            "currency": "CNY",
+            "amount_without_tax": 0.00,
+            "tax_amount": 0.00,
+            "total_amount": 0.00,
+            "tax_rate": 0.13,
+            "seller_name": "...",
+            "seller_tax_id": "...",
+            "buyer_name": "...",
+            "buyer_tax_id": "...",
+            "items_summary": "...",
+            "verification_status": "verified",
+            "verification_code": "...",
+            "associated_resource_type": null,
+            "associated_resource_ref": null,
+            "invoice_file_ref": null,
+            "invoice_status": "active",
+            "recorded_by_ref": "EMP001",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "invoice_header": {
+        "IVHD001": {
+            "invoice_header_ref": "IVHD001",
+            "header_type": "company",
+            "company_name": "...",
+            "tax_id": "...",
+            "registered_address": "...",
+            "registered_phone": "...",
+            "bank_name": "...",
+            "bank_account": "...",
+            "is_default": true,
+            "header_status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "payment_request": {
+        "PREQ001": {
+            "payment_request_ref": "PREQ001",
+            "request_number": "PR-2025-000001",
+            "applicant_ref": "EMP001",
+            "department_ref": "DEPT001",
+            "payment_type": "procurement",
+            "payment_method": "bank_transfer",
+            "currency": "CNY",
+            "amount": 0.00,
+            "payee_name": "...",
+            "payee_account": "...",
+            "payee_bank": "...",
+            "source_account_ref": null,
+            "associated_resource_type": null,
+            "associated_resource_ref": null,
+            "budget_ref": null,
+            "purpose": "...",
+            "planned_payment_date": "2025-01-20",
+            "request_status": "draft",
+            "current_approver_ref": null,
+            "submitted_at": null,
+            "approved_at": null,
+            "rejected_reason": null,
+            "urgency": "normal",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "payment_execution": {
+        "PEXE001": {
+            "payment_execution_ref": "PEXE001",
+            "payment_request_ref": "PREQ001",
+            "source_account_ref": "FACC001",
+            "transaction_number": "...",
+            "currency": "CNY",
+            "amount": 0.00,
+            "exchange_rate": null,
+            "settlement_currency": null,
+            "settlement_amount": null,
+            "payee_name": "...",
+            "payee_account": "...",
+            "payee_bank": "...",
+            "payment_channel": "bank_transfer",
+            "execution_status": "completed",
+            "executed_at": "2025-01-15 09:00:00",
+            "executed_by_ref": "EMP001",
+            "failure_reason": null,
+            "bank_reference": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "receipt_record": {
+        "RCPT001": {
+            "receipt_record_ref": "RCPT001",
+            "receipt_number": "...",
+            "finance_account_ref": "FACC001",
+            "payer_name": "...",
+            "payer_account": "...",
+            "currency": "CNY",
+            "amount": 0.00,
+            "receipt_date": "2025-01-15",
+            "receipt_channel": "bank_transfer",
+            "receipt_type": "sales",
+            "reconciliation_status": "unmatched",
+            "matched_resource_type": null,
+            "matched_resource_ref": null,
+            "bank_reference": "...",
+            "notes": "...",
+            "recorded_by_ref": "EMP001",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "refund": {
+        "RFND001": {
+            "refund_ref": "RFND001",
+            "refund_number": "RF-2025-000001",
+            "applicant_ref": "EMP001",
+            "refund_type": "customer_return",
+            "customer_name": "...",
+            "original_payment_ref": null,
+            "original_receipt_ref": null,
+            "currency": "CNY",
+            "refund_amount": 0.00,
+            "reason_category": "product_defect",
+            "reason_detail": "...",
+            "refund_method": "original_channel",
+            "target_account": "...",
+            "refund_status": "draft",
+            "current_approver_ref": null,
+            "submitted_at": null,
+            "approved_at": null,
+            "executed_at": null,
+            "rejected_reason": null,
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "employee_loan": {
+        "ELOAN001": {
+            "employee_loan_ref": "ELOAN001",
+            "loan_number": "EL-2025-000001",
+            "borrower_ref": "EMP001",
+            "department_ref": "DEPT001",
+            "loan_purpose": "travel_advance",
+            "currency": "CNY",
+            "loan_amount": 0.00,
+            "repaid_amount": 0.00,
+            "outstanding_amount": 0.00,
+            "loan_date": "2025-01-15",
+            "due_date": "2025-02-15",
+            "loan_status": "active",
+            "current_approver_ref": null,
+            "approved_at": null,
+            "disbursed_at": null,
+            "settled_at": null,
+            "offset_expense_report_ref": null,
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "loan_repayment": {
+        "LRPY001": {
+            "loan_repayment_ref": "LRPY001",
+            "employee_loan_ref": "ELOAN001",
+            "repayment_amount": 0.00,
+            "repayment_method": "salary_deduction",
+            "repayment_date": "2025-02-01",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "settlement": {
+        "STLM001": {
+            "settlement_ref": "STLM001",
+            "settlement_number": "ST-2025-000001",
+            "counterparty_type": "supplier",
+            "counterparty_name": "...",
+            "counterparty_id": "...",
+            "settlement_period_start": "2025-01-01",
+            "settlement_period_end": "2025-01-31",
+            "currency": "CNY",
+            "gross_amount": 0.00,
+            "adjustment_amount": 0.00,
+            "net_amount": 0.00,
+            "settlement_status": "draft",
+            "current_approver_ref": null,
+            "submitted_at": null,
+            "approved_at": null,
+            "settled_at": null,
+            "payment_request_ref": null,
+            "notes": "...",
+            "prepared_by_ref": "EMP001",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "settlement_line": {
+        "STLN001": {
+            "settlement_line_ref": "STLN001",
+            "settlement_ref": "STLM001",
+            "description": "...",
+            "quantity": 1,
+            "unit_price": 0.00,
+            "amount": 0.00,
+            "tax_rate": 0.00,
+            "tax_amount": 0.00,
+            "invoice_ref": null,
+            "created_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "fund_transfer": {
+        "FXFR001": {
+            "fund_transfer_ref": "FXFR001",
+            "transfer_number": "FT-2025-000001",
+            "applicant_ref": "EMP001",
+            "source_account_ref": "FACC001",
+            "target_account_ref": "FACC002",
+            "currency": "CNY",
+            "amount": 0.00,
+            "exchange_rate": null,
+            "target_currency": null,
+            "target_amount": null,
+            "transfer_reason": "...",
+            "transfer_status": "draft",
+            "current_approver_ref": null,
+            "approved_at": null,
+            "executed_at": null,
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "exchange_rate": {
+        "EXRT001": {
+            "exchange_rate_ref": "EXRT001",
+            "source_currency": "USD",
+            "target_currency": "CNY",
+            "rate": 7.2450,
+            "rate_type": "central_bank",
+            "effective_date": "2025-01-15",
+            "created_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "tax_filing": {
+        "TXFL001": {
+            "tax_filing_ref": "TXFL001",
+            "filing_number": "TF-2025-000001",
+            "tax_type": "corporate_income",
+            "filing_period_start": "2025-01-01",
+            "filing_period_end": "2025-03-31",
+            "filing_deadline": "2025-04-15",
+            "currency": "CNY",
+            "taxable_amount": 0.00,
+            "tax_rate": 0.00,
+            "tax_amount": 0.00,
+            "deductions_amount": 0.00,
+            "payable_amount": 0.00,
+            "filing_status": "draft",
+            "filed_at": null,
+            "filed_by_ref": "EMP001",
+            "confirmation_number": null,
+            "attachment_file_ref": null,
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "employee_tax_record": {
+        "ETXR001": {
+            "employee_tax_record_ref": "ETXR001",
+            "employee_ref": "EMP001",
+            "tax_period": "2025-01",
+            "gross_income": 0.00,
+            "income_type": "salary",
+            "taxable_income": 0.00,
+            "tax_exempt_amount": 5000.00,
+            "social_insurance_deduction": 0.00,
+            "housing_fund_deduction": 0.00,
+            "special_additional_deductions": {
+                "children_education": 0.00,
+                "continuing_education": 0.00,
+                "housing_loan_interest": 0.00,
+                "housing_rent": 0.00,
+                "elderly_care": 0.00,
+                "infant_care": 0.00,
+                "serious_illness": 0.00
+            },
+            "other_deductions": 0.00,
+            "cumulative_income_ytd": 0.00,
+            "cumulative_tax_ytd": 0.00,
+            "tax_rate_applied": 0.00,
+            "quick_deduction": 0.00,
+            "tax_withheld": 0.00,
+            "tax_paid": 0.00,
+            "filing_status": "withheld",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "accrual_entry": {
+        "ACCR001": {
+            "accrual_entry_ref": "ACCR001",
+            "entry_number": "AC-2025-000001",
+            "accrual_type": "expense_accrual",
+            "accounting_period": "2025-01",
+            "department_ref": null,
+            "expense_category": "...",
+            "description": "...",
+            "currency": "CNY",
+            "amount": 0.00,
+            "reversal_period": "2025-02",
+            "is_reversed": false,
+            "reversed_at": null,
+            "entry_status": "posted",
+            "prepared_by_ref": "EMP001",
+            "approved_by_ref": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "expense_policy": {
+        "EPOL001": {
+            "expense_policy_ref": "EPOL001",
+            "policy_name": "...",
+            "policy_code": "...",
+            "expense_category": "accommodation",
+            "applicable_position_levels": [1, 2, 3, 4, 5, 6, 7],
+            "applicable_worker_types": ["full_time", "intern"],
+            "city_tier": "tier_1",
+            "currency": "CNY",
+            "daily_limit": 0.00,
+            "per_occurrence_limit": null,
+            "monthly_limit": null,
+            "requires_invoice": true,
+            "requires_pre_approval": false,
+            "policy_detail": "...",
+            "effective_from": "2025-01-01",
+            "effective_to": null,
+            "policy_status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "finance_ticket": {
+        "FTKT001": {
+            "finance_ticket_ref": "FTKT001",
+            "ticket_number": "FT-2025-000001",
+            "requester_ref": "EMP001",
+            "ticket_category": "reimbursement",
+            "ticket_subcategory": "policy_inquiry",
+            "subject": "...",
+            "description": "...",
+            "priority": "normal",
+            "ticket_status": "open",
+            "assigned_to_ref": null,
+            "related_resource_type": null,
+            "related_resource_ref": null,
+            "resolution": null,
+            "resolved_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "credit_application": {
+        "CRAP001": {
+            "credit_application_ref": "CRAP001",
+            "application_number": "CA-2025-000001",
+            "applicant_ref": "EMP001",
+            "product_type": "personal_loan",
+            "currency": "CNY",
+            "requested_amount": 0.00,
+            "approved_amount": null,
+            "interest_rate": null,
+            "loan_term_months": 12,
+            "repayment_method": "equal_installment",
+            "purpose": "...",
+            "credit_score": null,
+            "risk_level": null,
+            "application_status": "submitted",
+            "reviewed_by_ref": null,
+            "approved_at": null,
+            "disbursed_at": null,
+            "maturity_date": null,
+            "outstanding_balance": null,
+            "next_payment_date": null,
+            "next_payment_amount": null,
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "credit_repayment_schedule": {
+        "CRPS001": {
+            "credit_repayment_schedule_ref": "CRPS001",
+            "credit_application_ref": "CRAP001",
+            "installment_number": 1,
+            "due_date": "2025-02-15",
+            "principal_amount": 0.00,
+            "interest_amount": 0.00,
+            "total_amount": 0.00,
+            "paid_amount": 0.00,
+            "paid_at": null,
+            "schedule_status": "pending",
+            "created_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "stock_trade_order": {
+        "STRD001": {
+            "stock_trade_order_ref": "STRD001",
+            "order_number": "SO-2025-000001",
+            "employee_ref": "EMP001",
+            "brokerage": "boci",
+            "stock_code": "...",
+            "stock_name": "...",
+            "market": "HKEX",
+            "trade_direction": "buy",
+            "order_type": "limit",
+            "currency": "HKD",
+            "quantity": 0,
+            "price": 0.00,
+            "filled_quantity": 0,
+            "filled_avg_price": 0.00,
+            "total_amount": 0.00,
+            "commission": 0.00,
+            "stamp_duty": 0.00,
+            "order_status": "submitted",
+            "submitted_at": "2025-01-15 09:00:00",
+            "filled_at": null,
+            "cancelled_at": null,
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "finance_approval_flow": {
+        "FAFL001": {
+            "finance_approval_flow_ref": "FAFL001",
+            "source_type": "expense_report",
+            "source_ref": "EXPR001",
+            "step_order": 1,
+            "approver_ref": "EMP001",
+            "approver_role": "direct_manager",
+            "approval_action": "pending",
+            "comments": "...",
+            "acted_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    }
+}

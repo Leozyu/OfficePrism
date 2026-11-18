@@ -1,0 +1,27 @@
+# 外部 Agent 方法可选依赖
+# 按需安装，只安装需要评测的方法对应的包即可
+
+# Code-as-Action / Hierarchical (smolagents)
+smolagents>=1.20
+
+# LLMCompiler / Reflexion / Supervisor / Swarm (langgraph)
+langgraph>=0.3
+langgraph-sdk
+langgraph-supervisor>=0.0.5
+langgraph-swarm>=0.1
+langchain-openai>=0.3
+langchain-core>=0.3
+
+# Debate / Round-Robin (autogen)
+autogen-agentchat>=0.4
+autogen-ext>=0.4
+autogen-core>=0.4
+
+# Mixture of Agents (使用 openai SDK，已在主依赖中)
+# openai>=1.0
+
+# Hermes Agent baseline（NousResearch）
+hermes-agent @ git+https://github.com/NousResearch/hermes-agent.git
+
+# XAgent baseline（WebSocket client）
+websocket-client>=1.8

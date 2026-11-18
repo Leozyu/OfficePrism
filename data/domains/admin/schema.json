@@ -1,0 +1,738 @@
+{
+  "campus": {
+    "CPS001": {
+      "campus_ref": "CPS001",
+      "campus_name": "...",
+      "campus_code": "...",
+      "campus_type": "headquarters",
+      "campus_status": "active",
+      "address": "...",
+      "city": "...",
+      "country": "CN",
+      "geo_lat": 0.0,
+      "geo_lng": 0.0,
+      "map_file_ref": "...",
+      "description": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "building": {
+    "BLD001": {
+      "building_ref": "BLD001",
+      "campus_ref": "CPS001",
+      "building_name": "...",
+      "building_code": "...",
+      "floor_count": 10,
+      "building_status": "active",
+      "description": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "floor": {
+    "FLR001": {
+      "floor_ref": "FLR001",
+      "building_ref": "BLD001",
+      "floor_number": 1,
+      "floor_name": "...",
+      "floor_plan_file_ref": "...",
+      "floor_status": "active",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "zone": {
+    "ZONE001": {
+      "zone_ref": "ZONE001",
+      "floor_ref": "FLR001",
+      "zone_name": "...",
+      "zone_code": "...",
+      "zone_type": "office",
+      "zone_status": "active",
+      "description": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "facility": {
+    "FAC001": {
+      "facility_ref": "FAC001",
+      "facility_name": "...",
+      "facility_code": "...",
+      "facility_type": "meeting_room",
+      "zone_ref": "ZONE001",
+      "floor_ref": "FLR001",
+      "building_ref": "BLD001",
+      "campus_ref": "CPS001",
+      "capacity": 10,
+      "area_sqm": 0.0,
+      "facility_status": "available",
+      "is_bookable": true,
+      "booking_advance_days": 7,
+      "description": "...",
+      "amenities": [],
+      "images": [],
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "facility_equipment": {
+    "FEQP001": {
+      "facility_equipment_ref": "FEQP001",
+      "facility_ref": "FAC001",
+      "equipment_name": "...",
+      "equipment_type": "projector",
+      "quantity": 1,
+      "equipment_status": "normal",
+      "notes": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "booking": {
+    "BOOK001": {
+      "booking_ref": "BOOK001",
+      "facility_ref": "FAC001",
+      "booker_employee_ref": "EMP001",
+      "booking_title": "...",
+      "booking_type": "meeting",
+      "start_at": "2025-01-15 09:00:00",
+      "end_at": "2025-01-15 10:00:00",
+      "attendee_count": 5,
+      "attendee_employee_refs": [],
+      "booking_status": "confirmed",
+      "cancel_reason": null,
+      "cancelled_at": null,
+      "notes": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "workstation": {
+    "WS001": {
+      "workstation_ref": "WS001",
+      "workstation_code": "...",
+      "zone_ref": "ZONE001",
+      "floor_ref": "FLR001",
+      "building_ref": "BLD001",
+      "campus_ref": "CPS001",
+      "workstation_type": "fixed",
+      "workstation_status": "available",
+      "assigned_employee_ref": null,
+      "amenities": [],
+      "description": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "locker": {
+    "LCK001": {
+      "locker_ref": "LCK001",
+      "locker_code": "...",
+      "zone_ref": "ZONE001",
+      "floor_ref": "FLR001",
+      "building_ref": "BLD001",
+      "campus_ref": "CPS001",
+      "locker_size": "medium",
+      "locker_status": "available",
+      "assigned_employee_ref": null,
+      "assigned_at": null,
+      "expires_at": null,
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "parking_space": {
+    "PKS001": {
+      "parking_space_ref": "PKS001",
+      "space_code": "...",
+      "campus_ref": "CPS001",
+      "parking_zone": "...",
+      "space_type": "standard",
+      "ev_charging": false,
+      "space_status": "available",
+      "assigned_employee_ref": null,
+      "assigned_at": null,
+      "expires_at": null,
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "ev_charger": {
+    "EVC001": {
+      "ev_charger_ref": "EVC001",
+      "charger_code": "...",
+      "campus_ref": "CPS001",
+      "parking_space_ref": "PKS001",
+      "charger_type": "ac_slow",
+      "power_kw": 7.0,
+      "charger_status": "available",
+      "fee_per_kwh": 0.0,
+      "operator": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "shuttle_route": {
+    "SHRT001": {
+      "shuttle_route_ref": "SHRT001",
+      "route_name": "...",
+      "route_code": "...",
+      "campus_ref": "CPS001",
+      "direction": "inbound",
+      "route_status": "active",
+      "description": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "shuttle_stop": {
+    "SHST001": {
+      "shuttle_stop_ref": "SHST001",
+      "shuttle_route_ref": "SHRT001",
+      "stop_name": "...",
+      "stop_order": 1,
+      "geo_lat": 0.0,
+      "geo_lng": 0.0,
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "shuttle_schedule": {
+    "SHSC001": {
+      "shuttle_schedule_ref": "SHSC001",
+      "shuttle_route_ref": "SHRT001",
+      "depart_time": "08:00",
+      "effective_days": ["mon", "tue", "wed", "thu", "fri"],
+      "seat_capacity": 30,
+      "schedule_status": "active",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "shuttle_booking": {
+    "SHBK001": {
+      "shuttle_booking_ref": "SHBK001",
+      "shuttle_schedule_ref": "SHSC001",
+      "employee_ref": "EMP001",
+      "ride_date": "2025-01-15",
+      "boarding_stop_ref": "SHST001",
+      "booking_status": "confirmed",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "canteen": {
+    "CANT001": {
+      "canteen_ref": "CANT001",
+      "campus_ref": "CPS001",
+      "floor_ref": "FLR001",
+      "canteen_name": "...",
+      "canteen_type": "staff",
+      "open_hours": "...",
+      "seat_capacity": 200,
+      "canteen_status": "active",
+      "description": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "canteen_menu": {
+    "CMNU001": {
+      "canteen_menu_ref": "CMNU001",
+      "canteen_ref": "CANT001",
+      "menu_date": "2025-01-15",
+      "meal_type": "lunch",
+      "dishes": [
+        {
+          "dish_name": "...",
+          "category": "...",
+          "price": 0.0,
+          "calories": 0,
+          "is_recommended": false,
+          "is_available": true
+        }
+      ],
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "visitor": {
+    "VIS001": {
+      "visitor_ref": "VIS001",
+      "full_name": "...",
+      "id_type": "id_card",
+      "id_number": "...",
+      "phone": "...",
+      "email": "...",
+      "company": "...",
+      "visitor_type": "business",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "visitor_appointment": {
+    "VAPT001": {
+      "visitor_appointment_ref": "VAPT001",
+      "visitor_ref": "VIS001",
+      "host_employee_ref": "EMP001",
+      "campus_ref": "CPS001",
+      "visit_purpose": "...",
+      "visit_type": "business",
+      "scheduled_start_at": "2025-01-15 09:00:00",
+      "scheduled_end_at": "2025-01-15 10:00:00",
+      "actual_checkin_at": null,
+      "actual_checkout_at": null,
+      "facility_ref": null,
+      "temp_access_level": "lobby",
+      "appointment_status": "pending",
+      "notes": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "access_card": {
+    "ACCD001": {
+      "access_card_ref": "ACCD001",
+      "card_number": "...",
+      "card_type": "employee",
+      "holder_type": "employee",
+      "holder_ref": "EMP001",
+      "campus_ref": "CPS001",
+      "access_zones": [],
+      "card_status": "active",
+      "issued_at": "2025-01-15 09:00:00",
+      "expires_at": null,
+      "lost_at": null,
+      "returned_at": null,
+      "notes": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "access_log": {
+    "ACLG001": {
+      "access_log_ref": "ACLG001",
+      "access_card_ref": "ACCD001",
+      "campus_ref": "CPS001",
+      "building_ref": "BLD001",
+      "access_point": "...",
+      "access_direction": "in",
+      "access_result": "granted",
+      "occurred_at": "2025-01-15 09:00:00",
+      "created_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "badge": {
+    "BDGE001": {
+      "badge_ref": "BDGE001",
+      "employee_ref": "EMP001",
+      "badge_number": "...",
+      "badge_type": "standard",
+      "badge_status": "active",
+      "issued_at": "2025-01-15 09:00:00",
+      "expires_at": null,
+      "lost_at": null,
+      "returned_at": null,
+      "notes": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "asset": {
+    "AST001": {
+      "asset_ref": "AST001",
+      "asset_name": "...",
+      "asset_code": "...",
+      "asset_category": "it_equipment",
+      "asset_subcategory": "...",
+      "brand": "...",
+      "model": "...",
+      "serial_number": "...",
+      "campus_ref": "CPS001",
+      "department_ref": "DEPT001",
+      "custodian_employee_ref": "EMP001",
+      "purchase_date": "2025-01-15",
+      "purchase_price": 0.0,
+      "warranty_expires_at": "2028-01-15",
+      "asset_status": "in_use",
+      "description": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "asset_request": {
+    "ARQT001": {
+      "asset_request_ref": "ARQT001",
+      "requester_employee_ref": "EMP001",
+      "request_type": "apply",
+      "asset_ref": null,
+      "asset_category": "it_equipment",
+      "asset_subcategory": "...",
+      "quantity": 1,
+      "reason": "...",
+      "expected_return_at": null,
+      "request_status": "pending",
+      "approved_by_ref": null,
+      "approved_at": null,
+      "reject_reason": null,
+      "fulfilled_at": null,
+      "notes": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "asset_transaction": {
+    "ATRX001": {
+      "asset_transaction_ref": "ATRX001",
+      "asset_request_ref": "ARQT001",
+      "asset_ref": "AST001",
+      "transaction_type": "issue",
+      "from_employee_ref": null,
+      "to_employee_ref": "EMP001",
+      "operated_by_ref": "EMP002",
+      "occurred_at": "2025-01-15 09:00:00",
+      "notes": "...",
+      "created_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "inventory_item": {
+    "INVT001": {
+      "inventory_item_ref": "INVT001",
+      "item_name": "...",
+      "item_code": "...",
+      "item_category": "office_supply",
+      "item_subcategory": "...",
+      "unit": "pcs",
+      "campus_ref": "CPS001",
+      "storage_location": "...",
+      "current_stock": 100,
+      "min_stock_alert": 10,
+      "unit_cost": 0.0,
+      "item_status": "active",
+      "description": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "supply_request": {
+    "SPRQ001": {
+      "supply_request_ref": "SPRQ001",
+      "requester_employee_ref": "EMP001",
+      "department_ref": "DEPT001",
+      "request_type": "borrow",
+      "items": [
+        {
+          "inventory_item_ref": "INVT001",
+          "quantity": 2
+        }
+      ],
+      "reason": "...",
+      "expected_return_at": null,
+      "request_status": "pending",
+      "approved_by_ref": null,
+      "approved_at": null,
+      "reject_reason": null,
+      "fulfilled_at": null,
+      "returned_at": null,
+      "notes": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "repair_request": {
+    "RPRQ001": {
+      "repair_request_ref": "RPRQ001",
+      "reporter_employee_ref": "EMP001",
+      "resource_type": "facility",
+      "resource_ref": "FAC001",
+      "campus_ref": "CPS001",
+      "building_ref": "BLD001",
+      "floor_ref": "FLR001",
+      "fault_description": "...",
+      "fault_images": [],
+      "urgency": "normal",
+      "repair_status": "pending",
+      "assigned_to_ref": null,
+      "scheduled_at": null,
+      "completed_at": null,
+      "resolution_notes": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "complaint": {
+    "CMPL001": {
+      "complaint_ref": "CMPL001",
+      "complainant_employee_ref": "EMP001",
+      "complaint_category": "canteen",
+      "related_resource_type": null,
+      "related_resource_ref": null,
+      "title": "...",
+      "description": "...",
+      "attachments": [],
+      "complaint_status": "open",
+      "assigned_to_ref": null,
+      "resolved_at": null,
+      "resolution_notes": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "lost_found": {
+    "LSFN001": {
+      "lost_found_ref": "LSFN001",
+      "record_type": "lost",
+      "reporter_employee_ref": "EMP001",
+      "item_name": "...",
+      "item_description": "...",
+      "item_images": [],
+      "campus_ref": "CPS001",
+      "location_description": "...",
+      "occurred_date": "2025-01-15",
+      "matched_ref": null,
+      "record_status": "open",
+      "claimed_by_ref": null,
+      "claimed_at": null,
+      "notes": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "security_incident": {
+    "SINC001": {
+      "security_incident_ref": "SINC001",
+      "reporter_employee_ref": "EMP001",
+      "campus_ref": "CPS001",
+      "incident_type": "intrusion",
+      "severity": "medium",
+      "title": "...",
+      "description": "...",
+      "occurred_at": "2025-01-15 09:00:00",
+      "location_description": "...",
+      "involved_parties": [],
+      "attachments": [],
+      "incident_status": "open",
+      "assigned_to_ref": null,
+      "resolved_at": null,
+      "resolution_notes": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "gift": {
+    "GIFT001": {
+      "gift_ref": "GIFT001",
+      "gift_name": "...",
+      "gift_code": "...",
+      "gift_category": "...",
+      "unit_cost": 0.0,
+      "current_stock": 0,
+      "min_stock_alert": 5,
+      "storage_location": "...",
+      "campus_ref": "CPS001",
+      "gift_status": "active",
+      "description": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "gift_record": {
+    "GFRC001": {
+      "gift_record_ref": "GFRC001",
+      "gift_ref": "GIFT001",
+      "operated_by_ref": "EMP001",
+      "recipient_type": "employee",
+      "recipient_ref": "EMP002",
+      "quantity": 1,
+      "occasion": "...",
+      "notes": "...",
+      "created_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "business_card": {
+    "BCRD001": {
+      "business_card_ref": "BCRD001",
+      "employee_ref": "EMP001",
+      "card_template": "standard",
+      "custom_fields": {},
+      "quantity": 100,
+      "request_status": "pending",
+      "approved_by_ref": null,
+      "approved_at": null,
+      "delivered_at": null,
+      "notes": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "company_event": {
+    "CEVT001": {
+      "company_event_ref": "CEVT001",
+      "event_name": "...",
+      "event_type": "company_day",
+      "campus_ref": "CPS001",
+      "facility_ref": null,
+      "organizer_employee_ref": "EMP001",
+      "department_ref": null,
+      "start_at": "2025-01-15 09:00:00",
+      "end_at": "2025-01-15 18:00:00",
+      "max_attendees": null,
+      "description": "...",
+      "attachments": [],
+      "event_status": "planned",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "event_registration": {
+    "EVRG001": {
+      "event_registration_ref": "EVRG001",
+      "company_event_ref": "CEVT001",
+      "employee_ref": "EMP001",
+      "registration_status": "registered",
+      "checked_in_at": null,
+      "notes": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "policy": {
+    "PLCY001": {
+      "policy_ref": "PLCY001",
+      "policy_title": "...",
+      "policy_code": "...",
+      "policy_category": "meal_allowance",
+      "content": "...",
+      "attachments": [],
+      "effective_date": "2025-01-15",
+      "expiry_date": null,
+      "policy_status": "active",
+      "owner_department_ref": "DEPT001",
+      "author_employee_ref": "EMP001",
+      "version": "1.0",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "service_directory": {
+    "SVCD001": {
+      "service_directory_ref": "SVCD001",
+      "service_name": "...",
+      "service_category": "admin",
+      "service_description": "...",
+      "contact_phone": "...",
+      "contact_email": "...",
+      "contact_employee_ref": null,
+      "department_ref": "DEPT001",
+      "campus_ref": "CPS001",
+      "service_hours": "...",
+      "location_description": "...",
+      "service_status": "active",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "external_partner": {
+    "EXTP001": {
+      "external_partner_ref": "EXTP001",
+      "partner_name": "...",
+      "partner_type": "supplier",
+      "contact_person": "...",
+      "contact_phone": "...",
+      "contact_email": "...",
+      "address": "...",
+      "partner_status": "active",
+      "description": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "travel_policy": {
+    "TVPL001": {
+      "travel_policy_ref": "TVPL001",
+      "policy_name": "...",
+      "position_level_min": 1,
+      "position_level_max": 99,
+      "city_tier": "tier1",
+      "hotel_daily_limit": 0.0,
+      "meal_daily_limit": 0.0,
+      "transport_class": "economy",
+      "effective_date": "2025-01-15",
+      "expiry_date": null,
+      "policy_status": "active",
+      "notes": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "cleaning_schedule": {
+    "CLSC001": {
+      "cleaning_schedule_ref": "CLSC001",
+      "campus_ref": "CPS001",
+      "floor_ref": "FLR001",
+      "zone_ref": null,
+      "cleaning_type": "daily",
+      "frequency": "daily",
+      "scheduled_time": "07:00",
+      "assigned_vendor_ref": null,
+      "schedule_status": "active",
+      "notes": "...",
+      "created_at": "2025-01-15 09:00:00",
+      "updated_at": "2025-01-15 09:00:00"
+    }
+  },
+
+  "cleaning_record": {
+    "CLRC001": {
+      "cleaning_record_ref": "CLRC001",
+      "cleaning_schedule_ref": "CLSC001",
+      "executed_by": "...",
+      "executed_at": "2025-01-15 07:30:00",
+      "result": "completed",
+      "notes": "...",
+      "created_at": "2025-01-15 09:00:00"
+    }
+  }
+}

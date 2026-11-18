@@ -1,0 +1,22 @@
+# Core dependencies for OfficePrism evaluation (eval branch).
+# Optional external-agent baselines: see requirements-external.txt.
+openai>=1.0
+pydantic>=2.0
+loguru>=0.7
+rich>=13.0
+requests>=2.28
+pandas>=1.5
+omegaconf>=2.3
+python-dotenv>=1.0
+PyYAML>=6.0
+toml>=0.10
+addict>=2.4
+deepdiff>=6.0
+docstring-parser>=0.15
+typing_extensions>=4.5
+fastapi>=0.100
+uvicorn>=0.23
+langgraph>=0.3
+langchain-core>=0.3
+langchain-openai>=0.3
+faker>=19.0
