@@ -1,0 +1,49 @@
+# OfficePrism 配置文件
+
+# ===================================================================
+# 评测配置
+# ===================================================================
+evaluation:
+  simulation:
+    max_steps: 200
+    max_errors: 10
+    num_trials: 1
+    seed: 300
+
+  llm:
+    agent:
+      implementation: "react_agent"  # react_agent, fc_agent, plan_execute_agent
+      model: "qwen4-max"
+      temperature: 1.0
+      api_key: "${oc.env:LLM_API_KEY,null}"
+      base_url: "${oc.env:LLM_BASE_URL,https://dashscope.aliyuncs.com/compatible-mode/v1}"
+      timeout: 600
+
+    evaluator:
+      model: "qwen4-max"
+      temperature: 1.0
+      api_key: "${oc.env:LLM_API_KEY,null}"
+      base_url: "${oc.env:LLM_BASE_URL,https://dashscope.aliyuncs.com/compatible-mode/v1}"
+      timeout: 600
+
+  paths:
+    data_dir: "data"
+    output_dir: "data/results"
+
+    domains:
+      hr:
+        data_dir: "data/domains/hr"
+        db_path: "data/domains/hr/db.json"
+        policy_path: "data/domains/hr/policy.md"
+
+# ===================================================================
+# 合成配置（synthesis pipeline 用，评测不读）
+# ===================================================================
+synthesis:
+  llm:
+    api_key: "${oc.env:LLM_API_KEY,null}"
+    base_url: "${oc.env:LLM_BASE_URL,https://dashscope.aliyuncs.com/compatible-mode/v1}"
+    model_name: qwen4-max
+    temperature: 0.7
+    max_tokens: 64000
+    timeout: 600

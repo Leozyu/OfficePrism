@@ -1,0 +1,13086 @@
+import json
+import random
+from datetime import datetime, timedelta
+from faker import Faker
+
+SEED = 42
+SCALE = 100
+
+random.seed(SEED)
+fake = Faker("zh_CN")
+Faker.seed(SEED)
+
+BASE_DATE = datetime(2020, 1, 1, 0, 0, 0)
+NOW = datetime(2025, 6, 15, 12, 0, 0)
+
+# =========================
+# Base data JSON (READ ONLY)
+# =========================
+base_data_json = r'''{
+  "user_profile": {
+    "UPROF001": {
+      "user_profile_ref": "UPROF001",
+      "given_name": "龙",
+      "family_name": "王",
+      "display_name": "王龙",
+      "avatar_file_ref": "FILE008",
+      "bio": "手机还是相关一直进入然后注册就是设计.",
+      "phone": "14508386379",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2025-06-09 15:07:05",
+      "updated_at": "2025-06-10 07:19:54"
+    },
+    "UPROF002": {
+      "user_profile_ref": "UPROF002",
+      "given_name": "萍",
+      "family_name": "孟",
+      "display_name": "孟萍",
+      "avatar_file_ref": "FILE010",
+      "bio": "基本国家只有美国个人类别.",
+      "phone": "13716155940",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2022-01-30 20:27:37",
+      "updated_at": "2023-01-12 14:21:35"
+    },
+    "UPROF003": {
+      "user_profile_ref": "UPROF003",
+      "given_name": "桂芳",
+      "family_name": "何",
+      "display_name": "何桂芳",
+      "avatar_file_ref": "FILE014",
+      "bio": "系统的是必须浏览社会游戏市场重要得到空间.",
+      "phone": "18031647525",
+      "account_status": "active",
+      "preferred_locale": "ja-JP",
+      "timezone": "Asia/Chongqing",
+      "created_at": "2024-08-21 09:28:35",
+      "updated_at": "2024-09-24 03:48:18"
+    },
+    "UPROF004": {
+      "user_profile_ref": "UPROF004",
+      "given_name": "琴",
+      "family_name": "张",
+      "display_name": "张琴",
+      "avatar_file_ref": "FILE016",
+      "bio": "处理对于市场科技详细手机只是不过以下.",
+      "phone": "18583503056",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2020-04-08 17:53:19",
+      "updated_at": "2020-07-10 07:43:49"
+    },
+    "UPROF005": {
+      "user_profile_ref": "UPROF005",
+      "given_name": "玲",
+      "family_name": "王",
+      "display_name": "王玲",
+      "avatar_file_ref": "FILE020",
+      "bio": "国内日期经验电子一点还有文件推荐的话目前搜索来源看到.",
+      "phone": "15028710122",
+      "account_status": "active",
+      "preferred_locale": "ja-JP",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2021-12-23 20:27:13",
+      "updated_at": "2024-02-16 21:27:51"
+    },
+    "UPROF006": {
+      "user_profile_ref": "UPROF006",
+      "given_name": "玉华",
+      "family_name": "唐",
+      "display_name": "唐玉华",
+      "avatar_file_ref": "FILE023",
+      "bio": "这种全部无法当前完全中国系列行业投资你的.",
+      "phone": "15551462704",
+      "account_status": "active",
+      "preferred_locale": "ja-JP",
+      "timezone": "Asia/Chongqing",
+      "created_at": "2024-10-09 17:27:54",
+      "updated_at": "2024-12-25 22:45:58"
+    },
+    "UPROF007": {
+      "user_profile_ref": "UPROF007",
+      "given_name": "桂花",
+      "family_name": "范",
+      "display_name": "范桂花",
+      "avatar_file_ref": null,
+      "bio": "汽车事情其他其中为什自己最大是一继续无法一个专业.",
+      "phone": "13415430391",
+      "account_status": "active",
+      "preferred_locale": "ja-JP",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2021-11-15 21:14:38",
+      "updated_at": "2023-10-14 16:58:15"
+    },
+    "UPROF008": {
+      "user_profile_ref": "UPROF008",
+      "given_name": "凯",
+      "family_name": "姚",
+      "display_name": "姚凯",
+      "avatar_file_ref": null,
+      "bio": "注意详细因为重要次数联系.",
+      "phone": "13096383465",
+      "account_status": "active",
+      "preferred_locale": "en-US",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2020-01-21 04:34:57",
+      "updated_at": "2021-05-31 05:38:37"
+    },
+    "UPROF009": {
+      "user_profile_ref": "UPROF009",
+      "given_name": "丽丽",
+      "family_name": "庄",
+      "display_name": "庄丽丽",
+      "avatar_file_ref": null,
+      "bio": "所有网站教育之后最后地址市场经营最后一起完全.",
+      "phone": "13683473829",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2022-05-13 07:35:20",
+      "updated_at": "2023-01-09 20:17:05"
+    },
+    "UPROF010": {
+      "user_profile_ref": "UPROF010",
+      "given_name": "淑华",
+      "family_name": "刘",
+      "display_name": "刘淑华",
+      "avatar_file_ref": null,
+      "bio": "部分世界网络学生只有研究关系结果空间提供精华资料.",
+      "phone": "18013338726",
+      "account_status": "active",
+      "preferred_locale": "en-US",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2020-11-13 13:21:02",
+      "updated_at": "2021-08-28 16:58:55"
+    },
+    "UPROF011": {
+      "user_profile_ref": "UPROF011",
+      "given_name": "博",
+      "family_name": "陈",
+      "display_name": "陈博",
+      "avatar_file_ref": null,
+      "bio": "今年如果部分工具网络操作一般公司就是.",
+      "phone": "14532677360",
+      "account_status": "active",
+      "preferred_locale": "ja-JP",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2023-01-20 07:26:32",
+      "updated_at": "2024-07-07 15:02:27"
+    },
+    "UPROF012": {
+      "user_profile_ref": "UPROF012",
+      "given_name": "志强",
+      "family_name": "吴",
+      "display_name": "吴志强",
+      "avatar_file_ref": null,
+      "bio": "文件她的开发只有原因全部更多商品支持选择.",
+      "phone": "13598050097",
+      "account_status": "active",
+      "preferred_locale": "ja-JP",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2020-05-14 23:53:58",
+      "updated_at": "2024-04-11 09:06:04"
+    },
+    "UPROF013": {
+      "user_profile_ref": "UPROF013",
+      "given_name": "桂花",
+      "family_name": "甘",
+      "display_name": "甘桂花",
+      "avatar_file_ref": null,
+      "bio": "在线参加系统中心学校影响同时所有完成推荐学校东西.",
+      "phone": "18299854353",
+      "account_status": "active",
+      "preferred_locale": "ja-JP",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2023-03-22 01:34:09",
+      "updated_at": "2023-07-22 11:27:12"
+    },
+    "UPROF014": {
+      "user_profile_ref": "UPROF014",
+      "given_name": "燕",
+      "family_name": "吴",
+      "display_name": "吴燕",
+      "avatar_file_ref": null,
+      "bio": "还有不断那些中国东西的话提供是一显示.",
+      "phone": "13851354278",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Hong_Kong",
+      "created_at": "2025-05-07 02:46:50",
+      "updated_at": "2025-06-06 03:24:29"
+    },
+    "UPROF015": {
+      "user_profile_ref": "UPROF015",
+      "given_name": "莉",
+      "family_name": "邓",
+      "display_name": "邓莉",
+      "avatar_file_ref": null,
+      "bio": "时间人民其他直接密码公司电话文章感觉评论提高商品.",
+      "phone": "14748740164",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2021-08-20 10:04:34",
+      "updated_at": "2024-08-18 22:25:05"
+    },
+    "UPROF016": {
+      "user_profile_ref": "UPROF016",
+      "given_name": "平",
+      "family_name": "王",
+      "display_name": "王平",
+      "avatar_file_ref": null,
+      "bio": "作为目前一直这里回复中国如果.",
+      "phone": "18128059826",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2021-12-09 01:19:36",
+      "updated_at": "2025-03-23 23:24:12"
+    },
+    "UPROF017": {
+      "user_profile_ref": "UPROF017",
+      "given_name": "阳",
+      "family_name": "王",
+      "display_name": "王阳",
+      "avatar_file_ref": null,
+      "bio": "质量欢迎完全质量不是一些相关继续制作电影.",
+      "phone": "14523226025",
+      "account_status": "active",
+      "preferred_locale": "en-US",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2021-12-24 06:08:47",
+      "updated_at": "2022-05-30 03:45:09"
+    },
+    "UPROF018": {
+      "user_profile_ref": "UPROF018",
+      "given_name": "秀梅",
+      "family_name": "邹",
+      "display_name": "邹秀梅",
+      "avatar_file_ref": null,
+      "bio": "你的责任文章事情完全地址人民只是会员.",
+      "phone": "13333036541",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2023-11-09 16:43:21",
+      "updated_at": "2025-03-17 10:44:21"
+    },
+    "UPROF019": {
+      "user_profile_ref": "UPROF019",
+      "given_name": "萍",
+      "family_name": "黄",
+      "display_name": "黄萍",
+      "avatar_file_ref": null,
+      "bio": "看到标题投资密码电话当前不能只要文件文章学习关系.",
+      "phone": "15769816934",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2023-02-24 02:41:36",
+      "updated_at": "2024-08-29 00:08:42"
+    },
+    "UPROF020": {
+      "user_profile_ref": "UPROF020",
+      "given_name": "平",
+      "family_name": "程",
+      "display_name": "程平",
+      "avatar_file_ref": null,
+      "bio": "查看部分表示计划文化价格.",
+      "phone": "18215951484",
+      "account_status": "active",
+      "preferred_locale": "ja-JP",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2020-08-09 20:09:25",
+      "updated_at": "2022-01-23 13:10:45"
+    },
+    "UPROF021": {
+      "user_profile_ref": "UPROF021",
+      "given_name": "桂荣",
+      "family_name": "杨",
+      "display_name": "杨桂荣",
+      "avatar_file_ref": null,
+      "bio": "感觉游戏登录可能这么所以标准电影威望.",
+      "phone": "15243699577",
+      "account_status": "active",
+      "preferred_locale": "en-US",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2021-05-22 16:10:22",
+      "updated_at": "2023-05-10 18:28:57"
+    },
+    "UPROF022": {
+      "user_profile_ref": "UPROF022",
+      "given_name": "玉",
+      "family_name": "袁",
+      "display_name": "袁玉",
+      "avatar_file_ref": null,
+      "bio": "首页质量欢迎积分发展记者经营任何政府您的结果网站.",
+      "phone": "14720037917",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2025-06-11 09:50:26",
+      "updated_at": "2025-06-14 18:57:08"
+    },
+    "UPROF023": {
+      "user_profile_ref": "UPROF023",
+      "given_name": "丽娟",
+      "family_name": "葛",
+      "display_name": "葛丽娟",
+      "avatar_file_ref": null,
+      "bio": "需要留言今天手机经验我们您的日本我的回复所以原因查看.",
+      "phone": "13583172788",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2020-06-22 19:02:08",
+      "updated_at": "2022-06-04 10:05:51"
+    },
+    "UPROF024": {
+      "user_profile_ref": "UPROF024",
+      "given_name": "玉珍",
+      "family_name": "房",
+      "display_name": "房玉珍",
+      "avatar_file_ref": null,
+      "bio": "作品商品帖子一种发生来源法律方法发现推荐作为.",
+      "phone": "14587347143",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2023-05-31 09:00:53",
+      "updated_at": "2023-12-25 08:03:59"
+    },
+    "UPROF025": {
+      "user_profile_ref": "UPROF025",
+      "given_name": "桂英",
+      "family_name": "杨",
+      "display_name": "杨桂英",
+      "avatar_file_ref": null,
+      "bio": "系统自己这种自己个人阅读人员研究内容威望朋友日本.",
+      "phone": "18509670546",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Chongqing",
+      "created_at": "2024-10-28 04:00:35",
+      "updated_at": "2025-02-27 09:01:12"
+    },
+    "UPROF026": {
+      "user_profile_ref": "UPROF026",
+      "given_name": "婷婷",
+      "family_name": "何",
+      "display_name": "何婷婷",
+      "avatar_file_ref": null,
+      "bio": "加入来源单位评论单位朋友合作加入大小语言增加标题.",
+      "phone": "13106990162",
+      "account_status": "active",
+      "preferred_locale": "en-US",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2023-05-14 04:27:09",
+      "updated_at": "2025-03-31 08:08:30"
+    },
+    "UPROF027": {
+      "user_profile_ref": "UPROF027",
+      "given_name": "丽华",
+      "family_name": "张",
+      "display_name": "张丽华",
+      "avatar_file_ref": null,
+      "bio": "可能免费一下最大可能城市一种主要技术.",
+      "phone": "13480531003",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Hong_Kong",
+      "created_at": "2022-04-02 22:53:49",
+      "updated_at": "2022-11-05 20:41:33"
+    },
+    "UPROF028": {
+      "user_profile_ref": "UPROF028",
+      "given_name": "杨",
+      "family_name": "龙",
+      "display_name": "龙杨",
+      "avatar_file_ref": null,
+      "bio": "自己因为合作起来但是处理两个积分为什这么电话政府只要.",
+      "phone": "13790496631",
+      "account_status": "active",
+      "preferred_locale": "ja-JP",
+      "timezone": "Asia/Chongqing",
+      "created_at": "2024-08-01 13:03:34",
+      "updated_at": "2024-11-11 13:59:19"
+    },
+    "UPROF029": {
+      "user_profile_ref": "UPROF029",
+      "given_name": "丽",
+      "family_name": "李",
+      "display_name": "李丽",
+      "avatar_file_ref": null,
+      "bio": "品牌组织所有空间成功点击大学介绍显示.",
+      "phone": "15706716572",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2024-12-17 23:22:07",
+      "updated_at": "2025-03-05 12:42:35"
+    },
+    "UPROF030": {
+      "user_profile_ref": "UPROF030",
+      "given_name": "淑兰",
+      "family_name": "张",
+      "display_name": "张淑兰",
+      "avatar_file_ref": null,
+      "bio": "报告不过部分是一也是学习关系你的品牌一种发展制作.",
+      "phone": "15079965075",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2021-03-05 18:45:44",
+      "updated_at": "2025-05-17 01:58:13"
+    },
+    "UPROF031": {
+      "user_profile_ref": "UPROF031",
+      "given_name": "博",
+      "family_name": "朱",
+      "display_name": "朱博",
+      "avatar_file_ref": null,
+      "bio": "加入资料以后处理生产中国到了发展系列怎么.",
+      "phone": "14537770143",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Chongqing",
+      "created_at": "2020-12-06 16:01:55",
+      "updated_at": "2022-03-26 12:42:24"
+    },
+    "UPROF032": {
+      "user_profile_ref": "UPROF032",
+      "given_name": "秀云",
+      "family_name": "杜",
+      "display_name": "杜秀云",
+      "avatar_file_ref": null,
+      "bio": "直接而且感觉状态全部这里为了那么环境.",
+      "phone": "15013518233",
+      "account_status": "active",
+      "preferred_locale": "en-US",
+      "timezone": "Asia/Chongqing",
+      "created_at": "2025-01-26 23:28:51",
+      "updated_at": "2025-02-08 07:32:29"
+    },
+    "UPROF033": {
+      "user_profile_ref": "UPROF033",
+      "given_name": "秀华",
+      "family_name": "陈",
+      "display_name": "陈秀华",
+      "avatar_file_ref": null,
+      "bio": "正在不要图片提供需要情况的人可以详细评论正在感觉规定.",
+      "phone": "13871094777",
+      "account_status": "active",
+      "preferred_locale": "ja-JP",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2025-01-25 08:39:40",
+      "updated_at": "2025-04-26 05:55:54"
+    },
+    "UPROF034": {
+      "user_profile_ref": "UPROF034",
+      "given_name": "慧",
+      "family_name": "张",
+      "display_name": "张慧",
+      "avatar_file_ref": null,
+      "bio": "主要决定电话使用应该女人.",
+      "phone": "15602294131",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Hong_Kong",
+      "created_at": "2024-09-14 19:30:45",
+      "updated_at": "2024-09-19 06:31:24"
+    },
+    "UPROF035": {
+      "user_profile_ref": "UPROF035",
+      "given_name": "丽娟",
+      "family_name": "许",
+      "display_name": "许丽娟",
+      "avatar_file_ref": null,
+      "bio": "情况位置有关不同完全一切会员东西为什一直次数要求免费.",
+      "phone": "15612328120",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2022-04-08 23:55:40",
+      "updated_at": "2024-12-29 16:42:56"
+    },
+    "UPROF036": {
+      "user_profile_ref": "UPROF036",
+      "given_name": "桂荣",
+      "family_name": "徐",
+      "display_name": "徐桂荣",
+      "avatar_file_ref": null,
+      "bio": "广告自己功能图片完全市场设计文件深圳然后觉得价格电话.",
+      "phone": "15024210249",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Chongqing",
+      "created_at": "2022-06-30 20:57:20",
+      "updated_at": "2024-05-06 06:10:44"
+    },
+    "UPROF037": {
+      "user_profile_ref": "UPROF037",
+      "given_name": "玉兰",
+      "family_name": "徐",
+      "display_name": "徐玉兰",
+      "avatar_file_ref": null,
+      "bio": "程序处理如此更新应该系统工作学生最新一些作者.",
+      "phone": "15699049027",
+      "account_status": "active",
+      "preferred_locale": "ja-JP",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2020-01-11 01:59:17",
+      "updated_at": "2022-04-08 09:41:55"
+    },
+    "UPROF038": {
+      "user_profile_ref": "UPROF038",
+      "given_name": "玉",
+      "family_name": "俞",
+      "display_name": "俞玉",
+      "avatar_file_ref": null,
+      "bio": "全部学习根据当前广告如何最新我的.",
+      "phone": "13956746807",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Hong_Kong",
+      "created_at": "2024-04-26 07:29:21",
+      "updated_at": "2024-07-17 23:07:50"
+    },
+    "UPROF039": {
+      "user_profile_ref": "UPROF039",
+      "given_name": "健",
+      "family_name": "陈",
+      "display_name": "陈健",
+      "avatar_file_ref": null,
+      "bio": "发表得到很多其实一个网上只是管理查看方面.",
+      "phone": "18870348247",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2025-03-07 00:06:36",
+      "updated_at": "2025-04-14 15:06:10"
+    },
+    "UPROF040": {
+      "user_profile_ref": "UPROF040",
+      "given_name": "桂芝",
+      "family_name": "李",
+      "display_name": "李桂芝",
+      "avatar_file_ref": null,
+      "bio": "为什这些在线这里感觉就是特别汽车只是发表一种以上具有能力.",
+      "phone": "15167737826",
+      "account_status": "active",
+      "preferred_locale": "ja-JP",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2021-05-16 21:58:09",
+      "updated_at": "2023-09-01 19:28:36"
+    },
+    "UPROF041": {
+      "user_profile_ref": "UPROF041",
+      "given_name": "坤",
+      "family_name": "宁",
+      "display_name": "宁坤",
+      "avatar_file_ref": null,
+      "bio": "这么什么市场得到是否资料责任你的一个因此实现那个.",
+      "phone": "15672787558",
+      "account_status": "active",
+      "preferred_locale": "en-US",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2025-02-03 20:32:43",
+      "updated_at": "2025-04-07 19:13:19"
+    },
+    "UPROF042": {
+      "user_profile_ref": "UPROF042",
+      "given_name": "淑珍",
+      "family_name": "孙",
+      "display_name": "孙淑珍",
+      "avatar_file_ref": null,
+      "bio": "网上标题这些这种工具新闻他的首页一点可能.",
+      "phone": "15627028951",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2020-12-13 13:27:43",
+      "updated_at": "2024-01-15 07:16:10"
+    },
+    "UPROF043": {
+      "user_profile_ref": "UPROF043",
+      "given_name": "丽丽",
+      "family_name": "李",
+      "display_name": "李丽丽",
+      "avatar_file_ref": null,
+      "bio": "公司开始事情当前服务成功文件方面资源系统一下.",
+      "phone": "15686578091",
+      "account_status": "active",
+      "preferred_locale": "ja-JP",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2020-06-28 23:12:49",
+      "updated_at": "2022-07-17 07:54:03"
+    },
+    "UPROF044": {
+      "user_profile_ref": "UPROF044",
+      "given_name": "静",
+      "family_name": "曹",
+      "display_name": "曹静",
+      "avatar_file_ref": null,
+      "bio": "准备这么学习提供科技事情不同留言有些.",
+      "phone": "13550455623",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Hong_Kong",
+      "created_at": "2020-09-23 02:47:02",
+      "updated_at": "2024-11-11 00:51:32"
+    },
+    "UPROF045": {
+      "user_profile_ref": "UPROF045",
+      "given_name": "秀梅",
+      "family_name": "郑",
+      "display_name": "郑秀梅",
+      "avatar_file_ref": null,
+      "bio": "积分系统事情东西活动汽车开始只是.",
+      "phone": "15174074821",
+      "account_status": "active",
+      "preferred_locale": "en-US",
+      "timezone": "Asia/Hong_Kong",
+      "created_at": "2021-01-25 17:23:01",
+      "updated_at": "2022-02-28 14:56:42"
+    },
+    "UPROF046": {
+      "user_profile_ref": "UPROF046",
+      "given_name": "玉",
+      "family_name": "管",
+      "display_name": "管玉",
+      "avatar_file_ref": null,
+      "bio": "其他参加程序还有这样准备是否我的可能知道选择规定信息.",
+      "phone": "15364090974",
+      "account_status": "active",
+      "preferred_locale": "ja-JP",
+      "timezone": "Asia/Hong_Kong",
+      "created_at": "2021-05-28 00:45:30",
+      "updated_at": "2022-07-13 18:47:08"
+    },
+    "UPROF047": {
+      "user_profile_ref": "UPROF047",
+      "given_name": "娜",
+      "family_name": "邓",
+      "display_name": "邓娜",
+      "avatar_file_ref": null,
+      "bio": "但是世界一些分析两个行业什么网络必须工作.",
+      "phone": "13370952145",
+      "account_status": "active",
+      "preferred_locale": "ja-JP",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2023-08-07 15:27:05",
+      "updated_at": "2024-01-19 03:39:21"
+    },
+    "UPROF048": {
+      "user_profile_ref": "UPROF048",
+      "given_name": "丽娟",
+      "family_name": "张",
+      "display_name": "张丽娟",
+      "avatar_file_ref": null,
+      "bio": "责任国内名称更新评论生活一点.",
+      "phone": "18845171236",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Chongqing",
+      "created_at": "2022-08-26 11:15:05",
+      "updated_at": "2024-05-07 06:45:44"
+    },
+    "UPROF049": {
+      "user_profile_ref": "UPROF049",
+      "given_name": "云",
+      "family_name": "李",
+      "display_name": "李云",
+      "avatar_file_ref": null,
+      "bio": "可以投资开发结果结果搜索控制计划文章设计下载.",
+      "phone": "18185931746",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2024-05-27 01:15:07",
+      "updated_at": "2024-11-18 09:24:28"
+    },
+    "UPROF050": {
+      "user_profile_ref": "UPROF050",
+      "given_name": "林",
+      "family_name": "李",
+      "display_name": "李林",
+      "avatar_file_ref": null,
+      "bio": "会员应该网络浏览公司那么.",
+      "phone": "15686926179",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2021-11-29 02:38:52",
+      "updated_at": "2022-03-08 13:42:22"
+    },
+    "UPROF051": {
+      "user_profile_ref": "UPROF051",
+      "given_name": "桂荣",
+      "family_name": "冉",
+      "display_name": "冉桂荣",
+      "avatar_file_ref": null,
+      "bio": "自己介绍不同到了是否提供表示进入注意.",
+      "phone": "15806431713",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Hong_Kong",
+      "created_at": "2025-01-01 19:28:38",
+      "updated_at": "2025-04-19 08:56:19"
+    },
+    "UPROF052": {
+      "user_profile_ref": "UPROF052",
+      "given_name": "军",
+      "family_name": "王",
+      "display_name": "王军",
+      "avatar_file_ref": null,
+      "bio": "手机因为起来进行类别要求个人网上一下发布.",
+      "phone": "18190422842",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2021-11-15 04:35:55",
+      "updated_at": "2021-11-26 08:41:33"
+    },
+    "UPROF053": {
+      "user_profile_ref": "UPROF053",
+      "given_name": "龙",
+      "family_name": "田",
+      "display_name": "田龙",
+      "avatar_file_ref": null,
+      "bio": "有限出现责任之后公司文件.",
+      "phone": "13868117758",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2021-12-12 07:08:13",
+      "updated_at": "2022-03-27 00:00:11"
+    },
+    "UPROF054": {
+      "user_profile_ref": "UPROF054",
+      "given_name": "宁",
+      "family_name": "孙",
+      "display_name": "孙宁",
+      "avatar_file_ref": null,
+      "bio": "次数企业成功很多位置还有只要内容.",
+      "phone": "18866177115",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2020-08-08 03:30:25",
+      "updated_at": "2024-12-22 13:45:58"
+    },
+    "UPROF055": {
+      "user_profile_ref": "UPROF055",
+      "given_name": "峰",
+      "family_name": "王",
+      "display_name": "王峰",
+      "avatar_file_ref": null,
+      "bio": "简介搜索数据可能销售选择帖子大学业务.",
+      "phone": "13783673657",
+      "account_status": "active",
+      "preferred_locale": "ja-JP",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2024-02-17 03:07:42",
+      "updated_at": "2024-08-01 12:47:30"
+    },
+    "UPROF056": {
+      "user_profile_ref": "UPROF056",
+      "given_name": "莹",
+      "family_name": "赵",
+      "display_name": "赵莹",
+      "avatar_file_ref": null,
+      "bio": "日期日期大家拥有表示方法作者.",
+      "phone": "13616152809",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Chongqing",
+      "created_at": "2024-11-09 04:03:33",
+      "updated_at": "2025-05-11 17:40:20"
+    },
+    "UPROF057": {
+      "user_profile_ref": "UPROF057",
+      "given_name": "玉英",
+      "family_name": "董",
+      "display_name": "董玉英",
+      "avatar_file_ref": null,
+      "bio": "不会登录您的网上系列当前组织为了女人免费地区.",
+      "phone": "15015851493",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2023-06-18 16:35:27",
+      "updated_at": "2023-11-13 14:05:20"
+    },
+    "UPROF058": {
+      "user_profile_ref": "UPROF058",
+      "given_name": "琳",
+      "family_name": "顾",
+      "display_name": "顾琳",
+      "avatar_file_ref": null,
+      "bio": "或者运行软件不断之间你的的人男人环境资料时间网上起来.",
+      "phone": "15912018366",
+      "account_status": "active",
+      "preferred_locale": "en-US",
+      "timezone": "Asia/Chongqing",
+      "created_at": "2023-09-01 05:30:21",
+      "updated_at": "2024-06-02 10:05:28"
+    },
+    "UPROF059": {
+      "user_profile_ref": "UPROF059",
+      "given_name": "淑英",
+      "family_name": "杨",
+      "display_name": "杨淑英",
+      "avatar_file_ref": null,
+      "bio": "来自专业计划销售制作支持分析他们技术不同.",
+      "phone": "18279764381",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2023-12-21 23:52:59",
+      "updated_at": "2024-02-02 01:42:25"
+    },
+    "UPROF060": {
+      "user_profile_ref": "UPROF060",
+      "given_name": "红梅",
+      "family_name": "周",
+      "display_name": "周红梅",
+      "avatar_file_ref": null,
+      "bio": "这是学校由于环境地址空间管理通过次数.",
+      "phone": "14524451076",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2023-06-04 21:37:07",
+      "updated_at": "2024-12-21 12:30:13"
+    },
+    "UPROF061": {
+      "user_profile_ref": "UPROF061",
+      "given_name": "雷",
+      "family_name": "李",
+      "display_name": "李雷",
+      "avatar_file_ref": null,
+      "bio": "男人更新威望觉得市场决定论坛没有增加决定女人认为.",
+      "phone": "18564160529",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Hong_Kong",
+      "created_at": "2022-02-11 13:09:36",
+      "updated_at": "2022-12-06 04:09:20"
+    },
+    "UPROF062": {
+      "user_profile_ref": "UPROF062",
+      "given_name": "桂芳",
+      "family_name": "雷",
+      "display_name": "雷桂芳",
+      "avatar_file_ref": null,
+      "bio": "现在谢谢手机之后不要电子来自资料任何积分.",
+      "phone": "13018835523",
+      "account_status": "active",
+      "preferred_locale": "en-US",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2023-10-25 19:03:03",
+      "updated_at": "2024-02-11 16:14:17"
+    },
+    "UPROF063": {
+      "user_profile_ref": "UPROF063",
+      "given_name": "旭",
+      "family_name": "李",
+      "display_name": "李旭",
+      "avatar_file_ref": null,
+      "bio": "所以自己基本如果拥有必须非常起来.",
+      "phone": "13279955271",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2022-05-15 09:49:53",
+      "updated_at": "2024-05-03 01:51:21"
+    },
+    "UPROF064": {
+      "user_profile_ref": "UPROF064",
+      "given_name": "桂香",
+      "family_name": "徐",
+      "display_name": "徐桂香",
+      "avatar_file_ref": null,
+      "bio": "欢迎然后为了服务只是工作而且功能工程.",
+      "phone": "18019986798",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2023-10-08 18:13:23",
+      "updated_at": "2024-12-09 05:01:49"
+    },
+    "UPROF065": {
+      "user_profile_ref": "UPROF065",
+      "given_name": "刚",
+      "family_name": "徐",
+      "display_name": "徐刚",
+      "avatar_file_ref": null,
+      "bio": "操作最新方法自己内容相关质量状态具有帖子主题推荐关于.",
+      "phone": "18788925546",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2024-08-06 13:09:28",
+      "updated_at": "2024-08-12 06:42:39"
+    },
+    "UPROF066": {
+      "user_profile_ref": "UPROF066",
+      "given_name": "桂荣",
+      "family_name": "金",
+      "display_name": "金桂荣",
+      "avatar_file_ref": null,
+      "bio": "管理经营任何人员你们建设主要品牌只要说明自己技术直接.",
+      "phone": "18954629148",
+      "account_status": "active",
+      "preferred_locale": "en-US",
+      "timezone": "Asia/Chongqing",
+      "created_at": "2021-05-31 17:03:18",
+      "updated_at": "2023-02-22 01:16:09"
+    },
+    "UPROF067": {
+      "user_profile_ref": "UPROF067",
+      "given_name": "淑珍",
+      "family_name": "彭",
+      "display_name": "彭淑珍",
+      "avatar_file_ref": null,
+      "bio": "根据合作之间文化表示由于工程只有社会社会.",
+      "phone": "13935733221",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2021-10-26 02:09:12",
+      "updated_at": "2023-07-11 02:01:08"
+    },
+    "UPROF068": {
+      "user_profile_ref": "UPROF068",
+      "given_name": "英",
+      "family_name": "顾",
+      "display_name": "顾英",
+      "avatar_file_ref": null,
+      "bio": "显示是一文化由于直接国内喜欢.",
+      "phone": "14562229270",
+      "account_status": "active",
+      "preferred_locale": "en-US",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2023-03-23 10:17:02",
+      "updated_at": "2023-03-26 18:38:31"
+    },
+    "UPROF069": {
+      "user_profile_ref": "UPROF069",
+      "given_name": "秀梅",
+      "family_name": "黄",
+      "display_name": "黄秀梅",
+      "avatar_file_ref": null,
+      "bio": "当前作品城市她的设计这些报告她的有些.",
+      "phone": "14759774688",
+      "account_status": "active",
+      "preferred_locale": "en-US",
+      "timezone": "Asia/Hong_Kong",
+      "created_at": "2023-11-14 15:52:59",
+      "updated_at": "2024-06-23 05:18:50"
+    },
+    "UPROF070": {
+      "user_profile_ref": "UPROF070",
+      "given_name": "婷婷",
+      "family_name": "席",
+      "display_name": "席婷婷",
+      "avatar_file_ref": null,
+      "bio": "能够什么一些其中今年感觉相关谢谢.",
+      "phone": "18014124782",
+      "account_status": "active",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2024-02-21 00:51:03",
+      "updated_at": "2024-06-20 06:28:22"
+    },
+    "UPROF071": {
+      "user_profile_ref": "UPROF071",
+      "given_name": "淑兰",
+      "family_name": "李",
+      "display_name": "李淑兰",
+      "avatar_file_ref": null,
+      "bio": "人民浏览不断阅读资源音乐建设技术.",
+      "phone": "15005152204",
+      "account_status": "inactive",
+      "preferred_locale": "ja-JP",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2020-06-30 16:49:49",
+      "updated_at": "2025-06-04 03:38:33"
+    },
+    "UPROF072": {
+      "user_profile_ref": "UPROF072",
+      "given_name": "桂香",
+      "family_name": "杜",
+      "display_name": "杜桂香",
+      "avatar_file_ref": null,
+      "bio": "基本广告或者一起没有个人发布.",
+      "phone": "18698614341",
+      "account_status": "suspended",
+      "preferred_locale": "ja-JP",
+      "timezone": "Asia/Chongqing",
+      "created_at": "2020-06-26 14:33:06",
+      "updated_at": "2020-11-29 09:26:06"
+    },
+    "UPROF073": {
+      "user_profile_ref": "UPROF073",
+      "given_name": "辉",
+      "family_name": "刘",
+      "display_name": "刘辉",
+      "avatar_file_ref": null,
+      "bio": "还有方式一起销售公司记者活动开始大学或者活动安全直接.",
+      "phone": "13685188888",
+      "account_status": "inactive",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "created_at": "2020-06-25 17:14:54",
+      "updated_at": "2024-10-20 11:41:08"
+    },
+    "UPROF074": {
+      "user_profile_ref": "UPROF074",
+      "given_name": "军",
+      "family_name": "吴",
+      "display_name": "吴军",
+      "avatar_file_ref": null,
+      "bio": "企业建设音乐这么出现进行活动地区相关设备分析公司.",
+      "phone": "15885277221",
+      "account_status": "inactive",
+      "preferred_locale": "zh-CN",
+      "timezone": "Asia/Chongqing",
+      "created_at": "2025-01-22 17:02:00",
+      "updated_at": "2025-02-04 21:45:14"
+    },
+    "UPROF075": {
+      "user_profile_ref": "UPROF075",
+      "given_name": "桂芳",
+      "family_name": "王",
+      "display_name": "王桂芳",
+      "avatar_file_ref": null,
+      "bio": "企业用户论坛应用记者一切一般主要.",
+      "phone": "14534505415",
+      "account_status": "inactive",
+      "preferred_locale": "ja-JP",
+      "timezone": "Asia/Hong_Kong",
+      "created_at": "2024-11-04 22:04:39",
+      "updated_at": "2025-02-08 12:58:15"
+    }
+  },
+  "department": {
+    "DEPT001": {
+      "department_ref": "DEPT001",
+      "department_name": "智联科技集团",
+      "department_code": "ROOT",
+      "parent_department_ref": null,
+      "department_level": 1,
+      "department_type": "business",
+      "department_status": "active",
+      "description": "智联科技集团负责公司相关业务和职能",
+      "display_order": 1,
+      "created_at": "2020-01-31 20:50:17",
+      "updated_at": "2021-05-26 22:56:46"
+    },
+    "DEPT002": {
+      "department_ref": "DEPT002",
+      "department_name": "工程技术部",
+      "department_code": "ENG",
+      "parent_department_ref": "DEPT001",
+      "department_level": 2,
+      "department_type": "business",
+      "department_status": "active",
+      "description": "工程技术部负责公司相关业务和职能",
+      "display_order": 1,
+      "created_at": "2020-03-04 16:16:53",
+      "updated_at": "2021-01-24 07:12:00"
+    },
+    "DEPT003": {
+      "department_ref": "DEPT003",
+      "department_name": "产品部",
+      "department_code": "PROD",
+      "parent_department_ref": "DEPT001",
+      "department_level": 2,
+      "department_type": "business",
+      "department_status": "active",
+      "description": "产品部负责公司相关业务和职能",
+      "display_order": 2,
+      "created_at": "2021-05-25 14:19:26",
+      "updated_at": "2021-05-31 22:35:43"
+    },
+    "DEPT004": {
+      "department_ref": "DEPT004",
+      "department_name": "设计部",
+      "department_code": "DESIGN",
+      "parent_department_ref": "DEPT001",
+      "department_level": 2,
+      "department_type": "business",
+      "department_status": "active",
+      "description": "设计部负责公司相关业务和职能",
+      "display_order": 3,
+      "created_at": "2020-09-02 17:33:40",
+      "updated_at": "2020-12-13 00:04:24"
+    },
+    "DEPT005": {
+      "department_ref": "DEPT005",
+      "department_name": "人力资源部",
+      "department_code": "HR",
+      "parent_department_ref": "DEPT001",
+      "department_level": 2,
+      "department_type": "functional",
+      "department_status": "active",
+      "description": "人力资源部负责公司相关业务和职能",
+      "display_order": 4,
+      "created_at": "2020-06-07 15:40:02",
+      "updated_at": "2021-02-22 17:57:56"
+    },
+    "DEPT006": {
+      "department_ref": "DEPT006",
+      "department_name": "财务部",
+      "department_code": "FIN",
+      "parent_department_ref": "DEPT001",
+      "department_level": 2,
+      "department_type": "functional",
+      "department_status": "active",
+      "description": "财务部负责公司相关业务和职能",
+      "display_order": 5,
+      "created_at": "2020-09-01 00:48:42",
+      "updated_at": "2020-12-02 17:31:33"
+    },
+    "DEPT007": {
+      "department_ref": "DEPT007",
+      "department_name": "市场营销部",
+      "department_code": "MKT",
+      "parent_department_ref": "DEPT001",
+      "department_level": 2,
+      "department_type": "business",
+      "department_status": "active",
+      "description": "市场营销部负责公司相关业务和职能",
+      "display_order": 6,
+      "created_at": "2020-07-25 07:24:48",
+      "updated_at": "2020-12-26 00:24:17"
+    },
+    "DEPT008": {
+      "department_ref": "DEPT008",
+      "department_name": "数据智能部",
+      "department_code": "DATA",
+      "parent_department_ref": "DEPT001",
+      "department_level": 2,
+      "department_type": "business",
+      "department_status": "active",
+      "description": "数据智能部负责公司相关业务和职能",
+      "display_order": 7,
+      "created_at": "2020-04-11 15:44:52",
+      "updated_at": "2020-11-30 16:05:55"
+    },
+    "DEPT009": {
+      "department_ref": "DEPT009",
+      "department_name": "后端开发组",
+      "department_code": "ENG-BE",
+      "parent_department_ref": "DEPT002",
+      "department_level": 3,
+      "department_type": "business",
+      "department_status": "active",
+      "description": "后端开发组负责公司相关业务和职能",
+      "display_order": 1,
+      "created_at": "2020-12-21 03:17:01",
+      "updated_at": "2021-02-20 12:46:34"
+    },
+    "DEPT010": {
+      "department_ref": "DEPT010",
+      "department_name": "前端开发组",
+      "department_code": "ENG-FE",
+      "parent_department_ref": "DEPT002",
+      "department_level": 3,
+      "department_type": "business",
+      "department_status": "active",
+      "description": "前端开发组负责公司相关业务和职能",
+      "display_order": 2,
+      "created_at": "2020-02-26 08:18:06",
+      "updated_at": "2020-03-04 13:57:15"
+    },
+    "DEPT011": {
+      "department_ref": "DEPT011",
+      "department_name": "基础架构组",
+      "department_code": "ENG-INFRA",
+      "parent_department_ref": "DEPT002",
+      "department_level": 3,
+      "department_type": "business",
+      "department_status": "active",
+      "description": "基础架构组负责公司相关业务和职能",
+      "display_order": 3,
+      "created_at": "2020-12-21 23:03:40",
+      "updated_at": "2021-04-21 13:52:22"
+    },
+    "DEPT012": {
+      "department_ref": "DEPT012",
+      "department_name": "数据工程组",
+      "department_code": "DATA-ENG",
+      "parent_department_ref": "DEPT008",
+      "department_level": 3,
+      "department_type": "business",
+      "department_status": "active",
+      "description": "数据工程组负责公司相关业务和职能",
+      "display_order": 1,
+      "created_at": "2021-03-13 06:57:43",
+      "updated_at": "2021-03-22 23:56:06"
+    }
+  },
+  "position": {
+    "POS001": {
+      "position_ref": "POS001",
+      "position_title": "初级工程师",
+      "position_code": "P5-ENG",
+      "position_track": "P",
+      "position_level": 5,
+      "job_family": "Engineering",
+      "job_subfamily": "Backend",
+      "position_status": "active",
+      "description": "初级工程师岗位，属于Engineering职能族，Backend方向",
+      "created_at": "2020-01-29 10:50:21",
+      "updated_at": "2020-08-25 05:57:18"
+    },
+    "POS002": {
+      "position_ref": "POS002",
+      "position_title": "中级工程师",
+      "position_code": "P6-ENG",
+      "position_track": "P",
+      "position_level": 6,
+      "job_family": "Engineering",
+      "job_subfamily": "Backend",
+      "position_status": "active",
+      "description": "中级工程师岗位，属于Engineering职能族，Backend方向",
+      "created_at": "2020-03-23 18:44:31",
+      "updated_at": "2020-10-06 05:55:44"
+    },
+    "POS003": {
+      "position_ref": "POS003",
+      "position_title": "高级工程师",
+      "position_code": "P7-ENG",
+      "position_track": "P",
+      "position_level": 7,
+      "job_family": "Engineering",
+      "job_subfamily": "Backend",
+      "position_status": "active",
+      "description": "高级工程师岗位，属于Engineering职能族，Backend方向",
+      "created_at": "2020-04-12 23:50:49",
+      "updated_at": "2020-06-03 10:25:53"
+    },
+    "POS004": {
+      "position_ref": "POS004",
+      "position_title": "资深工程师",
+      "position_code": "P8-ENG",
+      "position_track": "P",
+      "position_level": 8,
+      "job_family": "Engineering",
+      "job_subfamily": "Backend",
+      "position_status": "active",
+      "description": "资深工程师岗位，属于Engineering职能族，Backend方向",
+      "created_at": "2020-12-28 10:36:28",
+      "updated_at": "2020-12-30 13:26:09"
+    },
+    "POS005": {
+      "position_ref": "POS005",
+      "position_title": "首席工程师",
+      "position_code": "P9-ENG",
+      "position_track": "P",
+      "position_level": 9,
+      "job_family": "Engineering",
+      "job_subfamily": "Backend",
+      "position_status": "active",
+      "description": "首席工程师岗位，属于Engineering职能族，Backend方向",
+      "created_at": "2020-12-08 02:14:57",
+      "updated_at": "2020-12-09 18:19:22"
+    },
+    "POS006": {
+      "position_ref": "POS006",
+      "position_title": "前端工程师",
+      "position_code": "P6-FE",
+      "position_track": "P",
+      "position_level": 6,
+      "job_family": "Engineering",
+      "job_subfamily": "Frontend",
+      "position_status": "active",
+      "description": "前端工程师岗位，属于Engineering职能族，Frontend方向",
+      "created_at": "2020-12-07 11:23:33",
+      "updated_at": "2020-12-19 08:00:16"
+    },
+    "POS007": {
+      "position_ref": "POS007",
+      "position_title": "高级前端工程师",
+      "position_code": "P7-FE",
+      "position_track": "P",
+      "position_level": 7,
+      "job_family": "Engineering",
+      "job_subfamily": "Frontend",
+      "position_status": "active",
+      "description": "高级前端工程师岗位，属于Engineering职能族，Frontend方向",
+      "created_at": "2020-05-23 12:14:31",
+      "updated_at": "2020-09-11 04:31:01"
+    },
+    "POS008": {
+      "position_ref": "POS008",
+      "position_title": "基础架构工程师",
+      "position_code": "P7-INFRA",
+      "position_track": "P",
+      "position_level": 7,
+      "job_family": "Engineering",
+      "job_subfamily": "Infrastructure",
+      "position_status": "active",
+      "description": "基础架构工程师岗位，属于Engineering职能族，Infrastructure方向",
+      "created_at": "2020-03-02 06:18:25",
+      "updated_at": "2020-08-19 10:28:59"
+    },
+    "POS009": {
+      "position_ref": "POS009",
+      "position_title": "产品经理",
+      "position_code": "P6-PM",
+      "position_track": "P",
+      "position_level": 6,
+      "job_family": "Product",
+      "job_subfamily": "Product Management",
+      "position_status": "active",
+      "description": "产品经理岗位，属于Product职能族，Product Management方向",
+      "created_at": "2020-11-19 19:03:58",
+      "updated_at": "2020-12-16 03:57:39"
+    },
+    "POS010": {
+      "position_ref": "POS010",
+      "position_title": "高级产品经理",
+      "position_code": "P7-PM",
+      "position_track": "P",
+      "position_level": 7,
+      "job_family": "Product",
+      "job_subfamily": "Product Management",
+      "position_status": "active",
+      "description": "高级产品经理岗位，属于Product职能族，Product Management方向",
+      "created_at": "2020-09-30 05:28:02",
+      "updated_at": "2020-10-29 14:22:59"
+    },
+    "POS011": {
+      "position_ref": "POS011",
+      "position_title": "UI设计师",
+      "position_code": "P5-UI",
+      "position_track": "P",
+      "position_level": 5,
+      "job_family": "Design",
+      "job_subfamily": "UI Design",
+      "position_status": "active",
+      "description": "UI设计师岗位，属于Design职能族，UI Design方向",
+      "created_at": "2020-08-25 13:14:59",
+      "updated_at": "2020-12-30 13:00:00"
+    },
+    "POS012": {
+      "position_ref": "POS012",
+      "position_title": "高级UX设计师",
+      "position_code": "P7-UX",
+      "position_track": "P",
+      "position_level": 7,
+      "job_family": "Design",
+      "job_subfamily": "UX Design",
+      "position_status": "active",
+      "description": "高级UX设计师岗位，属于Design职能族，UX Design方向",
+      "created_at": "2020-07-24 10:05:04",
+      "updated_at": "2020-07-25 22:32:33"
+    },
+    "POS013": {
+      "position_ref": "POS013",
+      "position_title": "数据分析师",
+      "position_code": "P6-DA",
+      "position_track": "P",
+      "position_level": 6,
+      "job_family": "Data",
+      "job_subfamily": "Data Analysis",
+      "position_status": "active",
+      "description": "数据分析师岗位，属于Data职能族，Data Analysis方向",
+      "created_at": "2020-09-16 08:56:10",
+      "updated_at": "2020-11-13 12:08:31"
+    },
+    "POS014": {
+      "position_ref": "POS014",
+      "position_title": "高级数据工程师",
+      "position_code": "P7-DE",
+      "position_track": "P",
+      "position_level": 7,
+      "job_family": "Data",
+      "job_subfamily": "Data Engineering",
+      "position_status": "active",
+      "description": "高级数据工程师岗位，属于Data职能族，Data Engineering方向",
+      "created_at": "2020-12-27 20:35:44",
+      "updated_at": "2020-12-31 21:12:30"
+    },
+    "POS015": {
+      "position_ref": "POS015",
+      "position_title": "ML工程师",
+      "position_code": "P7-ML",
+      "position_track": "P",
+      "position_level": 7,
+      "job_family": "Engineering",
+      "job_subfamily": "ML",
+      "position_status": "active",
+      "description": "ML工程师岗位，属于Engineering职能族，ML方向",
+      "created_at": "2020-02-10 05:29:46",
+      "updated_at": "2020-04-02 09:10:48"
+    },
+    "POS016": {
+      "position_ref": "POS016",
+      "position_title": "HR专员",
+      "position_code": "P5-HR",
+      "position_track": "P",
+      "position_level": 5,
+      "job_family": "HR",
+      "job_subfamily": "HR Operations",
+      "position_status": "active",
+      "description": "HR专员岗位，属于HR职能族，HR Operations方向",
+      "created_at": "2020-04-12 17:00:03",
+      "updated_at": "2020-05-27 12:52:26"
+    },
+    "POS017": {
+      "position_ref": "POS017",
+      "position_title": "高级HR",
+      "position_code": "P7-HR",
+      "position_track": "P",
+      "position_level": 7,
+      "job_family": "HR",
+      "job_subfamily": "HR Business Partner",
+      "position_status": "active",
+      "description": "高级HR岗位，属于HR职能族，HR Business Partner方向",
+      "created_at": "2020-12-11 12:43:24",
+      "updated_at": "2020-12-14 03:04:34"
+    },
+    "POS018": {
+      "position_ref": "POS018",
+      "position_title": "财务专员",
+      "position_code": "P5-FIN",
+      "position_track": "P",
+      "position_level": 5,
+      "job_family": "Finance",
+      "job_subfamily": "Accounting",
+      "position_status": "active",
+      "description": "财务专员岗位，属于Finance职能族，Accounting方向",
+      "created_at": "2020-10-15 07:49:30",
+      "updated_at": "2020-12-08 00:55:46"
+    },
+    "POS019": {
+      "position_ref": "POS019",
+      "position_title": "高级财务",
+      "position_code": "P7-FIN",
+      "position_track": "P",
+      "position_level": 7,
+      "job_family": "Finance",
+      "job_subfamily": "Financial Planning",
+      "position_status": "active",
+      "description": "高级财务岗位，属于Finance职能族，Financial Planning方向",
+      "created_at": "2020-03-01 08:52:46",
+      "updated_at": "2020-06-15 03:20:55"
+    },
+    "POS020": {
+      "position_ref": "POS020",
+      "position_title": "市场专员",
+      "position_code": "P5-MKT",
+      "position_track": "P",
+      "position_level": 5,
+      "job_family": "Marketing",
+      "job_subfamily": "Digital Marketing",
+      "position_status": "active",
+      "description": "市场专员岗位，属于Marketing职能族，Digital Marketing方向",
+      "created_at": "2020-04-19 10:09:31",
+      "updated_at": "2020-12-10 07:34:52"
+    },
+    "POS021": {
+      "position_ref": "POS021",
+      "position_title": "法务专员",
+      "position_code": "P6-LEG",
+      "position_track": "P",
+      "position_level": 6,
+      "job_family": "Legal",
+      "job_subfamily": "Corporate Legal",
+      "position_status": "active",
+      "description": "法务专员岗位，属于Legal职能族，Corporate Legal方向",
+      "created_at": "2020-03-22 19:12:38",
+      "updated_at": "2020-12-26 11:50:27"
+    },
+    "POS022": {
+      "position_ref": "POS022",
+      "position_title": "团队主管",
+      "position_code": "M1-MGR",
+      "position_track": "M",
+      "position_level": 1,
+      "job_family": "Engineering",
+      "job_subfamily": "Management",
+      "position_status": "active",
+      "description": "团队主管岗位，属于Engineering职能族，Management方向",
+      "created_at": "2020-05-13 03:52:33",
+      "updated_at": "2020-07-31 05:32:25"
+    },
+    "POS023": {
+      "position_ref": "POS023",
+      "position_title": "部门经理",
+      "position_code": "M2-MGR",
+      "position_track": "M",
+      "position_level": 2,
+      "job_family": "Engineering",
+      "job_subfamily": "Management",
+      "position_status": "active",
+      "description": "部门经理岗位，属于Engineering职能族，Management方向",
+      "created_at": "2020-09-23 23:56:15",
+      "updated_at": "2020-11-14 06:11:29"
+    },
+    "POS024": {
+      "position_ref": "POS024",
+      "position_title": "高级总监",
+      "position_code": "M3-DIR",
+      "position_track": "M",
+      "position_level": 3,
+      "job_family": "Operations",
+      "job_subfamily": "Management",
+      "position_status": "active",
+      "description": "高级总监岗位，属于Operations职能族，Management方向",
+      "created_at": "2020-07-15 06:45:13",
+      "updated_at": "2020-10-18 03:28:37"
+    },
+    "POS025": {
+      "position_ref": "POS025",
+      "position_title": "副总裁",
+      "position_code": "M4-VP",
+      "position_track": "M",
+      "position_level": 4,
+      "job_family": "Operations",
+      "job_subfamily": "Executive",
+      "position_status": "active",
+      "description": "副总裁岗位，属于Operations职能族，Executive方向",
+      "created_at": "2020-04-07 12:37:10",
+      "updated_at": "2020-04-27 06:05:58"
+    },
+    "POS026": {
+      "position_ref": "POS026",
+      "position_title": "实习生",
+      "position_code": "P3-INT",
+      "position_track": "P",
+      "position_level": 3,
+      "job_family": "Engineering",
+      "job_subfamily": "Intern",
+      "position_status": "active",
+      "description": "实习生岗位，属于Engineering职能族，Intern方向",
+      "created_at": "2020-02-05 20:17:02",
+      "updated_at": "2020-10-09 04:14:36"
+    },
+    "POS027": {
+      "position_ref": "POS027",
+      "position_title": "运营专员",
+      "position_code": "P5-OPS",
+      "position_track": "P",
+      "position_level": 5,
+      "job_family": "Operations",
+      "job_subfamily": "Operations",
+      "position_status": "active",
+      "description": "运营专员岗位，属于Operations职能族，Operations方向",
+      "created_at": "2020-06-13 12:00:44",
+      "updated_at": "2020-09-28 22:51:31"
+    },
+    "POS028": {
+      "position_ref": "POS028",
+      "position_title": "研究员",
+      "position_code": "P7-RES",
+      "position_track": "P",
+      "position_level": 7,
+      "job_family": "Research",
+      "job_subfamily": "AI Research",
+      "position_status": "active",
+      "description": "研究员岗位，属于Research职能族，AI Research方向",
+      "created_at": "2020-01-18 02:55:06",
+      "updated_at": "2020-01-19 11:57:59"
+    }
+  },
+  "team": {
+    "TEAM001": {
+      "team_ref": "TEAM001",
+      "team_name": "核心平台项目组",
+      "team_code": "CORE-PLAT",
+      "team_type": "project",
+      "team_status": "active",
+      "description": "核心平台项目组，负责相关工作的推进和协调",
+      "owner_employee_ref": "EMP011",
+      "parent_team_ref": null,
+      "created_at": "2024-04-12 21:24:30",
+      "updated_at": "2024-04-25 14:14:24"
+    },
+    "TEAM002": {
+      "team_ref": "TEAM002",
+      "team_name": "移动端项目组",
+      "team_code": "MOBILE",
+      "team_type": "project",
+      "team_status": "active",
+      "description": "移动端项目组，负责相关工作的推进和协调",
+      "owner_employee_ref": "EMP009",
+      "parent_team_ref": null,
+      "created_at": "2021-09-09 00:12:45",
+      "updated_at": "2023-07-27 09:02:03"
+    },
+    "TEAM003": {
+      "team_ref": "TEAM003",
+      "team_name": "数据平台项目组",
+      "team_code": "DATA-PLAT",
+      "team_type": "project",
+      "team_status": "active",
+      "description": "数据平台项目组，负责相关工作的推进和协调",
+      "owner_employee_ref": "EMP018",
+      "parent_team_ref": null,
+      "created_at": "2024-01-02 05:11:21",
+      "updated_at": "2024-03-25 06:21:16"
+    },
+    "TEAM004": {
+      "team_ref": "TEAM004",
+      "team_name": "AI算法项目组",
+      "team_code": "AI-ALGO",
+      "team_type": "project",
+      "team_status": "active",
+      "description": "AI算法项目组，负责相关工作的推进和协调",
+      "owner_employee_ref": "EMP018",
+      "parent_team_ref": null,
+      "created_at": "2021-01-16 00:30:45",
+      "updated_at": "2021-07-08 19:28:23"
+    },
+    "TEAM005": {
+      "team_ref": "TEAM005",
+      "team_name": "用户增长项目组",
+      "team_code": "USR-GROW",
+      "team_type": "project",
+      "team_status": "active",
+      "description": "用户增长项目组，负责相关工作的推进和协调",
+      "owner_employee_ref": "EMP003",
+      "parent_team_ref": null,
+      "created_at": "2023-12-10 11:04:43",
+      "updated_at": "2024-01-08 09:43:18"
+    },
+    "TEAM006": {
+      "team_ref": "TEAM006",
+      "team_name": "安全攻防项目组",
+      "team_code": "SEC-OPS",
+      "team_type": "project",
+      "team_status": "active",
+      "description": "安全攻防项目组，负责相关工作的推进和协调",
+      "owner_employee_ref": "EMP018",
+      "parent_team_ref": null,
+      "created_at": "2021-02-25 23:13:34",
+      "updated_at": "2022-09-22 12:35:44"
+    },
+    "TEAM007": {
+      "team_ref": "TEAM007",
+      "team_name": "技术委员会",
+      "team_code": "TECH-COM",
+      "team_type": "committee",
+      "team_status": "active",
+      "description": "技术委员会，负责相关工作的推进和协调",
+      "owner_employee_ref": "EMP019",
+      "parent_team_ref": null,
+      "created_at": "2023-05-09 07:37:43",
+      "updated_at": "2023-09-01 08:17:48"
+    },
+    "TEAM008": {
+      "team_ref": "TEAM008",
+      "team_name": "文化建设委员会",
+      "team_code": "CULT-COM",
+      "team_type": "committee",
+      "team_status": "active",
+      "description": "文化建设委员会，负责相关工作的推进和协调",
+      "owner_employee_ref": "EMP014",
+      "parent_team_ref": null,
+      "created_at": "2021-07-17 23:30:48",
+      "updated_at": "2021-09-20 23:00:22"
+    },
+    "TEAM009": {
+      "team_ref": "TEAM009",
+      "team_name": "新人培训工作组",
+      "team_code": "ONBOARD-TF",
+      "team_type": "taskforce",
+      "team_status": "active",
+      "description": "新人培训工作组，负责相关工作的推进和协调",
+      "owner_employee_ref": "EMP010",
+      "parent_team_ref": null,
+      "created_at": "2022-07-21 11:11:37",
+      "updated_at": "2024-03-30 19:59:20"
+    },
+    "TEAM010": {
+      "team_ref": "TEAM010",
+      "team_name": "年度大会筹备组",
+      "team_code": "ANNUAL-TF",
+      "team_type": "taskforce",
+      "team_status": "archived",
+      "description": "年度大会筹备组，负责相关工作的推进和协调",
+      "owner_employee_ref": "EMP002",
+      "parent_team_ref": null,
+      "created_at": "2022-07-10 20:05:42",
+      "updated_at": "2022-12-21 00:12:19"
+    },
+    "TEAM011": {
+      "team_ref": "TEAM011",
+      "team_name": "篮球兴趣小组",
+      "team_code": "BASKETBALL",
+      "team_type": "interest",
+      "team_status": "active",
+      "description": "篮球兴趣小组，负责相关工作的推进和协调",
+      "owner_employee_ref": "EMP008",
+      "parent_team_ref": null,
+      "created_at": "2023-11-03 01:04:47",
+      "updated_at": "2023-12-12 23:11:08"
+    },
+    "TEAM012": {
+      "team_ref": "TEAM012",
+      "team_name": "摄影兴趣小组",
+      "team_code": "PHOTO",
+      "team_type": "interest",
+      "team_status": "active",
+      "description": "摄影兴趣小组，负责相关工作的推进和协调",
+      "owner_employee_ref": "EMP012",
+      "parent_team_ref": null,
+      "created_at": "2024-04-26 20:50:29",
+      "updated_at": "2024-05-24 01:09:10"
+    },
+    "TEAM013": {
+      "team_ref": "TEAM013",
+      "team_name": "读书会",
+      "team_code": "BOOK-CLUB",
+      "team_type": "interest",
+      "team_status": "active",
+      "description": "读书会，负责相关工作的推进和协调",
+      "owner_employee_ref": "EMP014",
+      "parent_team_ref": null,
+      "created_at": "2023-08-23 03:56:17",
+      "updated_at": "2023-10-22 04:28:46"
+    },
+    "TEAM014": {
+      "team_ref": "TEAM014",
+      "team_name": "后端架构子组",
+      "team_code": "BE-ARCH",
+      "team_type": "project",
+      "team_status": "active",
+      "description": "后端架构子组，负责相关工作的推进和协调",
+      "owner_employee_ref": "EMP008",
+      "parent_team_ref": "TEAM001",
+      "created_at": "2021-09-10 10:30:17",
+      "updated_at": "2022-06-12 11:29:43"
+    },
+    "TEAM015": {
+      "team_ref": "TEAM015",
+      "team_name": "前端架构子组",
+      "team_code": "FE-ARCH",
+      "team_type": "project",
+      "team_status": "active",
+      "description": "前端架构子组，负责相关工作的推进和协调",
+      "owner_employee_ref": "EMP014",
+      "parent_team_ref": "TEAM001",
+      "created_at": "2021-02-08 12:06:09",
+      "updated_at": "2021-11-14 03:09:09"
+    },
+    "TEAM016": {
+      "team_ref": "TEAM016",
+      "team_name": "数据治理子组",
+      "team_code": "DATA-GOV",
+      "team_type": "project",
+      "team_status": "active",
+      "description": "数据治理子组，负责相关工作的推进和协调",
+      "owner_employee_ref": "EMP011",
+      "parent_team_ref": "TEAM003",
+      "created_at": "2024-04-30 09:28:57",
+      "updated_at": "2024-05-20 09:09:47"
+    },
+    "TEAM017": {
+      "team_ref": "TEAM017",
+      "team_name": "产品体验优化组",
+      "team_code": "UX-OPT",
+      "team_type": "project",
+      "team_status": "active",
+      "description": "产品体验优化组，负责相关工作的推进和协调",
+      "owner_employee_ref": "EMP008",
+      "parent_team_ref": null,
+      "created_at": "2022-02-19 11:14:16",
+      "updated_at": "2022-10-24 18:33:48"
+    },
+    "TEAM018": {
+      "team_ref": "TEAM018",
+      "team_name": "DevOps工作组",
+      "team_code": "DEVOPS-TF",
+      "team_type": "taskforce",
+      "team_status": "active",
+      "description": "DevOps工作组，负责相关工作的推进和协调",
+      "owner_employee_ref": "EMP004",
+      "parent_team_ref": null,
+      "created_at": "2022-08-18 06:11:20",
+      "updated_at": "2022-09-17 08:04:04"
+    },
+    "TEAM019": {
+      "team_ref": "TEAM019",
+      "team_name": "开源推进委员会",
+      "team_code": "OSS-COM",
+      "team_type": "committee",
+      "team_status": "active",
+      "description": "开源推进委员会，负责相关工作的推进和协调",
+      "owner_employee_ref": "EMP016",
+      "parent_team_ref": null,
+      "created_at": "2021-12-12 12:55:48",
+      "updated_at": "2022-10-18 13:32:39"
+    },
+    "TEAM020": {
+      "team_ref": "TEAM020",
+      "team_name": "国际化项目组",
+      "team_code": "I18N",
+      "team_type": "project",
+      "team_status": "active",
+      "description": "国际化项目组，负责相关工作的推进和协调",
+      "owner_employee_ref": "EMP015",
+      "parent_team_ref": null,
+      "created_at": "2022-06-28 04:12:39",
+      "updated_at": "2023-02-20 05:22:51"
+    },
+    "TEAM021": {
+      "team_ref": "TEAM021",
+      "team_name": "质量保障项目组",
+      "team_code": "QA-PROJ",
+      "team_type": "project",
+      "team_status": "active",
+      "description": "质量保障项目组，负责相关工作的推进和协调",
+      "owner_employee_ref": "EMP008",
+      "parent_team_ref": null,
+      "created_at": "2021-12-13 07:11:32",
+      "updated_at": "2022-01-19 01:27:58"
+    },
+    "TEAM022": {
+      "team_ref": "TEAM022",
+      "team_name": "羽毛球兴趣小组",
+      "team_code": "BADMINTON",
+      "team_type": "interest",
+      "team_status": "active",
+      "description": "羽毛球兴趣小组，负责相关工作的推进和协调",
+      "owner_employee_ref": "EMP007",
+      "parent_team_ref": null,
+      "created_at": "2022-09-11 23:53:18",
+      "updated_at": "2023-05-24 23:08:04"
+    }
+  },
+  "mentorship": {
+    "MNTR001": {
+      "mentorship_ref": "MNTR001",
+      "mentor_ref": "EMP009",
+      "mentee_ref": "EMP025",
+      "mentorship_type": "technical",
+      "start_date": "2023-06-30",
+      "end_date": "2024-04-15",
+      "status": "terminated",
+      "notes": "technical类型导师辅导，帮助学员成长和发展",
+      "created_at": "2024-05-05 22:13:17",
+      "updated_at": "2025-01-18 03:18:08"
+    },
+    "MNTR002": {
+      "mentorship_ref": "MNTR002",
+      "mentor_ref": "EMP001",
+      "mentee_ref": "EMP028",
+      "mentorship_type": "technical",
+      "start_date": "2022-10-05",
+      "end_date": "2023-03-19",
+      "status": "terminated",
+      "notes": "technical类型导师辅导，帮助学员成长和发展",
+      "created_at": "2022-12-03 19:49:20",
+      "updated_at": "2023-05-21 05:21:43"
+    },
+    "MNTR003": {
+      "mentorship_ref": "MNTR003",
+      "mentor_ref": "EMP020",
+      "mentee_ref": "EMP048",
+      "mentorship_type": "technical",
+      "start_date": "2023-05-03",
+      "end_date": "2024-04-07",
+      "status": "completed",
+      "notes": "technical类型导师辅导，帮助学员成长和发展",
+      "created_at": "2025-06-05 18:13:25",
+      "updated_at": "2025-06-11 23:11:10"
+    },
+    "MNTR004": {
+      "mentorship_ref": "MNTR004",
+      "mentor_ref": "EMP004",
+      "mentee_ref": "EMP045",
+      "mentorship_type": "career",
+      "start_date": "2023-01-31",
+      "end_date": null,
+      "status": "active",
+      "notes": "career类型导师辅导，帮助学员成长和发展",
+      "created_at": "2024-12-09 02:08:45",
+      "updated_at": "2024-12-09 10:01:39"
+    },
+    "MNTR005": {
+      "mentorship_ref": "MNTR005",
+      "mentor_ref": "EMP017",
+      "mentee_ref": "EMP072",
+      "mentorship_type": "career",
+      "start_date": "2023-07-20",
+      "end_date": "2023-09-23",
+      "status": "completed",
+      "notes": "career类型导师辅导，帮助学员成长和发展",
+      "created_at": "2024-12-17 17:26:54",
+      "updated_at": "2025-06-14 12:33:05"
+    },
+    "MNTR006": {
+      "mentorship_ref": "MNTR006",
+      "mentor_ref": "EMP011",
+      "mentee_ref": "EMP060",
+      "mentorship_type": "technical",
+      "start_date": "2024-10-27",
+      "end_date": null,
+      "status": "active",
+      "notes": "technical类型导师辅导，帮助学员成长和发展",
+      "created_at": "2025-02-21 04:05:02",
+      "updated_at": "2025-05-30 15:26:45"
+    },
+    "MNTR007": {
+      "mentorship_ref": "MNTR007",
+      "mentor_ref": "EMP010",
+      "mentee_ref": "EMP063",
+      "mentorship_type": "leadership",
+      "start_date": "2023-05-22",
+      "end_date": "2023-11-19",
+      "status": "completed",
+      "notes": "leadership类型导师辅导，帮助学员成长和发展",
+      "created_at": "2024-07-26 07:58:39",
+      "updated_at": "2024-09-13 18:23:08"
+    },
+    "MNTR008": {
+      "mentorship_ref": "MNTR008",
+      "mentor_ref": "EMP007",
+      "mentee_ref": "EMP047",
+      "mentorship_type": "leadership",
+      "start_date": "2024-11-18",
+      "end_date": "2025-03-17",
+      "status": "terminated",
+      "notes": "leadership类型导师辅导，帮助学员成长和发展",
+      "created_at": "2025-03-15 01:17:57",
+      "updated_at": "2025-04-23 11:31:22"
+    },
+    "MNTR009": {
+      "mentorship_ref": "MNTR009",
+      "mentor_ref": "EMP018",
+      "mentee_ref": "EMP074",
+      "mentorship_type": "onboarding",
+      "start_date": "2023-04-18",
+      "end_date": "2023-09-02",
+      "status": "completed",
+      "notes": "onboarding类型导师辅导，帮助学员成长和发展",
+      "created_at": "2025-02-13 20:40:15",
+      "updated_at": "2025-06-06 11:35:44"
+    },
+    "MNTR010": {
+      "mentorship_ref": "MNTR010",
+      "mentor_ref": "EMP020",
+      "mentee_ref": "EMP062",
+      "mentorship_type": "technical",
+      "start_date": "2023-12-24",
+      "end_date": "2024-09-05",
+      "status": "completed",
+      "notes": "technical类型导师辅导，帮助学员成长和发展",
+      "created_at": "2025-06-01 02:37:14",
+      "updated_at": "2025-06-06 07:06:38"
+    },
+    "MNTR011": {
+      "mentorship_ref": "MNTR011",
+      "mentor_ref": "EMP017",
+      "mentee_ref": "EMP051",
+      "mentorship_type": "career",
+      "start_date": "2024-10-20",
+      "end_date": null,
+      "status": "active",
+      "notes": "career类型导师辅导，帮助学员成长和发展",
+      "created_at": "2025-02-07 16:49:01",
+      "updated_at": "2025-05-18 18:59:50"
+    },
+    "MNTR012": {
+      "mentorship_ref": "MNTR012",
+      "mentor_ref": "EMP022",
+      "mentee_ref": "EMP061",
+      "mentorship_type": "technical",
+      "start_date": "2022-05-26",
+      "end_date": null,
+      "status": "active",
+      "notes": "technical类型导师辅导，帮助学员成长和发展",
+      "created_at": "2025-04-05 05:22:03",
+      "updated_at": "2025-05-05 08:41:50"
+    },
+    "MNTR013": {
+      "mentorship_ref": "MNTR013",
+      "mentor_ref": "EMP008",
+      "mentee_ref": "EMP072",
+      "mentorship_type": "career",
+      "start_date": "2022-08-17",
+      "end_date": null,
+      "status": "active",
+      "notes": "career类型导师辅导，帮助学员成长和发展",
+      "created_at": "2022-10-28 16:43:34",
+      "updated_at": "2023-11-13 01:07:03"
+    },
+    "MNTR014": {
+      "mentorship_ref": "MNTR014",
+      "mentor_ref": "EMP016",
+      "mentee_ref": "EMP060",
+      "mentorship_type": "onboarding",
+      "start_date": "2023-12-09",
+      "end_date": "2024-11-25",
+      "status": "completed",
+      "notes": "onboarding类型导师辅导，帮助学员成长和发展",
+      "created_at": "2025-02-28 14:25:43",
+      "updated_at": "2025-04-07 08:33:44"
+    },
+    "MNTR015": {
+      "mentorship_ref": "MNTR015",
+      "mentor_ref": "EMP023",
+      "mentee_ref": "EMP065",
+      "mentorship_type": "leadership",
+      "start_date": "2024-02-07",
+      "end_date": "2024-07-10",
+      "status": "completed",
+      "notes": "leadership类型导师辅导，帮助学员成长和发展",
+      "created_at": "2024-06-01 14:38:45",
+      "updated_at": "2025-02-11 09:32:58"
+    },
+    "MNTR016": {
+      "mentorship_ref": "MNTR016",
+      "mentor_ref": "EMP023",
+      "mentee_ref": "EMP021",
+      "mentorship_type": "onboarding",
+      "start_date": "2023-10-23",
+      "end_date": null,
+      "status": "active",
+      "notes": "onboarding类型导师辅导，帮助学员成长和发展",
+      "created_at": "2024-03-08 01:21:51",
+      "updated_at": "2025-04-14 08:47:47"
+    },
+    "MNTR017": {
+      "mentorship_ref": "MNTR017",
+      "mentor_ref": "EMP015",
+      "mentee_ref": "EMP024",
+      "mentorship_type": "career",
+      "start_date": "2022-07-08",
+      "end_date": "2022-10-14",
+      "status": "completed",
+      "notes": "career类型导师辅导，帮助学员成长和发展",
+      "created_at": "2024-06-29 07:43:54",
+      "updated_at": "2025-03-15 14:00:25"
+    },
+    "MNTR018": {
+      "mentorship_ref": "MNTR018",
+      "mentor_ref": "EMP017",
+      "mentee_ref": "EMP056",
+      "mentorship_type": "technical",
+      "start_date": "2023-11-19",
+      "end_date": "2024-09-02",
+      "status": "terminated",
+      "notes": "technical类型导师辅导，帮助学员成长和发展",
+      "created_at": "2024-10-15 23:21:26",
+      "updated_at": "2025-05-16 17:53:38"
+    },
+    "MNTR019": {
+      "mentorship_ref": "MNTR019",
+      "mentor_ref": "EMP015",
+      "mentee_ref": "EMP031",
+      "mentorship_type": "leadership",
+      "start_date": "2023-12-01",
+      "end_date": "2024-05-05",
+      "status": "completed",
+      "notes": "leadership类型导师辅导，帮助学员成长和发展",
+      "created_at": "2025-04-09 10:41:14",
+      "updated_at": "2025-05-06 08:52:10"
+    },
+    "MNTR020": {
+      "mentorship_ref": "MNTR020",
+      "mentor_ref": "EMP025",
+      "mentee_ref": "EMP070",
+      "mentorship_type": "leadership",
+      "start_date": "2024-08-31",
+      "end_date": null,
+      "status": "active",
+      "notes": "leadership类型导师辅导，帮助学员成长和发展",
+      "created_at": "2024-12-16 06:18:32",
+      "updated_at": "2025-03-11 16:15:49"
+    }
+  },
+  "role": {
+    "ROLE001": {
+      "role_ref": "ROLE001",
+      "role_name": "系统管理员",
+      "role_code": "SYS_ADMIN",
+      "role_type": "system",
+      "role_status": "active",
+      "description": "系统管理员，拥有全部系统权限",
+      "is_default": true,
+      "created_at": "2020-01-31 02:11:49",
+      "updated_at": "2020-11-03 04:55:01"
+    },
+    "ROLE002": {
+      "role_ref": "ROLE002",
+      "role_name": "HR管理员",
+      "role_code": "HR_MANAGER",
+      "role_type": "system",
+      "role_status": "active",
+      "description": "HR管理员，管理员工信息和组织架构",
+      "is_default": false,
+      "created_at": "2020-04-20 23:10:45",
+      "updated_at": "2020-07-21 00:49:03"
+    },
+    "ROLE003": {
+      "role_ref": "ROLE003",
+      "role_name": "普通员工",
+      "role_code": "EMPLOYEE",
+      "role_type": "system",
+      "role_status": "active",
+      "description": "普通员工角色，基础访问权限",
+      "is_default": true,
+      "created_at": "2020-04-15 12:34:06",
+      "updated_at": "2020-08-23 22:53:39"
+    },
+    "ROLE004": {
+      "role_ref": "ROLE004",
+      "role_name": "实习生",
+      "role_code": "INTERN",
+      "role_type": "system",
+      "role_status": "active",
+      "description": "实习生角色，受限访问权限",
+      "is_default": false,
+      "created_at": "2020-05-04 03:54:32",
+      "updated_at": "2020-11-29 22:29:33"
+    },
+    "ROLE005": {
+      "role_ref": "ROLE005",
+      "role_name": "部门主管",
+      "role_code": "DEPT_HEAD",
+      "role_type": "custom",
+      "role_status": "active",
+      "description": "部门主管，管理部门内事务",
+      "is_default": false,
+      "created_at": "2020-02-01 07:02:17",
+      "updated_at": "2020-03-26 00:46:40"
+    },
+    "ROLE006": {
+      "role_ref": "ROLE006",
+      "role_name": "团队负责人",
+      "role_code": "TEAM_LEAD",
+      "role_type": "custom",
+      "role_status": "active",
+      "description": "团队负责人，管理团队成员和任务",
+      "is_default": false,
+      "created_at": "2020-02-28 13:50:37",
+      "updated_at": "2020-05-28 09:21:24"
+    },
+    "ROLE007": {
+      "role_ref": "ROLE007",
+      "role_name": "财务管理员",
+      "role_code": "FIN_ADMIN",
+      "role_type": "custom",
+      "role_status": "active",
+      "description": "财务管理员，管理财务相关数据",
+      "is_default": false,
+      "created_at": "2020-05-28 18:08:51",
+      "updated_at": "2020-07-27 02:23:44"
+    },
+    "ROLE008": {
+      "role_ref": "ROLE008",
+      "role_name": "审计员",
+      "role_code": "AUDITOR",
+      "role_type": "custom",
+      "role_status": "active",
+      "description": "审计员，查看审计日志和系统操作记录",
+      "is_default": false,
+      "created_at": "2020-10-01 08:18:13",
+      "updated_at": "2020-10-22 02:50:59"
+    }
+  },
+  "permission": {
+    "PERM001": {
+      "permission_ref": "PERM001",
+      "permission_code": "employee:create",
+      "resource": "employee",
+      "action": "create",
+      "scope_constraint": "all",
+      "description": "允许对employee资源执行create操作",
+      "permission_status": "active",
+      "created_at": "2020-01-25 22:39:22",
+      "updated_at": "2020-07-05 01:30:18"
+    },
+    "PERM002": {
+      "permission_ref": "PERM002",
+      "permission_code": "employee:read",
+      "resource": "employee",
+      "action": "read",
+      "scope_constraint": "department",
+      "description": "允许对employee资源执行read操作",
+      "permission_status": "active",
+      "created_at": "2020-06-07 07:06:05",
+      "updated_at": "2020-10-13 19:08:22"
+    },
+    "PERM003": {
+      "permission_ref": "PERM003",
+      "permission_code": "employee:update",
+      "resource": "employee",
+      "action": "update",
+      "scope_constraint": "self",
+      "description": "允许对employee资源执行update操作",
+      "permission_status": "active",
+      "created_at": "2020-07-29 17:30:08",
+      "updated_at": "2020-10-28 04:52:00"
+    },
+    "PERM004": {
+      "permission_ref": "PERM004",
+      "permission_code": "employee:delete",
+      "resource": "employee",
+      "action": "delete",
+      "scope_constraint": "all",
+      "description": "允许对employee资源执行delete操作",
+      "permission_status": "active",
+      "created_at": "2020-06-10 11:17:48",
+      "updated_at": "2020-07-04 15:39:18"
+    },
+    "PERM005": {
+      "permission_ref": "PERM005",
+      "permission_code": "employee:export",
+      "resource": "employee",
+      "action": "export",
+      "scope_constraint": "department",
+      "description": "允许对employee资源执行export操作",
+      "permission_status": "active",
+      "created_at": "2020-03-21 07:50:10",
+      "updated_at": "2020-08-31 11:51:27"
+    },
+    "PERM006": {
+      "permission_ref": "PERM006",
+      "permission_code": "department:create",
+      "resource": "department",
+      "action": "create",
+      "scope_constraint": "all",
+      "description": "允许对department资源执行create操作",
+      "permission_status": "active",
+      "created_at": "2020-05-31 06:11:13",
+      "updated_at": "2020-06-07 20:14:16"
+    },
+    "PERM007": {
+      "permission_ref": "PERM007",
+      "permission_code": "department:read",
+      "resource": "department",
+      "action": "read",
+      "scope_constraint": "all",
+      "description": "允许对department资源执行read操作",
+      "permission_status": "active",
+      "created_at": "2020-11-28 17:19:16",
+      "updated_at": "2020-12-26 16:02:56"
+    },
+    "PERM008": {
+      "permission_ref": "PERM008",
+      "permission_code": "department:update",
+      "resource": "department",
+      "action": "update",
+      "scope_constraint": "department",
+      "description": "允许对department资源执行update操作",
+      "permission_status": "active",
+      "created_at": "2020-05-27 17:24:29",
+      "updated_at": "2020-11-28 23:10:53"
+    },
+    "PERM009": {
+      "permission_ref": "PERM009",
+      "permission_code": "department:delete",
+      "resource": "department",
+      "action": "delete",
+      "scope_constraint": "all",
+      "description": "允许对department资源执行delete操作",
+      "permission_status": "active",
+      "created_at": "2020-01-03 06:57:19",
+      "updated_at": "2020-05-18 21:35:05"
+    },
+    "PERM010": {
+      "permission_ref": "PERM010",
+      "permission_code": "team:create",
+      "resource": "team",
+      "action": "create",
+      "scope_constraint": "all",
+      "description": "允许对team资源执行create操作",
+      "permission_status": "active",
+      "created_at": "2020-04-25 23:16:17",
+      "updated_at": "2020-09-24 10:12:37"
+    },
+    "PERM011": {
+      "permission_ref": "PERM011",
+      "permission_code": "team:read",
+      "resource": "team",
+      "action": "read",
+      "scope_constraint": "all",
+      "description": "允许对team资源执行read操作",
+      "permission_status": "active",
+      "created_at": "2020-11-27 10:42:41",
+      "updated_at": "2020-12-17 18:54:23"
+    },
+    "PERM012": {
+      "permission_ref": "PERM012",
+      "permission_code": "team:update",
+      "resource": "team",
+      "action": "update",
+      "scope_constraint": "team",
+      "description": "允许对team资源执行update操作",
+      "permission_status": "active",
+      "created_at": "2020-07-28 00:34:45",
+      "updated_at": "2020-12-20 04:15:16"
+    },
+    "PERM013": {
+      "permission_ref": "PERM013",
+      "permission_code": "team:delete",
+      "resource": "team",
+      "action": "delete",
+      "scope_constraint": "all",
+      "description": "允许对team资源执行delete操作",
+      "permission_status": "active",
+      "created_at": "2020-10-12 07:17:08",
+      "updated_at": "2020-12-04 07:51:57"
+    },
+    "PERM014": {
+      "permission_ref": "PERM014",
+      "permission_code": "file_attachment:create",
+      "resource": "file_attachment",
+      "action": "create",
+      "scope_constraint": "self",
+      "description": "允许对file_attachment资源执行create操作",
+      "permission_status": "active",
+      "created_at": "2020-11-06 15:18:42",
+      "updated_at": "2020-11-28 01:12:14"
+    },
+    "PERM015": {
+      "permission_ref": "PERM015",
+      "permission_code": "file_attachment:read",
+      "resource": "file_attachment",
+      "action": "read",
+      "scope_constraint": "department",
+      "description": "允许对file_attachment资源执行read操作",
+      "permission_status": "active",
+      "created_at": "2020-07-08 14:37:42",
+      "updated_at": "2020-08-20 05:12:26"
+    },
+    "PERM016": {
+      "permission_ref": "PERM016",
+      "permission_code": "file_attachment:update",
+      "resource": "file_attachment",
+      "action": "update",
+      "scope_constraint": "self",
+      "description": "允许对file_attachment资源执行update操作",
+      "permission_status": "active",
+      "created_at": "2020-04-15 23:56:29",
+      "updated_at": "2020-10-02 06:13:37"
+    },
+    "PERM017": {
+      "permission_ref": "PERM017",
+      "permission_code": "file_attachment:delete",
+      "resource": "file_attachment",
+      "action": "delete",
+      "scope_constraint": "self",
+      "description": "允许对file_attachment资源执行delete操作",
+      "permission_status": "active",
+      "created_at": "2020-07-07 14:30:41",
+      "updated_at": "2020-07-13 05:46:36"
+    },
+    "PERM018": {
+      "permission_ref": "PERM018",
+      "permission_code": "file_attachment:export",
+      "resource": "file_attachment",
+      "action": "export",
+      "scope_constraint": "department",
+      "description": "允许对file_attachment资源执行export操作",
+      "permission_status": "active",
+      "created_at": "2020-05-31 00:24:42",
+      "updated_at": "2020-10-08 13:21:57"
+    },
+    "PERM019": {
+      "permission_ref": "PERM019",
+      "permission_code": "audit_log:read",
+      "resource": "audit_log",
+      "action": "read",
+      "scope_constraint": "all",
+      "description": "允许对audit_log资源执行read操作",
+      "permission_status": "active",
+      "created_at": "2020-09-16 18:21:14",
+      "updated_at": "2020-12-04 06:36:22"
+    },
+    "PERM020": {
+      "permission_ref": "PERM020",
+      "permission_code": "audit_log:export",
+      "resource": "audit_log",
+      "action": "export",
+      "scope_constraint": "all",
+      "description": "允许对audit_log资源执行export操作",
+      "permission_status": "active",
+      "created_at": "2020-10-08 05:51:34",
+      "updated_at": "2020-10-24 06:26:29"
+    },
+    "PERM021": {
+      "permission_ref": "PERM021",
+      "permission_code": "role:create",
+      "resource": "role",
+      "action": "create",
+      "scope_constraint": "all",
+      "description": "允许对role资源执行create操作",
+      "permission_status": "active",
+      "created_at": "2020-11-22 10:04:50",
+      "updated_at": "2020-12-15 02:37:46"
+    },
+    "PERM022": {
+      "permission_ref": "PERM022",
+      "permission_code": "role:read",
+      "resource": "role",
+      "action": "read",
+      "scope_constraint": "all",
+      "description": "允许对role资源执行read操作",
+      "permission_status": "active",
+      "created_at": "2020-12-23 02:44:56",
+      "updated_at": "2020-12-24 15:55:23"
+    },
+    "PERM023": {
+      "permission_ref": "PERM023",
+      "permission_code": "role:update",
+      "resource": "role",
+      "action": "update",
+      "scope_constraint": "all",
+      "description": "允许对role资源执行update操作",
+      "permission_status": "active",
+      "created_at": "2020-08-29 15:51:18",
+      "updated_at": "2020-12-11 09:03:05"
+    },
+    "PERM024": {
+      "permission_ref": "PERM024",
+      "permission_code": "role:delete",
+      "resource": "role",
+      "action": "delete",
+      "scope_constraint": "all",
+      "description": "允许对role资源执行delete操作",
+      "permission_status": "active",
+      "created_at": "2020-01-11 11:20:43",
+      "updated_at": "2020-12-28 16:32:05"
+    },
+    "PERM025": {
+      "permission_ref": "PERM025",
+      "permission_code": "permission:read",
+      "resource": "permission",
+      "action": "read",
+      "scope_constraint": "all",
+      "description": "允许对permission资源执行read操作",
+      "permission_status": "active",
+      "created_at": "2020-06-02 00:32:05",
+      "updated_at": "2020-06-12 13:08:38"
+    },
+    "PERM026": {
+      "permission_ref": "PERM026",
+      "permission_code": "notification:create",
+      "resource": "notification",
+      "action": "create",
+      "scope_constraint": "all",
+      "description": "允许对notification资源执行create操作",
+      "permission_status": "active",
+      "created_at": "2020-02-02 14:26:49",
+      "updated_at": "2020-10-09 05:18:28"
+    },
+    "PERM027": {
+      "permission_ref": "PERM027",
+      "permission_code": "notification:read",
+      "resource": "notification",
+      "action": "read",
+      "scope_constraint": "self",
+      "description": "允许对notification资源执行read操作",
+      "permission_status": "active",
+      "created_at": "2020-06-15 10:57:38",
+      "updated_at": "2020-08-07 03:46:17"
+    },
+    "PERM028": {
+      "permission_ref": "PERM028",
+      "permission_code": "org_config:read",
+      "resource": "org_config",
+      "action": "read",
+      "scope_constraint": "all",
+      "description": "允许对org_config资源执行read操作",
+      "permission_status": "active",
+      "created_at": "2020-12-02 15:38:24",
+      "updated_at": "2020-12-25 01:33:27"
+    },
+    "PERM029": {
+      "permission_ref": "PERM029",
+      "permission_code": "org_config:update",
+      "resource": "org_config",
+      "action": "update",
+      "scope_constraint": "all",
+      "description": "允许对org_config资源执行update操作",
+      "permission_status": "active",
+      "created_at": "2020-03-11 13:50:14",
+      "updated_at": "2020-03-31 02:31:26"
+    }
+  },
+  "audit_log": {
+    "ALOG001": {
+      "audit_log_ref": "ALOG001",
+      "actor_employee_ref": "EMP061",
+      "actor_type": "employee",
+      "action": "login",
+      "resource_type": "department",
+      "resource_ref": "DEPT008",
+      "description": "employee对department(DEPT008)执行了login操作",
+      "changes": {},
+      "ip_address": "10.0.87.195",
+      "user_agent": "OA-API-Client/2.1.0",
+      "request_id": "req-be4969ec-62fb",
+      "result": "success",
+      "occurred_at": "2024-02-03 01:27:26",
+      "created_at": "2024-02-03 01:27:26"
+    },
+    "ALOG002": {
+      "audit_log_ref": "ALOG002",
+      "actor_employee_ref": null,
+      "actor_type": "system",
+      "action": "update",
+      "resource_type": "department",
+      "resource_ref": "DEPT005",
+      "description": "system对department(DEPT005)执行了update操作",
+      "changes": {
+        "phone": {
+          "before": "更新",
+          "after": "生产"
+        }
+      },
+      "ip_address": null,
+      "user_agent": null,
+      "request_id": null,
+      "result": "success",
+      "occurred_at": "2023-06-17 22:12:48",
+      "created_at": "2023-06-17 22:12:49"
+    },
+    "ALOG003": {
+      "audit_log_ref": "ALOG003",
+      "actor_employee_ref": "EMP026",
+      "actor_type": "employee",
+      "action": "export",
+      "resource_type": "file_attachment",
+      "resource_ref": "FILE008",
+      "description": "employee对file_attachment(FILE008)执行了export操作",
+      "changes": {},
+      "ip_address": "10.0.117.84",
+      "user_agent": "OA-API-Client/2.1.0",
+      "request_id": "req-5e0a72ab-4447",
+      "result": "success",
+      "occurred_at": "2023-06-08 07:09:21",
+      "created_at": "2023-06-08 07:09:22"
+    },
+    "ALOG004": {
+      "audit_log_ref": "ALOG004",
+      "actor_employee_ref": null,
+      "actor_type": "system",
+      "action": "update",
+      "resource_type": "permission",
+      "resource_ref": "PERM026",
+      "description": "system对permission(PERM026)执行了update操作",
+      "changes": {
+        "department_ref": {
+          "before": "时候",
+          "after": "必须"
+        }
+      },
+      "ip_address": null,
+      "user_agent": null,
+      "request_id": null,
+      "result": "success",
+      "occurred_at": "2023-03-05 19:10:05",
+      "created_at": "2023-03-05 19:10:07"
+    },
+    "ALOG005": {
+      "audit_log_ref": "ALOG005",
+      "actor_employee_ref": "EMP044",
+      "actor_type": "employee",
+      "action": "assign",
+      "resource_type": "org_config",
+      "resource_ref": "OCFG008",
+      "description": "employee对org_config(OCFG008)执行了assign操作",
+      "changes": {},
+      "ip_address": "10.0.67.98",
+      "user_agent": "DingTalk/7.5.0 (iOS 17.2)",
+      "request_id": "req-febec0db-4b34",
+      "result": "success",
+      "occurred_at": "2023-06-13 22:46:27",
+      "created_at": "2023-06-13 22:46:28"
+    },
+    "ALOG006": {
+      "audit_log_ref": "ALOG006",
+      "actor_employee_ref": null,
+      "actor_type": "system",
+      "action": "delete",
+      "resource_type": "role",
+      "resource_ref": "ROLE003",
+      "description": "system对role(ROLE003)执行了delete操作",
+      "changes": {},
+      "ip_address": null,
+      "user_agent": null,
+      "request_id": null,
+      "result": "partial",
+      "occurred_at": "2025-03-21 12:07:42",
+      "created_at": "2025-03-21 12:07:43"
+    },
+    "ALOG007": {
+      "audit_log_ref": "ALOG007",
+      "actor_employee_ref": null,
+      "actor_type": "system",
+      "action": "read",
+      "resource_type": "role",
+      "resource_ref": "ROLE007",
+      "description": "system对role(ROLE007)执行了read操作",
+      "changes": {},
+      "ip_address": null,
+      "user_agent": null,
+      "request_id": null,
+      "result": "success",
+      "occurred_at": "2024-02-21 22:30:39",
+      "created_at": "2024-02-21 22:30:39"
+    },
+    "ALOG008": {
+      "audit_log_ref": "ALOG008",
+      "actor_employee_ref": "EMP058",
+      "actor_type": "employee",
+      "action": "update",
+      "resource_type": "permission",
+      "resource_ref": "PERM020",
+      "description": "employee对permission(PERM020)执行了update操作",
+      "changes": {
+        "department_ref": {
+          "before": "完成",
+          "after": "经营"
+        }
+      },
+      "ip_address": "10.0.108.65",
+      "user_agent": "DingTalk/7.5.0 (iOS 17.2)",
+      "request_id": "req-53f28f11-7227",
+      "result": "success",
+      "occurred_at": "2024-08-11 17:44:43",
+      "created_at": "2024-08-11 17:44:44"
+    },
+    "ALOG009": {
+      "audit_log_ref": "ALOG009",
+      "actor_employee_ref": "EMP046",
+      "actor_type": "employee",
+      "action": "login",
+      "resource_type": "team",
+      "resource_ref": "TEAM020",
+      "description": "employee对team(TEAM020)执行了login操作",
+      "changes": {},
+      "ip_address": "10.0.214.21",
+      "user_agent": "Mozilla/5.0 (Linux; Android 14) Mobile Chrome/120.0",
+      "request_id": "req-59fefbbc-deba",
+      "result": "success",
+      "occurred_at": "2024-03-05 04:02:20",
+      "created_at": "2024-03-05 04:02:22"
+    },
+    "ALOG010": {
+      "audit_log_ref": "ALOG010",
+      "actor_employee_ref": "EMP053",
+      "actor_type": "employee",
+      "action": "logout",
+      "resource_type": "org_config",
+      "resource_ref": "OCFG004",
+      "description": "employee对org_config(OCFG004)执行了logout操作",
+      "changes": {},
+      "ip_address": "10.0.167.11",
+      "user_agent": "OA-API-Client/2.1.0",
+      "request_id": "req-ff86cc31-fae3",
+      "result": "success",
+      "occurred_at": "2025-01-09 14:02:15",
+      "created_at": "2025-01-09 14:02:16"
+    },
+    "ALOG011": {
+      "audit_log_ref": "ALOG011",
+      "actor_employee_ref": null,
+      "actor_type": "system",
+      "action": "delete",
+      "resource_type": "employee",
+      "resource_ref": "EMP038",
+      "description": "system对employee(EMP038)执行了delete操作",
+      "changes": {},
+      "ip_address": null,
+      "user_agent": null,
+      "request_id": null,
+      "result": "success",
+      "occurred_at": "2023-12-11 05:42:45",
+      "created_at": "2023-12-11 05:42:45"
+    },
+    "ALOG012": {
+      "audit_log_ref": "ALOG012",
+      "actor_employee_ref": "EMP048",
+      "actor_type": "employee",
+      "action": "approve",
+      "resource_type": "permission",
+      "resource_ref": "PERM012",
+      "description": "employee对permission(PERM012)执行了approve操作",
+      "changes": {},
+      "ip_address": "10.0.167.11",
+      "user_agent": "OA-API-Client/2.1.0",
+      "request_id": "req-1335e5db-5d01",
+      "result": "partial",
+      "occurred_at": "2024-10-22 23:55:54",
+      "created_at": "2024-10-22 23:55:56"
+    },
+    "ALOG013": {
+      "audit_log_ref": "ALOG013",
+      "actor_employee_ref": "EMP059",
+      "actor_type": "employee",
+      "action": "assign",
+      "resource_type": "team",
+      "resource_ref": "TEAM008",
+      "description": "employee对team(TEAM008)执行了assign操作",
+      "changes": {},
+      "ip_address": "10.0.214.21",
+      "user_agent": "Mozilla/5.0 (Linux; Android 14) Mobile Chrome/120.0",
+      "request_id": "req-adedda80-248d",
+      "result": "success",
+      "occurred_at": "2023-07-07 10:22:38",
+      "created_at": "2023-07-07 10:22:39"
+    },
+    "ALOG014": {
+      "audit_log_ref": "ALOG014",
+      "actor_employee_ref": null,
+      "actor_type": "system",
+      "action": "update",
+      "resource_type": "org_config",
+      "resource_ref": "OCFG003",
+      "description": "system对org_config(OCFG003)执行了update操作",
+      "changes": {
+        "employment_status": {
+          "before": "质量",
+          "after": "解决"
+        }
+      },
+      "ip_address": null,
+      "user_agent": null,
+      "request_id": null,
+      "result": "success",
+      "occurred_at": "2023-10-25 13:09:54",
+      "created_at": "2023-10-25 13:09:55"
+    },
+    "ALOG015": {
+      "audit_log_ref": "ALOG015",
+      "actor_employee_ref": "EMP013",
+      "actor_type": "employee",
+      "action": "read",
+      "resource_type": "department",
+      "resource_ref": "DEPT006",
+      "description": "employee对department(DEPT006)执行了read操作",
+      "changes": {},
+      "ip_address": "10.0.244.213",
+      "user_agent": "Mozilla/5.0 (Linux; Android 14) Mobile Chrome/120.0",
+      "request_id": "req-3c6a3174-5cb5",
+      "result": "success",
+      "occurred_at": "2023-10-06 18:03:56",
+      "created_at": "2023-10-06 18:03:58"
+    },
+    "ALOG016": {
+      "audit_log_ref": "ALOG016",
+      "actor_employee_ref": "EMP006",
+      "actor_type": "employee",
+      "action": "read",
+      "resource_type": "team",
+      "resource_ref": "TEAM005",
+      "description": "employee对team(TEAM005)执行了read操作",
+      "changes": {},
+      "ip_address": "10.0.84.55",
+      "user_agent": "OA-API-Client/2.1.0",
+      "request_id": "req-084a6780-732e",
+      "result": "success",
+      "occurred_at": "2025-02-01 13:17:03",
+      "created_at": "2025-02-01 13:17:03"
+    },
+    "ALOG017": {
+      "audit_log_ref": "ALOG017",
+      "actor_employee_ref": "EMP057",
+      "actor_type": "employee",
+      "action": "approve",
+      "resource_type": "employee",
+      "resource_ref": "EMP033",
+      "description": "employee对employee(EMP033)执行了approve操作",
+      "changes": {},
+      "ip_address": "10.0.192.139",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Safari/605.1.15",
+      "request_id": "req-71a6014c-233f",
+      "result": "success",
+      "occurred_at": "2025-01-12 03:02:06",
+      "created_at": "2025-01-12 03:02:06"
+    },
+    "ALOG018": {
+      "audit_log_ref": "ALOG018",
+      "actor_employee_ref": "EMP074",
+      "actor_type": "employee",
+      "action": "export",
+      "resource_type": "department",
+      "resource_ref": "DEPT010",
+      "description": "employee对department(DEPT010)执行了export操作",
+      "changes": {},
+      "ip_address": "10.0.84.55",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Safari/605.1.15",
+      "request_id": "req-507b9072-f5e4",
+      "result": "success",
+      "occurred_at": "2024-04-16 23:48:32",
+      "created_at": "2024-04-16 23:48:32"
+    },
+    "ALOG019": {
+      "audit_log_ref": "ALOG019",
+      "actor_employee_ref": "EMP054",
+      "actor_type": "employee",
+      "action": "update",
+      "resource_type": "org_config",
+      "resource_ref": "OCFG010",
+      "description": "employee对org_config(OCFG010)执行了update操作",
+      "changes": {
+        "phone": {
+          "before": "一种",
+          "after": "所以"
+        }
+      },
+      "ip_address": "10.0.6.160",
+      "user_agent": "OA-API-Client/2.1.0",
+      "request_id": "req-2fa0d842-e9dd",
+      "result": "success",
+      "occurred_at": "2023-12-17 14:13:34",
+      "created_at": "2023-12-17 14:13:35"
+    },
+    "ALOG020": {
+      "audit_log_ref": "ALOG020",
+      "actor_employee_ref": null,
+      "actor_type": "system",
+      "action": "approve",
+      "resource_type": "role",
+      "resource_ref": "ROLE005",
+      "description": "system对role(ROLE005)执行了approve操作",
+      "changes": {},
+      "ip_address": null,
+      "user_agent": null,
+      "request_id": null,
+      "result": "success",
+      "occurred_at": "2025-06-02 08:02:35",
+      "created_at": "2025-06-02 08:02:37"
+    },
+    "ALOG021": {
+      "audit_log_ref": "ALOG021",
+      "actor_employee_ref": null,
+      "actor_type": "api_client",
+      "action": "update",
+      "resource_type": "file_attachment",
+      "resource_ref": "FILE007",
+      "description": "api_client对file_attachment(FILE007)执行了update操作",
+      "changes": {
+        "display_name": {
+          "before": "重要",
+          "after": "成为"
+        }
+      },
+      "ip_address": "10.0.244.213",
+      "user_agent": "OA-API-Client/2.1.0",
+      "request_id": "api-b43bd27f",
+      "result": "success",
+      "occurred_at": "2024-02-16 02:43:21",
+      "created_at": "2024-02-16 02:43:21"
+    },
+    "ALOG022": {
+      "audit_log_ref": "ALOG022",
+      "actor_employee_ref": "EMP001",
+      "actor_type": "employee",
+      "action": "read",
+      "resource_type": "file_attachment",
+      "resource_ref": "FILE020",
+      "description": "employee对file_attachment(FILE020)执行了read操作",
+      "changes": {},
+      "ip_address": "10.0.167.18",
+      "user_agent": "DingTalk/7.5.0 (iOS 17.2)",
+      "request_id": "req-b1a8b71f-333e",
+      "result": "success",
+      "occurred_at": "2024-12-30 23:36:25",
+      "created_at": "2024-12-30 23:36:25"
+    },
+    "ALOG023": {
+      "audit_log_ref": "ALOG023",
+      "actor_employee_ref": null,
+      "actor_type": "system",
+      "action": "approve",
+      "resource_type": "file_attachment",
+      "resource_ref": "FILE015",
+      "description": "system对file_attachment(FILE015)执行了approve操作",
+      "changes": {},
+      "ip_address": null,
+      "user_agent": null,
+      "request_id": null,
+      "result": "success",
+      "occurred_at": "2023-04-21 13:46:25",
+      "created_at": "2023-04-21 13:46:26"
+    },
+    "ALOG024": {
+      "audit_log_ref": "ALOG024",
+      "actor_employee_ref": "EMP070",
+      "actor_type": "employee",
+      "action": "logout",
+      "resource_type": "team",
+      "resource_ref": "TEAM005",
+      "description": "employee对team(TEAM005)执行了logout操作",
+      "changes": {},
+      "ip_address": "10.0.108.65",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Safari/605.1.15",
+      "request_id": "req-12f5131a-b69f",
+      "result": "success",
+      "occurred_at": "2023-04-21 22:21:06",
+      "created_at": "2023-04-21 22:21:07"
+    },
+    "ALOG025": {
+      "audit_log_ref": "ALOG025",
+      "actor_employee_ref": "EMP060",
+      "actor_type": "employee",
+      "action": "approve",
+      "resource_type": "team",
+      "resource_ref": "TEAM017",
+      "description": "employee对team(TEAM017)执行了approve操作",
+      "changes": {},
+      "ip_address": "10.0.121.5",
+      "user_agent": "DingTalk/7.5.0 (iOS 17.2)",
+      "request_id": "req-cf7dcb43-fc90",
+      "result": "success",
+      "occurred_at": "2025-04-18 19:58:18",
+      "created_at": "2025-04-18 19:58:18"
+    },
+    "ALOG026": {
+      "audit_log_ref": "ALOG026",
+      "actor_employee_ref": null,
+      "actor_type": "system",
+      "action": "create",
+      "resource_type": "file_attachment",
+      "resource_ref": "FILE011",
+      "description": "system对file_attachment(FILE011)执行了create操作",
+      "changes": {
+        "display_name": {
+          "before": null,
+          "after": "首页"
+        }
+      },
+      "ip_address": null,
+      "user_agent": null,
+      "request_id": null,
+      "result": "success",
+      "occurred_at": "2024-01-24 22:23:31",
+      "created_at": "2024-01-24 22:23:33"
+    },
+    "ALOG027": {
+      "audit_log_ref": "ALOG027",
+      "actor_employee_ref": null,
+      "actor_type": "api_client",
+      "action": "create",
+      "resource_type": "permission",
+      "resource_ref": "PERM002",
+      "description": "api_client对permission(PERM002)执行了create操作",
+      "changes": {
+        "position_ref": {
+          "before": null,
+          "after": "根据"
+        }
+      },
+      "ip_address": "10.0.214.21",
+      "user_agent": "OA-API-Client/2.1.0",
+      "request_id": "api-109fd8ee",
+      "result": "success",
+      "occurred_at": "2023-09-30 03:35:01",
+      "created_at": "2023-09-30 03:35:02"
+    },
+    "ALOG028": {
+      "audit_log_ref": "ALOG028",
+      "actor_employee_ref": "EMP075",
+      "actor_type": "employee",
+      "action": "approve",
+      "resource_type": "employee",
+      "resource_ref": "EMP061",
+      "description": "employee对employee(EMP061)执行了approve操作",
+      "changes": {},
+      "ip_address": "10.0.167.18",
+      "user_agent": "DingTalk/7.5.0 (iOS 17.2)",
+      "request_id": "req-4cc9f5f2-b5a5",
+      "result": "success",
+      "occurred_at": "2024-06-24 12:55:42",
+      "created_at": "2024-06-24 12:55:43"
+    },
+    "ALOG029": {
+      "audit_log_ref": "ALOG029",
+      "actor_employee_ref": null,
+      "actor_type": "system",
+      "action": "update",
+      "resource_type": "team",
+      "resource_ref": "TEAM014",
+      "description": "system对team(TEAM014)执行了update操作",
+      "changes": {
+        "department_ref": {
+          "before": "如此",
+          "after": "发现"
+        }
+      },
+      "ip_address": null,
+      "user_agent": null,
+      "request_id": null,
+      "result": "success",
+      "occurred_at": "2025-02-08 16:25:26",
+      "created_at": "2025-02-08 16:25:27"
+    },
+    "ALOG030": {
+      "audit_log_ref": "ALOG030",
+      "actor_employee_ref": "EMP012",
+      "actor_type": "employee",
+      "action": "read",
+      "resource_type": "team",
+      "resource_ref": "TEAM004",
+      "description": "employee对team(TEAM004)执行了read操作",
+      "changes": {},
+      "ip_address": "10.0.192.139",
+      "user_agent": "Mozilla/5.0 (Linux; Android 14) Mobile Chrome/120.0",
+      "request_id": "req-3967e60a-cac4",
+      "result": "failure",
+      "occurred_at": "2024-09-19 20:44:17",
+      "created_at": "2024-09-19 20:44:17"
+    },
+    "ALOG031": {
+      "audit_log_ref": "ALOG031",
+      "actor_employee_ref": "EMP007",
+      "actor_type": "employee",
+      "action": "read",
+      "resource_type": "team",
+      "resource_ref": "TEAM020",
+      "description": "employee对team(TEAM020)执行了read操作",
+      "changes": {},
+      "ip_address": "10.0.244.213",
+      "user_agent": "OA-API-Client/2.1.0",
+      "request_id": "req-7e7838c9-9280",
+      "result": "success",
+      "occurred_at": "2025-02-13 09:10:11",
+      "created_at": "2025-02-13 09:10:11"
+    },
+    "ALOG032": {
+      "audit_log_ref": "ALOG032",
+      "actor_employee_ref": "EMP017",
+      "actor_type": "employee",
+      "action": "logout",
+      "resource_type": "file_attachment",
+      "resource_ref": "FILE016",
+      "description": "employee对file_attachment(FILE016)执行了logout操作",
+      "changes": {},
+      "ip_address": "10.0.121.5",
+      "user_agent": "DingTalk/7.5.0 (iOS 17.2)",
+      "request_id": "req-fba6abf7-e25d",
+      "result": "success",
+      "occurred_at": "2023-07-08 15:05:33",
+      "created_at": "2023-07-08 15:05:35"
+    },
+    "ALOG033": {
+      "audit_log_ref": "ALOG033",
+      "actor_employee_ref": null,
+      "actor_type": "system",
+      "action": "logout",
+      "resource_type": "team",
+      "resource_ref": "TEAM018",
+      "description": "system对team(TEAM018)执行了logout操作",
+      "changes": {},
+      "ip_address": null,
+      "user_agent": null,
+      "request_id": null,
+      "result": "success",
+      "occurred_at": "2023-01-22 05:49:15",
+      "created_at": "2023-01-22 05:49:15"
+    },
+    "ALOG034": {
+      "audit_log_ref": "ALOG034",
+      "actor_employee_ref": null,
+      "actor_type": "api_client",
+      "action": "logout",
+      "resource_type": "role",
+      "resource_ref": "ROLE002",
+      "description": "api_client对role(ROLE002)执行了logout操作",
+      "changes": {},
+      "ip_address": "10.0.87.195",
+      "user_agent": "OA-API-Client/2.1.0",
+      "request_id": "api-65edcfe3",
+      "result": "success",
+      "occurred_at": "2023-08-28 04:27:34",
+      "created_at": "2023-08-28 04:27:36"
+    },
+    "ALOG035": {
+      "audit_log_ref": "ALOG035",
+      "actor_employee_ref": "EMP035",
+      "actor_type": "employee",
+      "action": "approve",
+      "resource_type": "role",
+      "resource_ref": "ROLE004",
+      "description": "employee对role(ROLE004)执行了approve操作",
+      "changes": {},
+      "ip_address": "10.0.167.18",
+      "user_agent": "DingTalk/7.5.0 (iOS 17.2)",
+      "request_id": "req-7a89cbeb-68d0",
+      "result": "success",
+      "occurred_at": "2024-12-10 14:14:02",
+      "created_at": "2024-12-10 14:14:03"
+    },
+    "ALOG036": {
+      "audit_log_ref": "ALOG036",
+      "actor_employee_ref": null,
+      "actor_type": "api_client",
+      "action": "logout",
+      "resource_type": "file_attachment",
+      "resource_ref": "FILE005",
+      "description": "api_client对file_attachment(FILE005)执行了logout操作",
+      "changes": {},
+      "ip_address": "10.0.194.8",
+      "user_agent": "OA-API-Client/2.1.0",
+      "request_id": "api-20156a72",
+      "result": "success",
+      "occurred_at": "2023-04-19 10:42:30",
+      "created_at": "2023-04-19 10:42:31"
+    },
+    "ALOG037": {
+      "audit_log_ref": "ALOG037",
+      "actor_employee_ref": null,
+      "actor_type": "api_client",
+      "action": "assign",
+      "resource_type": "team",
+      "resource_ref": "TEAM001",
+      "description": "api_client对team(TEAM001)执行了assign操作",
+      "changes": {},
+      "ip_address": "10.0.194.8",
+      "user_agent": "OA-API-Client/2.1.0",
+      "request_id": "api-12fc7a87",
+      "result": "success",
+      "occurred_at": "2024-03-15 09:00:05",
+      "created_at": "2024-03-15 09:00:07"
+    },
+    "ALOG038": {
+      "audit_log_ref": "ALOG038",
+      "actor_employee_ref": null,
+      "actor_type": "system",
+      "action": "delete",
+      "resource_type": "role",
+      "resource_ref": "ROLE008",
+      "description": "system对role(ROLE008)执行了delete操作",
+      "changes": {},
+      "ip_address": null,
+      "user_agent": null,
+      "request_id": null,
+      "result": "success",
+      "occurred_at": "2024-06-20 03:09:11",
+      "created_at": "2024-06-20 03:09:13"
+    },
+    "ALOG039": {
+      "audit_log_ref": "ALOG039",
+      "actor_employee_ref": "EMP042",
+      "actor_type": "employee",
+      "action": "export",
+      "resource_type": "permission",
+      "resource_ref": "PERM013",
+      "description": "employee对permission(PERM013)执行了export操作",
+      "changes": {},
+      "ip_address": "10.0.244.213",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Safari/605.1.15",
+      "request_id": "req-8471b4b0-d43c",
+      "result": "failure",
+      "occurred_at": "2023-12-29 19:50:20",
+      "created_at": "2023-12-29 19:50:21"
+    },
+    "ALOG040": {
+      "audit_log_ref": "ALOG040",
+      "actor_employee_ref": "EMP061",
+      "actor_type": "employee",
+      "action": "create",
+      "resource_type": "file_attachment",
+      "resource_ref": "FILE005",
+      "description": "employee对file_attachment(FILE005)执行了create操作",
+      "changes": {
+        "display_name": {
+          "before": null,
+          "after": "其中"
+        }
+      },
+      "ip_address": "10.0.90.58",
+      "user_agent": "DingTalk/7.5.0 (iOS 17.2)",
+      "request_id": "req-96792482-2108",
+      "result": "success",
+      "occurred_at": "2025-02-08 11:11:25",
+      "created_at": "2025-02-08 11:11:27"
+    }
+  },
+  "file_attachment": {
+    "FILE001": {
+      "file_attachment_ref": "FILE001",
+      "file_name": "技术_001.pdf",
+      "file_extension": "pdf",
+      "mime_type": "application/pdf",
+      "file_size_bytes": 1202999,
+      "storage_uri": "oss://oa-files/certificate/2023/12/FILE001_技术_001.pdf",
+      "checksum": "8390875a0498fea89db7159460716d459fd775df4def23447f25d67b2f73526a",
+      "uploaded_by_ref": "EMP013",
+      "associated_resource_type": "user_profile",
+      "associated_resource_ref": "UPROF013",
+      "file_purpose": "certificate",
+      "file_status": "active",
+      "uploaded_at": "2023-12-11 19:30:48",
+      "created_at": "2023-12-11 19:30:48",
+      "updated_at": "2023-12-23 17:36:47"
+    },
+    "FILE002": {
+      "file_attachment_ref": "FILE002",
+      "file_name": "两个_002.pdf",
+      "file_extension": "pdf",
+      "mime_type": "application/pdf",
+      "file_size_bytes": 2940057,
+      "storage_uri": "s3://oa-attachments/document/2024/08/FILE002_两个_002.pdf",
+      "checksum": "67e0b4f0cf8a9916103d16a08a8312c43cee0150b308d9d901837c0f832cc094",
+      "uploaded_by_ref": "EMP010",
+      "associated_resource_type": "user_profile",
+      "associated_resource_ref": "UPROF034",
+      "file_purpose": "document",
+      "file_status": "active",
+      "uploaded_at": "2024-08-26 04:47:40",
+      "created_at": "2024-08-26 04:47:40",
+      "updated_at": "2025-05-22 05:16:09"
+    },
+    "FILE003": {
+      "file_attachment_ref": "FILE003",
+      "file_name": "手机_003.pdf",
+      "file_extension": "pdf",
+      "mime_type": "application/pdf",
+      "file_size_bytes": 1414493,
+      "storage_uri": "oss://oa-files/certificate/2025/01/FILE003_手机_003.pdf",
+      "checksum": "bd2b7e10ab0728ad69670c7389630e524794eb337b0e931cac2e4bfd70426859",
+      "uploaded_by_ref": "EMP069",
+      "associated_resource_type": "user_profile",
+      "associated_resource_ref": "UPROF041",
+      "file_purpose": "certificate",
+      "file_status": "active",
+      "uploaded_at": "2025-01-21 11:43:39",
+      "created_at": "2025-01-21 11:43:39",
+      "updated_at": "2025-04-26 05:43:39"
+    },
+    "FILE004": {
+      "file_attachment_ref": "FILE004",
+      "file_name": "任何_004.docx",
+      "file_extension": "docx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "file_size_bytes": 429078,
+      "storage_uri": "oss://oa-files/document/2023/11/FILE004_任何_004.docx",
+      "checksum": "02b0af14bdc0d8e948b69fe421f9ff5e4ed975d8b55da1bf900bcc5a0009f672",
+      "uploaded_by_ref": "EMP037",
+      "associated_resource_type": "department",
+      "associated_resource_ref": "DEPT012",
+      "file_purpose": "document",
+      "file_status": "active",
+      "uploaded_at": "2023-11-06 03:37:44",
+      "created_at": "2023-11-06 03:37:44",
+      "updated_at": "2024-01-21 14:44:30"
+    },
+    "FILE005": {
+      "file_attachment_ref": "FILE005",
+      "file_name": "两个_005.pdf",
+      "file_extension": "pdf",
+      "mime_type": "application/pdf",
+      "file_size_bytes": 6878535,
+      "storage_uri": "s3://oa-attachments/contract/2022/03/FILE005_两个_005.pdf",
+      "checksum": "fcd8d1ffa13fca2685be6122cb0f08a61ad3241f77d05d8b6c77db9b2de442aa",
+      "uploaded_by_ref": "EMP004",
+      "associated_resource_type": "employee",
+      "associated_resource_ref": "EMP042",
+      "file_purpose": "contract",
+      "file_status": "active",
+      "uploaded_at": "2022-03-29 04:16:35",
+      "created_at": "2022-03-29 04:16:35",
+      "updated_at": "2023-06-27 21:49:11"
+    },
+    "FILE006": {
+      "file_attachment_ref": "FILE006",
+      "file_name": "发表_006.pdf",
+      "file_extension": "pdf",
+      "mime_type": "application/pdf",
+      "file_size_bytes": 1610426,
+      "storage_uri": "oss://oa-files/document/2022/09/FILE006_发表_006.pdf",
+      "checksum": "03e5f7e51581983f1c533f6c230cd06c1463a8a63e0938597aaf8e719aac6ae3",
+      "uploaded_by_ref": "EMP032",
+      "associated_resource_type": "user_profile",
+      "associated_resource_ref": "UPROF073",
+      "file_purpose": "document",
+      "file_status": "active",
+      "uploaded_at": "2022-09-22 01:26:59",
+      "created_at": "2022-09-22 01:26:59",
+      "updated_at": "2023-06-21 00:30:30"
+    },
+    "FILE007": {
+      "file_attachment_ref": "FILE007",
+      "file_name": "计划_007.xlsx",
+      "file_extension": "xlsx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "file_size_bytes": 170069,
+      "storage_uri": "s3://oa-attachments/attachment/2022/12/FILE007_计划_007.xlsx",
+      "checksum": "0e558e85a0e6fca2e9a68b9e48c11caa5721c8185e51363e623d1ba0270e1bc9",
+      "uploaded_by_ref": "EMP031",
+      "associated_resource_type": "user_profile",
+      "associated_resource_ref": "UPROF075",
+      "file_purpose": "attachment",
+      "file_status": "active",
+      "uploaded_at": "2022-12-27 16:36:45",
+      "created_at": "2022-12-27 16:36:45",
+      "updated_at": "2024-12-13 01:31:38"
+    },
+    "FILE008": {
+      "file_attachment_ref": "FILE008",
+      "file_name": "电影_008.png",
+      "file_extension": "png",
+      "mime_type": "image/png",
+      "file_size_bytes": 193287,
+      "storage_uri": "s3://oa-attachments/avatar/2022/09/FILE008_电影_008.png",
+      "checksum": "508901e3b44ab9b68454965fac4933fd244b6804e7462e033b916d13c30d742a",
+      "uploaded_by_ref": "EMP060",
+      "associated_resource_type": "team",
+      "associated_resource_ref": "TEAM022",
+      "file_purpose": "avatar",
+      "file_status": "archived",
+      "uploaded_at": "2022-09-03 09:45:29",
+      "created_at": "2022-09-03 09:45:29",
+      "updated_at": "2022-12-27 03:31:45"
+    },
+    "FILE009": {
+      "file_attachment_ref": "FILE009",
+      "file_name": "有关_009.pdf",
+      "file_extension": "pdf",
+      "mime_type": "application/pdf",
+      "file_size_bytes": 7290923,
+      "storage_uri": "s3://oa-attachments/contract/2023/04/FILE009_有关_009.pdf",
+      "checksum": "4ac4c24765284b7a1b7abd67321db2ffda2d1025c56b80af15e42e336ebacc30",
+      "uploaded_by_ref": "EMP055",
+      "associated_resource_type": "team",
+      "associated_resource_ref": "TEAM015",
+      "file_purpose": "contract",
+      "file_status": "archived",
+      "uploaded_at": "2023-04-15 07:54:44",
+      "created_at": "2023-04-15 07:54:44",
+      "updated_at": "2024-02-18 19:15:36"
+    },
+    "FILE010": {
+      "file_attachment_ref": "FILE010",
+      "file_name": "什么_010.jpg",
+      "file_extension": "jpg",
+      "mime_type": "image/jpeg",
+      "file_size_bytes": 77049,
+      "storage_uri": "s3://oa-attachments/avatar/2024/06/FILE010_什么_010.jpg",
+      "checksum": "2635d941717672cbc78e56cbd1297d3a6cb9ebcdad6e23f019da596cec52db5f",
+      "uploaded_by_ref": "EMP031",
+      "associated_resource_type": "user_profile",
+      "associated_resource_ref": "UPROF074",
+      "file_purpose": "avatar",
+      "file_status": "active",
+      "uploaded_at": "2024-06-11 22:32:31",
+      "created_at": "2024-06-11 22:32:31",
+      "updated_at": "2024-10-04 20:16:20"
+    },
+    "FILE011": {
+      "file_attachment_ref": "FILE011",
+      "file_name": "一些_011.xlsx",
+      "file_extension": "xlsx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "file_size_bytes": 927088,
+      "storage_uri": "s3://oa-attachments/attachment/2024/12/FILE011_一些_011.xlsx",
+      "checksum": "45c621df3131adf89263c8108aabb42b81f87535a2e69f3b0f12e6b4c8744252",
+      "uploaded_by_ref": "EMP036",
+      "associated_resource_type": "employee",
+      "associated_resource_ref": "EMP073",
+      "file_purpose": "attachment",
+      "file_status": "archived",
+      "uploaded_at": "2024-12-01 08:27:29",
+      "created_at": "2024-12-01 08:27:29",
+      "updated_at": "2024-12-20 09:35:00"
+    },
+    "FILE012": {
+      "file_attachment_ref": "FILE012",
+      "file_name": "完全_012.pdf",
+      "file_extension": "pdf",
+      "mime_type": "application/pdf",
+      "file_size_bytes": 5540337,
+      "storage_uri": "s3://oa-attachments/contract/2022/10/FILE012_完全_012.pdf",
+      "checksum": "2dda5c8bec22a275ddeebe3a3ab0a28634b890ffbf74bfcedb86e64018ec487c",
+      "uploaded_by_ref": "EMP030",
+      "associated_resource_type": "team",
+      "associated_resource_ref": "TEAM008",
+      "file_purpose": "contract",
+      "file_status": "active",
+      "uploaded_at": "2022-10-23 08:38:03",
+      "created_at": "2022-10-23 08:38:03",
+      "updated_at": "2025-06-13 21:08:04"
+    },
+    "FILE013": {
+      "file_attachment_ref": "FILE013",
+      "file_name": "正在_013.pdf",
+      "file_extension": "pdf",
+      "mime_type": "application/pdf",
+      "file_size_bytes": 3797892,
+      "storage_uri": "s3://oa-attachments/document/2022/02/FILE013_正在_013.pdf",
+      "checksum": "3feda1a82c874161ac7baefaf0435f7f9de84f2744c4d9a7495d38fac7294570",
+      "uploaded_by_ref": "EMP013",
+      "associated_resource_type": "employee",
+      "associated_resource_ref": "EMP040",
+      "file_purpose": "document",
+      "file_status": "active",
+      "uploaded_at": "2022-02-21 19:55:11",
+      "created_at": "2022-02-21 19:55:11",
+      "updated_at": "2024-08-10 03:59:50"
+    },
+    "FILE014": {
+      "file_attachment_ref": "FILE014",
+      "file_name": "类型_014.jpg",
+      "file_extension": "jpg",
+      "mime_type": "image/jpeg",
+      "file_size_bytes": 53021,
+      "storage_uri": "s3://oa-attachments/avatar/2022/11/FILE014_类型_014.jpg",
+      "checksum": "2c2fe3a8ccb142d2bb2d78a81d6bba82cbdd2d06696ff73605c13767dbd89265",
+      "uploaded_by_ref": "EMP038",
+      "associated_resource_type": "team",
+      "associated_resource_ref": "TEAM014",
+      "file_purpose": "avatar",
+      "file_status": "active",
+      "uploaded_at": "2022-11-08 22:10:21",
+      "created_at": "2022-11-08 22:10:21",
+      "updated_at": "2023-06-02 05:26:48"
+    },
+    "FILE015": {
+      "file_attachment_ref": "FILE015",
+      "file_name": "威望_015.pdf",
+      "file_extension": "pdf",
+      "mime_type": "application/pdf",
+      "file_size_bytes": 6965315,
+      "storage_uri": "oss://oa-files/contract/2023/04/FILE015_威望_015.pdf",
+      "checksum": "a0b29e07c04f0f8e32850c888f6544d1800fe1a13f5d4535b9a22c84808cbf9f",
+      "uploaded_by_ref": "EMP022",
+      "associated_resource_type": "team",
+      "associated_resource_ref": "TEAM016",
+      "file_purpose": "contract",
+      "file_status": "active",
+      "uploaded_at": "2023-04-04 11:40:14",
+      "created_at": "2023-04-04 11:40:14",
+      "updated_at": "2024-09-11 15:53:25"
+    },
+    "FILE016": {
+      "file_attachment_ref": "FILE016",
+      "file_name": "论坛_016.jpg",
+      "file_extension": "jpg",
+      "mime_type": "image/jpeg",
+      "file_size_bytes": 124924,
+      "storage_uri": "s3://oa-attachments/avatar/2024/11/FILE016_论坛_016.jpg",
+      "checksum": "99edeeb5ac1fe0b7a1972b513134a9e18a0d2c3cd7db59e8bfe743292fae4b4d",
+      "uploaded_by_ref": "EMP019",
+      "associated_resource_type": "department",
+      "associated_resource_ref": "DEPT011",
+      "file_purpose": "avatar",
+      "file_status": "active",
+      "uploaded_at": "2024-11-13 15:41:11",
+      "created_at": "2024-11-13 15:41:11",
+      "updated_at": "2025-04-16 23:49:47"
+    },
+    "FILE017": {
+      "file_attachment_ref": "FILE017",
+      "file_name": "到了_017.xlsx",
+      "file_extension": "xlsx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "file_size_bytes": 149592,
+      "storage_uri": "s3://oa-attachments/attachment/2023/12/FILE017_到了_017.xlsx",
+      "checksum": "9e48a8ed6cf11845ca86837889c5b9026347cc59dfaf642e285d46964723daea",
+      "uploaded_by_ref": "EMP002",
+      "associated_resource_type": "team",
+      "associated_resource_ref": "TEAM018",
+      "file_purpose": "attachment",
+      "file_status": "active",
+      "uploaded_at": "2023-12-08 11:39:07",
+      "created_at": "2023-12-08 11:39:07",
+      "updated_at": "2024-09-19 18:35:11"
+    },
+    "FILE018": {
+      "file_attachment_ref": "FILE018",
+      "file_name": "虽然_018.pdf",
+      "file_extension": "pdf",
+      "mime_type": "application/pdf",
+      "file_size_bytes": 152480,
+      "storage_uri": "s3://oa-attachments/certificate/2024/08/FILE018_虽然_018.pdf",
+      "checksum": "81c058348e4538bcfd4df987d495c2815092ae39aaf0fe76c1ced0c3636f7133",
+      "uploaded_by_ref": "EMP014",
+      "associated_resource_type": "department",
+      "associated_resource_ref": "DEPT008",
+      "file_purpose": "certificate",
+      "file_status": "archived",
+      "uploaded_at": "2024-08-20 10:22:52",
+      "created_at": "2024-08-20 10:22:52",
+      "updated_at": "2025-03-26 11:04:37"
+    },
+    "FILE019": {
+      "file_attachment_ref": "FILE019",
+      "file_name": "谢谢_019.docx",
+      "file_extension": "docx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "file_size_bytes": 2773107,
+      "storage_uri": "oss://oa-files/document/2023/09/FILE019_谢谢_019.docx",
+      "checksum": "c063f672e77bba02b15846659cff1c308467dcaae3e2ec5817d8c2c43c266be4",
+      "uploaded_by_ref": "EMP009",
+      "associated_resource_type": "user_profile",
+      "associated_resource_ref": "UPROF039",
+      "file_purpose": "document",
+      "file_status": "active",
+      "uploaded_at": "2023-09-27 06:22:22",
+      "created_at": "2023-09-27 06:22:22",
+      "updated_at": "2023-12-26 21:22:11"
+    },
+    "FILE020": {
+      "file_attachment_ref": "FILE020",
+      "file_name": "次数_020.png",
+      "file_extension": "png",
+      "mime_type": "image/png",
+      "file_size_bytes": 75478,
+      "storage_uri": "oss://oa-files/avatar/2022/12/FILE020_次数_020.png",
+      "checksum": "7de9f99c769608010b4cfd511130ffab1db3007a154dcdf948432631ae132152",
+      "uploaded_by_ref": "EMP039",
+      "associated_resource_type": "user_profile",
+      "associated_resource_ref": "UPROF015",
+      "file_purpose": "avatar",
+      "file_status": "active",
+      "uploaded_at": "2022-12-31 17:58:46",
+      "created_at": "2022-12-31 17:58:46",
+      "updated_at": "2025-04-14 19:10:10"
+    },
+    "FILE021": {
+      "file_attachment_ref": "FILE021",
+      "file_name": "不断_021.pdf",
+      "file_extension": "pdf",
+      "mime_type": "application/pdf",
+      "file_size_bytes": 1956847,
+      "storage_uri": "oss://oa-files/certificate/2023/10/FILE021_不断_021.pdf",
+      "checksum": "c34076ff1e6ff88a27919d2d74397542c1b0ac1b134dee4013df74fafca97f5e",
+      "uploaded_by_ref": "EMP070",
+      "associated_resource_type": "user_profile",
+      "associated_resource_ref": "UPROF020",
+      "file_purpose": "certificate",
+      "file_status": "archived",
+      "uploaded_at": "2023-10-07 12:00:58",
+      "created_at": "2023-10-07 12:00:58",
+      "updated_at": "2025-02-27 04:38:42"
+    },
+    "FILE022": {
+      "file_attachment_ref": "FILE022",
+      "file_name": "到了_022.xlsx",
+      "file_extension": "xlsx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "file_size_bytes": 247823,
+      "storage_uri": "oss://oa-files/attachment/2023/11/FILE022_到了_022.xlsx",
+      "checksum": "1e50f35ab29a8b6bfa6df6cef5a03f6c9b1bcda5e5bab70ea6029a8ed5b16c6c",
+      "uploaded_by_ref": "EMP036",
+      "associated_resource_type": "employee",
+      "associated_resource_ref": "EMP048",
+      "file_purpose": "attachment",
+      "file_status": "archived",
+      "uploaded_at": "2023-11-20 18:31:10",
+      "created_at": "2023-11-20 18:31:10",
+      "updated_at": "2024-10-31 04:15:03"
+    },
+    "FILE023": {
+      "file_attachment_ref": "FILE023",
+      "file_name": "具有_023.jpg",
+      "file_extension": "jpg",
+      "mime_type": "image/jpeg",
+      "file_size_bytes": 82184,
+      "storage_uri": "oss://oa-files/avatar/2023/03/FILE023_具有_023.jpg",
+      "checksum": "9015ce6032c614883aec33d6fa01c0192d22420c2b18d1f452cca9be972c8b8e",
+      "uploaded_by_ref": "EMP048",
+      "associated_resource_type": "team",
+      "associated_resource_ref": "TEAM002",
+      "file_purpose": "avatar",
+      "file_status": "archived",
+      "uploaded_at": "2023-03-05 13:36:20",
+      "created_at": "2023-03-05 13:36:20",
+      "updated_at": "2023-12-25 10:10:53"
+    },
+    "FILE024": {
+      "file_attachment_ref": "FILE024",
+      "file_name": "组织_024.csv",
+      "file_extension": "csv",
+      "mime_type": "text/csv",
+      "file_size_bytes": 345278,
+      "storage_uri": "oss://oa-files/export/2024/07/FILE024_组织_024.csv",
+      "checksum": "898dbd435cce531d2ca067079403fd89734d4c13f10c808894a181b059b325ce",
+      "uploaded_by_ref": "EMP012",
+      "associated_resource_type": "department",
+      "associated_resource_ref": "DEPT011",
+      "file_purpose": "export",
+      "file_status": "active",
+      "uploaded_at": "2024-07-16 15:12:53",
+      "created_at": "2024-07-16 15:12:53",
+      "updated_at": "2024-07-24 22:16:50"
+    },
+    "FILE025": {
+      "file_attachment_ref": "FILE025",
+      "file_name": "文章_025.docx",
+      "file_extension": "docx",
+      "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "file_size_bytes": 2374515,
+      "storage_uri": "oss://oa-files/document/2022/11/FILE025_文章_025.docx",
+      "checksum": "f9c36a08bd737f29844a934c756e8bc418fe79750e46c1885badf22741806f7c",
+      "uploaded_by_ref": "EMP017",
+      "associated_resource_type": "department",
+      "associated_resource_ref": "DEPT002",
+      "file_purpose": "document",
+      "file_status": "archived",
+      "uploaded_at": "2022-11-18 19:23:11",
+      "created_at": "2022-11-18 19:23:11",
+      "updated_at": "2025-05-17 17:19:56"
+    }
+  },
+  "org_config": {
+    "OCFG001": {
+      "org_config_ref": "OCFG001",
+      "config_key": "company_name",
+      "config_value": "智联科技有限公司",
+      "config_type": "string",
+      "description": "公司名称",
+      "updated_by_ref": "EMP002",
+      "created_at": "2020-09-12 04:47:38",
+      "updated_at": "2021-01-04 19:24:11"
+    },
+    "OCFG002": {
+      "org_config_ref": "OCFG002",
+      "config_key": "company_short_name",
+      "config_value": "智联科技",
+      "config_type": "string",
+      "description": "公司简称",
+      "updated_by_ref": "EMP005",
+      "created_at": "2020-01-03 04:51:30",
+      "updated_at": "2020-08-05 13:38:09"
+    },
+    "OCFG003": {
+      "org_config_ref": "OCFG003",
+      "config_key": "logo_file_ref",
+      "config_value": "FILE001",
+      "config_type": "string",
+      "description": "公司Logo文件引用",
+      "updated_by_ref": "EMP002",
+      "created_at": "2020-04-10 23:13:44",
+      "updated_at": "2021-06-04 13:34:29"
+    },
+    "OCFG004": {
+      "org_config_ref": "OCFG004",
+      "config_key": "default_timezone",
+      "config_value": "Asia/Shanghai",
+      "config_type": "string",
+      "description": "默认时区",
+      "updated_by_ref": "EMP003",
+      "created_at": "2021-09-12 05:22:35",
+      "updated_at": "2021-10-16 02:35:30"
+    },
+    "OCFG005": {
+      "org_config_ref": "OCFG005",
+      "config_key": "default_locale",
+      "config_value": "zh-CN",
+      "config_type": "string",
+      "description": "默认语言区域",
+      "updated_by_ref": "EMP001",
+      "created_at": "2021-05-28 11:00:27",
+      "updated_at": "2021-06-07 11:17:45"
+    },
+    "OCFG006": {
+      "org_config_ref": "OCFG006",
+      "config_key": "fiscal_year_start",
+      "config_value": "01-01",
+      "config_type": "string",
+      "description": "财年起始日期",
+      "updated_by_ref": "EMP002",
+      "created_at": "2020-01-12 13:00:59",
+      "updated_at": "2020-10-16 19:08:11"
+    },
+    "OCFG007": {
+      "org_config_ref": "OCFG007",
+      "config_key": "max_team_size",
+      "config_value": "50",
+      "config_type": "integer",
+      "description": "团队最大人数限制",
+      "updated_by_ref": "EMP002",
+      "created_at": "2021-04-02 09:00:50",
+      "updated_at": "2021-08-06 02:46:57"
+    },
+    "OCFG008": {
+      "org_config_ref": "OCFG008",
+      "config_key": "probation_period_days",
+      "config_value": "90",
+      "config_type": "integer",
+      "description": "试用期天数",
+      "updated_by_ref": "EMP001",
+      "created_at": "2020-05-15 08:11:04",
+      "updated_at": "2020-12-07 10:59:36"
+    },
+    "OCFG009": {
+      "org_config_ref": "OCFG009",
+      "config_key": "enable_sso",
+      "config_value": "true",
+      "config_type": "boolean",
+      "description": "是否启用SSO单点登录",
+      "updated_by_ref": "EMP001",
+      "created_at": "2020-04-08 10:57:01",
+      "updated_at": "2021-11-05 13:34:37"
+    },
+    "OCFG010": {
+      "org_config_ref": "OCFG010",
+      "config_key": "password_policy",
+      "config_value": "{\"min_length\":8,\"require_upper\":true,\"require_number\":true,\"require_special\":true}",
+      "config_type": "json",
+      "description": "密码策略配置",
+      "updated_by_ref": "EMP004",
+      "created_at": "2021-02-12 14:56:42",
+      "updated_at": "2021-03-28 18:13:59"
+    },
+    "OCFG011": {
+      "org_config_ref": "OCFG011",
+      "config_key": "attendance_start_time",
+      "config_value": "09:00",
+      "config_type": "string",
+      "description": "考勤开始时间",
+      "updated_by_ref": "EMP001",
+      "created_at": "2021-01-04 21:52:05",
+      "updated_at": "2021-06-28 00:05:45"
+    },
+    "OCFG012": {
+      "org_config_ref": "OCFG012",
+      "config_key": "attendance_end_time",
+      "config_value": "18:00",
+      "config_type": "string",
+      "description": "考勤结束时间",
+      "updated_by_ref": "EMP003",
+      "created_at": "2021-02-02 15:26:56",
+      "updated_at": "2021-09-21 04:49:02"
+    },
+    "OCFG013": {
+      "org_config_ref": "OCFG013",
+      "config_key": "annual_leave_days",
+      "config_value": "15",
+      "config_type": "integer",
+      "description": "年假天数",
+      "updated_by_ref": "EMP001",
+      "created_at": "2020-12-17 01:59:30",
+      "updated_at": "2021-06-30 18:06:31"
+    },
+    "OCFG014": {
+      "org_config_ref": "OCFG014",
+      "config_key": "enable_mentorship",
+      "config_value": "true",
+      "config_type": "boolean",
+      "description": "是否启用导师制度",
+      "updated_by_ref": "EMP002",
+      "created_at": "2021-04-22 18:25:21",
+      "updated_at": "2021-05-09 14:36:50"
+    }
+  },
+  "notification": {
+    "NOTF001": {
+      "notification_ref": "NOTF001",
+      "recipient_employee_ref": "EMP067",
+      "sender_type": "employee",
+      "sender_employee_ref": "EMP059",
+      "notification_type": "announcement",
+      "channel": "in_app",
+      "title": "公告",
+      "body": "公司发布了新的现在公告，请查阅",
+      "related_resource_type": null,
+      "related_resource_ref": null,
+      "read_status": "unread",
+      "read_at": null,
+      "created_at": "2025-01-07 00:52:11"
+    },
+    "NOTF002": {
+      "notification_ref": "NOTF002",
+      "recipient_employee_ref": "EMP055",
+      "sender_type": "system",
+      "sender_employee_ref": null,
+      "notification_type": "assignment",
+      "channel": "push",
+      "title": "任务分配",
+      "body": "您被分配了一个新任务：设计",
+      "related_resource_type": "team",
+      "related_resource_ref": "TEAM003",
+      "read_status": "unread",
+      "read_at": null,
+      "created_at": "2024-03-03 18:02:37"
+    },
+    "NOTF003": {
+      "notification_ref": "NOTF003",
+      "recipient_employee_ref": "EMP017",
+      "sender_type": "employee",
+      "sender_employee_ref": "EMP075",
+      "notification_type": "reminder",
+      "channel": "sms",
+      "title": "提醒",
+      "body": "您的操作即将到期，请及时处理",
+      "related_resource_type": "audit_log",
+      "related_resource_ref": "ALOG033",
+      "read_status": "unread",
+      "read_at": null,
+      "created_at": "2025-04-09 00:11:28"
+    },
+    "NOTF004": {
+      "notification_ref": "NOTF004",
+      "recipient_employee_ref": "EMP056",
+      "sender_type": "system",
+      "sender_employee_ref": null,
+      "notification_type": "announcement",
+      "channel": "in_app",
+      "title": "公告",
+      "body": "公司发布了新的或者公告，请查阅",
+      "related_resource_type": "team",
+      "related_resource_ref": "TEAM014",
+      "read_status": "read",
+      "read_at": "2025-05-31 00:29:09",
+      "created_at": "2025-05-20 13:57:57"
+    },
+    "NOTF005": {
+      "notification_ref": "NOTF005",
+      "recipient_employee_ref": "EMP044",
+      "sender_type": "employee",
+      "sender_employee_ref": "EMP052",
+      "notification_type": "assignment",
+      "channel": "in_app",
+      "title": "任务分配",
+      "body": "您被分配了一个新任务：具有",
+      "related_resource_type": "department",
+      "related_resource_ref": "DEPT003",
+      "read_status": "unread",
+      "read_at": null,
+      "created_at": "2024-08-30 17:51:41"
+    },
+    "NOTF006": {
+      "notification_ref": "NOTF006",
+      "recipient_employee_ref": "EMP061",
+      "sender_type": "system",
+      "sender_employee_ref": null,
+      "notification_type": "system",
+      "channel": "in_app",
+      "title": "系统维护通知",
+      "body": "系统将于本周末进行维护升级，届时部分功能可能不可用",
+      "related_resource_type": null,
+      "related_resource_ref": null,
+      "read_status": "unread",
+      "read_at": null,
+      "created_at": "2024-03-16 00:05:29"
+    },
+    "NOTF007": {
+      "notification_ref": "NOTF007",
+      "recipient_employee_ref": "EMP048",
+      "sender_type": "system",
+      "sender_employee_ref": null,
+      "notification_type": "reminder",
+      "channel": "in_app",
+      "title": "提醒",
+      "body": "您的这样即将到期，请及时处理",
+      "related_resource_type": "employee",
+      "related_resource_ref": "EMP053",
+      "read_status": "read",
+      "read_at": "2025-05-05 17:32:47",
+      "created_at": "2025-03-12 04:43:46"
+    },
+    "NOTF008": {
+      "notification_ref": "NOTF008",
+      "recipient_employee_ref": "EMP046",
+      "sender_type": "employee",
+      "sender_employee_ref": "EMP007",
+      "notification_type": "approval",
+      "channel": "sms",
+      "title": "审批请求",
+      "body": "您有一个新的帖子审批待处理",
+      "related_resource_type": "team",
+      "related_resource_ref": "TEAM022",
+      "read_status": "unread",
+      "read_at": null,
+      "created_at": "2025-03-24 21:10:55"
+    },
+    "NOTF009": {
+      "notification_ref": "NOTF009",
+      "recipient_employee_ref": "EMP062",
+      "sender_type": "system",
+      "sender_employee_ref": null,
+      "notification_type": "system",
+      "channel": "sms",
+      "title": "系统维护通知",
+      "body": "系统将于本周末进行维护升级，届时部分功能可能不可用",
+      "related_resource_type": null,
+      "related_resource_ref": null,
+      "read_status": "read",
+      "read_at": "2024-11-26 02:38:35",
+      "created_at": "2024-10-12 11:50:04"
+    },
+    "NOTF010": {
+      "notification_ref": "NOTF010",
+      "recipient_employee_ref": "EMP074",
+      "sender_type": "system",
+      "sender_employee_ref": null,
+      "notification_type": "assignment",
+      "channel": "in_app",
+      "title": "任务分配",
+      "body": "您被分配了一个新任务：免费",
+      "related_resource_type": "employee",
+      "related_resource_ref": "EMP024",
+      "read_status": "read",
+      "read_at": "2025-06-15 02:03:31",
+      "created_at": "2025-05-25 22:51:46"
+    },
+    "NOTF011": {
+      "notification_ref": "NOTF011",
+      "recipient_employee_ref": "EMP035",
+      "sender_type": "employee",
+      "sender_employee_ref": "EMP044",
+      "notification_type": "approval",
+      "channel": "in_app",
+      "title": "审批请求",
+      "body": "您有一个新的非常审批待处理",
+      "related_resource_type": "audit_log",
+      "related_resource_ref": "ALOG005",
+      "read_status": "unread",
+      "read_at": null,
+      "created_at": "2024-04-21 06:24:04"
+    },
+    "NOTF012": {
+      "notification_ref": "NOTF012",
+      "recipient_employee_ref": "EMP019",
+      "sender_type": "system",
+      "sender_employee_ref": null,
+      "notification_type": "system",
+      "channel": "email",
+      "title": "系统维护通知",
+      "body": "系统将于本周末进行维护升级，届时部分功能可能不可用",
+      "related_resource_type": "department",
+      "related_resource_ref": "DEPT005",
+      "read_status": "unread",
+      "read_at": null,
+      "created_at": "2024-12-18 08:34:13"
+    },
+    "NOTF013": {
+      "notification_ref": "NOTF013",
+      "recipient_employee_ref": "EMP042",
+      "sender_type": "system",
+      "sender_employee_ref": null,
+      "notification_type": "system",
+      "channel": "email",
+      "title": "系统维护通知",
+      "body": "系统将于本周末进行维护升级，届时部分功能可能不可用",
+      "related_resource_type": "employee",
+      "related_resource_ref": "EMP035",
+      "read_status": "unread",
+      "read_at": null,
+      "created_at": "2025-04-24 21:20:18"
+    },
+    "NOTF014": {
+      "notification_ref": "NOTF014",
+      "recipient_employee_ref": "EMP057",
+      "sender_type": "employee",
+      "sender_employee_ref": "EMP063",
+      "notification_type": "reminder",
+      "channel": "push",
+      "title": "提醒",
+      "body": "您的然后即将到期，请及时处理",
+      "related_resource_type": "department",
+      "related_resource_ref": "DEPT007",
+      "read_status": "read",
+      "read_at": "2025-04-05 15:04:36",
+      "created_at": "2024-06-16 10:29:48"
+    },
+    "NOTF015": {
+      "notification_ref": "NOTF015",
+      "recipient_employee_ref": "EMP015",
+      "sender_type": "employee",
+      "sender_employee_ref": "EMP063",
+      "notification_type": "reminder",
+      "channel": "sms",
+      "title": "提醒",
+      "body": "您的游戏即将到期，请及时处理",
+      "related_resource_type": null,
+      "related_resource_ref": null,
+      "read_status": "unread",
+      "read_at": null,
+      "created_at": "2024-11-03 00:14:37"
+    },
+    "NOTF016": {
+      "notification_ref": "NOTF016",
+      "recipient_employee_ref": "EMP008",
+      "sender_type": "system",
+      "sender_employee_ref": null,
+      "notification_type": "mention",
+      "channel": "sms",
+      "title": "您被提及了",
+      "body": "发生在评论中提到了您，请查看",
+      "related_resource_type": "employee",
+      "related_resource_ref": "EMP001",
+      "read_status": "dismissed",
+      "read_at": "2024-11-01 01:28:14",
+      "created_at": "2024-04-16 14:14:31"
+    },
+    "NOTF017": {
+      "notification_ref": "NOTF017",
+      "recipient_employee_ref": "EMP064",
+      "sender_type": "employee",
+      "sender_employee_ref": "EMP023",
+      "notification_type": "mention",
+      "channel": "push",
+      "title": "您被提及了",
+      "body": "最大在评论中提到了您，请查看",
+      "related_resource_type": "department",
+      "related_resource_ref": "DEPT002",
+      "read_status": "read",
+      "read_at": "2025-01-08 00:21:26",
+      "created_at": "2024-06-27 17:34:28"
+    },
+    "NOTF018": {
+      "notification_ref": "NOTF018",
+      "recipient_employee_ref": "EMP051",
+      "sender_type": "system",
+      "sender_employee_ref": null,
+      "notification_type": "assignment",
+      "channel": "in_app",
+      "title": "任务分配",
+      "body": "您被分配了一个新任务：一种",
+      "related_resource_type": "audit_log",
+      "related_resource_ref": "ALOG027",
+      "read_status": "read",
+      "read_at": "2024-10-30 15:20:14",
+      "created_at": "2024-03-01 11:27:51"
+    },
+    "NOTF019": {
+      "notification_ref": "NOTF019",
+      "recipient_employee_ref": "EMP038",
+      "sender_type": "system",
+      "sender_employee_ref": null,
+      "notification_type": "assignment",
+      "channel": "in_app",
+      "title": "任务分配",
+      "body": "您被分配了一个新任务：在线",
+      "related_resource_type": null,
+      "related_resource_ref": null,
+      "read_status": "dismissed",
+      "read_at": "2025-05-05 20:46:33",
+      "created_at": "2024-05-13 11:56:53"
+    },
+    "NOTF020": {
+      "notification_ref": "NOTF020",
+      "recipient_employee_ref": "EMP047",
+      "sender_type": "system",
+      "sender_employee_ref": null,
+      "notification_type": "assignment",
+      "channel": "in_app",
+      "title": "任务分配",
+      "body": "您被分配了一个新任务：首页",
+      "related_resource_type": "employee",
+      "related_resource_ref": "EMP051",
+      "read_status": "unread",
+      "read_at": null,
+      "created_at": "2025-04-02 09:21:23"
+    },
+    "NOTF021": {
+      "notification_ref": "NOTF021",
+      "recipient_employee_ref": "EMP040",
+      "sender_type": "employee",
+      "sender_employee_ref": "EMP029",
+      "notification_type": "approval",
+      "channel": "email",
+      "title": "审批请求",
+      "body": "您有一个新的出现审批待处理",
+      "related_resource_type": "team",
+      "related_resource_ref": "TEAM012",
+      "read_status": "unread",
+      "read_at": null,
+      "created_at": "2025-05-06 20:09:48"
+    },
+    "NOTF022": {
+      "notification_ref": "NOTF022",
+      "recipient_employee_ref": "EMP045",
+      "sender_type": "system",
+      "sender_employee_ref": null,
+      "notification_type": "mention",
+      "channel": "in_app",
+      "title": "您被提及了",
+      "body": "程序在评论中提到了您，请查看",
+      "related_resource_type": "team",
+      "related_resource_ref": "TEAM021",
+      "read_status": "unread",
+      "read_at": null,
+      "created_at": "2024-06-02 05:24:46"
+    },
+    "NOTF023": {
+      "notification_ref": "NOTF023",
+      "recipient_employee_ref": "EMP010",
+      "sender_type": "system",
+      "sender_employee_ref": null,
+      "notification_type": "announcement",
+      "channel": "push",
+      "title": "公告",
+      "body": "公司发布了新的的人公告，请查阅",
+      "related_resource_type": "department",
+      "related_resource_ref": "DEPT011",
+      "read_status": "read",
+      "read_at": "2025-05-26 15:25:58",
+      "created_at": "2025-03-13 20:47:27"
+    },
+    "NOTF024": {
+      "notification_ref": "NOTF024",
+      "recipient_employee_ref": "EMP041",
+      "sender_type": "system",
+      "sender_employee_ref": null,
+      "notification_type": "assignment",
+      "channel": "in_app",
+      "title": "任务分配",
+      "body": "您被分配了一个新任务：电子",
+      "related_resource_type": null,
+      "related_resource_ref": null,
+      "read_status": "read",
+      "read_at": "2025-05-20 02:40:58",
+      "created_at": "2025-05-05 09:52:18"
+    },
+    "NOTF025": {
+      "notification_ref": "NOTF025",
+      "recipient_employee_ref": "EMP008",
+      "sender_type": "employee",
+      "sender_employee_ref": "EMP065",
+      "notification_type": "system",
+      "channel": "sms",
+      "title": "系统维护通知",
+      "body": "系统将于本周末进行维护升级，届时部分功能可能不可用",
+      "related_resource_type": "department",
+      "related_resource_ref": "DEPT002",
+      "read_status": "read",
+      "read_at": "2024-03-14 09:33:25",
+      "created_at": "2024-01-30 05:02:59"
+    },
+    "NOTF026": {
+      "notification_ref": "NOTF026",
+      "recipient_employee_ref": "EMP012",
+      "sender_type": "employee",
+      "sender_employee_ref": "EMP060",
+      "notification_type": "reminder",
+      "channel": "in_app",
+      "title": "提醒",
+      "body": "您的名称即将到期，请及时处理",
+      "related_resource_type": "audit_log",
+      "related_resource_ref": "ALOG033",
+      "read_status": "read",
+      "read_at": "2025-05-22 07:20:38",
+      "created_at": "2025-03-20 00:27:10"
+    },
+    "NOTF027": {
+      "notification_ref": "NOTF027",
+      "recipient_employee_ref": "EMP020",
+      "sender_type": "system",
+      "sender_employee_ref": null,
+      "notification_type": "assignment",
+      "channel": "in_app",
+      "title": "任务分配",
+      "body": "您被分配了一个新任务：不是",
+      "related_resource_type": "team",
+      "related_resource_ref": "TEAM002",
+      "read_status": "read",
+      "read_at": "2024-10-26 12:08:54",
+      "created_at": "2024-09-23 18:08:38"
+    },
+    "NOTF028": {
+      "notification_ref": "NOTF028",
+      "recipient_employee_ref": "EMP032",
+      "sender_type": "employee",
+      "sender_employee_ref": "EMP057",
+      "notification_type": "reminder",
+      "channel": "email",
+      "title": "提醒",
+      "body": "您的开始即将到期，请及时处理",
+      "related_resource_type": "department",
+      "related_resource_ref": "DEPT011",
+      "read_status": "unread",
+      "read_at": null,
+      "created_at": "2024-08-07 17:31:06"
+    },
+    "NOTF029": {
+      "notification_ref": "NOTF029",
+      "recipient_employee_ref": "EMP007",
+      "sender_type": "employee",
+      "sender_employee_ref": "EMP009",
+      "notification_type": "approval",
+      "channel": "in_app",
+      "title": "审批请求",
+      "body": "您有一个新的服务审批待处理",
+      "related_resource_type": "team",
+      "related_resource_ref": "TEAM011",
+      "read_status": "read",
+      "read_at": "2025-02-14 14:31:14",
+      "created_at": "2024-10-27 06:04:44"
+    },
+    "NOTF030": {
+      "notification_ref": "NOTF030",
+      "recipient_employee_ref": "EMP011",
+      "sender_type": "system",
+      "sender_employee_ref": null,
+      "notification_type": "approval",
+      "channel": "sms",
+      "title": "审批请求",
+      "body": "您有一个新的大学审批待处理",
+      "related_resource_type": "employee",
+      "related_resource_ref": "EMP040",
+      "read_status": "dismissed",
+      "read_at": "2025-06-07 19:25:33",
+      "created_at": "2025-05-29 07:05:38"
+    },
+    "NOTF031": {
+      "notification_ref": "NOTF031",
+      "recipient_employee_ref": "EMP072",
+      "sender_type": "employee",
+      "sender_employee_ref": "EMP043",
+      "notification_type": "mention",
+      "channel": "in_app",
+      "title": "您被提及了",
+      "body": "标准在评论中提到了您，请查看",
+      "related_resource_type": "department",
+      "related_resource_ref": "DEPT005",
+      "read_status": "read",
+      "read_at": "2025-06-10 08:19:22",
+      "created_at": "2024-11-24 20:52:00"
+    },
+    "NOTF032": {
+      "notification_ref": "NOTF032",
+      "recipient_employee_ref": "EMP024",
+      "sender_type": "system",
+      "sender_employee_ref": null,
+      "notification_type": "approval",
+      "channel": "push",
+      "title": "审批请求",
+      "body": "您有一个新的汽车审批待处理",
+      "related_resource_type": "department",
+      "related_resource_ref": "DEPT002",
+      "read_status": "unread",
+      "read_at": null,
+      "created_at": "2024-04-16 20:24:14"
+    },
+    "NOTF033": {
+      "notification_ref": "NOTF033",
+      "recipient_employee_ref": "EMP065",
+      "sender_type": "system",
+      "sender_employee_ref": null,
+      "notification_type": "announcement",
+      "channel": "sms",
+      "title": "公告",
+      "body": "公司发布了新的东西公告，请查阅",
+      "related_resource_type": "team",
+      "related_resource_ref": "TEAM006",
+      "read_status": "read",
+      "read_at": "2025-05-07 18:18:28",
+      "created_at": "2025-04-25 00:56:29"
+    },
+    "NOTF034": {
+      "notification_ref": "NOTF034",
+      "recipient_employee_ref": "EMP024",
+      "sender_type": "system",
+      "sender_employee_ref": null,
+      "notification_type": "announcement",
+      "channel": "push",
+      "title": "公告",
+      "body": "公司发布了新的而且公告，请查阅",
+      "related_resource_type": "team",
+      "related_resource_ref": "TEAM015",
+      "read_status": "unread",
+      "read_at": null,
+      "created_at": "2024-10-09 23:01:59"
+    },
+    "NOTF035": {
+      "notification_ref": "NOTF035",
+      "recipient_employee_ref": "EMP037",
+      "sender_type": "employee",
+      "sender_employee_ref": "EMP030",
+      "notification_type": "reminder",
+      "channel": "email",
+      "title": "提醒",
+      "body": "您的同时即将到期，请及时处理",
+      "related_resource_type": null,
+      "related_resource_ref": null,
+      "read_status": "unread",
+      "read_at": null,
+      "created_at": "2024-12-30 07:05:04"
+    },
+    "NOTF036": {
+      "notification_ref": "NOTF036",
+      "recipient_employee_ref": "EMP025",
+      "sender_type": "employee",
+      "sender_employee_ref": "EMP074",
+      "notification_type": "assignment",
+      "channel": "push",
+      "title": "任务分配",
+      "body": "您被分配了一个新任务：也是",
+      "related_resource_type": "team",
+      "related_resource_ref": "TEAM007",
+      "read_status": "read",
+      "read_at": "2025-05-06 22:02:53",
+      "created_at": "2024-10-23 14:37:05"
+    },
+    "NOTF037": {
+      "notification_ref": "NOTF037",
+      "recipient_employee_ref": "EMP018",
+      "sender_type": "employee",
+      "sender_employee_ref": "EMP007",
+      "notification_type": "announcement",
+      "channel": "push",
+      "title": "公告",
+      "body": "公司发布了新的是否公告，请查阅",
+      "related_resource_type": null,
+      "related_resource_ref": null,
+      "read_status": "read",
+      "read_at": "2025-03-26 15:29:29",
+      "created_at": "2025-03-06 17:23:19"
+    },
+    "NOTF038": {
+      "notification_ref": "NOTF038",
+      "recipient_employee_ref": "EMP067",
+      "sender_type": "system",
+      "sender_employee_ref": null,
+      "notification_type": "approval",
+      "channel": "in_app",
+      "title": "审批请求",
+      "body": "您有一个新的非常审批待处理",
+      "related_resource_type": null,
+      "related_resource_ref": null,
+      "read_status": "read",
+      "read_at": "2025-01-21 09:09:25",
+      "created_at": "2024-07-30 21:11:54"
+    },
+    "NOTF039": {
+      "notification_ref": "NOTF039",
+      "recipient_employee_ref": "EMP019",
+      "sender_type": "employee",
+      "sender_employee_ref": "EMP012",
+      "notification_type": "mention",
+      "channel": "push",
+      "title": "您被提及了",
+      "body": "图片在评论中提到了您，请查看",
+      "related_resource_type": "department",
+      "related_resource_ref": "DEPT004",
+      "read_status": "read",
+      "read_at": "2024-12-08 23:24:26",
+      "created_at": "2024-01-21 17:10:06"
+    },
+    "NOTF040": {
+      "notification_ref": "NOTF040",
+      "recipient_employee_ref": "EMP050",
+      "sender_type": "system",
+      "sender_employee_ref": null,
+      "notification_type": "approval",
+      "channel": "email",
+      "title": "审批请求",
+      "body": "您有一个新的同时审批待处理",
+      "related_resource_type": null,
+      "related_resource_ref": null,
+      "read_status": "unread",
+      "read_at": null,
+      "created_at": "2024-03-17 23:02:35"
+    }
+  },
+  "employee": {
+    "EMP001": {
+      "employee_ref": "EMP001",
+      "user_profile_ref": "UPROF001",
+      "employee_number": "AI-2024-0001",
+      "worker_type": "full_time",
+      "hire_date": "2024-05-16",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": null,
+      "position_ref": "POS025",
+      "external_ids": {
+        "hris_person_ref": "HRIS-7781321E"
+      },
+      "created_at": "2024-05-16 17:38:21",
+      "updated_at": "2024-07-04 17:55:06"
+    },
+    "EMP002": {
+      "employee_ref": "EMP002",
+      "user_profile_ref": "UPROF002",
+      "employee_number": "AI-2022-0002",
+      "worker_type": "full_time",
+      "hire_date": "2022-11-22",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP001",
+      "position_ref": "POS024",
+      "external_ids": {
+        "hris_person_ref": "HRIS-7F53A88E",
+        "asset_profile_ref": "ASSET-64AB851B"
+      },
+      "created_at": "2022-11-22 23:03:46",
+      "updated_at": "2023-01-30 00:16:44"
+    },
+    "EMP003": {
+      "employee_ref": "EMP003",
+      "user_profile_ref": "UPROF003",
+      "employee_number": "AI-2020-0003",
+      "worker_type": "full_time",
+      "hire_date": "2020-09-11",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP001",
+      "position_ref": "POS024",
+      "external_ids": {
+        "hris_person_ref": "HRIS-3DA06476",
+        "asset_profile_ref": "ASSET-0C74DC0F"
+      },
+      "created_at": "2020-09-11 17:32:55",
+      "updated_at": "2023-05-03 02:28:56"
+    },
+    "EMP004": {
+      "employee_ref": "EMP004",
+      "user_profile_ref": "UPROF004",
+      "employee_number": "AI-2023-0004",
+      "worker_type": "full_time",
+      "hire_date": "2023-05-21",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP001",
+      "position_ref": "POS024",
+      "external_ids": {
+        "hris_person_ref": "HRIS-98F6FD7F",
+        "asset_profile_ref": "ASSET-AC2A4F71"
+      },
+      "created_at": "2023-05-21 05:47:08",
+      "updated_at": "2023-06-18 16:26:46"
+    },
+    "EMP005": {
+      "employee_ref": "EMP005",
+      "user_profile_ref": "UPROF005",
+      "employee_number": "AI-2024-0005",
+      "worker_type": "full_time",
+      "hire_date": "2024-07-02",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP001",
+      "position_ref": "POS024",
+      "external_ids": {
+        "hris_person_ref": "HRIS-0217EA0E"
+      },
+      "created_at": "2024-07-02 20:23:51",
+      "updated_at": "2024-07-21 09:57:48"
+    },
+    "EMP006": {
+      "employee_ref": "EMP006",
+      "user_profile_ref": "UPROF006",
+      "employee_number": "AI-2024-0006",
+      "worker_type": "full_time",
+      "hire_date": "2024-07-30",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP002",
+      "position_ref": "POS023",
+      "external_ids": {
+        "hris_person_ref": "HRIS-22498F66",
+        "asset_profile_ref": "ASSET-5DA39A73"
+      },
+      "created_at": "2024-07-30 06:52:28",
+      "updated_at": "2025-06-05 17:17:08"
+    },
+    "EMP007": {
+      "employee_ref": "EMP007",
+      "user_profile_ref": "UPROF007",
+      "employee_number": "AI-2022-0007",
+      "worker_type": "full_time",
+      "hire_date": "2022-02-17",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP002",
+      "position_ref": "POS023",
+      "external_ids": {
+        "hris_person_ref": "HRIS-0B95017C"
+      },
+      "created_at": "2022-02-17 09:29:54",
+      "updated_at": "2025-04-17 02:01:05"
+    },
+    "EMP008": {
+      "employee_ref": "EMP008",
+      "user_profile_ref": "UPROF008",
+      "employee_number": "AI-2022-0008",
+      "worker_type": "full_time",
+      "hire_date": "2022-09-28",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP003",
+      "position_ref": "POS022",
+      "external_ids": {
+        "hris_person_ref": "HRIS-8FD33AFC",
+        "asset_profile_ref": "ASSET-49E1CD13"
+      },
+      "created_at": "2022-09-28 05:08:23",
+      "updated_at": "2023-07-15 10:11:25"
+    },
+    "EMP009": {
+      "employee_ref": "EMP009",
+      "user_profile_ref": "UPROF009",
+      "employee_number": "AI-2023-0009",
+      "worker_type": "full_time",
+      "hire_date": "2023-03-22",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP003",
+      "position_ref": "POS022",
+      "external_ids": {
+        "hris_person_ref": "HRIS-734A6CA3",
+        "asset_profile_ref": "ASSET-D3479A3B"
+      },
+      "created_at": "2023-03-22 15:35:39",
+      "updated_at": "2025-06-06 07:36:04"
+    },
+    "EMP010": {
+      "employee_ref": "EMP010",
+      "user_profile_ref": "UPROF010",
+      "employee_number": "AI-2021-0010",
+      "worker_type": "full_time",
+      "hire_date": "2021-04-08",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP004",
+      "position_ref": "POS022",
+      "external_ids": {
+        "hris_person_ref": "HRIS-9C6D52D5"
+      },
+      "created_at": "2021-04-08 16:08:10",
+      "updated_at": "2021-08-09 06:44:53"
+    },
+    "EMP011": {
+      "employee_ref": "EMP011",
+      "user_profile_ref": "UPROF011",
+      "employee_number": "AI-2022-0011",
+      "worker_type": "full_time",
+      "hire_date": "2022-08-30",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP005",
+      "position_ref": "POS022",
+      "external_ids": {
+        "hris_person_ref": "HRIS-18C01E2B"
+      },
+      "created_at": "2022-08-30 20:23:47",
+      "updated_at": "2023-06-07 04:18:06"
+    },
+    "EMP012": {
+      "employee_ref": "EMP012",
+      "user_profile_ref": "UPROF012",
+      "employee_number": "AI-2023-0012",
+      "worker_type": "full_time",
+      "hire_date": "2023-08-22",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP005",
+      "position_ref": "POS022",
+      "external_ids": {
+        "hris_person_ref": "HRIS-FC9E1DCB",
+        "asset_profile_ref": "ASSET-5D986115"
+      },
+      "created_at": "2023-08-22 17:31:08",
+      "updated_at": "2023-10-23 22:06:41"
+    },
+    "EMP013": {
+      "employee_ref": "EMP013",
+      "user_profile_ref": "UPROF013",
+      "employee_number": "AI-2021-0013",
+      "worker_type": "full_time",
+      "hire_date": "2021-10-15",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP006",
+      "position_ref": "POS003",
+      "external_ids": {
+        "hris_person_ref": "HRIS-9A3B0319",
+        "asset_profile_ref": "ASSET-0A4E2552"
+      },
+      "created_at": "2021-10-15 19:28:49",
+      "updated_at": "2024-11-03 15:53:34"
+    },
+    "EMP014": {
+      "employee_ref": "EMP014",
+      "user_profile_ref": "UPROF014",
+      "employee_number": "AI-2022-0014",
+      "worker_type": "full_time",
+      "hire_date": "2022-08-16",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP006",
+      "position_ref": "POS006",
+      "external_ids": {
+        "hris_person_ref": "HRIS-B6ADF48B",
+        "asset_profile_ref": "ASSET-84F2FD0F"
+      },
+      "created_at": "2022-08-16 21:31:02",
+      "updated_at": "2022-10-21 16:37:55"
+    },
+    "EMP015": {
+      "employee_ref": "EMP015",
+      "user_profile_ref": "UPROF015",
+      "employee_number": "AI-2021-0015",
+      "worker_type": "full_time",
+      "hire_date": "2021-12-31",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP006",
+      "position_ref": "POS008",
+      "external_ids": {
+        "hris_person_ref": "HRIS-E4A4474C",
+        "asset_profile_ref": "ASSET-EE6E2E72"
+      },
+      "created_at": "2021-12-31 08:43:39",
+      "updated_at": "2025-05-13 21:09:34"
+    },
+    "EMP016": {
+      "employee_ref": "EMP016",
+      "user_profile_ref": "UPROF016",
+      "employee_number": "AI-2019-0016",
+      "worker_type": "full_time",
+      "hire_date": "2019-06-28",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP012",
+      "position_ref": "POS013",
+      "external_ids": {
+        "hris_person_ref": "HRIS-6498ABE9",
+        "asset_profile_ref": "ASSET-D7B4C294"
+      },
+      "created_at": "2019-06-28 04:55:39",
+      "updated_at": "2023-11-08 07:23:38"
+    },
+    "EMP017": {
+      "employee_ref": "EMP017",
+      "user_profile_ref": "UPROF017",
+      "employee_number": "AI-2024-0017",
+      "worker_type": "full_time",
+      "hire_date": "2024-10-11",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP007",
+      "position_ref": "POS010",
+      "external_ids": {
+        "hris_person_ref": "HRIS-81DF6517",
+        "asset_profile_ref": "ASSET-7D66971E"
+      },
+      "created_at": "2024-10-11 20:31:36",
+      "updated_at": "2025-06-04 19:30:59"
+    },
+    "EMP018": {
+      "employee_ref": "EMP018",
+      "user_profile_ref": "UPROF018",
+      "employee_number": "AI-2024-0018",
+      "worker_type": "full_time",
+      "hire_date": "2024-10-07",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP008",
+      "position_ref": "POS012",
+      "external_ids": {
+        "hris_person_ref": "HRIS-79928FAA",
+        "asset_profile_ref": "ASSET-54CC1E2A"
+      },
+      "created_at": "2024-10-07 17:58:14",
+      "updated_at": "2025-01-07 09:36:24"
+    },
+    "EMP019": {
+      "employee_ref": "EMP019",
+      "user_profile_ref": "UPROF019",
+      "employee_number": "AI-2024-0019",
+      "worker_type": "full_time",
+      "hire_date": "2024-06-27",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP009",
+      "position_ref": "POS016",
+      "external_ids": {
+        "hris_person_ref": "HRIS-6AA26216"
+      },
+      "created_at": "2024-06-27 10:49:51",
+      "updated_at": "2024-07-10 00:41:02"
+    },
+    "EMP020": {
+      "employee_ref": "EMP020",
+      "user_profile_ref": "UPROF020",
+      "employee_number": "AI-2024-0020",
+      "worker_type": "full_time",
+      "hire_date": "2024-02-23",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP010",
+      "position_ref": "POS019",
+      "external_ids": {
+        "hris_person_ref": "HRIS-E61599C8"
+      },
+      "created_at": "2024-02-23 23:08:26",
+      "updated_at": "2024-12-08 21:58:21"
+    },
+    "EMP021": {
+      "employee_ref": "EMP021",
+      "user_profile_ref": "UPROF021",
+      "employee_number": "AI-2022-0021",
+      "worker_type": "full_time",
+      "hire_date": "2022-10-11",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP011",
+      "position_ref": "POS020",
+      "external_ids": {
+        "hris_person_ref": "HRIS-A1173719",
+        "asset_profile_ref": "ASSET-43F9CD6B"
+      },
+      "created_at": "2022-10-11 06:30:44",
+      "updated_at": "2024-05-03 07:23:52"
+    },
+    "EMP022": {
+      "employee_ref": "EMP022",
+      "user_profile_ref": "UPROF022",
+      "employee_number": "AI-2022-0022",
+      "worker_type": "full_time",
+      "hire_date": "2022-05-21",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP006",
+      "position_ref": "POS005",
+      "external_ids": {
+        "hris_person_ref": "HRIS-F8D8B7F1",
+        "asset_profile_ref": "ASSET-3A4045DD"
+      },
+      "created_at": "2022-05-21 15:34:11",
+      "updated_at": "2022-11-13 21:14:26"
+    },
+    "EMP023": {
+      "employee_ref": "EMP023",
+      "user_profile_ref": "UPROF023",
+      "employee_number": "AI-2019-0023",
+      "worker_type": "full_time",
+      "hire_date": "2019-03-22",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP006",
+      "position_ref": "POS006",
+      "external_ids": {
+        "hris_person_ref": "HRIS-7AFEB114"
+      },
+      "created_at": "2019-03-22 12:14:18",
+      "updated_at": "2023-12-31 13:35:28"
+    },
+    "EMP024": {
+      "employee_ref": "EMP024",
+      "user_profile_ref": "UPROF024",
+      "employee_number": "AI-2020-0024",
+      "worker_type": "full_time",
+      "hire_date": "2020-01-01",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP006",
+      "position_ref": "POS008",
+      "external_ids": {
+        "hris_person_ref": "HRIS-B89F7039"
+      },
+      "created_at": "2020-01-01 20:53:47",
+      "updated_at": "2021-10-29 12:25:35"
+    },
+    "EMP025": {
+      "employee_ref": "EMP025",
+      "user_profile_ref": "UPROF025",
+      "employee_number": "AI-2024-0025",
+      "worker_type": "full_time",
+      "hire_date": "2024-03-16",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP012",
+      "position_ref": "POS013",
+      "external_ids": {
+        "hris_person_ref": "HRIS-61542765",
+        "asset_profile_ref": "ASSET-3E00980E"
+      },
+      "created_at": "2024-03-16 00:52:11",
+      "updated_at": "2024-06-29 11:01:50"
+    },
+    "EMP026": {
+      "employee_ref": "EMP026",
+      "user_profile_ref": "UPROF026",
+      "employee_number": "AI-2019-0026",
+      "worker_type": "full_time",
+      "hire_date": "2019-08-19",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP007",
+      "position_ref": "POS010",
+      "external_ids": {
+        "hris_person_ref": "HRIS-B35556A5",
+        "asset_profile_ref": "ASSET-70E7E756"
+      },
+      "created_at": "2019-08-19 01:43:13",
+      "updated_at": "2020-05-17 19:52:19"
+    },
+    "EMP027": {
+      "employee_ref": "EMP027",
+      "user_profile_ref": "UPROF027",
+      "employee_number": "AI-2024-0027",
+      "worker_type": "full_time",
+      "hire_date": "2024-10-19",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP008",
+      "position_ref": "POS011",
+      "external_ids": {
+        "hris_person_ref": "HRIS-69B7C0FA"
+      },
+      "created_at": "2024-10-19 16:19:51",
+      "updated_at": "2024-11-13 21:36:24"
+    },
+    "EMP028": {
+      "employee_ref": "EMP028",
+      "user_profile_ref": "UPROF028",
+      "employee_number": "AI-2023-0028",
+      "worker_type": "full_time",
+      "hire_date": "2023-09-05",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP009",
+      "position_ref": "POS016",
+      "external_ids": {
+        "hris_person_ref": "HRIS-80773E33"
+      },
+      "created_at": "2023-09-05 18:45:34",
+      "updated_at": "2025-03-11 15:50:34"
+    },
+    "EMP029": {
+      "employee_ref": "EMP029",
+      "user_profile_ref": "UPROF029",
+      "employee_number": "AI-2024-0029",
+      "worker_type": "full_time",
+      "hire_date": "2024-06-04",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP010",
+      "position_ref": "POS019",
+      "external_ids": {
+        "hris_person_ref": "HRIS-78BB22A5"
+      },
+      "created_at": "2024-06-04 06:21:36",
+      "updated_at": "2024-07-21 09:32:24"
+    },
+    "EMP030": {
+      "employee_ref": "EMP030",
+      "user_profile_ref": "UPROF030",
+      "employee_number": "AI-2020-0030",
+      "worker_type": "full_time",
+      "hire_date": "2020-09-16",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP011",
+      "position_ref": "POS020",
+      "external_ids": {
+        "hris_person_ref": "HRIS-BA370623"
+      },
+      "created_at": "2020-09-16 10:10:56",
+      "updated_at": "2020-12-07 02:03:41"
+    },
+    "EMP031": {
+      "employee_ref": "EMP031",
+      "user_profile_ref": "UPROF031",
+      "employee_number": "AI-2022-0031",
+      "worker_type": "full_time",
+      "hire_date": "2022-01-26",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP006",
+      "position_ref": "POS003",
+      "external_ids": {
+        "hris_person_ref": "HRIS-84C86C46",
+        "asset_profile_ref": "ASSET-FF84FAEF"
+      },
+      "created_at": "2022-01-26 06:23:43",
+      "updated_at": "2024-06-01 05:17:01"
+    },
+    "EMP032": {
+      "employee_ref": "EMP032",
+      "user_profile_ref": "UPROF032",
+      "employee_number": "AI-2020-0032",
+      "worker_type": "full_time",
+      "hire_date": "2020-02-08",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP006",
+      "position_ref": "POS006",
+      "external_ids": {
+        "hris_person_ref": "HRIS-607796A3",
+        "asset_profile_ref": "ASSET-75AC824C"
+      },
+      "created_at": "2020-02-08 04:26:38",
+      "updated_at": "2023-06-29 05:24:12"
+    },
+    "EMP033": {
+      "employee_ref": "EMP033",
+      "user_profile_ref": "UPROF033",
+      "employee_number": "AI-2023-0033",
+      "worker_type": "full_time",
+      "hire_date": "2023-01-27",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP006",
+      "position_ref": "POS008",
+      "external_ids": {
+        "hris_person_ref": "HRIS-8BD88FCD"
+      },
+      "created_at": "2023-01-27 03:51:26",
+      "updated_at": "2023-05-21 17:28:59"
+    },
+    "EMP034": {
+      "employee_ref": "EMP034",
+      "user_profile_ref": "UPROF034",
+      "employee_number": "AI-2020-0034",
+      "worker_type": "full_time",
+      "hire_date": "2020-01-25",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP012",
+      "position_ref": "POS013",
+      "external_ids": {
+        "hris_person_ref": "HRIS-DE1E994A",
+        "asset_profile_ref": "ASSET-CDBC2C1C"
+      },
+      "created_at": "2020-01-25 09:02:31",
+      "updated_at": "2024-01-11 16:04:58"
+    },
+    "EMP035": {
+      "employee_ref": "EMP035",
+      "user_profile_ref": "UPROF035",
+      "employee_number": "AI-2024-0035",
+      "worker_type": "full_time",
+      "hire_date": "2024-10-14",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP007",
+      "position_ref": "POS009",
+      "external_ids": {
+        "hris_person_ref": "HRIS-7BF33A34"
+      },
+      "created_at": "2024-10-14 00:36:06",
+      "updated_at": "2025-05-16 03:07:19"
+    },
+    "EMP036": {
+      "employee_ref": "EMP036",
+      "user_profile_ref": "UPROF036",
+      "employee_number": "AI-2024-0036",
+      "worker_type": "full_time",
+      "hire_date": "2024-06-10",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP008",
+      "position_ref": "POS011",
+      "external_ids": {
+        "hris_person_ref": "HRIS-476CF68C",
+        "asset_profile_ref": "ASSET-F1053252"
+      },
+      "created_at": "2024-06-10 18:29:34",
+      "updated_at": "2025-05-30 10:56:46"
+    },
+    "EMP037": {
+      "employee_ref": "EMP037",
+      "user_profile_ref": "UPROF037",
+      "employee_number": "AI-2019-0037",
+      "worker_type": "full_time",
+      "hire_date": "2019-06-22",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP009",
+      "position_ref": "POS017",
+      "external_ids": {
+        "hris_person_ref": "HRIS-C56BAD4C",
+        "asset_profile_ref": "ASSET-B0B39015"
+      },
+      "created_at": "2019-06-22 03:52:53",
+      "updated_at": "2020-11-14 17:36:12"
+    },
+    "EMP038": {
+      "employee_ref": "EMP038",
+      "user_profile_ref": "UPROF038",
+      "employee_number": "AI-2020-0038",
+      "worker_type": "full_time",
+      "hire_date": "2020-05-18",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP010",
+      "position_ref": "POS019",
+      "external_ids": {
+        "hris_person_ref": "HRIS-7AD465A1",
+        "asset_profile_ref": "ASSET-EF3A6F27"
+      },
+      "created_at": "2020-05-18 05:07:55",
+      "updated_at": "2024-10-16 08:57:19"
+    },
+    "EMP039": {
+      "employee_ref": "EMP039",
+      "user_profile_ref": "UPROF039",
+      "employee_number": "AI-2021-0039",
+      "worker_type": "full_time",
+      "hire_date": "2021-06-01",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP011",
+      "position_ref": "POS020",
+      "external_ids": {
+        "hris_person_ref": "HRIS-49AC9087",
+        "asset_profile_ref": "ASSET-8B0E8EB1"
+      },
+      "created_at": "2021-06-01 12:10:37",
+      "updated_at": "2023-10-05 05:02:00"
+    },
+    "EMP040": {
+      "employee_ref": "EMP040",
+      "user_profile_ref": "UPROF040",
+      "employee_number": "AI-2021-0040",
+      "worker_type": "full_time",
+      "hire_date": "2021-05-02",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP006",
+      "position_ref": "POS001",
+      "external_ids": {
+        "hris_person_ref": "HRIS-65001423"
+      },
+      "created_at": "2021-05-02 16:33:08",
+      "updated_at": "2021-09-24 19:48:56"
+    },
+    "EMP041": {
+      "employee_ref": "EMP041",
+      "user_profile_ref": "UPROF041",
+      "employee_number": "AI-2023-0041",
+      "worker_type": "full_time",
+      "hire_date": "2023-04-11",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP006",
+      "position_ref": "POS007",
+      "external_ids": {
+        "hris_person_ref": "HRIS-C5E78B23"
+      },
+      "created_at": "2023-04-11 10:34:11",
+      "updated_at": "2023-12-06 23:20:55"
+    },
+    "EMP042": {
+      "employee_ref": "EMP042",
+      "user_profile_ref": "UPROF042",
+      "employee_number": "AI-2020-0042",
+      "worker_type": "full_time",
+      "hire_date": "2020-06-15",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP006",
+      "position_ref": "POS008",
+      "external_ids": {
+        "hris_person_ref": "HRIS-0AC4DE85",
+        "asset_profile_ref": "ASSET-143B45E3"
+      },
+      "created_at": "2020-06-15 21:38:36",
+      "updated_at": "2025-04-02 00:03:00"
+    },
+    "EMP043": {
+      "employee_ref": "EMP043",
+      "user_profile_ref": "UPROF043",
+      "employee_number": "AI-2019-0043",
+      "worker_type": "full_time",
+      "hire_date": "2019-05-08",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP012",
+      "position_ref": "POS013",
+      "external_ids": {
+        "hris_person_ref": "HRIS-A7EDC8D8",
+        "asset_profile_ref": "ASSET-36C7D6FA"
+      },
+      "created_at": "2019-05-08 23:40:11",
+      "updated_at": "2024-10-21 21:55:35"
+    },
+    "EMP044": {
+      "employee_ref": "EMP044",
+      "user_profile_ref": "UPROF044",
+      "employee_number": "AI-2023-0044",
+      "worker_type": "full_time",
+      "hire_date": "2023-11-27",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP007",
+      "position_ref": "POS009",
+      "external_ids": {
+        "hris_person_ref": "HRIS-4568F426"
+      },
+      "created_at": "2023-11-27 23:10:49",
+      "updated_at": "2024-10-16 12:55:14"
+    },
+    "EMP045": {
+      "employee_ref": "EMP045",
+      "user_profile_ref": "UPROF045",
+      "employee_number": "AI-2024-0045",
+      "worker_type": "full_time",
+      "hire_date": "2024-04-04",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP008",
+      "position_ref": "POS012",
+      "external_ids": {
+        "hris_person_ref": "HRIS-4588FC1B"
+      },
+      "created_at": "2024-04-04 09:30:16",
+      "updated_at": "2025-06-02 03:48:21"
+    },
+    "EMP046": {
+      "employee_ref": "EMP046",
+      "user_profile_ref": "UPROF046",
+      "employee_number": "AI-2021-0046",
+      "worker_type": "full_time",
+      "hire_date": "2021-06-18",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP009",
+      "position_ref": "POS017",
+      "external_ids": {
+        "hris_person_ref": "HRIS-BDAB07E7",
+        "asset_profile_ref": "ASSET-0CFEF683"
+      },
+      "created_at": "2021-06-18 23:29:03",
+      "updated_at": "2024-11-20 00:25:58"
+    },
+    "EMP047": {
+      "employee_ref": "EMP047",
+      "user_profile_ref": "UPROF047",
+      "employee_number": "AI-2024-0047",
+      "worker_type": "full_time",
+      "hire_date": "2024-10-29",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP010",
+      "position_ref": "POS018",
+      "external_ids": {
+        "hris_person_ref": "HRIS-39C59DF9",
+        "asset_profile_ref": "ASSET-19A692C9"
+      },
+      "created_at": "2024-10-29 04:37:08",
+      "updated_at": "2024-11-21 11:02:55"
+    },
+    "EMP048": {
+      "employee_ref": "EMP048",
+      "user_profile_ref": "UPROF048",
+      "employee_number": "AI-2020-0048",
+      "worker_type": "full_time",
+      "hire_date": "2020-05-06",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP011",
+      "position_ref": "POS020",
+      "external_ids": {
+        "hris_person_ref": "HRIS-78EF7666",
+        "asset_profile_ref": "ASSET-23310A28"
+      },
+      "created_at": "2020-05-06 03:19:57",
+      "updated_at": "2023-03-29 01:55:43"
+    },
+    "EMP049": {
+      "employee_ref": "EMP049",
+      "user_profile_ref": "UPROF049",
+      "employee_number": "AI-2024-0049",
+      "worker_type": "full_time",
+      "hire_date": "2024-02-28",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP006",
+      "position_ref": "POS002",
+      "external_ids": {
+        "hris_person_ref": "HRIS-FA585B27",
+        "asset_profile_ref": "ASSET-A723FB72"
+      },
+      "created_at": "2024-02-28 19:52:04",
+      "updated_at": "2024-11-23 02:02:29"
+    },
+    "EMP050": {
+      "employee_ref": "EMP050",
+      "user_profile_ref": "UPROF050",
+      "employee_number": "AI-2022-0050",
+      "worker_type": "full_time",
+      "hire_date": "2022-05-23",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP006",
+      "position_ref": "POS007",
+      "external_ids": {
+        "hris_person_ref": "HRIS-79C773A0"
+      },
+      "created_at": "2022-05-23 18:27:55",
+      "updated_at": "2022-11-04 17:17:21"
+    },
+    "EMP051": {
+      "employee_ref": "EMP051",
+      "user_profile_ref": "UPROF051",
+      "employee_number": "AI-2021-0051",
+      "worker_type": "full_time",
+      "hire_date": "2021-09-18",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP006",
+      "position_ref": "POS008",
+      "external_ids": {
+        "hris_person_ref": "HRIS-C1836315",
+        "asset_profile_ref": "ASSET-4910FADE"
+      },
+      "created_at": "2021-09-18 11:00:19",
+      "updated_at": "2022-10-08 14:05:28"
+    },
+    "EMP052": {
+      "employee_ref": "EMP052",
+      "user_profile_ref": "UPROF052",
+      "employee_number": "AI-2020-0052",
+      "worker_type": "full_time",
+      "hire_date": "2020-03-13",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP012",
+      "position_ref": "POS013",
+      "external_ids": {
+        "hris_person_ref": "HRIS-C4CB294F"
+      },
+      "created_at": "2020-03-13 16:35:53",
+      "updated_at": "2025-06-07 14:27:57"
+    },
+    "EMP053": {
+      "employee_ref": "EMP053",
+      "user_profile_ref": "UPROF053",
+      "employee_number": "AI-2022-0053",
+      "worker_type": "full_time",
+      "hire_date": "2022-07-23",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP007",
+      "position_ref": "POS010",
+      "external_ids": {
+        "hris_person_ref": "HRIS-3B72C86D"
+      },
+      "created_at": "2022-07-23 02:23:10",
+      "updated_at": "2025-01-05 12:07:11"
+    },
+    "EMP054": {
+      "employee_ref": "EMP054",
+      "user_profile_ref": "UPROF054",
+      "employee_number": "AI-2021-0054",
+      "worker_type": "full_time",
+      "hire_date": "2021-08-29",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP008",
+      "position_ref": "POS011",
+      "external_ids": {
+        "hris_person_ref": "HRIS-D9AF6E09",
+        "asset_profile_ref": "ASSET-EBE5841F"
+      },
+      "created_at": "2021-08-29 13:42:52",
+      "updated_at": "2023-11-07 04:02:50"
+    },
+    "EMP055": {
+      "employee_ref": "EMP055",
+      "user_profile_ref": "UPROF055",
+      "employee_number": "AI-2022-0055",
+      "worker_type": "full_time",
+      "hire_date": "2022-12-21",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP009",
+      "position_ref": "POS016",
+      "external_ids": {
+        "hris_person_ref": "HRIS-D66D4627",
+        "asset_profile_ref": "ASSET-094D916D"
+      },
+      "created_at": "2022-12-21 08:15:29",
+      "updated_at": "2023-05-10 05:31:53"
+    },
+    "EMP056": {
+      "employee_ref": "EMP056",
+      "user_profile_ref": "UPROF056",
+      "employee_number": "AI-2022-0056",
+      "worker_type": "full_time",
+      "hire_date": "2022-05-06",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP010",
+      "position_ref": "POS019",
+      "external_ids": {
+        "hris_person_ref": "HRIS-C9B7C9BC",
+        "asset_profile_ref": "ASSET-BFBEAC7A"
+      },
+      "created_at": "2022-05-06 18:15:45",
+      "updated_at": "2023-11-05 23:08:42"
+    },
+    "EMP057": {
+      "employee_ref": "EMP057",
+      "user_profile_ref": "UPROF057",
+      "employee_number": "AI-2019-0057",
+      "worker_type": "full_time",
+      "hire_date": "2019-06-01",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP011",
+      "position_ref": "POS020",
+      "external_ids": {
+        "hris_person_ref": "HRIS-4A1A81F5"
+      },
+      "created_at": "2019-06-01 04:12:48",
+      "updated_at": "2024-12-23 21:22:39"
+    },
+    "EMP058": {
+      "employee_ref": "EMP058",
+      "user_profile_ref": "UPROF058",
+      "employee_number": "AI-2024-0058",
+      "worker_type": "full_time",
+      "hire_date": "2024-09-20",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP006",
+      "position_ref": "POS001",
+      "external_ids": {
+        "hris_person_ref": "HRIS-4C636E95",
+        "asset_profile_ref": "ASSET-EDAF3766"
+      },
+      "created_at": "2024-09-20 10:46:15",
+      "updated_at": "2024-11-01 04:42:58"
+    },
+    "EMP059": {
+      "employee_ref": "EMP059",
+      "user_profile_ref": "UPROF059",
+      "employee_number": "AI-2022-0059",
+      "worker_type": "full_time",
+      "hire_date": "2022-08-31",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP006",
+      "position_ref": "POS007",
+      "external_ids": {
+        "hris_person_ref": "HRIS-74503887"
+      },
+      "created_at": "2022-08-31 20:18:12",
+      "updated_at": "2024-05-19 06:42:17"
+    },
+    "EMP060": {
+      "employee_ref": "EMP060",
+      "user_profile_ref": "UPROF060",
+      "employee_number": "AI-2022-0060",
+      "worker_type": "full_time",
+      "hire_date": "2022-02-10",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP006",
+      "position_ref": "POS008",
+      "external_ids": {
+        "hris_person_ref": "HRIS-8639BD41"
+      },
+      "created_at": "2022-02-10 22:16:00",
+      "updated_at": "2022-12-10 07:32:32"
+    },
+    "EMP061": {
+      "employee_ref": "EMP061",
+      "user_profile_ref": "UPROF061",
+      "employee_number": "AI-2022-0061",
+      "worker_type": "intern",
+      "hire_date": "2022-01-31",
+      "termination_date": null,
+      "employment_status": "probation",
+      "direct_manager_ref": "EMP012",
+      "position_ref": "POS014",
+      "external_ids": {
+        "hris_person_ref": "HRIS-225AED6C",
+        "asset_profile_ref": "ASSET-45D8A6AD"
+      },
+      "created_at": "2022-01-31 07:43:54",
+      "updated_at": "2023-09-23 11:51:35"
+    },
+    "EMP062": {
+      "employee_ref": "EMP062",
+      "user_profile_ref": "UPROF062",
+      "employee_number": "AI-2023-0062",
+      "worker_type": "intern",
+      "hire_date": "2023-04-16",
+      "termination_date": null,
+      "employment_status": "probation",
+      "direct_manager_ref": "EMP007",
+      "position_ref": "POS009",
+      "external_ids": {
+        "hris_person_ref": "HRIS-54A7B69B"
+      },
+      "created_at": "2023-04-16 16:01:03",
+      "updated_at": "2024-06-24 04:45:36"
+    },
+    "EMP063": {
+      "employee_ref": "EMP063",
+      "user_profile_ref": "UPROF063",
+      "employee_number": "AI-2024-0063",
+      "worker_type": "intern",
+      "hire_date": "2024-04-20",
+      "termination_date": null,
+      "employment_status": "probation",
+      "direct_manager_ref": "EMP008",
+      "position_ref": "POS012",
+      "external_ids": {
+        "hris_person_ref": "HRIS-A5F60735"
+      },
+      "created_at": "2024-04-20 08:15:37",
+      "updated_at": "2024-07-29 06:43:10"
+    },
+    "EMP064": {
+      "employee_ref": "EMP064",
+      "user_profile_ref": "UPROF064",
+      "employee_number": "AI-2019-0064",
+      "worker_type": "intern",
+      "hire_date": "2019-10-28",
+      "termination_date": null,
+      "employment_status": "probation",
+      "direct_manager_ref": "EMP009",
+      "position_ref": "POS016",
+      "external_ids": {
+        "hris_person_ref": "HRIS-039B058C",
+        "asset_profile_ref": "ASSET-4B86B5A1"
+      },
+      "created_at": "2019-10-28 09:05:38",
+      "updated_at": "2022-09-15 21:07:34"
+    },
+    "EMP065": {
+      "employee_ref": "EMP065",
+      "user_profile_ref": "UPROF065",
+      "employee_number": "AI-2023-0065",
+      "worker_type": "intern",
+      "hire_date": "2023-09-30",
+      "termination_date": null,
+      "employment_status": "probation",
+      "direct_manager_ref": "EMP010",
+      "position_ref": "POS019",
+      "external_ids": {
+        "hris_person_ref": "HRIS-317304B5"
+      },
+      "created_at": "2023-09-30 02:57:22",
+      "updated_at": "2024-03-02 17:39:50"
+    },
+    "EMP066": {
+      "employee_ref": "EMP066",
+      "user_profile_ref": "UPROF066",
+      "employee_number": "AI-2024-0066",
+      "worker_type": "campus_recruit",
+      "hire_date": "2024-02-15",
+      "termination_date": null,
+      "employment_status": "probation",
+      "direct_manager_ref": "EMP011",
+      "position_ref": "POS020",
+      "external_ids": {
+        "hris_person_ref": "HRIS-A383889A",
+        "asset_profile_ref": "ASSET-6D7DF5D0"
+      },
+      "created_at": "2024-02-15 18:53:37",
+      "updated_at": "2024-03-18 01:17:58"
+    },
+    "EMP067": {
+      "employee_ref": "EMP067",
+      "user_profile_ref": "UPROF067",
+      "employee_number": "AI-2019-0067",
+      "worker_type": "campus_recruit",
+      "hire_date": "2019-05-21",
+      "termination_date": null,
+      "employment_status": "probation",
+      "direct_manager_ref": "EMP006",
+      "position_ref": "POS001",
+      "external_ids": {
+        "hris_person_ref": "HRIS-669D01FF",
+        "asset_profile_ref": "ASSET-FB4FB88A"
+      },
+      "created_at": "2019-05-21 18:03:47",
+      "updated_at": "2022-03-21 11:22:40"
+    },
+    "EMP068": {
+      "employee_ref": "EMP068",
+      "user_profile_ref": "UPROF068",
+      "employee_number": "AI-2023-0068",
+      "worker_type": "campus_recruit",
+      "hire_date": "2023-01-11",
+      "termination_date": null,
+      "employment_status": "on_leave",
+      "direct_manager_ref": "EMP006",
+      "position_ref": "POS007",
+      "external_ids": {
+        "hris_person_ref": "HRIS-EF9240B6",
+        "asset_profile_ref": "ASSET-6231EE73"
+      },
+      "created_at": "2023-01-11 20:55:27",
+      "updated_at": "2025-03-22 16:22:15"
+    },
+    "EMP069": {
+      "employee_ref": "EMP069",
+      "user_profile_ref": "UPROF069",
+      "employee_number": "AI-2020-0069",
+      "worker_type": "campus_intern",
+      "hire_date": "2020-03-10",
+      "termination_date": null,
+      "employment_status": "on_leave",
+      "direct_manager_ref": "EMP006",
+      "position_ref": "POS008",
+      "external_ids": {
+        "hris_person_ref": "HRIS-4459BD6E"
+      },
+      "created_at": "2020-03-10 06:49:33",
+      "updated_at": "2022-11-24 22:08:47"
+    },
+    "EMP070": {
+      "employee_ref": "EMP070",
+      "user_profile_ref": "UPROF070",
+      "employee_number": "AI-2020-0070",
+      "worker_type": "campus_intern",
+      "hire_date": "2020-05-19",
+      "termination_date": "2023-01-28",
+      "employment_status": "terminated",
+      "direct_manager_ref": "EMP012",
+      "position_ref": "POS013",
+      "external_ids": {
+        "hris_person_ref": "HRIS-951C25D5"
+      },
+      "created_at": "2020-05-19 21:01:50",
+      "updated_at": "2022-12-05 13:33:36"
+    },
+    "EMP071": {
+      "employee_ref": "EMP071",
+      "user_profile_ref": "UPROF071",
+      "employee_number": "AI-2024-0071",
+      "worker_type": "contractor",
+      "hire_date": "2024-01-19",
+      "termination_date": "2026-06-05",
+      "employment_status": "terminated",
+      "direct_manager_ref": "EMP007",
+      "position_ref": "POS010",
+      "external_ids": {
+        "hris_person_ref": "HRIS-42F525B9"
+      },
+      "created_at": "2024-01-19 15:19:08",
+      "updated_at": "2025-03-08 02:51:09"
+    },
+    "EMP072": {
+      "employee_ref": "EMP072",
+      "user_profile_ref": "UPROF072",
+      "employee_number": "AI-2023-0072",
+      "worker_type": "contractor",
+      "hire_date": "2023-03-02",
+      "termination_date": "2026-10-24",
+      "employment_status": "terminated",
+      "direct_manager_ref": "EMP008",
+      "position_ref": "POS012",
+      "external_ids": {
+        "hris_person_ref": "HRIS-3C7E5368",
+        "asset_profile_ref": "ASSET-77242041"
+      },
+      "created_at": "2023-03-02 21:36:49",
+      "updated_at": "2023-03-28 17:53:03"
+    },
+    "EMP073": {
+      "employee_ref": "EMP073",
+      "user_profile_ref": "UPROF073",
+      "employee_number": "AI-2022-0073",
+      "worker_type": "contractor",
+      "hire_date": "2022-02-18",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP009",
+      "position_ref": "POS016",
+      "external_ids": {
+        "hris_person_ref": "HRIS-AFA28559"
+      },
+      "created_at": "2022-02-18 10:44:56",
+      "updated_at": "2024-08-13 04:44:31"
+    },
+    "EMP074": {
+      "employee_ref": "EMP074",
+      "user_profile_ref": "UPROF074",
+      "employee_number": "AI-2021-0074",
+      "worker_type": "contractor",
+      "hire_date": "2021-08-13",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP010",
+      "position_ref": "POS019",
+      "external_ids": {
+        "hris_person_ref": "HRIS-E346F415"
+      },
+      "created_at": "2021-08-13 22:07:19",
+      "updated_at": "2024-02-27 04:31:31"
+    },
+    "EMP075": {
+      "employee_ref": "EMP075",
+      "user_profile_ref": "UPROF075",
+      "employee_number": "AI-2023-0075",
+      "worker_type": "contractor",
+      "hire_date": "2023-01-14",
+      "termination_date": null,
+      "employment_status": "active",
+      "direct_manager_ref": "EMP011",
+      "position_ref": "POS020",
+      "external_ids": {
+        "hris_person_ref": "HRIS-B0B6DEDF"
+      },
+      "created_at": "2023-01-14 12:00:40",
+      "updated_at": "2024-01-02 23:26:14"
+    }
+  },
+  "role_permission": {
+    "RPRM001": {
+      "role_permission_ref": "RPRM001",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM001",
+      "granted_by_ref": "EMP001",
+      "granted_at": "2022-03-30 05:39:44",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-03-30 05:39:44",
+      "updated_at": "2024-04-14 14:05:28"
+    },
+    "RPRM002": {
+      "role_permission_ref": "RPRM002",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM002",
+      "granted_by_ref": "EMP005",
+      "granted_at": "2022-08-25 15:42:17",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-08-25 15:42:17",
+      "updated_at": "2024-04-07 06:13:40"
+    },
+    "RPRM003": {
+      "role_permission_ref": "RPRM003",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM003",
+      "granted_by_ref": "EMP002",
+      "granted_at": "2021-01-25 12:31:01",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-01-25 12:31:01",
+      "updated_at": "2022-01-01 22:55:15"
+    },
+    "RPRM004": {
+      "role_permission_ref": "RPRM004",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM004",
+      "granted_by_ref": "EMP004",
+      "granted_at": "2021-09-01 15:39:06",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-09-01 15:39:06",
+      "updated_at": "2023-06-14 04:54:46"
+    },
+    "RPRM005": {
+      "role_permission_ref": "RPRM005",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM005",
+      "granted_by_ref": "EMP002",
+      "granted_at": "2021-11-15 17:59:21",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-11-15 17:59:21",
+      "updated_at": "2024-01-04 07:10:34"
+    },
+    "RPRM006": {
+      "role_permission_ref": "RPRM006",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM006",
+      "granted_by_ref": "EMP004",
+      "granted_at": "2022-11-09 22:30:04",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-11-09 22:30:04",
+      "updated_at": "2023-02-14 16:30:56"
+    },
+    "RPRM007": {
+      "role_permission_ref": "RPRM007",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM007",
+      "granted_by_ref": "EMP005",
+      "granted_at": "2021-06-11 01:07:46",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-06-11 01:07:46",
+      "updated_at": "2023-10-30 08:30:14"
+    },
+    "RPRM008": {
+      "role_permission_ref": "RPRM008",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM008",
+      "granted_by_ref": "EMP004",
+      "granted_at": "2022-02-13 03:36:14",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-02-13 03:36:14",
+      "updated_at": "2023-09-21 12:38:59"
+    },
+    "RPRM009": {
+      "role_permission_ref": "RPRM009",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM009",
+      "granted_by_ref": "EMP002",
+      "granted_at": "2021-12-24 00:44:57",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-12-24 00:44:57",
+      "updated_at": "2024-03-31 05:10:00"
+    },
+    "RPRM010": {
+      "role_permission_ref": "RPRM010",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM010",
+      "granted_by_ref": "EMP003",
+      "granted_at": "2022-06-09 23:06:12",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-06-09 23:06:12",
+      "updated_at": "2025-05-02 11:08:58"
+    },
+    "RPRM011": {
+      "role_permission_ref": "RPRM011",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM011",
+      "granted_by_ref": "EMP003",
+      "granted_at": "2022-04-19 20:39:06",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-04-19 20:39:06",
+      "updated_at": "2024-05-11 00:11:39"
+    },
+    "RPRM012": {
+      "role_permission_ref": "RPRM012",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM012",
+      "granted_by_ref": "EMP002",
+      "granted_at": "2021-08-05 17:03:22",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-08-05 17:03:22",
+      "updated_at": "2023-12-20 16:02:04"
+    },
+    "RPRM013": {
+      "role_permission_ref": "RPRM013",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM013",
+      "granted_by_ref": "EMP003",
+      "granted_at": "2022-08-22 23:43:49",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-08-22 23:43:49",
+      "updated_at": "2023-11-14 22:35:07"
+    },
+    "RPRM014": {
+      "role_permission_ref": "RPRM014",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM014",
+      "granted_by_ref": "EMP004",
+      "granted_at": "2021-09-04 06:04:04",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-09-04 06:04:04",
+      "updated_at": "2023-09-19 14:26:09"
+    },
+    "RPRM015": {
+      "role_permission_ref": "RPRM015",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM015",
+      "granted_by_ref": "EMP003",
+      "granted_at": "2021-08-12 12:46:58",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-08-12 12:46:58",
+      "updated_at": "2022-02-17 20:34:43"
+    },
+    "RPRM016": {
+      "role_permission_ref": "RPRM016",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM016",
+      "granted_by_ref": "EMP005",
+      "granted_at": "2021-10-22 22:00:45",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-10-22 22:00:45",
+      "updated_at": "2023-06-27 19:14:54"
+    },
+    "RPRM017": {
+      "role_permission_ref": "RPRM017",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM017",
+      "granted_by_ref": "EMP002",
+      "granted_at": "2021-08-14 14:25:47",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-08-14 14:25:47",
+      "updated_at": "2021-10-18 22:46:55"
+    },
+    "RPRM018": {
+      "role_permission_ref": "RPRM018",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM018",
+      "granted_by_ref": "EMP001",
+      "granted_at": "2021-09-27 00:41:01",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-09-27 00:41:01",
+      "updated_at": "2023-08-15 05:39:37"
+    },
+    "RPRM019": {
+      "role_permission_ref": "RPRM019",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM019",
+      "granted_by_ref": "EMP004",
+      "granted_at": "2021-06-16 05:00:11",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-06-16 05:00:11",
+      "updated_at": "2022-04-26 02:38:39"
+    },
+    "RPRM020": {
+      "role_permission_ref": "RPRM020",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM020",
+      "granted_by_ref": "EMP003",
+      "granted_at": "2022-12-26 16:49:36",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-12-26 16:49:36",
+      "updated_at": "2025-05-17 18:22:37"
+    },
+    "RPRM021": {
+      "role_permission_ref": "RPRM021",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM021",
+      "granted_by_ref": "EMP002",
+      "granted_at": "2021-03-26 20:07:51",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-03-26 20:07:51",
+      "updated_at": "2023-11-08 06:14:03"
+    },
+    "RPRM022": {
+      "role_permission_ref": "RPRM022",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM022",
+      "granted_by_ref": "EMP002",
+      "granted_at": "2021-07-08 07:44:43",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-07-08 07:44:43",
+      "updated_at": "2021-09-25 04:25:03"
+    },
+    "RPRM023": {
+      "role_permission_ref": "RPRM023",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM023",
+      "granted_by_ref": "EMP005",
+      "granted_at": "2021-06-25 06:49:27",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-06-25 06:49:27",
+      "updated_at": "2024-03-12 07:07:18"
+    },
+    "RPRM024": {
+      "role_permission_ref": "RPRM024",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM024",
+      "granted_by_ref": "EMP001",
+      "granted_at": "2021-11-18 00:29:45",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-11-18 00:29:45",
+      "updated_at": "2023-04-15 02:44:04"
+    },
+    "RPRM025": {
+      "role_permission_ref": "RPRM025",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM025",
+      "granted_by_ref": "EMP001",
+      "granted_at": "2022-06-14 02:20:20",
+      "expires_at": "2026-01-15 05:39:27",
+      "status": "active",
+      "created_at": "2022-06-14 02:20:20",
+      "updated_at": "2023-01-13 15:28:53"
+    },
+    "RPRM026": {
+      "role_permission_ref": "RPRM026",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM026",
+      "granted_by_ref": "EMP002",
+      "granted_at": "2021-11-13 01:18:16",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-11-13 01:18:16",
+      "updated_at": "2024-08-23 06:54:43"
+    },
+    "RPRM027": {
+      "role_permission_ref": "RPRM027",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM027",
+      "granted_by_ref": "EMP004",
+      "granted_at": "2022-01-06 20:17:07",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-01-06 20:17:07",
+      "updated_at": "2024-10-13 10:07:32"
+    },
+    "RPRM028": {
+      "role_permission_ref": "RPRM028",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM028",
+      "granted_by_ref": "EMP003",
+      "granted_at": "2021-09-07 10:59:59",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-09-07 10:59:59",
+      "updated_at": "2022-11-24 20:03:17"
+    },
+    "RPRM029": {
+      "role_permission_ref": "RPRM029",
+      "role_ref": "ROLE001",
+      "permission_ref": "PERM029",
+      "granted_by_ref": "EMP001",
+      "granted_at": "2022-05-22 15:43:46",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-05-22 15:43:46",
+      "updated_at": "2024-10-30 12:58:20"
+    },
+    "RPRM030": {
+      "role_permission_ref": "RPRM030",
+      "role_ref": "ROLE002",
+      "permission_ref": "PERM001",
+      "granted_by_ref": "EMP001",
+      "granted_at": "2022-12-11 07:50:09",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-12-11 07:50:09",
+      "updated_at": "2023-09-09 06:43:25"
+    },
+    "RPRM031": {
+      "role_permission_ref": "RPRM031",
+      "role_ref": "ROLE002",
+      "permission_ref": "PERM002",
+      "granted_by_ref": "EMP002",
+      "granted_at": "2022-12-27 09:34:45",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-12-27 09:34:45",
+      "updated_at": "2023-02-21 20:25:36"
+    },
+    "RPRM032": {
+      "role_permission_ref": "RPRM032",
+      "role_ref": "ROLE002",
+      "permission_ref": "PERM003",
+      "granted_by_ref": "EMP004",
+      "granted_at": "2022-09-05 00:39:02",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-09-05 00:39:02",
+      "updated_at": "2024-10-13 13:54:03"
+    },
+    "RPRM033": {
+      "role_permission_ref": "RPRM033",
+      "role_ref": "ROLE002",
+      "permission_ref": "PERM004",
+      "granted_by_ref": "EMP003",
+      "granted_at": "2022-11-12 23:40:38",
+      "expires_at": "2026-01-22 01:47:17",
+      "status": "active",
+      "created_at": "2022-11-12 23:40:38",
+      "updated_at": "2023-01-10 04:31:03"
+    },
+    "RPRM034": {
+      "role_permission_ref": "RPRM034",
+      "role_ref": "ROLE002",
+      "permission_ref": "PERM005",
+      "granted_by_ref": "EMP005",
+      "granted_at": "2021-03-25 08:13:47",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-03-25 08:13:47",
+      "updated_at": "2025-03-06 15:32:06"
+    },
+    "RPRM035": {
+      "role_permission_ref": "RPRM035",
+      "role_ref": "ROLE002",
+      "permission_ref": "PERM006",
+      "granted_by_ref": "EMP003",
+      "granted_at": "2021-12-19 21:40:50",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-12-19 21:40:50",
+      "updated_at": "2024-09-11 03:32:24"
+    },
+    "RPRM036": {
+      "role_permission_ref": "RPRM036",
+      "role_ref": "ROLE002",
+      "permission_ref": "PERM007",
+      "granted_by_ref": "EMP004",
+      "granted_at": "2022-11-22 17:00:25",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-11-22 17:00:25",
+      "updated_at": "2023-06-19 04:20:36"
+    },
+    "RPRM037": {
+      "role_permission_ref": "RPRM037",
+      "role_ref": "ROLE002",
+      "permission_ref": "PERM008",
+      "granted_by_ref": "EMP004",
+      "granted_at": "2021-07-31 22:03:06",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-07-31 22:03:06",
+      "updated_at": "2022-05-27 10:34:53"
+    },
+    "RPRM038": {
+      "role_permission_ref": "RPRM038",
+      "role_ref": "ROLE002",
+      "permission_ref": "PERM009",
+      "granted_by_ref": "EMP003",
+      "granted_at": "2021-05-07 05:06:45",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-05-07 05:06:45",
+      "updated_at": "2024-06-15 23:12:47"
+    },
+    "RPRM039": {
+      "role_permission_ref": "RPRM039",
+      "role_ref": "ROLE002",
+      "permission_ref": "PERM019",
+      "granted_by_ref": "EMP003",
+      "granted_at": "2022-07-13 03:38:27",
+      "expires_at": "2025-10-24 10:06:47",
+      "status": "active",
+      "created_at": "2022-07-13 03:38:27",
+      "updated_at": "2023-04-28 09:38:43"
+    },
+    "RPRM040": {
+      "role_permission_ref": "RPRM040",
+      "role_ref": "ROLE003",
+      "permission_ref": "PERM002",
+      "granted_by_ref": "EMP003",
+      "granted_at": "2022-03-18 00:12:32",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-03-18 00:12:32",
+      "updated_at": "2025-01-28 15:42:20"
+    },
+    "RPRM041": {
+      "role_permission_ref": "RPRM041",
+      "role_ref": "ROLE003",
+      "permission_ref": "PERM007",
+      "granted_by_ref": "EMP002",
+      "granted_at": "2022-04-20 13:01:02",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-04-20 13:01:02",
+      "updated_at": "2025-01-06 18:26:26"
+    },
+    "RPRM042": {
+      "role_permission_ref": "RPRM042",
+      "role_ref": "ROLE003",
+      "permission_ref": "PERM011",
+      "granted_by_ref": "EMP004",
+      "granted_at": "2022-02-05 05:31:39",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-02-05 05:31:39",
+      "updated_at": "2023-06-29 15:31:10"
+    },
+    "RPRM043": {
+      "role_permission_ref": "RPRM043",
+      "role_ref": "ROLE003",
+      "permission_ref": "PERM027",
+      "granted_by_ref": "EMP001",
+      "granted_at": "2021-05-24 12:34:16",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-05-24 12:34:16",
+      "updated_at": "2021-12-28 22:57:42"
+    },
+    "RPRM044": {
+      "role_permission_ref": "RPRM044",
+      "role_ref": "ROLE003",
+      "permission_ref": "PERM028",
+      "granted_by_ref": "EMP002",
+      "granted_at": "2021-01-06 07:19:21",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-01-06 07:19:21",
+      "updated_at": "2023-03-27 12:52:55"
+    },
+    "RPRM045": {
+      "role_permission_ref": "RPRM045",
+      "role_ref": "ROLE004",
+      "permission_ref": "PERM002",
+      "granted_by_ref": "EMP004",
+      "granted_at": "2022-08-09 11:02:32",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-08-09 11:02:32",
+      "updated_at": "2023-09-28 05:18:43"
+    },
+    "RPRM046": {
+      "role_permission_ref": "RPRM046",
+      "role_ref": "ROLE004",
+      "permission_ref": "PERM011",
+      "granted_by_ref": "EMP003",
+      "granted_at": "2022-03-29 09:51:19",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-03-29 09:51:19",
+      "updated_at": "2025-04-25 08:52:09"
+    },
+    "RPRM047": {
+      "role_permission_ref": "RPRM047",
+      "role_ref": "ROLE004",
+      "permission_ref": "PERM027",
+      "granted_by_ref": "EMP003",
+      "granted_at": "2022-05-23 17:32:28",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-05-23 17:32:28",
+      "updated_at": "2023-12-03 06:36:52"
+    },
+    "RPRM048": {
+      "role_permission_ref": "RPRM048",
+      "role_ref": "ROLE005",
+      "permission_ref": "PERM002",
+      "granted_by_ref": "EMP001",
+      "granted_at": "2022-06-03 16:26:07",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-06-03 16:26:07",
+      "updated_at": "2022-12-04 08:10:37"
+    },
+    "RPRM049": {
+      "role_permission_ref": "RPRM049",
+      "role_ref": "ROLE005",
+      "permission_ref": "PERM003",
+      "granted_by_ref": "EMP002",
+      "granted_at": "2021-11-11 21:30:48",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-11-11 21:30:48",
+      "updated_at": "2024-10-12 16:11:30"
+    },
+    "RPRM050": {
+      "role_permission_ref": "RPRM050",
+      "role_ref": "ROLE005",
+      "permission_ref": "PERM007",
+      "granted_by_ref": "EMP003",
+      "granted_at": "2022-06-21 03:56:43",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-06-21 03:56:43",
+      "updated_at": "2022-12-20 13:31:17"
+    },
+    "RPRM051": {
+      "role_permission_ref": "RPRM051",
+      "role_ref": "ROLE005",
+      "permission_ref": "PERM008",
+      "granted_by_ref": "EMP003",
+      "granted_at": "2021-10-13 11:30:53",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-10-13 11:30:53",
+      "updated_at": "2024-05-25 06:24:44"
+    },
+    "RPRM052": {
+      "role_permission_ref": "RPRM052",
+      "role_ref": "ROLE005",
+      "permission_ref": "PERM011",
+      "granted_by_ref": "EMP002",
+      "granted_at": "2022-01-07 09:57:24",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-01-07 09:57:24",
+      "updated_at": "2022-09-02 09:07:42"
+    },
+    "RPRM053": {
+      "role_permission_ref": "RPRM053",
+      "role_ref": "ROLE005",
+      "permission_ref": "PERM012",
+      "granted_by_ref": "EMP005",
+      "granted_at": "2021-10-18 04:52:18",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-10-18 04:52:18",
+      "updated_at": "2023-07-26 04:43:11"
+    },
+    "RPRM054": {
+      "role_permission_ref": "RPRM054",
+      "role_ref": "ROLE006",
+      "permission_ref": "PERM002",
+      "granted_by_ref": "EMP004",
+      "granted_at": "2022-08-12 06:02:13",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-08-12 06:02:13",
+      "updated_at": "2024-11-24 06:08:55"
+    },
+    "RPRM055": {
+      "role_permission_ref": "RPRM055",
+      "role_ref": "ROLE006",
+      "permission_ref": "PERM010",
+      "granted_by_ref": "EMP002",
+      "granted_at": "2022-08-15 18:05:33",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-08-15 18:05:33",
+      "updated_at": "2023-09-04 04:16:20"
+    },
+    "RPRM056": {
+      "role_permission_ref": "RPRM056",
+      "role_ref": "ROLE006",
+      "permission_ref": "PERM011",
+      "granted_by_ref": "EMP005",
+      "granted_at": "2022-11-10 04:25:01",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-11-10 04:25:01",
+      "updated_at": "2023-03-17 08:45:47"
+    },
+    "RPRM057": {
+      "role_permission_ref": "RPRM057",
+      "role_ref": "ROLE006",
+      "permission_ref": "PERM012",
+      "granted_by_ref": "EMP005",
+      "granted_at": "2022-07-01 15:09:05",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-07-01 15:09:05",
+      "updated_at": "2024-01-14 15:28:08"
+    },
+    "RPRM058": {
+      "role_permission_ref": "RPRM058",
+      "role_ref": "ROLE006",
+      "permission_ref": "PERM013",
+      "granted_by_ref": "EMP005",
+      "granted_at": "2021-03-29 03:43:24",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-03-29 03:43:24",
+      "updated_at": "2021-07-03 02:13:48"
+    },
+    "RPRM059": {
+      "role_permission_ref": "RPRM059",
+      "role_ref": "ROLE007",
+      "permission_ref": "PERM002",
+      "granted_by_ref": "EMP005",
+      "granted_at": "2021-06-07 00:28:31",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-06-07 00:28:31",
+      "updated_at": "2023-11-13 16:20:28"
+    },
+    "RPRM060": {
+      "role_permission_ref": "RPRM060",
+      "role_ref": "ROLE007",
+      "permission_ref": "PERM005",
+      "granted_by_ref": "EMP002",
+      "granted_at": "2021-09-12 20:33:21",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-09-12 20:33:21",
+      "updated_at": "2025-05-02 06:06:11"
+    },
+    "RPRM061": {
+      "role_permission_ref": "RPRM061",
+      "role_ref": "ROLE008",
+      "permission_ref": "PERM019",
+      "granted_by_ref": "EMP001",
+      "granted_at": "2022-06-13 09:37:20",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-06-13 09:37:20",
+      "updated_at": "2023-04-28 11:32:40"
+    },
+    "RPRM062": {
+      "role_permission_ref": "RPRM062",
+      "role_ref": "ROLE008",
+      "permission_ref": "PERM020",
+      "granted_by_ref": "EMP004",
+      "granted_at": "2021-03-12 15:16:30",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-03-12 15:16:30",
+      "updated_at": "2024-12-25 16:52:18"
+    }
+  },
+  "department_member": {
+    "DMBR001": {
+      "department_member_ref": "DMBR001",
+      "department_ref": "DEPT001",
+      "employee_ref": "EMP001",
+      "membership_role": "head",
+      "is_primary": true,
+      "joined_at": "2024-05-19 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-05-19 00:00:00",
+      "updated_at": "2024-08-26 11:37:14"
+    },
+    "DMBR002": {
+      "department_member_ref": "DMBR002",
+      "department_ref": "DEPT001",
+      "employee_ref": "EMP002",
+      "membership_role": "deputy_head",
+      "is_primary": true,
+      "joined_at": "2022-11-25 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-11-25 00:00:00",
+      "updated_at": "2024-10-31 14:40:53"
+    },
+    "DMBR003": {
+      "department_member_ref": "DMBR003",
+      "department_ref": "DEPT001",
+      "employee_ref": "EMP003",
+      "membership_role": "deputy_head",
+      "is_primary": true,
+      "joined_at": "2020-09-11 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2020-09-11 00:00:00",
+      "updated_at": "2025-06-13 02:56:20"
+    },
+    "DMBR004": {
+      "department_member_ref": "DMBR004",
+      "department_ref": "DEPT001",
+      "employee_ref": "EMP004",
+      "membership_role": "deputy_head",
+      "is_primary": true,
+      "joined_at": "2023-05-24 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-05-24 00:00:00",
+      "updated_at": "2024-10-24 13:17:56"
+    },
+    "DMBR005": {
+      "department_member_ref": "DMBR005",
+      "department_ref": "DEPT001",
+      "employee_ref": "EMP005",
+      "membership_role": "deputy_head",
+      "is_primary": true,
+      "joined_at": "2024-07-04 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-07-04 00:00:00",
+      "updated_at": "2025-04-08 21:27:32"
+    },
+    "DMBR006": {
+      "department_member_ref": "DMBR006",
+      "department_ref": "DEPT002",
+      "employee_ref": "EMP006",
+      "membership_role": "head",
+      "is_primary": true,
+      "joined_at": "2024-07-30 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-07-30 00:00:00",
+      "updated_at": "2024-12-30 18:30:34"
+    },
+    "DMBR007": {
+      "department_member_ref": "DMBR007",
+      "department_ref": "DEPT003",
+      "employee_ref": "EMP007",
+      "membership_role": "head",
+      "is_primary": true,
+      "joined_at": "2022-02-19 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-02-19 00:00:00",
+      "updated_at": "2022-02-21 16:25:29"
+    },
+    "DMBR008": {
+      "department_member_ref": "DMBR008",
+      "department_ref": "DEPT004",
+      "employee_ref": "EMP008",
+      "membership_role": "head",
+      "is_primary": true,
+      "joined_at": "2022-09-29 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-09-29 00:00:00",
+      "updated_at": "2025-03-14 09:00:24"
+    },
+    "DMBR009": {
+      "department_member_ref": "DMBR009",
+      "department_ref": "DEPT005",
+      "employee_ref": "EMP009",
+      "membership_role": "head",
+      "is_primary": true,
+      "joined_at": "2023-03-22 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-03-22 00:00:00",
+      "updated_at": "2023-05-31 08:31:34"
+    },
+    "DMBR010": {
+      "department_member_ref": "DMBR010",
+      "department_ref": "DEPT006",
+      "employee_ref": "EMP010",
+      "membership_role": "head",
+      "is_primary": true,
+      "joined_at": "2021-04-11 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-04-11 00:00:00",
+      "updated_at": "2022-09-25 04:58:01"
+    },
+    "DMBR011": {
+      "department_member_ref": "DMBR011",
+      "department_ref": "DEPT007",
+      "employee_ref": "EMP011",
+      "membership_role": "head",
+      "is_primary": true,
+      "joined_at": "2022-08-30 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-08-30 00:00:00",
+      "updated_at": "2024-12-17 16:02:15"
+    },
+    "DMBR012": {
+      "department_member_ref": "DMBR012",
+      "department_ref": "DEPT008",
+      "employee_ref": "EMP012",
+      "membership_role": "head",
+      "is_primary": true,
+      "joined_at": "2023-08-22 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-08-22 00:00:00",
+      "updated_at": "2023-10-14 14:36:36"
+    },
+    "DMBR013": {
+      "department_member_ref": "DMBR013",
+      "department_ref": "DEPT009",
+      "employee_ref": "EMP013",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2021-10-18 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-10-18 00:00:00",
+      "updated_at": "2021-12-03 07:09:42"
+    },
+    "DMBR014": {
+      "department_member_ref": "DMBR014",
+      "department_ref": "DEPT010",
+      "employee_ref": "EMP014",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2022-08-18 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-08-18 00:00:00",
+      "updated_at": "2024-05-12 03:39:51"
+    },
+    "DMBR015": {
+      "department_member_ref": "DMBR015",
+      "department_ref": "DEPT011",
+      "employee_ref": "EMP015",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2022-01-01 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-01-01 00:00:00",
+      "updated_at": "2025-04-08 13:21:23"
+    },
+    "DMBR016": {
+      "department_member_ref": "DMBR016",
+      "department_ref": "DEPT012",
+      "employee_ref": "EMP016",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2019-06-29 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2019-06-29 00:00:00",
+      "updated_at": "2024-12-11 03:34:15"
+    },
+    "DMBR017": {
+      "department_member_ref": "DMBR017",
+      "department_ref": "DEPT003",
+      "employee_ref": "EMP017",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2024-10-14 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-10-14 00:00:00",
+      "updated_at": "2025-03-05 10:13:43"
+    },
+    "DMBR018": {
+      "department_member_ref": "DMBR018",
+      "department_ref": "DEPT004",
+      "employee_ref": "EMP018",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2024-10-10 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-10-10 00:00:00",
+      "updated_at": "2025-03-30 04:40:08"
+    },
+    "DMBR019": {
+      "department_member_ref": "DMBR019",
+      "department_ref": "DEPT005",
+      "employee_ref": "EMP019",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2024-06-30 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-06-30 00:00:00",
+      "updated_at": "2024-11-19 21:16:12"
+    },
+    "DMBR020": {
+      "department_member_ref": "DMBR020",
+      "department_ref": "DEPT006",
+      "employee_ref": "EMP020",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2024-02-23 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-02-23 00:00:00",
+      "updated_at": "2025-04-16 21:17:08"
+    },
+    "DMBR021": {
+      "department_member_ref": "DMBR021",
+      "department_ref": "DEPT007",
+      "employee_ref": "EMP021",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2022-10-12 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-10-12 00:00:00",
+      "updated_at": "2024-04-03 05:48:04"
+    },
+    "DMBR022": {
+      "department_member_ref": "DMBR022",
+      "department_ref": "DEPT009",
+      "employee_ref": "EMP022",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2022-05-21 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-05-21 00:00:00",
+      "updated_at": "2023-02-22 05:58:44"
+    },
+    "DMBR023": {
+      "department_member_ref": "DMBR023",
+      "department_ref": "DEPT010",
+      "employee_ref": "EMP023",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2019-03-25 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2019-03-25 00:00:00",
+      "updated_at": "2023-09-20 01:21:29"
+    },
+    "DMBR024": {
+      "department_member_ref": "DMBR024",
+      "department_ref": "DEPT011",
+      "employee_ref": "EMP024",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2020-01-02 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2020-01-02 00:00:00",
+      "updated_at": "2021-11-22 20:59:09"
+    },
+    "DMBR025": {
+      "department_member_ref": "DMBR025",
+      "department_ref": "DEPT012",
+      "employee_ref": "EMP025",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2024-03-16 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-03-16 00:00:00",
+      "updated_at": "2024-04-02 15:49:01"
+    },
+    "DMBR026": {
+      "department_member_ref": "DMBR026",
+      "department_ref": "DEPT003",
+      "employee_ref": "EMP026",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2019-08-21 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2019-08-21 00:00:00",
+      "updated_at": "2023-07-27 12:04:22"
+    },
+    "DMBR027": {
+      "department_member_ref": "DMBR027",
+      "department_ref": "DEPT004",
+      "employee_ref": "EMP027",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2024-10-22 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-10-22 00:00:00",
+      "updated_at": "2025-05-13 13:58:50"
+    },
+    "DMBR028": {
+      "department_member_ref": "DMBR028",
+      "department_ref": "DEPT005",
+      "employee_ref": "EMP028",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2023-09-08 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-09-08 00:00:00",
+      "updated_at": "2025-06-05 12:33:03"
+    },
+    "DMBR029": {
+      "department_member_ref": "DMBR029",
+      "department_ref": "DEPT006",
+      "employee_ref": "EMP029",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2024-06-05 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-06-05 00:00:00",
+      "updated_at": "2024-09-08 02:58:45"
+    },
+    "DMBR030": {
+      "department_member_ref": "DMBR030",
+      "department_ref": "DEPT007",
+      "employee_ref": "EMP030",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2020-09-19 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2020-09-19 00:00:00",
+      "updated_at": "2023-08-27 11:32:27"
+    },
+    "DMBR031": {
+      "department_member_ref": "DMBR031",
+      "department_ref": "DEPT009",
+      "employee_ref": "EMP031",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2022-01-27 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-01-27 00:00:00",
+      "updated_at": "2023-03-30 04:58:00"
+    },
+    "DMBR032": {
+      "department_member_ref": "DMBR032",
+      "department_ref": "DEPT010",
+      "employee_ref": "EMP032",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2020-02-09 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2020-02-09 00:00:00",
+      "updated_at": "2021-01-23 14:18:23"
+    },
+    "DMBR033": {
+      "department_member_ref": "DMBR033",
+      "department_ref": "DEPT011",
+      "employee_ref": "EMP033",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2023-01-27 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-01-27 00:00:00",
+      "updated_at": "2024-11-08 06:25:20"
+    },
+    "DMBR034": {
+      "department_member_ref": "DMBR034",
+      "department_ref": "DEPT012",
+      "employee_ref": "EMP034",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2020-01-25 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2020-01-25 00:00:00",
+      "updated_at": "2022-02-10 17:22:46"
+    },
+    "DMBR035": {
+      "department_member_ref": "DMBR035",
+      "department_ref": "DEPT003",
+      "employee_ref": "EMP035",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2024-10-15 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-10-15 00:00:00",
+      "updated_at": "2024-11-09 03:11:48"
+    },
+    "DMBR036": {
+      "department_member_ref": "DMBR036",
+      "department_ref": "DEPT004",
+      "employee_ref": "EMP036",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2024-06-10 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-06-10 00:00:00",
+      "updated_at": "2025-01-26 15:57:38"
+    },
+    "DMBR037": {
+      "department_member_ref": "DMBR037",
+      "department_ref": "DEPT005",
+      "employee_ref": "EMP037",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2019-06-22 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2019-06-22 00:00:00",
+      "updated_at": "2023-04-09 01:03:30"
+    },
+    "DMBR038": {
+      "department_member_ref": "DMBR038",
+      "department_ref": "DEPT006",
+      "employee_ref": "EMP038",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2020-05-18 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2020-05-18 00:00:00",
+      "updated_at": "2022-06-17 08:42:03"
+    },
+    "DMBR039": {
+      "department_member_ref": "DMBR039",
+      "department_ref": "DEPT007",
+      "employee_ref": "EMP039",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2021-06-01 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-06-01 00:00:00",
+      "updated_at": "2023-02-15 21:32:21"
+    },
+    "DMBR040": {
+      "department_member_ref": "DMBR040",
+      "department_ref": "DEPT009",
+      "employee_ref": "EMP040",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2021-05-05 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-05-05 00:00:00",
+      "updated_at": "2022-05-01 00:48:05"
+    },
+    "DMBR041": {
+      "department_member_ref": "DMBR041",
+      "department_ref": "DEPT010",
+      "employee_ref": "EMP041",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2023-04-12 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-04-12 00:00:00",
+      "updated_at": "2023-07-07 16:23:10"
+    },
+    "DMBR042": {
+      "department_member_ref": "DMBR042",
+      "department_ref": "DEPT011",
+      "employee_ref": "EMP042",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2020-06-16 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2020-06-16 00:00:00",
+      "updated_at": "2024-09-27 13:11:51"
+    },
+    "DMBR043": {
+      "department_member_ref": "DMBR043",
+      "department_ref": "DEPT012",
+      "employee_ref": "EMP043",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2019-05-10 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2019-05-10 00:00:00",
+      "updated_at": "2021-05-04 12:20:53"
+    },
+    "DMBR044": {
+      "department_member_ref": "DMBR044",
+      "department_ref": "DEPT003",
+      "employee_ref": "EMP044",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2023-11-29 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-11-29 00:00:00",
+      "updated_at": "2025-02-17 12:54:38"
+    },
+    "DMBR045": {
+      "department_member_ref": "DMBR045",
+      "department_ref": "DEPT004",
+      "employee_ref": "EMP045",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2024-04-06 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-04-06 00:00:00",
+      "updated_at": "2024-10-05 00:12:40"
+    },
+    "DMBR046": {
+      "department_member_ref": "DMBR046",
+      "department_ref": "DEPT005",
+      "employee_ref": "EMP046",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2021-06-20 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-06-20 00:00:00",
+      "updated_at": "2025-03-10 05:16:41"
+    },
+    "DMBR047": {
+      "department_member_ref": "DMBR047",
+      "department_ref": "DEPT006",
+      "employee_ref": "EMP047",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2024-10-30 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-10-30 00:00:00",
+      "updated_at": "2025-05-19 10:24:43"
+    },
+    "DMBR048": {
+      "department_member_ref": "DMBR048",
+      "department_ref": "DEPT007",
+      "employee_ref": "EMP048",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2020-05-07 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2020-05-07 00:00:00",
+      "updated_at": "2023-11-11 21:17:02"
+    },
+    "DMBR049": {
+      "department_member_ref": "DMBR049",
+      "department_ref": "DEPT009",
+      "employee_ref": "EMP049",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2024-03-01 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-03-01 00:00:00",
+      "updated_at": "2024-09-28 17:14:27"
+    },
+    "DMBR050": {
+      "department_member_ref": "DMBR050",
+      "department_ref": "DEPT010",
+      "employee_ref": "EMP050",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2022-05-23 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-05-23 00:00:00",
+      "updated_at": "2024-10-03 19:57:20"
+    },
+    "DMBR051": {
+      "department_member_ref": "DMBR051",
+      "department_ref": "DEPT011",
+      "employee_ref": "EMP051",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2021-09-19 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-09-19 00:00:00",
+      "updated_at": "2024-05-17 10:42:56"
+    },
+    "DMBR052": {
+      "department_member_ref": "DMBR052",
+      "department_ref": "DEPT012",
+      "employee_ref": "EMP052",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2020-03-16 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2020-03-16 00:00:00",
+      "updated_at": "2024-12-03 23:13:47"
+    },
+    "DMBR053": {
+      "department_member_ref": "DMBR053",
+      "department_ref": "DEPT003",
+      "employee_ref": "EMP053",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2022-07-26 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-07-26 00:00:00",
+      "updated_at": "2022-10-03 19:57:56"
+    },
+    "DMBR054": {
+      "department_member_ref": "DMBR054",
+      "department_ref": "DEPT004",
+      "employee_ref": "EMP054",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2021-08-31 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-08-31 00:00:00",
+      "updated_at": "2024-05-24 08:33:40"
+    },
+    "DMBR055": {
+      "department_member_ref": "DMBR055",
+      "department_ref": "DEPT005",
+      "employee_ref": "EMP055",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2022-12-24 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-12-24 00:00:00",
+      "updated_at": "2025-03-14 17:24:00"
+    },
+    "DMBR056": {
+      "department_member_ref": "DMBR056",
+      "department_ref": "DEPT006",
+      "employee_ref": "EMP056",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2022-05-08 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-05-08 00:00:00",
+      "updated_at": "2025-04-21 16:15:32"
+    },
+    "DMBR057": {
+      "department_member_ref": "DMBR057",
+      "department_ref": "DEPT007",
+      "employee_ref": "EMP057",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2019-06-04 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2019-06-04 00:00:00",
+      "updated_at": "2022-11-20 10:00:38"
+    },
+    "DMBR058": {
+      "department_member_ref": "DMBR058",
+      "department_ref": "DEPT009",
+      "employee_ref": "EMP058",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2024-09-21 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-09-21 00:00:00",
+      "updated_at": "2025-01-14 11:09:48"
+    },
+    "DMBR059": {
+      "department_member_ref": "DMBR059",
+      "department_ref": "DEPT010",
+      "employee_ref": "EMP059",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2022-09-03 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-09-03 00:00:00",
+      "updated_at": "2023-06-12 15:30:18"
+    },
+    "DMBR060": {
+      "department_member_ref": "DMBR060",
+      "department_ref": "DEPT011",
+      "employee_ref": "EMP060",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2022-02-13 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-02-13 00:00:00",
+      "updated_at": "2023-02-19 07:56:42"
+    },
+    "DMBR061": {
+      "department_member_ref": "DMBR061",
+      "department_ref": "DEPT012",
+      "employee_ref": "EMP061",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2022-02-01 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-02-01 00:00:00",
+      "updated_at": "2023-05-13 04:15:58"
+    },
+    "DMBR062": {
+      "department_member_ref": "DMBR062",
+      "department_ref": "DEPT003",
+      "employee_ref": "EMP062",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2023-04-17 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-04-17 00:00:00",
+      "updated_at": "2025-04-04 06:49:44"
+    },
+    "DMBR063": {
+      "department_member_ref": "DMBR063",
+      "department_ref": "DEPT004",
+      "employee_ref": "EMP063",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2024-04-20 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-04-20 00:00:00",
+      "updated_at": "2025-03-06 12:51:57"
+    },
+    "DMBR064": {
+      "department_member_ref": "DMBR064",
+      "department_ref": "DEPT005",
+      "employee_ref": "EMP064",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2019-10-31 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2019-10-31 00:00:00",
+      "updated_at": "2024-07-24 10:18:44"
+    },
+    "DMBR065": {
+      "department_member_ref": "DMBR065",
+      "department_ref": "DEPT006",
+      "employee_ref": "EMP065",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2023-10-01 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-10-01 00:00:00",
+      "updated_at": "2024-07-27 16:39:21"
+    },
+    "DMBR066": {
+      "department_member_ref": "DMBR066",
+      "department_ref": "DEPT007",
+      "employee_ref": "EMP066",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2024-02-16 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-02-16 00:00:00",
+      "updated_at": "2024-08-31 01:27:48"
+    },
+    "DMBR067": {
+      "department_member_ref": "DMBR067",
+      "department_ref": "DEPT009",
+      "employee_ref": "EMP067",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2019-05-22 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2019-05-22 00:00:00",
+      "updated_at": "2022-03-12 02:11:36"
+    },
+    "DMBR068": {
+      "department_member_ref": "DMBR068",
+      "department_ref": "DEPT010",
+      "employee_ref": "EMP068",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2023-01-11 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-01-11 00:00:00",
+      "updated_at": "2024-12-09 17:16:05"
+    },
+    "DMBR069": {
+      "department_member_ref": "DMBR069",
+      "department_ref": "DEPT011",
+      "employee_ref": "EMP069",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2020-03-12 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2020-03-12 00:00:00",
+      "updated_at": "2020-12-22 06:36:54"
+    },
+    "DMBR070": {
+      "department_member_ref": "DMBR070",
+      "department_ref": "DEPT012",
+      "employee_ref": "EMP070",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2020-05-20 00:00:00",
+      "left_at": "2023-01-28 18:00:00",
+      "status": "removed",
+      "created_at": "2020-05-20 00:00:00",
+      "updated_at": "2020-10-26 02:50:58"
+    },
+    "DMBR071": {
+      "department_member_ref": "DMBR071",
+      "department_ref": "DEPT003",
+      "employee_ref": "EMP071",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2024-01-21 00:00:00",
+      "left_at": "2026-06-05 18:00:00",
+      "status": "removed",
+      "created_at": "2024-01-21 00:00:00",
+      "updated_at": "2024-11-06 22:55:14"
+    },
+    "DMBR072": {
+      "department_member_ref": "DMBR072",
+      "department_ref": "DEPT004",
+      "employee_ref": "EMP072",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2023-03-02 00:00:00",
+      "left_at": "2026-10-24 18:00:00",
+      "status": "removed",
+      "created_at": "2023-03-02 00:00:00",
+      "updated_at": "2023-06-23 01:35:47"
+    },
+    "DMBR073": {
+      "department_member_ref": "DMBR073",
+      "department_ref": "DEPT005",
+      "employee_ref": "EMP073",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2022-02-19 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-02-19 00:00:00",
+      "updated_at": "2025-05-16 06:06:02"
+    },
+    "DMBR074": {
+      "department_member_ref": "DMBR074",
+      "department_ref": "DEPT006",
+      "employee_ref": "EMP074",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2021-08-14 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-08-14 00:00:00",
+      "updated_at": "2023-08-27 17:06:41"
+    },
+    "DMBR075": {
+      "department_member_ref": "DMBR075",
+      "department_ref": "DEPT007",
+      "employee_ref": "EMP075",
+      "membership_role": "member",
+      "is_primary": true,
+      "joined_at": "2023-01-15 00:00:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-01-15 00:00:00",
+      "updated_at": "2024-06-14 05:48:33"
+    }
+  },
+  "team_member": {
+    "TMBR001": {
+      "team_member_ref": "TMBR001",
+      "team_ref": "TEAM001",
+      "employee_ref": "EMP011",
+      "team_role": "lead",
+      "joined_at": "2023-10-24 21:52:14",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-10-24 21:52:14",
+      "updated_at": "2024-12-21 17:08:02"
+    },
+    "TMBR002": {
+      "team_member_ref": "TMBR002",
+      "team_ref": "TEAM001",
+      "employee_ref": "EMP002",
+      "team_role": "member",
+      "joined_at": "2022-03-07 12:10:21",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-03-07 12:10:21",
+      "updated_at": "2024-07-09 01:21:20"
+    },
+    "TMBR003": {
+      "team_member_ref": "TMBR003",
+      "team_ref": "TEAM001",
+      "employee_ref": "EMP029",
+      "team_role": "member",
+      "joined_at": "2021-07-12 19:30:18",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-07-12 19:30:18",
+      "updated_at": "2023-06-29 22:01:43"
+    },
+    "TMBR004": {
+      "team_member_ref": "TMBR004",
+      "team_ref": "TEAM001",
+      "employee_ref": "EMP026",
+      "team_role": "observer",
+      "joined_at": "2024-06-05 09:50:16",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-06-05 09:50:16",
+      "updated_at": "2025-04-11 04:48:20"
+    },
+    "TMBR005": {
+      "team_member_ref": "TMBR005",
+      "team_ref": "TEAM001",
+      "employee_ref": "EMP017",
+      "team_role": "member",
+      "joined_at": "2022-08-27 13:36:52",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-08-27 13:36:52",
+      "updated_at": "2022-12-13 00:02:11"
+    },
+    "TMBR006": {
+      "team_member_ref": "TMBR006",
+      "team_ref": "TEAM002",
+      "employee_ref": "EMP009",
+      "team_role": "lead",
+      "joined_at": "2024-11-24 05:14:57",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-11-24 05:14:57",
+      "updated_at": "2025-05-02 02:43:30"
+    },
+    "TMBR007": {
+      "team_member_ref": "TMBR007",
+      "team_ref": "TEAM002",
+      "employee_ref": "EMP028",
+      "team_role": "member",
+      "joined_at": "2024-04-11 10:25:31",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-04-11 10:25:31",
+      "updated_at": "2024-12-02 15:38:05"
+    },
+    "TMBR008": {
+      "team_member_ref": "TMBR008",
+      "team_ref": "TEAM002",
+      "employee_ref": "EMP052",
+      "team_role": "member",
+      "joined_at": "2022-06-11 23:12:11",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-06-11 23:12:11",
+      "updated_at": "2023-02-06 10:04:45"
+    },
+    "TMBR009": {
+      "team_member_ref": "TMBR009",
+      "team_ref": "TEAM002",
+      "employee_ref": "EMP032",
+      "team_role": "member",
+      "joined_at": "2024-06-16 01:56:43",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-06-16 01:56:43",
+      "updated_at": "2024-11-09 11:45:15"
+    },
+    "TMBR010": {
+      "team_member_ref": "TMBR010",
+      "team_ref": "TEAM002",
+      "employee_ref": "EMP043",
+      "team_role": "member",
+      "joined_at": "2021-09-23 21:37:12",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-09-23 21:37:12",
+      "updated_at": "2024-04-09 18:12:35"
+    },
+    "TMBR011": {
+      "team_member_ref": "TMBR011",
+      "team_ref": "TEAM002",
+      "employee_ref": "EMP038",
+      "team_role": "member",
+      "joined_at": "2023-06-15 11:09:52",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-06-15 11:09:52",
+      "updated_at": "2024-08-03 12:29:41"
+    },
+    "TMBR012": {
+      "team_member_ref": "TMBR012",
+      "team_ref": "TEAM002",
+      "employee_ref": "EMP050",
+      "team_role": "tech_lead",
+      "joined_at": "2023-07-27 23:53:17",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-07-27 23:53:17",
+      "updated_at": "2025-06-02 11:02:08"
+    },
+    "TMBR013": {
+      "team_member_ref": "TMBR013",
+      "team_ref": "TEAM002",
+      "employee_ref": "EMP061",
+      "team_role": "observer",
+      "joined_at": "2024-05-10 12:46:32",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-05-10 12:46:32",
+      "updated_at": "2024-06-08 02:07:40"
+    },
+    "TMBR014": {
+      "team_member_ref": "TMBR014",
+      "team_ref": "TEAM003",
+      "employee_ref": "EMP018",
+      "team_role": "lead",
+      "joined_at": "2024-10-11 08:12:44",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-10-11 08:12:44",
+      "updated_at": "2025-05-07 20:32:19"
+    },
+    "TMBR015": {
+      "team_member_ref": "TMBR015",
+      "team_ref": "TEAM003",
+      "employee_ref": "EMP042",
+      "team_role": "member",
+      "joined_at": "2023-12-10 11:12:43",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-12-10 11:12:43",
+      "updated_at": "2024-02-14 11:23:24"
+    },
+    "TMBR016": {
+      "team_member_ref": "TMBR016",
+      "team_ref": "TEAM003",
+      "employee_ref": "EMP028",
+      "team_role": "member",
+      "joined_at": "2021-11-17 21:35:15",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-11-17 21:35:15",
+      "updated_at": "2024-09-04 10:45:13"
+    },
+    "TMBR017": {
+      "team_member_ref": "TMBR017",
+      "team_ref": "TEAM003",
+      "employee_ref": "EMP049",
+      "team_role": "member",
+      "joined_at": "2024-03-29 13:35:03",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-03-29 13:35:03",
+      "updated_at": "2024-05-02 23:20:03"
+    },
+    "TMBR018": {
+      "team_member_ref": "TMBR018",
+      "team_ref": "TEAM003",
+      "employee_ref": "EMP054",
+      "team_role": "member",
+      "joined_at": "2023-10-23 22:22:27",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-10-23 22:22:27",
+      "updated_at": "2025-04-02 03:21:56"
+    },
+    "TMBR019": {
+      "team_member_ref": "TMBR019",
+      "team_ref": "TEAM003",
+      "employee_ref": "EMP006",
+      "team_role": "observer",
+      "joined_at": "2024-03-01 16:20:57",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-03-01 16:20:57",
+      "updated_at": "2024-11-14 05:45:34"
+    },
+    "TMBR020": {
+      "team_member_ref": "TMBR020",
+      "team_ref": "TEAM004",
+      "employee_ref": "EMP018",
+      "team_role": "lead",
+      "joined_at": "2024-10-19 21:38:44",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-10-19 21:38:44",
+      "updated_at": "2024-10-23 23:57:28"
+    },
+    "TMBR021": {
+      "team_member_ref": "TMBR021",
+      "team_ref": "TEAM004",
+      "employee_ref": "EMP055",
+      "team_role": "member",
+      "joined_at": "2021-11-01 04:19:08",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-11-01 04:19:08",
+      "updated_at": "2024-01-03 11:42:32"
+    },
+    "TMBR022": {
+      "team_member_ref": "TMBR022",
+      "team_ref": "TEAM004",
+      "employee_ref": "EMP039",
+      "team_role": "member",
+      "joined_at": "2024-08-04 04:41:56",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-08-04 04:41:56",
+      "updated_at": "2025-03-17 15:31:17"
+    },
+    "TMBR023": {
+      "team_member_ref": "TMBR023",
+      "team_ref": "TEAM004",
+      "employee_ref": "EMP021",
+      "team_role": "member",
+      "joined_at": "2024-05-04 05:59:14",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-05-04 05:59:14",
+      "updated_at": "2025-04-15 11:54:06"
+    },
+    "TMBR024": {
+      "team_member_ref": "TMBR024",
+      "team_ref": "TEAM004",
+      "employee_ref": "EMP027",
+      "team_role": "member",
+      "joined_at": "2023-01-03 04:11:18",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-01-03 04:11:18",
+      "updated_at": "2025-02-18 14:54:18"
+    },
+    "TMBR025": {
+      "team_member_ref": "TMBR025",
+      "team_ref": "TEAM004",
+      "employee_ref": "EMP044",
+      "team_role": "member",
+      "joined_at": "2022-01-21 04:10:42",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-01-21 04:10:42",
+      "updated_at": "2022-02-28 07:56:25"
+    },
+    "TMBR026": {
+      "team_member_ref": "TMBR026",
+      "team_ref": "TEAM004",
+      "employee_ref": "EMP031",
+      "team_role": "member",
+      "joined_at": "2023-06-20 23:00:38",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-06-20 23:00:38",
+      "updated_at": "2024-05-09 01:21:16"
+    },
+    "TMBR027": {
+      "team_member_ref": "TMBR027",
+      "team_ref": "TEAM004",
+      "employee_ref": "EMP067",
+      "team_role": "member",
+      "joined_at": "2021-10-12 08:53:56",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-10-12 08:53:56",
+      "updated_at": "2024-11-19 14:53:27"
+    },
+    "TMBR028": {
+      "team_member_ref": "TMBR028",
+      "team_ref": "TEAM005",
+      "employee_ref": "EMP003",
+      "team_role": "lead",
+      "joined_at": "2022-01-07 02:02:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-01-07 02:02:00",
+      "updated_at": "2023-06-24 00:29:10"
+    },
+    "TMBR029": {
+      "team_member_ref": "TMBR029",
+      "team_ref": "TEAM005",
+      "employee_ref": "EMP064",
+      "team_role": "member",
+      "joined_at": "2023-05-09 08:01:51",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-05-09 08:01:51",
+      "updated_at": "2024-06-17 02:18:55"
+    },
+    "TMBR030": {
+      "team_member_ref": "TMBR030",
+      "team_ref": "TEAM005",
+      "employee_ref": "EMP060",
+      "team_role": "member",
+      "joined_at": "2023-06-21 04:47:10",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-06-21 04:47:10",
+      "updated_at": "2023-09-05 00:36:40"
+    },
+    "TMBR031": {
+      "team_member_ref": "TMBR031",
+      "team_ref": "TEAM005",
+      "employee_ref": "EMP023",
+      "team_role": "observer",
+      "joined_at": "2023-04-12 16:00:36",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-04-12 16:00:36",
+      "updated_at": "2025-03-15 12:27:50"
+    },
+    "TMBR032": {
+      "team_member_ref": "TMBR032",
+      "team_ref": "TEAM005",
+      "employee_ref": "EMP047",
+      "team_role": "member",
+      "joined_at": "2022-10-09 09:48:25",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-10-09 09:48:25",
+      "updated_at": "2022-12-17 19:42:42"
+    },
+    "TMBR033": {
+      "team_member_ref": "TMBR033",
+      "team_ref": "TEAM005",
+      "employee_ref": "EMP019",
+      "team_role": "member",
+      "joined_at": "2024-11-10 13:55:15",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-11-10 13:55:15",
+      "updated_at": "2024-11-19 08:25:45"
+    },
+    "TMBR034": {
+      "team_member_ref": "TMBR034",
+      "team_ref": "TEAM006",
+      "employee_ref": "EMP018",
+      "team_role": "lead",
+      "joined_at": "2022-11-15 22:52:22",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-11-15 22:52:22",
+      "updated_at": "2023-07-29 06:26:14"
+    },
+    "TMBR035": {
+      "team_member_ref": "TMBR035",
+      "team_ref": "TEAM006",
+      "employee_ref": "EMP069",
+      "team_role": "member",
+      "joined_at": "2024-07-25 07:26:56",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-07-25 07:26:56",
+      "updated_at": "2024-10-01 01:28:15"
+    },
+    "TMBR036": {
+      "team_member_ref": "TMBR036",
+      "team_ref": "TEAM006",
+      "employee_ref": "EMP005",
+      "team_role": "tech_lead",
+      "joined_at": "2023-10-06 08:42:25",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-10-06 08:42:25",
+      "updated_at": "2024-12-14 05:02:52"
+    },
+    "TMBR037": {
+      "team_member_ref": "TMBR037",
+      "team_ref": "TEAM007",
+      "employee_ref": "EMP019",
+      "team_role": "lead",
+      "joined_at": "2023-03-25 08:12:09",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-03-25 08:12:09",
+      "updated_at": "2024-03-19 12:24:13"
+    },
+    "TMBR038": {
+      "team_member_ref": "TMBR038",
+      "team_ref": "TEAM007",
+      "employee_ref": "EMP007",
+      "team_role": "tech_lead",
+      "joined_at": "2024-10-22 06:29:29",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-10-22 06:29:29",
+      "updated_at": "2025-01-01 21:42:23"
+    },
+    "TMBR039": {
+      "team_member_ref": "TMBR039",
+      "team_ref": "TEAM007",
+      "employee_ref": "EMP001",
+      "team_role": "member",
+      "joined_at": "2022-03-17 13:00:29",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-03-17 13:00:29",
+      "updated_at": "2024-01-17 20:08:53"
+    },
+    "TMBR040": {
+      "team_member_ref": "TMBR040",
+      "team_ref": "TEAM007",
+      "employee_ref": "EMP054",
+      "team_role": "member",
+      "joined_at": "2023-02-05 12:22:48",
+      "left_at": "2023-12-09 01:10:05",
+      "status": "removed",
+      "created_at": "2023-02-05 12:22:48",
+      "updated_at": "2025-01-03 21:45:04"
+    },
+    "TMBR041": {
+      "team_member_ref": "TMBR041",
+      "team_ref": "TEAM007",
+      "employee_ref": "EMP018",
+      "team_role": "member",
+      "joined_at": "2023-12-07 22:56:02",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-12-07 22:56:02",
+      "updated_at": "2023-12-11 09:53:19"
+    },
+    "TMBR042": {
+      "team_member_ref": "TMBR042",
+      "team_ref": "TEAM007",
+      "employee_ref": "EMP031",
+      "team_role": "member",
+      "joined_at": "2024-05-30 18:26:53",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-05-30 18:26:53",
+      "updated_at": "2024-09-15 20:48:35"
+    },
+    "TMBR043": {
+      "team_member_ref": "TMBR043",
+      "team_ref": "TEAM007",
+      "employee_ref": "EMP009",
+      "team_role": "member",
+      "joined_at": "2024-08-12 16:43:38",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-08-12 16:43:38",
+      "updated_at": "2024-09-05 23:51:49"
+    },
+    "TMBR044": {
+      "team_member_ref": "TMBR044",
+      "team_ref": "TEAM007",
+      "employee_ref": "EMP021",
+      "team_role": "member",
+      "joined_at": "2023-11-14 21:05:24",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-11-14 21:05:24",
+      "updated_at": "2025-01-04 21:25:35"
+    },
+    "TMBR045": {
+      "team_member_ref": "TMBR045",
+      "team_ref": "TEAM008",
+      "employee_ref": "EMP014",
+      "team_role": "lead",
+      "joined_at": "2022-03-18 10:22:04",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-03-18 10:22:04",
+      "updated_at": "2023-01-18 13:49:45"
+    },
+    "TMBR046": {
+      "team_member_ref": "TMBR046",
+      "team_ref": "TEAM008",
+      "employee_ref": "EMP003",
+      "team_role": "tech_lead",
+      "joined_at": "2023-05-12 18:42:58",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-05-12 18:42:58",
+      "updated_at": "2024-10-14 17:29:48"
+    },
+    "TMBR047": {
+      "team_member_ref": "TMBR047",
+      "team_ref": "TEAM008",
+      "employee_ref": "EMP001",
+      "team_role": "member",
+      "joined_at": "2023-07-01 09:17:07",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-07-01 09:17:07",
+      "updated_at": "2024-11-08 19:07:58"
+    },
+    "TMBR048": {
+      "team_member_ref": "TMBR048",
+      "team_ref": "TEAM008",
+      "employee_ref": "EMP073",
+      "team_role": "member",
+      "joined_at": "2022-09-30 20:33:07",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-09-30 20:33:07",
+      "updated_at": "2025-05-07 11:46:54"
+    },
+    "TMBR049": {
+      "team_member_ref": "TMBR049",
+      "team_ref": "TEAM008",
+      "employee_ref": "EMP075",
+      "team_role": "observer",
+      "joined_at": "2023-01-31 19:06:04",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-01-31 19:06:04",
+      "updated_at": "2024-07-25 06:40:18"
+    },
+    "TMBR050": {
+      "team_member_ref": "TMBR050",
+      "team_ref": "TEAM008",
+      "employee_ref": "EMP054",
+      "team_role": "tech_lead",
+      "joined_at": "2022-11-29 18:56:56",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-11-29 18:56:56",
+      "updated_at": "2023-08-24 19:14:26"
+    },
+    "TMBR051": {
+      "team_member_ref": "TMBR051",
+      "team_ref": "TEAM008",
+      "employee_ref": "EMP046",
+      "team_role": "member",
+      "joined_at": "2024-11-16 02:21:39",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-11-16 02:21:39",
+      "updated_at": "2025-03-11 14:44:51"
+    },
+    "TMBR052": {
+      "team_member_ref": "TMBR052",
+      "team_ref": "TEAM009",
+      "employee_ref": "EMP010",
+      "team_role": "lead",
+      "joined_at": "2024-01-11 13:38:35",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-01-11 13:38:35",
+      "updated_at": "2024-04-24 14:36:37"
+    },
+    "TMBR053": {
+      "team_member_ref": "TMBR053",
+      "team_ref": "TEAM009",
+      "employee_ref": "EMP057",
+      "team_role": "member",
+      "joined_at": "2022-09-30 12:24:39",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-09-30 12:24:39",
+      "updated_at": "2024-01-17 21:48:09"
+    },
+    "TMBR054": {
+      "team_member_ref": "TMBR054",
+      "team_ref": "TEAM009",
+      "employee_ref": "EMP024",
+      "team_role": "member",
+      "joined_at": "2021-11-29 16:10:16",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-11-29 16:10:16",
+      "updated_at": "2024-11-10 21:21:33"
+    },
+    "TMBR055": {
+      "team_member_ref": "TMBR055",
+      "team_ref": "TEAM009",
+      "employee_ref": "EMP015",
+      "team_role": "member",
+      "joined_at": "2022-01-06 14:13:42",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-01-06 14:13:42",
+      "updated_at": "2023-10-18 07:18:44"
+    },
+    "TMBR056": {
+      "team_member_ref": "TMBR056",
+      "team_ref": "TEAM009",
+      "employee_ref": "EMP014",
+      "team_role": "member",
+      "joined_at": "2023-12-14 12:21:58",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-12-14 12:21:58",
+      "updated_at": "2024-10-07 13:14:17"
+    },
+    "TMBR057": {
+      "team_member_ref": "TMBR057",
+      "team_ref": "TEAM009",
+      "employee_ref": "EMP021",
+      "team_role": "tech_lead",
+      "joined_at": "2023-03-20 04:01:44",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-03-20 04:01:44",
+      "updated_at": "2023-12-14 06:41:25"
+    },
+    "TMBR058": {
+      "team_member_ref": "TMBR058",
+      "team_ref": "TEAM009",
+      "employee_ref": "EMP032",
+      "team_role": "observer",
+      "joined_at": "2023-10-11 00:38:25",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-10-11 00:38:25",
+      "updated_at": "2024-05-22 08:54:38"
+    },
+    "TMBR059": {
+      "team_member_ref": "TMBR059",
+      "team_ref": "TEAM009",
+      "employee_ref": "EMP026",
+      "team_role": "member",
+      "joined_at": "2022-01-04 22:38:02",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-01-04 22:38:02",
+      "updated_at": "2023-12-06 13:10:07"
+    },
+    "TMBR060": {
+      "team_member_ref": "TMBR060",
+      "team_ref": "TEAM009",
+      "employee_ref": "EMP062",
+      "team_role": "member",
+      "joined_at": "2024-01-19 05:16:40",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-01-19 05:16:40",
+      "updated_at": "2024-10-24 02:15:10"
+    },
+    "TMBR061": {
+      "team_member_ref": "TMBR061",
+      "team_ref": "TEAM010",
+      "employee_ref": "EMP002",
+      "team_role": "lead",
+      "joined_at": "2021-06-15 21:17:47",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-06-15 21:17:47",
+      "updated_at": "2022-04-15 00:12:49"
+    },
+    "TMBR062": {
+      "team_member_ref": "TMBR062",
+      "team_ref": "TEAM010",
+      "employee_ref": "EMP030",
+      "team_role": "member",
+      "joined_at": "2024-11-18 09:27:11",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-11-18 09:27:11",
+      "updated_at": "2025-06-02 16:28:36"
+    },
+    "TMBR063": {
+      "team_member_ref": "TMBR063",
+      "team_ref": "TEAM010",
+      "employee_ref": "EMP040",
+      "team_role": "member",
+      "joined_at": "2024-03-11 12:12:19",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-03-11 12:12:19",
+      "updated_at": "2025-03-28 10:38:24"
+    },
+    "TMBR064": {
+      "team_member_ref": "TMBR064",
+      "team_ref": "TEAM010",
+      "employee_ref": "EMP012",
+      "team_role": "member",
+      "joined_at": "2023-03-08 15:49:32",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-03-08 15:49:32",
+      "updated_at": "2025-01-26 03:49:04"
+    },
+    "TMBR065": {
+      "team_member_ref": "TMBR065",
+      "team_ref": "TEAM010",
+      "employee_ref": "EMP034",
+      "team_role": "member",
+      "joined_at": "2023-06-30 04:02:18",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-06-30 04:02:18",
+      "updated_at": "2024-09-11 07:49:02"
+    },
+    "TMBR066": {
+      "team_member_ref": "TMBR066",
+      "team_ref": "TEAM011",
+      "employee_ref": "EMP008",
+      "team_role": "lead",
+      "joined_at": "2021-07-18 22:34:13",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-07-18 22:34:13",
+      "updated_at": "2022-06-26 12:30:22"
+    },
+    "TMBR067": {
+      "team_member_ref": "TMBR067",
+      "team_ref": "TEAM011",
+      "employee_ref": "EMP053",
+      "team_role": "member",
+      "joined_at": "2022-08-28 17:54:04",
+      "left_at": "2023-08-13 00:40:16",
+      "status": "removed",
+      "created_at": "2022-08-28 17:54:04",
+      "updated_at": "2024-12-10 21:24:11"
+    },
+    "TMBR068": {
+      "team_member_ref": "TMBR068",
+      "team_ref": "TEAM011",
+      "employee_ref": "EMP050",
+      "team_role": "member",
+      "joined_at": "2022-08-23 10:24:33",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-08-23 10:24:33",
+      "updated_at": "2024-08-02 20:35:10"
+    },
+    "TMBR069": {
+      "team_member_ref": "TMBR069",
+      "team_ref": "TEAM011",
+      "employee_ref": "EMP022",
+      "team_role": "member",
+      "joined_at": "2023-10-27 16:58:39",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-10-27 16:58:39",
+      "updated_at": "2025-06-13 14:45:10"
+    },
+    "TMBR070": {
+      "team_member_ref": "TMBR070",
+      "team_ref": "TEAM011",
+      "employee_ref": "EMP056",
+      "team_role": "member",
+      "joined_at": "2023-07-10 10:37:11",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-07-10 10:37:11",
+      "updated_at": "2023-10-06 09:01:32"
+    },
+    "TMBR071": {
+      "team_member_ref": "TMBR071",
+      "team_ref": "TEAM012",
+      "employee_ref": "EMP012",
+      "team_role": "lead",
+      "joined_at": "2023-11-07 16:19:39",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-11-07 16:19:39",
+      "updated_at": "2025-01-02 12:33:37"
+    },
+    "TMBR072": {
+      "team_member_ref": "TMBR072",
+      "team_ref": "TEAM012",
+      "employee_ref": "EMP002",
+      "team_role": "member",
+      "joined_at": "2024-11-30 22:12:27",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-11-30 22:12:27",
+      "updated_at": "2024-12-17 02:02:44"
+    },
+    "TMBR073": {
+      "team_member_ref": "TMBR073",
+      "team_ref": "TEAM012",
+      "employee_ref": "EMP023",
+      "team_role": "observer",
+      "joined_at": "2024-08-24 15:00:27",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-08-24 15:00:27",
+      "updated_at": "2025-03-24 19:23:20"
+    },
+    "TMBR074": {
+      "team_member_ref": "TMBR074",
+      "team_ref": "TEAM012",
+      "employee_ref": "EMP011",
+      "team_role": "member",
+      "joined_at": "2022-05-06 11:50:01",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-05-06 11:50:01",
+      "updated_at": "2022-10-12 14:11:42"
+    },
+    "TMBR075": {
+      "team_member_ref": "TMBR075",
+      "team_ref": "TEAM012",
+      "employee_ref": "EMP065",
+      "team_role": "observer",
+      "joined_at": "2024-07-18 07:38:50",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-07-18 07:38:50",
+      "updated_at": "2025-05-06 02:41:41"
+    },
+    "TMBR076": {
+      "team_member_ref": "TMBR076",
+      "team_ref": "TEAM012",
+      "employee_ref": "EMP057",
+      "team_role": "member",
+      "joined_at": "2022-06-20 12:38:52",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-06-20 12:38:52",
+      "updated_at": "2022-08-09 14:17:02"
+    },
+    "TMBR077": {
+      "team_member_ref": "TMBR077",
+      "team_ref": "TEAM012",
+      "employee_ref": "EMP044",
+      "team_role": "member",
+      "joined_at": "2023-04-30 15:14:13",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-04-30 15:14:13",
+      "updated_at": "2023-09-12 18:11:54"
+    },
+    "TMBR078": {
+      "team_member_ref": "TMBR078",
+      "team_ref": "TEAM012",
+      "employee_ref": "EMP014",
+      "team_role": "member",
+      "joined_at": "2023-04-14 01:42:44",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-04-14 01:42:44",
+      "updated_at": "2023-10-13 10:10:49"
+    },
+    "TMBR079": {
+      "team_member_ref": "TMBR079",
+      "team_ref": "TEAM012",
+      "employee_ref": "EMP066",
+      "team_role": "member",
+      "joined_at": "2024-09-17 21:38:37",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-09-17 21:38:37",
+      "updated_at": "2024-12-08 09:50:59"
+    },
+    "TMBR080": {
+      "team_member_ref": "TMBR080",
+      "team_ref": "TEAM013",
+      "employee_ref": "EMP014",
+      "team_role": "lead",
+      "joined_at": "2024-11-11 09:11:16",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-11-11 09:11:16",
+      "updated_at": "2025-03-27 13:18:14"
+    },
+    "TMBR081": {
+      "team_member_ref": "TMBR081",
+      "team_ref": "TEAM013",
+      "employee_ref": "EMP037",
+      "team_role": "member",
+      "joined_at": "2024-06-09 02:49:41",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-06-09 02:49:41",
+      "updated_at": "2024-11-22 09:38:03"
+    },
+    "TMBR082": {
+      "team_member_ref": "TMBR082",
+      "team_ref": "TEAM013",
+      "employee_ref": "EMP074",
+      "team_role": "tech_lead",
+      "joined_at": "2022-02-13 20:14:35",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-02-13 20:14:35",
+      "updated_at": "2022-12-31 19:34:55"
+    },
+    "TMBR083": {
+      "team_member_ref": "TMBR083",
+      "team_ref": "TEAM013",
+      "employee_ref": "EMP059",
+      "team_role": "member",
+      "joined_at": "2024-11-15 18:35:30",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-11-15 18:35:30",
+      "updated_at": "2024-12-08 19:50:48"
+    },
+    "TMBR084": {
+      "team_member_ref": "TMBR084",
+      "team_ref": "TEAM013",
+      "employee_ref": "EMP063",
+      "team_role": "member",
+      "joined_at": "2023-11-03 13:54:43",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-11-03 13:54:43",
+      "updated_at": "2024-06-08 21:42:59"
+    },
+    "TMBR085": {
+      "team_member_ref": "TMBR085",
+      "team_ref": "TEAM014",
+      "employee_ref": "EMP008",
+      "team_role": "lead",
+      "joined_at": "2023-12-15 04:28:02",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-12-15 04:28:02",
+      "updated_at": "2024-08-22 13:48:28"
+    },
+    "TMBR086": {
+      "team_member_ref": "TMBR086",
+      "team_ref": "TEAM014",
+      "employee_ref": "EMP003",
+      "team_role": "observer",
+      "joined_at": "2024-05-29 17:01:36",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-05-29 17:01:36",
+      "updated_at": "2025-01-07 03:18:33"
+    },
+    "TMBR087": {
+      "team_member_ref": "TMBR087",
+      "team_ref": "TEAM014",
+      "employee_ref": "EMP028",
+      "team_role": "member",
+      "joined_at": "2022-07-21 07:16:18",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-07-21 07:16:18",
+      "updated_at": "2024-09-27 10:03:08"
+    },
+    "TMBR088": {
+      "team_member_ref": "TMBR088",
+      "team_ref": "TEAM014",
+      "employee_ref": "EMP020",
+      "team_role": "member",
+      "joined_at": "2024-04-21 06:06:50",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-04-21 06:06:50",
+      "updated_at": "2024-08-04 13:40:27"
+    },
+    "TMBR089": {
+      "team_member_ref": "TMBR089",
+      "team_ref": "TEAM014",
+      "employee_ref": "EMP052",
+      "team_role": "member",
+      "joined_at": "2024-08-09 05:32:10",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-08-09 05:32:10",
+      "updated_at": "2024-09-01 06:07:14"
+    },
+    "TMBR090": {
+      "team_member_ref": "TMBR090",
+      "team_ref": "TEAM015",
+      "employee_ref": "EMP014",
+      "team_role": "lead",
+      "joined_at": "2022-08-05 19:22:14",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-08-05 19:22:14",
+      "updated_at": "2023-02-18 22:06:15"
+    },
+    "TMBR091": {
+      "team_member_ref": "TMBR091",
+      "team_ref": "TEAM015",
+      "employee_ref": "EMP074",
+      "team_role": "member",
+      "joined_at": "2024-05-25 15:04:34",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-05-25 15:04:34",
+      "updated_at": "2024-08-30 14:14:12"
+    },
+    "TMBR092": {
+      "team_member_ref": "TMBR092",
+      "team_ref": "TEAM015",
+      "employee_ref": "EMP044",
+      "team_role": "observer",
+      "joined_at": "2022-01-14 04:21:02",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-01-14 04:21:02",
+      "updated_at": "2023-02-02 17:51:36"
+    },
+    "TMBR093": {
+      "team_member_ref": "TMBR093",
+      "team_ref": "TEAM015",
+      "employee_ref": "EMP051",
+      "team_role": "tech_lead",
+      "joined_at": "2024-08-26 21:47:34",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-08-26 21:47:34",
+      "updated_at": "2025-01-26 10:01:44"
+    },
+    "TMBR094": {
+      "team_member_ref": "TMBR094",
+      "team_ref": "TEAM015",
+      "employee_ref": "EMP019",
+      "team_role": "member",
+      "joined_at": "2023-07-01 08:20:38",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-07-01 08:20:38",
+      "updated_at": "2024-11-03 13:10:16"
+    },
+    "TMBR095": {
+      "team_member_ref": "TMBR095",
+      "team_ref": "TEAM015",
+      "employee_ref": "EMP011",
+      "team_role": "member",
+      "joined_at": "2022-07-23 10:30:05",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-07-23 10:30:05",
+      "updated_at": "2024-02-26 05:56:22"
+    },
+    "TMBR096": {
+      "team_member_ref": "TMBR096",
+      "team_ref": "TEAM016",
+      "employee_ref": "EMP011",
+      "team_role": "lead",
+      "joined_at": "2023-05-04 03:28:22",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-05-04 03:28:22",
+      "updated_at": "2025-01-10 07:51:53"
+    },
+    "TMBR097": {
+      "team_member_ref": "TMBR097",
+      "team_ref": "TEAM016",
+      "employee_ref": "EMP052",
+      "team_role": "member",
+      "joined_at": "2024-09-07 10:04:55",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-09-07 10:04:55",
+      "updated_at": "2025-03-26 15:56:52"
+    },
+    "TMBR098": {
+      "team_member_ref": "TMBR098",
+      "team_ref": "TEAM016",
+      "employee_ref": "EMP043",
+      "team_role": "member",
+      "joined_at": "2024-08-08 18:39:32",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-08-08 18:39:32",
+      "updated_at": "2024-12-30 02:39:05"
+    },
+    "TMBR099": {
+      "team_member_ref": "TMBR099",
+      "team_ref": "TEAM016",
+      "employee_ref": "EMP004",
+      "team_role": "member",
+      "joined_at": "2023-05-08 08:16:56",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-05-08 08:16:56",
+      "updated_at": "2024-01-17 13:23:47"
+    },
+    "TMBR100": {
+      "team_member_ref": "TMBR100",
+      "team_ref": "TEAM016",
+      "employee_ref": "EMP036",
+      "team_role": "member",
+      "joined_at": "2023-11-22 00:52:31",
+      "left_at": "2025-06-13 03:50:28",
+      "status": "removed",
+      "created_at": "2023-11-22 00:52:31",
+      "updated_at": "2024-02-02 09:09:41"
+    },
+    "TMBR101": {
+      "team_member_ref": "TMBR101",
+      "team_ref": "TEAM016",
+      "employee_ref": "EMP041",
+      "team_role": "member",
+      "joined_at": "2024-07-10 11:07:03",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-07-10 11:07:03",
+      "updated_at": "2025-03-14 00:15:36"
+    },
+    "TMBR102": {
+      "team_member_ref": "TMBR102",
+      "team_ref": "TEAM017",
+      "employee_ref": "EMP008",
+      "team_role": "lead",
+      "joined_at": "2024-03-28 17:04:34",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-03-28 17:04:34",
+      "updated_at": "2024-05-16 21:38:44"
+    },
+    "TMBR103": {
+      "team_member_ref": "TMBR103",
+      "team_ref": "TEAM017",
+      "employee_ref": "EMP057",
+      "team_role": "member",
+      "joined_at": "2024-10-19 01:01:23",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-10-19 01:01:23",
+      "updated_at": "2025-01-11 15:20:42"
+    },
+    "TMBR104": {
+      "team_member_ref": "TMBR104",
+      "team_ref": "TEAM017",
+      "employee_ref": "EMP025",
+      "team_role": "member",
+      "joined_at": "2023-03-30 10:15:20",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-03-30 10:15:20",
+      "updated_at": "2025-05-06 22:33:56"
+    },
+    "TMBR105": {
+      "team_member_ref": "TMBR105",
+      "team_ref": "TEAM017",
+      "employee_ref": "EMP050",
+      "team_role": "tech_lead",
+      "joined_at": "2022-07-23 03:46:44",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-07-23 03:46:44",
+      "updated_at": "2023-10-06 16:53:42"
+    },
+    "TMBR106": {
+      "team_member_ref": "TMBR106",
+      "team_ref": "TEAM017",
+      "employee_ref": "EMP012",
+      "team_role": "member",
+      "joined_at": "2022-11-07 16:25:29",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-11-07 16:25:29",
+      "updated_at": "2023-05-29 13:19:52"
+    },
+    "TMBR107": {
+      "team_member_ref": "TMBR107",
+      "team_ref": "TEAM017",
+      "employee_ref": "EMP039",
+      "team_role": "member",
+      "joined_at": "2023-10-28 11:18:27",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-10-28 11:18:27",
+      "updated_at": "2024-07-21 11:04:42"
+    },
+    "TMBR108": {
+      "team_member_ref": "TMBR108",
+      "team_ref": "TEAM018",
+      "employee_ref": "EMP004",
+      "team_role": "lead",
+      "joined_at": "2024-04-26 07:22:48",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-04-26 07:22:48",
+      "updated_at": "2024-05-31 23:49:05"
+    },
+    "TMBR109": {
+      "team_member_ref": "TMBR109",
+      "team_ref": "TEAM018",
+      "employee_ref": "EMP021",
+      "team_role": "observer",
+      "joined_at": "2021-11-02 16:24:55",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-11-02 16:24:55",
+      "updated_at": "2025-05-25 10:56:00"
+    },
+    "TMBR110": {
+      "team_member_ref": "TMBR110",
+      "team_ref": "TEAM018",
+      "employee_ref": "EMP051",
+      "team_role": "member",
+      "joined_at": "2023-05-15 22:27:00",
+      "left_at": "2025-05-06 20:20:04",
+      "status": "removed",
+      "created_at": "2023-05-15 22:27:00",
+      "updated_at": "2025-03-12 02:14:04"
+    },
+    "TMBR111": {
+      "team_member_ref": "TMBR111",
+      "team_ref": "TEAM018",
+      "employee_ref": "EMP042",
+      "team_role": "member",
+      "joined_at": "2022-02-01 10:03:08",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-02-01 10:03:08",
+      "updated_at": "2022-02-02 11:15:09"
+    },
+    "TMBR112": {
+      "team_member_ref": "TMBR112",
+      "team_ref": "TEAM018",
+      "employee_ref": "EMP048",
+      "team_role": "member",
+      "joined_at": "2023-03-27 13:30:50",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-03-27 13:30:50",
+      "updated_at": "2023-10-18 11:35:24"
+    },
+    "TMBR113": {
+      "team_member_ref": "TMBR113",
+      "team_ref": "TEAM018",
+      "employee_ref": "EMP015",
+      "team_role": "tech_lead",
+      "joined_at": "2024-03-06 17:39:07",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-03-06 17:39:07",
+      "updated_at": "2024-10-05 13:44:41"
+    },
+    "TMBR114": {
+      "team_member_ref": "TMBR114",
+      "team_ref": "TEAM018",
+      "employee_ref": "EMP013",
+      "team_role": "member",
+      "joined_at": "2021-10-23 23:58:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-10-23 23:58:00",
+      "updated_at": "2022-11-16 23:09:20"
+    },
+    "TMBR115": {
+      "team_member_ref": "TMBR115",
+      "team_ref": "TEAM018",
+      "employee_ref": "EMP001",
+      "team_role": "member",
+      "joined_at": "2021-10-07 00:51:36",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-10-07 00:51:36",
+      "updated_at": "2024-07-11 02:01:24"
+    },
+    "TMBR116": {
+      "team_member_ref": "TMBR116",
+      "team_ref": "TEAM019",
+      "employee_ref": "EMP016",
+      "team_role": "lead",
+      "joined_at": "2022-02-13 03:13:20",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-02-13 03:13:20",
+      "updated_at": "2024-10-11 23:26:24"
+    },
+    "TMBR117": {
+      "team_member_ref": "TMBR117",
+      "team_ref": "TEAM019",
+      "employee_ref": "EMP054",
+      "team_role": "member",
+      "joined_at": "2022-09-18 14:12:36",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-09-18 14:12:36",
+      "updated_at": "2023-09-17 07:43:30"
+    },
+    "TMBR118": {
+      "team_member_ref": "TMBR118",
+      "team_ref": "TEAM019",
+      "employee_ref": "EMP014",
+      "team_role": "member",
+      "joined_at": "2023-03-29 18:53:21",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-03-29 18:53:21",
+      "updated_at": "2023-08-24 15:35:38"
+    },
+    "TMBR119": {
+      "team_member_ref": "TMBR119",
+      "team_ref": "TEAM019",
+      "employee_ref": "EMP004",
+      "team_role": "member",
+      "joined_at": "2021-06-02 16:30:01",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-06-02 16:30:01",
+      "updated_at": "2021-10-01 18:15:59"
+    },
+    "TMBR120": {
+      "team_member_ref": "TMBR120",
+      "team_ref": "TEAM019",
+      "employee_ref": "EMP012",
+      "team_role": "tech_lead",
+      "joined_at": "2021-12-24 03:24:24",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-12-24 03:24:24",
+      "updated_at": "2024-03-10 01:41:31"
+    },
+    "TMBR121": {
+      "team_member_ref": "TMBR121",
+      "team_ref": "TEAM019",
+      "employee_ref": "EMP047",
+      "team_role": "member",
+      "joined_at": "2024-04-22 07:35:36",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-04-22 07:35:36",
+      "updated_at": "2024-04-28 13:53:25"
+    },
+    "TMBR122": {
+      "team_member_ref": "TMBR122",
+      "team_ref": "TEAM019",
+      "employee_ref": "EMP069",
+      "team_role": "member",
+      "joined_at": "2024-05-16 13:44:23",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-05-16 13:44:23",
+      "updated_at": "2024-08-18 05:46:14"
+    },
+    "TMBR123": {
+      "team_member_ref": "TMBR123",
+      "team_ref": "TEAM019",
+      "employee_ref": "EMP045",
+      "team_role": "member",
+      "joined_at": "2023-03-19 01:00:16",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-03-19 01:00:16",
+      "updated_at": "2025-03-30 02:57:37"
+    },
+    "TMBR124": {
+      "team_member_ref": "TMBR124",
+      "team_ref": "TEAM020",
+      "employee_ref": "EMP015",
+      "team_role": "lead",
+      "joined_at": "2021-09-19 00:40:14",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-09-19 00:40:14",
+      "updated_at": "2022-02-04 19:10:28"
+    },
+    "TMBR125": {
+      "team_member_ref": "TMBR125",
+      "team_ref": "TEAM020",
+      "employee_ref": "EMP033",
+      "team_role": "member",
+      "joined_at": "2024-07-10 04:50:00",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-07-10 04:50:00",
+      "updated_at": "2024-08-19 06:44:28"
+    },
+    "TMBR126": {
+      "team_member_ref": "TMBR126",
+      "team_ref": "TEAM020",
+      "employee_ref": "EMP068",
+      "team_role": "member",
+      "joined_at": "2022-09-30 18:35:23",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-09-30 18:35:23",
+      "updated_at": "2024-01-08 15:38:13"
+    },
+    "TMBR127": {
+      "team_member_ref": "TMBR127",
+      "team_ref": "TEAM020",
+      "employee_ref": "EMP023",
+      "team_role": "tech_lead",
+      "joined_at": "2021-12-31 00:33:02",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-12-31 00:33:02",
+      "updated_at": "2025-03-15 00:18:30"
+    },
+    "TMBR128": {
+      "team_member_ref": "TMBR128",
+      "team_ref": "TEAM020",
+      "employee_ref": "EMP050",
+      "team_role": "member",
+      "joined_at": "2021-12-24 20:03:04",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-12-24 20:03:04",
+      "updated_at": "2024-11-10 17:33:04"
+    },
+    "TMBR129": {
+      "team_member_ref": "TMBR129",
+      "team_ref": "TEAM020",
+      "employee_ref": "EMP073",
+      "team_role": "member",
+      "joined_at": "2022-01-08 21:56:54",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-01-08 21:56:54",
+      "updated_at": "2024-06-01 22:58:01"
+    },
+    "TMBR130": {
+      "team_member_ref": "TMBR130",
+      "team_ref": "TEAM020",
+      "employee_ref": "EMP019",
+      "team_role": "member",
+      "joined_at": "2021-06-14 03:57:40",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-06-14 03:57:40",
+      "updated_at": "2022-02-24 02:40:10"
+    },
+    "TMBR131": {
+      "team_member_ref": "TMBR131",
+      "team_ref": "TEAM020",
+      "employee_ref": "EMP036",
+      "team_role": "tech_lead",
+      "joined_at": "2023-04-15 16:05:44",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-04-15 16:05:44",
+      "updated_at": "2024-03-11 15:22:42"
+    },
+    "TMBR132": {
+      "team_member_ref": "TMBR132",
+      "team_ref": "TEAM021",
+      "employee_ref": "EMP008",
+      "team_role": "lead",
+      "joined_at": "2024-02-01 16:31:15",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-02-01 16:31:15",
+      "updated_at": "2024-12-17 11:20:58"
+    },
+    "TMBR133": {
+      "team_member_ref": "TMBR133",
+      "team_ref": "TEAM021",
+      "employee_ref": "EMP033",
+      "team_role": "member",
+      "joined_at": "2024-01-14 00:58:42",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-01-14 00:58:42",
+      "updated_at": "2024-06-30 18:42:45"
+    },
+    "TMBR134": {
+      "team_member_ref": "TMBR134",
+      "team_ref": "TEAM021",
+      "employee_ref": "EMP065",
+      "team_role": "member",
+      "joined_at": "2021-10-13 15:57:50",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-10-13 15:57:50",
+      "updated_at": "2022-05-19 04:01:55"
+    },
+    "TMBR135": {
+      "team_member_ref": "TMBR135",
+      "team_ref": "TEAM021",
+      "employee_ref": "EMP027",
+      "team_role": "observer",
+      "joined_at": "2024-08-12 21:12:25",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-08-12 21:12:25",
+      "updated_at": "2025-05-23 09:23:07"
+    },
+    "TMBR136": {
+      "team_member_ref": "TMBR136",
+      "team_ref": "TEAM021",
+      "employee_ref": "EMP060",
+      "team_role": "member",
+      "joined_at": "2023-01-18 13:44:50",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-01-18 13:44:50",
+      "updated_at": "2024-11-15 14:31:11"
+    },
+    "TMBR137": {
+      "team_member_ref": "TMBR137",
+      "team_ref": "TEAM021",
+      "employee_ref": "EMP035",
+      "team_role": "member",
+      "joined_at": "2022-10-02 13:32:47",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-10-02 13:32:47",
+      "updated_at": "2023-10-22 11:41:31"
+    },
+    "TMBR138": {
+      "team_member_ref": "TMBR138",
+      "team_ref": "TEAM022",
+      "employee_ref": "EMP007",
+      "team_role": "lead",
+      "joined_at": "2022-08-05 06:06:09",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2022-08-05 06:06:09",
+      "updated_at": "2023-08-25 18:26:23"
+    },
+    "TMBR139": {
+      "team_member_ref": "TMBR139",
+      "team_ref": "TEAM022",
+      "employee_ref": "EMP050",
+      "team_role": "member",
+      "joined_at": "2023-10-08 16:07:18",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-10-08 16:07:18",
+      "updated_at": "2025-04-20 19:53:04"
+    },
+    "TMBR140": {
+      "team_member_ref": "TMBR140",
+      "team_ref": "TEAM022",
+      "employee_ref": "EMP044",
+      "team_role": "member",
+      "joined_at": "2023-12-31 20:42:45",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-12-31 20:42:45",
+      "updated_at": "2024-01-21 16:45:20"
+    },
+    "TMBR141": {
+      "team_member_ref": "TMBR141",
+      "team_ref": "TEAM022",
+      "employee_ref": "EMP058",
+      "team_role": "member",
+      "joined_at": "2024-03-19 19:07:52",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-03-19 19:07:52",
+      "updated_at": "2024-08-26 08:55:00"
+    },
+    "TMBR142": {
+      "team_member_ref": "TMBR142",
+      "team_ref": "TEAM022",
+      "employee_ref": "EMP074",
+      "team_role": "member",
+      "joined_at": "2023-08-14 07:05:11",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2023-08-14 07:05:11",
+      "updated_at": "2024-01-07 19:42:44"
+    },
+    "TMBR143": {
+      "team_member_ref": "TMBR143",
+      "team_ref": "TEAM022",
+      "employee_ref": "EMP057",
+      "team_role": "member",
+      "joined_at": "2024-08-05 17:37:54",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2024-08-05 17:37:54",
+      "updated_at": "2025-04-13 16:22:13"
+    },
+    "TMBR144": {
+      "team_member_ref": "TMBR144",
+      "team_ref": "TEAM022",
+      "employee_ref": "EMP019",
+      "team_role": "member",
+      "joined_at": "2021-08-24 18:29:04",
+      "left_at": null,
+      "status": "active",
+      "created_at": "2021-08-24 18:29:04",
+      "updated_at": "2025-01-08 20:40:27"
+    }
+  },
+  "employee_role": {
+    "EMRL001": {
+      "employee_role_ref": "EMRL001",
+      "employee_ref": "EMP001",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2023-02-08 18:45:05",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-02-08 18:45:05",
+      "updated_at": "2024-02-18 06:55:50"
+    },
+    "EMRL002": {
+      "employee_role_ref": "EMRL002",
+      "employee_ref": "EMP001",
+      "role_ref": "ROLE001",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP004",
+      "assigned_at": "2023-09-19 05:26:00",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-09-19 05:26:00",
+      "updated_at": "2024-11-02 13:24:26"
+    },
+    "EMRL003": {
+      "employee_role_ref": "EMRL003",
+      "employee_ref": "EMP002",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2022-07-15 22:43:00",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-07-15 22:43:00",
+      "updated_at": "2023-02-05 23:23:42"
+    },
+    "EMRL004": {
+      "employee_role_ref": "EMRL004",
+      "employee_ref": "EMP002",
+      "role_ref": "ROLE006",
+      "scope": "team",
+      "scope_ref": "TEAM010",
+      "assigned_by_ref": "EMP004",
+      "assigned_at": "2023-06-02 22:45:24",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-06-02 22:45:24",
+      "updated_at": "2024-07-31 07:34:29"
+    },
+    "EMRL005": {
+      "employee_role_ref": "EMRL005",
+      "employee_ref": "EMP002",
+      "role_ref": "ROLE008",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2024-03-30 20:29:02",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2024-03-30 20:29:02",
+      "updated_at": "2024-05-26 13:09:01"
+    },
+    "EMRL006": {
+      "employee_role_ref": "EMRL006",
+      "employee_ref": "EMP003",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2023-07-02 10:29:54",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-07-02 10:29:54",
+      "updated_at": "2024-01-22 01:59:10"
+    },
+    "EMRL007": {
+      "employee_role_ref": "EMRL007",
+      "employee_ref": "EMP003",
+      "role_ref": "ROLE006",
+      "scope": "team",
+      "scope_ref": "TEAM005",
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2021-03-03 20:51:10",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-03-03 20:51:10",
+      "updated_at": "2024-07-22 08:01:17"
+    },
+    "EMRL008": {
+      "employee_role_ref": "EMRL008",
+      "employee_ref": "EMP003",
+      "role_ref": "ROLE008",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP005",
+      "assigned_at": "2022-03-22 01:02:21",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-03-22 01:02:21",
+      "updated_at": "2024-05-08 09:29:54"
+    },
+    "EMRL009": {
+      "employee_role_ref": "EMRL009",
+      "employee_ref": "EMP004",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP004",
+      "assigned_at": "2022-10-21 00:01:45",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-10-21 00:01:45",
+      "updated_at": "2023-02-26 01:09:38"
+    },
+    "EMRL010": {
+      "employee_role_ref": "EMRL010",
+      "employee_ref": "EMP004",
+      "role_ref": "ROLE006",
+      "scope": "team",
+      "scope_ref": "TEAM018",
+      "assigned_by_ref": "EMP005",
+      "assigned_at": "2023-04-16 05:14:40",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-04-16 05:14:40",
+      "updated_at": "2024-06-20 05:59:29"
+    },
+    "EMRL011": {
+      "employee_role_ref": "EMRL011",
+      "employee_ref": "EMP005",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2022-04-27 10:09:58",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-04-27 10:09:58",
+      "updated_at": "2023-03-09 01:55:03"
+    },
+    "EMRL012": {
+      "employee_role_ref": "EMRL012",
+      "employee_ref": "EMP006",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2023-04-14 06:04:30",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-04-14 06:04:30",
+      "updated_at": "2023-07-25 23:01:26"
+    },
+    "EMRL013": {
+      "employee_role_ref": "EMRL013",
+      "employee_ref": "EMP006",
+      "role_ref": "ROLE005",
+      "scope": "department",
+      "scope_ref": "DEPT002",
+      "assigned_by_ref": "EMP003",
+      "assigned_at": "2023-12-22 08:31:29",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-12-22 08:31:29",
+      "updated_at": "2024-06-24 17:02:53"
+    },
+    "EMRL014": {
+      "employee_role_ref": "EMRL014",
+      "employee_ref": "EMP006",
+      "role_ref": "ROLE005",
+      "scope": "department",
+      "scope_ref": "DEPT009",
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2022-01-15 18:51:57",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-01-15 18:51:57",
+      "updated_at": "2023-11-21 17:35:17"
+    },
+    "EMRL015": {
+      "employee_role_ref": "EMRL015",
+      "employee_ref": "EMP006",
+      "role_ref": "ROLE005",
+      "scope": "department",
+      "scope_ref": "DEPT010",
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2022-12-06 06:55:38",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-12-06 06:55:38",
+      "updated_at": "2023-03-01 18:32:34"
+    },
+    "EMRL016": {
+      "employee_role_ref": "EMRL016",
+      "employee_ref": "EMP006",
+      "role_ref": "ROLE005",
+      "scope": "department",
+      "scope_ref": "DEPT011",
+      "assigned_by_ref": "EMP003",
+      "assigned_at": "2023-11-01 17:14:47",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-11-01 17:14:47",
+      "updated_at": "2025-05-30 00:06:56"
+    },
+    "EMRL017": {
+      "employee_role_ref": "EMRL017",
+      "employee_ref": "EMP007",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2021-07-05 13:09:29",
+      "expires_at": "2025-08-07 18:54:23",
+      "status": "active",
+      "created_at": "2021-07-05 13:09:29",
+      "updated_at": "2024-06-29 06:57:33"
+    },
+    "EMRL018": {
+      "employee_role_ref": "EMRL018",
+      "employee_ref": "EMP007",
+      "role_ref": "ROLE005",
+      "scope": "department",
+      "scope_ref": "DEPT003",
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2021-09-12 12:07:23",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-09-12 12:07:23",
+      "updated_at": "2023-03-05 02:13:37"
+    },
+    "EMRL019": {
+      "employee_role_ref": "EMRL019",
+      "employee_ref": "EMP007",
+      "role_ref": "ROLE006",
+      "scope": "team",
+      "scope_ref": "TEAM022",
+      "assigned_by_ref": "EMP005",
+      "assigned_at": "2023-03-15 11:27:54",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-03-15 11:27:54",
+      "updated_at": "2024-04-21 04:53:32"
+    },
+    "EMRL020": {
+      "employee_role_ref": "EMRL020",
+      "employee_ref": "EMP008",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2022-08-01 16:17:50",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-08-01 16:17:50",
+      "updated_at": "2023-09-23 04:33:48"
+    },
+    "EMRL021": {
+      "employee_role_ref": "EMRL021",
+      "employee_ref": "EMP008",
+      "role_ref": "ROLE005",
+      "scope": "department",
+      "scope_ref": "DEPT004",
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2024-04-13 09:00:20",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2024-04-13 09:00:20",
+      "updated_at": "2024-12-29 14:03:49"
+    },
+    "EMRL022": {
+      "employee_role_ref": "EMRL022",
+      "employee_ref": "EMP008",
+      "role_ref": "ROLE006",
+      "scope": "team",
+      "scope_ref": "TEAM011",
+      "assigned_by_ref": "EMP004",
+      "assigned_at": "2022-02-27 12:10:17",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-02-27 12:10:17",
+      "updated_at": "2023-04-11 23:38:41"
+    },
+    "EMRL023": {
+      "employee_role_ref": "EMRL023",
+      "employee_ref": "EMP008",
+      "role_ref": "ROLE006",
+      "scope": "team",
+      "scope_ref": "TEAM014",
+      "assigned_by_ref": "EMP005",
+      "assigned_at": "2023-09-02 20:07:11",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-09-02 20:07:11",
+      "updated_at": "2024-08-21 09:37:16"
+    },
+    "EMRL024": {
+      "employee_role_ref": "EMRL024",
+      "employee_ref": "EMP008",
+      "role_ref": "ROLE006",
+      "scope": "team",
+      "scope_ref": "TEAM017",
+      "assigned_by_ref": "EMP005",
+      "assigned_at": "2022-07-14 10:23:31",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-07-14 10:23:31",
+      "updated_at": "2024-12-11 01:26:19"
+    },
+    "EMRL025": {
+      "employee_role_ref": "EMRL025",
+      "employee_ref": "EMP008",
+      "role_ref": "ROLE006",
+      "scope": "team",
+      "scope_ref": "TEAM021",
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2022-07-26 04:23:38",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-07-26 04:23:38",
+      "updated_at": "2023-01-02 00:58:01"
+    },
+    "EMRL026": {
+      "employee_role_ref": "EMRL026",
+      "employee_ref": "EMP009",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP005",
+      "assigned_at": "2023-11-14 05:01:52",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-11-14 05:01:52",
+      "updated_at": "2024-05-09 14:47:53"
+    },
+    "EMRL027": {
+      "employee_role_ref": "EMRL027",
+      "employee_ref": "EMP009",
+      "role_ref": "ROLE002",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP005",
+      "assigned_at": "2021-01-04 23:45:39",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-01-04 23:45:39",
+      "updated_at": "2021-02-12 04:01:34"
+    },
+    "EMRL028": {
+      "employee_role_ref": "EMRL028",
+      "employee_ref": "EMP009",
+      "role_ref": "ROLE005",
+      "scope": "department",
+      "scope_ref": "DEPT005",
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2021-03-13 10:18:56",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-03-13 10:18:56",
+      "updated_at": "2024-06-15 07:20:05"
+    },
+    "EMRL029": {
+      "employee_role_ref": "EMRL029",
+      "employee_ref": "EMP009",
+      "role_ref": "ROLE006",
+      "scope": "team",
+      "scope_ref": "TEAM002",
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2021-10-06 00:08:49",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-10-06 00:08:49",
+      "updated_at": "2025-05-30 01:30:44"
+    },
+    "EMRL030": {
+      "employee_role_ref": "EMRL030",
+      "employee_ref": "EMP010",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2023-05-09 20:17:35",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-05-09 20:17:35",
+      "updated_at": "2024-11-14 10:36:19"
+    },
+    "EMRL031": {
+      "employee_role_ref": "EMRL031",
+      "employee_ref": "EMP010",
+      "role_ref": "ROLE007",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP004",
+      "assigned_at": "2021-12-15 18:32:15",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-12-15 18:32:15",
+      "updated_at": "2023-09-23 09:42:29"
+    },
+    "EMRL032": {
+      "employee_role_ref": "EMRL032",
+      "employee_ref": "EMP010",
+      "role_ref": "ROLE005",
+      "scope": "department",
+      "scope_ref": "DEPT006",
+      "assigned_by_ref": "EMP003",
+      "assigned_at": "2022-02-26 09:13:46",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-02-26 09:13:46",
+      "updated_at": "2024-08-02 05:38:04"
+    },
+    "EMRL033": {
+      "employee_role_ref": "EMRL033",
+      "employee_ref": "EMP010",
+      "role_ref": "ROLE006",
+      "scope": "team",
+      "scope_ref": "TEAM009",
+      "assigned_by_ref": "EMP003",
+      "assigned_at": "2021-07-05 11:35:21",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-07-05 11:35:21",
+      "updated_at": "2025-05-06 14:23:14"
+    },
+    "EMRL034": {
+      "employee_role_ref": "EMRL034",
+      "employee_ref": "EMP011",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2021-10-06 14:26:31",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-10-06 14:26:31",
+      "updated_at": "2023-12-16 19:53:42"
+    },
+    "EMRL035": {
+      "employee_role_ref": "EMRL035",
+      "employee_ref": "EMP011",
+      "role_ref": "ROLE005",
+      "scope": "department",
+      "scope_ref": "DEPT007",
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2022-09-15 19:33:42",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-09-15 19:33:42",
+      "updated_at": "2024-09-07 07:31:45"
+    },
+    "EMRL036": {
+      "employee_role_ref": "EMRL036",
+      "employee_ref": "EMP011",
+      "role_ref": "ROLE006",
+      "scope": "team",
+      "scope_ref": "TEAM001",
+      "assigned_by_ref": "EMP003",
+      "assigned_at": "2024-04-16 15:11:40",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2024-04-16 15:11:40",
+      "updated_at": "2024-12-26 20:31:33"
+    },
+    "EMRL037": {
+      "employee_role_ref": "EMRL037",
+      "employee_ref": "EMP011",
+      "role_ref": "ROLE006",
+      "scope": "team",
+      "scope_ref": "TEAM016",
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2023-05-10 04:44:30",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-05-10 04:44:30",
+      "updated_at": "2024-02-20 17:53:49"
+    },
+    "EMRL038": {
+      "employee_role_ref": "EMRL038",
+      "employee_ref": "EMP012",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2022-03-29 23:27:10",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-03-29 23:27:10",
+      "updated_at": "2023-07-15 02:00:46"
+    },
+    "EMRL039": {
+      "employee_role_ref": "EMRL039",
+      "employee_ref": "EMP012",
+      "role_ref": "ROLE005",
+      "scope": "department",
+      "scope_ref": "DEPT008",
+      "assigned_by_ref": "EMP005",
+      "assigned_at": "2022-01-12 20:11:12",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-01-12 20:11:12",
+      "updated_at": "2024-07-20 00:01:24"
+    },
+    "EMRL040": {
+      "employee_role_ref": "EMRL040",
+      "employee_ref": "EMP012",
+      "role_ref": "ROLE005",
+      "scope": "department",
+      "scope_ref": "DEPT012",
+      "assigned_by_ref": "EMP004",
+      "assigned_at": "2024-04-15 05:06:36",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2024-04-15 05:06:36",
+      "updated_at": "2025-06-13 17:42:45"
+    },
+    "EMRL041": {
+      "employee_role_ref": "EMRL041",
+      "employee_ref": "EMP012",
+      "role_ref": "ROLE006",
+      "scope": "team",
+      "scope_ref": "TEAM012",
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2021-08-22 21:31:17",
+      "expires_at": "2025-11-21 17:48:48",
+      "status": "active",
+      "created_at": "2021-08-22 21:31:17",
+      "updated_at": "2021-09-29 00:57:37"
+    },
+    "EMRL042": {
+      "employee_role_ref": "EMRL042",
+      "employee_ref": "EMP013",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2023-04-22 06:16:06",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-04-22 06:16:06",
+      "updated_at": "2023-05-07 03:59:20"
+    },
+    "EMRL043": {
+      "employee_role_ref": "EMRL043",
+      "employee_ref": "EMP014",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP003",
+      "assigned_at": "2021-01-03 06:30:31",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-01-03 06:30:31",
+      "updated_at": "2024-03-17 07:35:36"
+    },
+    "EMRL044": {
+      "employee_role_ref": "EMRL044",
+      "employee_ref": "EMP014",
+      "role_ref": "ROLE006",
+      "scope": "team",
+      "scope_ref": "TEAM008",
+      "assigned_by_ref": "EMP003",
+      "assigned_at": "2021-06-11 11:30:01",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-06-11 11:30:01",
+      "updated_at": "2022-06-16 11:01:54"
+    },
+    "EMRL045": {
+      "employee_role_ref": "EMRL045",
+      "employee_ref": "EMP014",
+      "role_ref": "ROLE006",
+      "scope": "team",
+      "scope_ref": "TEAM013",
+      "assigned_by_ref": "EMP004",
+      "assigned_at": "2023-02-04 08:09:57",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-02-04 08:09:57",
+      "updated_at": "2023-09-13 12:14:02"
+    },
+    "EMRL046": {
+      "employee_role_ref": "EMRL046",
+      "employee_ref": "EMP014",
+      "role_ref": "ROLE006",
+      "scope": "team",
+      "scope_ref": "TEAM015",
+      "assigned_by_ref": "EMP003",
+      "assigned_at": "2021-05-25 12:17:04",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-05-25 12:17:04",
+      "updated_at": "2022-05-20 02:12:26"
+    },
+    "EMRL047": {
+      "employee_role_ref": "EMRL047",
+      "employee_ref": "EMP015",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP005",
+      "assigned_at": "2022-10-04 15:52:25",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-10-04 15:52:25",
+      "updated_at": "2024-05-05 07:22:51"
+    },
+    "EMRL048": {
+      "employee_role_ref": "EMRL048",
+      "employee_ref": "EMP015",
+      "role_ref": "ROLE006",
+      "scope": "team",
+      "scope_ref": "TEAM020",
+      "assigned_by_ref": "EMP004",
+      "assigned_at": "2024-03-07 19:42:38",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2024-03-07 19:42:38",
+      "updated_at": "2024-05-21 01:23:42"
+    },
+    "EMRL049": {
+      "employee_role_ref": "EMRL049",
+      "employee_ref": "EMP016",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP005",
+      "assigned_at": "2021-07-27 09:45:25",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-07-27 09:45:25",
+      "updated_at": "2023-04-01 00:14:19"
+    },
+    "EMRL050": {
+      "employee_role_ref": "EMRL050",
+      "employee_ref": "EMP016",
+      "role_ref": "ROLE006",
+      "scope": "team",
+      "scope_ref": "TEAM019",
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2023-07-09 11:28:24",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-07-09 11:28:24",
+      "updated_at": "2024-06-11 08:08:30"
+    },
+    "EMRL051": {
+      "employee_role_ref": "EMRL051",
+      "employee_ref": "EMP017",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2022-01-03 19:29:24",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-01-03 19:29:24",
+      "updated_at": "2023-05-08 03:52:24"
+    },
+    "EMRL052": {
+      "employee_role_ref": "EMRL052",
+      "employee_ref": "EMP018",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP004",
+      "assigned_at": "2023-12-25 12:56:38",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-12-25 12:56:38",
+      "updated_at": "2024-09-03 22:42:50"
+    },
+    "EMRL053": {
+      "employee_role_ref": "EMRL053",
+      "employee_ref": "EMP018",
+      "role_ref": "ROLE006",
+      "scope": "team",
+      "scope_ref": "TEAM003",
+      "assigned_by_ref": "EMP003",
+      "assigned_at": "2022-12-05 08:02:10",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-12-05 08:02:10",
+      "updated_at": "2023-03-31 08:35:07"
+    },
+    "EMRL054": {
+      "employee_role_ref": "EMRL054",
+      "employee_ref": "EMP018",
+      "role_ref": "ROLE006",
+      "scope": "team",
+      "scope_ref": "TEAM004",
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2021-07-31 10:37:02",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-07-31 10:37:02",
+      "updated_at": "2024-01-25 18:06:46"
+    },
+    "EMRL055": {
+      "employee_role_ref": "EMRL055",
+      "employee_ref": "EMP018",
+      "role_ref": "ROLE006",
+      "scope": "team",
+      "scope_ref": "TEAM006",
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2021-08-30 10:07:31",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-08-30 10:07:31",
+      "updated_at": "2023-07-29 19:11:18"
+    },
+    "EMRL056": {
+      "employee_role_ref": "EMRL056",
+      "employee_ref": "EMP019",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP004",
+      "assigned_at": "2022-05-03 20:00:34",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-05-03 20:00:34",
+      "updated_at": "2024-08-13 08:43:29"
+    },
+    "EMRL057": {
+      "employee_role_ref": "EMRL057",
+      "employee_ref": "EMP019",
+      "role_ref": "ROLE006",
+      "scope": "team",
+      "scope_ref": "TEAM007",
+      "assigned_by_ref": "EMP003",
+      "assigned_at": "2024-04-11 16:14:08",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2024-04-11 16:14:08",
+      "updated_at": "2024-12-07 03:30:28"
+    },
+    "EMRL058": {
+      "employee_role_ref": "EMRL058",
+      "employee_ref": "EMP020",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP004",
+      "assigned_at": "2022-02-16 16:12:41",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-02-16 16:12:41",
+      "updated_at": "2022-07-07 03:20:47"
+    },
+    "EMRL059": {
+      "employee_role_ref": "EMRL059",
+      "employee_ref": "EMP021",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2023-12-02 17:58:42",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-12-02 17:58:42",
+      "updated_at": "2025-06-02 02:37:40"
+    },
+    "EMRL060": {
+      "employee_role_ref": "EMRL060",
+      "employee_ref": "EMP022",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP005",
+      "assigned_at": "2021-03-04 15:36:15",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-03-04 15:36:15",
+      "updated_at": "2023-12-18 01:40:16"
+    },
+    "EMRL061": {
+      "employee_role_ref": "EMRL061",
+      "employee_ref": "EMP023",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2021-05-22 16:39:48",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-05-22 16:39:48",
+      "updated_at": "2022-11-26 07:42:52"
+    },
+    "EMRL062": {
+      "employee_role_ref": "EMRL062",
+      "employee_ref": "EMP024",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP004",
+      "assigned_at": "2023-03-09 15:09:51",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-03-09 15:09:51",
+      "updated_at": "2024-06-15 20:45:12"
+    },
+    "EMRL063": {
+      "employee_role_ref": "EMRL063",
+      "employee_ref": "EMP025",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP003",
+      "assigned_at": "2021-09-28 02:15:32",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-09-28 02:15:32",
+      "updated_at": "2023-06-18 07:05:37"
+    },
+    "EMRL064": {
+      "employee_role_ref": "EMRL064",
+      "employee_ref": "EMP026",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP004",
+      "assigned_at": "2023-05-14 15:27:30",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-05-14 15:27:30",
+      "updated_at": "2023-11-24 17:02:56"
+    },
+    "EMRL065": {
+      "employee_role_ref": "EMRL065",
+      "employee_ref": "EMP027",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2022-12-19 18:13:15",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-12-19 18:13:15",
+      "updated_at": "2023-07-24 22:04:59"
+    },
+    "EMRL066": {
+      "employee_role_ref": "EMRL066",
+      "employee_ref": "EMP028",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2021-01-19 13:47:11",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-01-19 13:47:11",
+      "updated_at": "2022-12-11 04:47:28"
+    },
+    "EMRL067": {
+      "employee_role_ref": "EMRL067",
+      "employee_ref": "EMP029",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2021-11-04 18:56:05",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-11-04 18:56:05",
+      "updated_at": "2023-06-06 01:02:17"
+    },
+    "EMRL068": {
+      "employee_role_ref": "EMRL068",
+      "employee_ref": "EMP030",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2023-06-24 14:36:17",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-06-24 14:36:17",
+      "updated_at": "2025-06-06 04:42:46"
+    },
+    "EMRL069": {
+      "employee_role_ref": "EMRL069",
+      "employee_ref": "EMP031",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2021-02-03 20:46:10",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-02-03 20:46:10",
+      "updated_at": "2022-10-11 06:06:11"
+    },
+    "EMRL070": {
+      "employee_role_ref": "EMRL070",
+      "employee_ref": "EMP032",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP004",
+      "assigned_at": "2021-07-20 01:41:49",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-07-20 01:41:49",
+      "updated_at": "2025-02-25 06:24:52"
+    },
+    "EMRL071": {
+      "employee_role_ref": "EMRL071",
+      "employee_ref": "EMP033",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP003",
+      "assigned_at": "2021-07-10 08:09:44",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-07-10 08:09:44",
+      "updated_at": "2023-06-26 11:17:55"
+    },
+    "EMRL072": {
+      "employee_role_ref": "EMRL072",
+      "employee_ref": "EMP034",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2021-09-18 23:05:29",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-09-18 23:05:29",
+      "updated_at": "2023-07-23 20:19:53"
+    },
+    "EMRL073": {
+      "employee_role_ref": "EMRL073",
+      "employee_ref": "EMP035",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP004",
+      "assigned_at": "2023-02-10 16:55:57",
+      "expires_at": "2026-03-07 20:00:21",
+      "status": "active",
+      "created_at": "2023-02-10 16:55:57",
+      "updated_at": "2024-12-04 12:07:12"
+    },
+    "EMRL074": {
+      "employee_role_ref": "EMRL074",
+      "employee_ref": "EMP036",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2022-07-04 19:57:39",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-07-04 19:57:39",
+      "updated_at": "2023-04-21 13:27:36"
+    },
+    "EMRL075": {
+      "employee_role_ref": "EMRL075",
+      "employee_ref": "EMP037",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP003",
+      "assigned_at": "2022-03-11 17:44:02",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-03-11 17:44:02",
+      "updated_at": "2022-10-28 15:06:52"
+    },
+    "EMRL076": {
+      "employee_role_ref": "EMRL076",
+      "employee_ref": "EMP038",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2023-08-12 23:33:09",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-08-12 23:33:09",
+      "updated_at": "2024-02-19 21:18:46"
+    },
+    "EMRL077": {
+      "employee_role_ref": "EMRL077",
+      "employee_ref": "EMP039",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP003",
+      "assigned_at": "2023-02-15 00:01:38",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-02-15 00:01:38",
+      "updated_at": "2025-02-28 03:35:41"
+    },
+    "EMRL078": {
+      "employee_role_ref": "EMRL078",
+      "employee_ref": "EMP040",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2021-05-17 06:29:47",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-05-17 06:29:47",
+      "updated_at": "2021-12-16 11:01:33"
+    },
+    "EMRL079": {
+      "employee_role_ref": "EMRL079",
+      "employee_ref": "EMP041",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP004",
+      "assigned_at": "2021-11-06 20:19:33",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-11-06 20:19:33",
+      "updated_at": "2025-03-29 06:01:09"
+    },
+    "EMRL080": {
+      "employee_role_ref": "EMRL080",
+      "employee_ref": "EMP042",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP005",
+      "assigned_at": "2022-01-23 00:54:05",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-01-23 00:54:05",
+      "updated_at": "2024-05-16 13:53:29"
+    },
+    "EMRL081": {
+      "employee_role_ref": "EMRL081",
+      "employee_ref": "EMP043",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2022-08-18 04:33:43",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-08-18 04:33:43",
+      "updated_at": "2024-02-27 01:13:54"
+    },
+    "EMRL082": {
+      "employee_role_ref": "EMRL082",
+      "employee_ref": "EMP044",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP004",
+      "assigned_at": "2023-04-26 21:05:42",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-04-26 21:05:42",
+      "updated_at": "2024-10-12 07:36:59"
+    },
+    "EMRL083": {
+      "employee_role_ref": "EMRL083",
+      "employee_ref": "EMP045",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP005",
+      "assigned_at": "2023-02-20 10:34:41",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-02-20 10:34:41",
+      "updated_at": "2024-04-15 13:09:04"
+    },
+    "EMRL084": {
+      "employee_role_ref": "EMRL084",
+      "employee_ref": "EMP046",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2021-02-10 11:41:52",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-02-10 11:41:52",
+      "updated_at": "2022-12-22 23:01:37"
+    },
+    "EMRL085": {
+      "employee_role_ref": "EMRL085",
+      "employee_ref": "EMP047",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2024-04-24 10:00:39",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2024-04-24 10:00:39",
+      "updated_at": "2025-04-25 18:50:42"
+    },
+    "EMRL086": {
+      "employee_role_ref": "EMRL086",
+      "employee_ref": "EMP048",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP005",
+      "assigned_at": "2022-07-10 06:03:50",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-07-10 06:03:50",
+      "updated_at": "2023-07-06 20:03:53"
+    },
+    "EMRL087": {
+      "employee_role_ref": "EMRL087",
+      "employee_ref": "EMP049",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2021-06-05 13:16:43",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-06-05 13:16:43",
+      "updated_at": "2022-06-15 04:06:23"
+    },
+    "EMRL088": {
+      "employee_role_ref": "EMRL088",
+      "employee_ref": "EMP050",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP003",
+      "assigned_at": "2023-04-10 01:23:20",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-04-10 01:23:20",
+      "updated_at": "2023-07-05 21:48:52"
+    },
+    "EMRL089": {
+      "employee_role_ref": "EMRL089",
+      "employee_ref": "EMP051",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2023-06-14 07:21:26",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-06-14 07:21:26",
+      "updated_at": "2025-02-22 15:47:49"
+    },
+    "EMRL090": {
+      "employee_role_ref": "EMRL090",
+      "employee_ref": "EMP052",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP004",
+      "assigned_at": "2022-07-06 04:04:31",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-07-06 04:04:31",
+      "updated_at": "2023-04-02 00:31:45"
+    },
+    "EMRL091": {
+      "employee_role_ref": "EMRL091",
+      "employee_ref": "EMP053",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2022-01-03 11:15:55",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-01-03 11:15:55",
+      "updated_at": "2025-06-08 20:57:39"
+    },
+    "EMRL092": {
+      "employee_role_ref": "EMRL092",
+      "employee_ref": "EMP054",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP003",
+      "assigned_at": "2023-07-08 23:02:54",
+      "expires_at": "2026-03-14 13:41:59",
+      "status": "active",
+      "created_at": "2023-07-08 23:02:54",
+      "updated_at": "2024-04-07 02:52:43"
+    },
+    "EMRL093": {
+      "employee_role_ref": "EMRL093",
+      "employee_ref": "EMP055",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP005",
+      "assigned_at": "2023-05-26 12:46:22",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-05-26 12:46:22",
+      "updated_at": "2025-06-01 03:38:35"
+    },
+    "EMRL094": {
+      "employee_role_ref": "EMRL094",
+      "employee_ref": "EMP056",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2023-02-04 15:32:32",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-02-04 15:32:32",
+      "updated_at": "2023-11-04 08:46:22"
+    },
+    "EMRL095": {
+      "employee_role_ref": "EMRL095",
+      "employee_ref": "EMP057",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP004",
+      "assigned_at": "2021-02-28 23:23:27",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-02-28 23:23:27",
+      "updated_at": "2023-02-21 17:02:43"
+    },
+    "EMRL096": {
+      "employee_role_ref": "EMRL096",
+      "employee_ref": "EMP058",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP005",
+      "assigned_at": "2021-12-06 21:47:19",
+      "expires_at": "2025-12-18 03:10:49",
+      "status": "active",
+      "created_at": "2021-12-06 21:47:19",
+      "updated_at": "2021-12-07 23:16:16"
+    },
+    "EMRL097": {
+      "employee_role_ref": "EMRL097",
+      "employee_ref": "EMP059",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP003",
+      "assigned_at": "2023-08-13 00:36:13",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-08-13 00:36:13",
+      "updated_at": "2023-11-22 09:06:18"
+    },
+    "EMRL098": {
+      "employee_role_ref": "EMRL098",
+      "employee_ref": "EMP060",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP003",
+      "assigned_at": "2024-01-19 17:22:20",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2024-01-19 17:22:20",
+      "updated_at": "2024-09-27 01:30:17"
+    },
+    "EMRL099": {
+      "employee_role_ref": "EMRL099",
+      "employee_ref": "EMP061",
+      "role_ref": "ROLE004",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2021-02-04 00:58:19",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-02-04 00:58:19",
+      "updated_at": "2022-04-20 03:21:36"
+    },
+    "EMRL100": {
+      "employee_role_ref": "EMRL100",
+      "employee_ref": "EMP062",
+      "role_ref": "ROLE004",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2023-03-29 13:41:42",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-03-29 13:41:42",
+      "updated_at": "2023-07-20 05:52:09"
+    },
+    "EMRL101": {
+      "employee_role_ref": "EMRL101",
+      "employee_ref": "EMP063",
+      "role_ref": "ROLE004",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP003",
+      "assigned_at": "2023-12-31 11:04:50",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-12-31 11:04:50",
+      "updated_at": "2024-11-02 17:30:58"
+    },
+    "EMRL102": {
+      "employee_role_ref": "EMRL102",
+      "employee_ref": "EMP064",
+      "role_ref": "ROLE004",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP005",
+      "assigned_at": "2021-06-06 22:45:08",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-06-06 22:45:08",
+      "updated_at": "2022-10-21 02:16:17"
+    },
+    "EMRL103": {
+      "employee_role_ref": "EMRL103",
+      "employee_ref": "EMP065",
+      "role_ref": "ROLE004",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2021-09-02 16:10:13",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-09-02 16:10:13",
+      "updated_at": "2023-07-13 07:48:14"
+    },
+    "EMRL104": {
+      "employee_role_ref": "EMRL104",
+      "employee_ref": "EMP066",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP004",
+      "assigned_at": "2023-10-06 11:11:40",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-10-06 11:11:40",
+      "updated_at": "2025-04-07 18:02:22"
+    },
+    "EMRL105": {
+      "employee_role_ref": "EMRL105",
+      "employee_ref": "EMP067",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP005",
+      "assigned_at": "2023-12-14 09:48:20",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-12-14 09:48:20",
+      "updated_at": "2025-04-04 02:10:12"
+    },
+    "EMRL106": {
+      "employee_role_ref": "EMRL106",
+      "employee_ref": "EMP068",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP003",
+      "assigned_at": "2021-12-13 18:53:11",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-12-13 18:53:11",
+      "updated_at": "2025-05-31 23:56:28"
+    },
+    "EMRL107": {
+      "employee_role_ref": "EMRL107",
+      "employee_ref": "EMP069",
+      "role_ref": "ROLE004",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2022-08-11 19:10:55",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2022-08-11 19:10:55",
+      "updated_at": "2023-11-12 07:34:53"
+    },
+    "EMRL108": {
+      "employee_role_ref": "EMRL108",
+      "employee_ref": "EMP070",
+      "role_ref": "ROLE004",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2021-10-04 01:26:42",
+      "expires_at": null,
+      "status": "revoked",
+      "created_at": "2021-10-04 01:26:42",
+      "updated_at": "2024-11-09 06:13:57"
+    },
+    "EMRL109": {
+      "employee_role_ref": "EMRL109",
+      "employee_ref": "EMP071",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP001",
+      "assigned_at": "2023-12-27 12:46:18",
+      "expires_at": null,
+      "status": "revoked",
+      "created_at": "2023-12-27 12:46:18",
+      "updated_at": "2025-03-16 11:11:10"
+    },
+    "EMRL110": {
+      "employee_role_ref": "EMRL110",
+      "employee_ref": "EMP072",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP004",
+      "assigned_at": "2024-04-12 10:38:23",
+      "expires_at": null,
+      "status": "revoked",
+      "created_at": "2024-04-12 10:38:23",
+      "updated_at": "2024-05-07 14:17:52"
+    },
+    "EMRL111": {
+      "employee_role_ref": "EMRL111",
+      "employee_ref": "EMP073",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP002",
+      "assigned_at": "2023-07-25 18:40:38",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2023-07-25 18:40:38",
+      "updated_at": "2025-04-13 23:55:51"
+    },
+    "EMRL112": {
+      "employee_role_ref": "EMRL112",
+      "employee_ref": "EMP074",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP005",
+      "assigned_at": "2021-12-10 03:34:18",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-12-10 03:34:18",
+      "updated_at": "2022-05-20 21:04:56"
+    },
+    "EMRL113": {
+      "employee_role_ref": "EMRL113",
+      "employee_ref": "EMP075",
+      "role_ref": "ROLE003",
+      "scope": "global",
+      "scope_ref": null,
+      "assigned_by_ref": "EMP004",
+      "assigned_at": "2021-08-07 11:33:53",
+      "expires_at": null,
+      "status": "active",
+      "created_at": "2021-08-07 11:33:53",
+      "updated_at": "2021-12-06 08:24:23"
+    }
+  }
+}
+'''
+
+# ============================================================
+# Helpers
+# ============================================================
+def iso_datetime(dt: datetime) -> str:
+    """
+    功能说明（Description）：
+        格式化datetime，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `dt` (datetime): 业务入参，按函数语义传入。
+    返回（Returns）：
+        - `str`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    return dt.strftime("%Y-%m-%d %H:%M:%S")
+
+def iso_date(dt: datetime) -> str:
+    """
+    功能说明（Description）：
+        格式化date，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `dt` (datetime): 业务入参，按函数语义传入。
+    返回（Returns）：
+        - `str`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    return dt.strftime("%Y-%m-%d")
+
+def parse_dt(s: str) -> datetime:
+    """
+    功能说明（Description）：
+        解析dt，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `s` (str): 业务入参，按函数语义传入。
+    返回（Returns）：
+        - `datetime`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    return datetime.strptime(s, "%Y-%m-%d %H:%M:%S")
+
+def parse_date(s: str) -> datetime:
+    """
+    功能说明（Description）：
+        解析date，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `s` (str): 业务入参，按函数语义传入。
+    返回（Returns）：
+        - `datetime`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    return datetime.strptime(s, "%Y-%m-%d")
+
+def random_datetime(start: datetime, end: datetime) -> datetime:
+    """
+    功能说明（Description）：
+        随机生成datetime，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `start` (datetime): 业务入参，按函数语义传入。
+        - `end` (datetime): 业务入参，按函数语义传入。
+    返回（Returns）：
+        - `datetime`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    if start > end:
+        start, end = end, start
+    delta = end - start
+    seconds = max(0, int(delta.total_seconds()))
+    return start + timedelta(seconds=random.randint(0, seconds if seconds > 0 else 0))
+
+def maybe(prob=0.7) -> bool:
+    """
+    功能说明（Description）：
+        处理maybe，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `prob` (Any): 业务入参，按函数语义传入。 默认值为 `0.7`。
+    返回（Returns）：
+        - `bool`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    return random.random() < prob
+
+def clamp_dt(dt: datetime, low: datetime = BASE_DATE, high: datetime = NOW + timedelta(days=730)) -> datetime:
+    """
+    功能说明（Description）：
+        约束dt，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `dt` (datetime): 业务入参，按函数语义传入。
+        - `low` (datetime): 业务入参，按函数语义传入。 默认值为 `BASE_DATE`。
+        - `high` (datetime): 业务入参，按函数语义传入。 默认值为 `NOW + timedelta(days=730)`。
+    返回（Returns）：
+        - `datetime`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    if dt < low:
+        return low
+    if dt > high:
+        return high
+    return dt
+
+def sequential_ref(prefix: str, idx: int, width: int = 3) -> str:
+    """
+    功能说明（Description）：
+        处理ref，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `prefix` (str): 业务入参，按函数语义传入。
+        - `idx` (int): 业务入参，按函数语义传入。
+        - `width` (int): 业务入参，按函数语义传入。 默认值为 `3`。
+    返回（Returns）：
+        - `str`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    return f"{prefix}{idx:0{width}d}"
+
+def choose_one(seq):
+    """
+    功能说明（Description）：
+        选择one，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `seq` (Any): 业务入参，按函数语义传入。
+    返回（Returns）：
+        - `Any`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    return random.choice(list(seq))
+
+def choose_many(seq, min_n=1, max_n=3):
+    """
+    功能说明（Description）：
+        选择many，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `seq` (Any): 业务入参，按函数语义传入。
+        - `min_n` (Any): 业务入参，按函数语义传入。 默认值为 `1`。
+        - `max_n` (Any): 业务入参，按函数语义传入。 默认值为 `3`。
+    返回（Returns）：
+        - `Any`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    seq = list(seq)
+    if not seq:
+        return []
+    n = random.randint(min_n, min(max_n, len(seq)))
+    return random.sample(seq, n)
+
+def make_created_updated(created_start=BASE_DATE, created_end=NOW):
+    """
+    功能说明（Description）：
+        生成createdupdated，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `created_start` (Any): 业务入参，按函数语义传入。 默认值为 `BASE_DATE`。
+        - `created_end` (Any): 业务入参，按函数语义传入。 默认值为 `NOW`。
+    返回（Returns）：
+        - `Any`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    created = random_datetime(created_start, created_end)
+    updated = random_datetime(created, NOW)
+    return iso_datetime(created), iso_datetime(updated)
+
+def cn_sentence(min_words=8, max_words=18):
+    """
+    功能说明（Description）：
+        处理sentence，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `min_words` (Any): 业务入参，按函数语义传入。 默认值为 `8`。
+        - `max_words` (Any): 业务入参，按函数语义传入。 默认值为 `18`。
+    返回（Returns）：
+        - `Any`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    return fake.sentence(nb_words=random.randint(min_words, max_words))
+
+def cn_paragraph():
+    """
+    功能说明（Description）：
+        处理paragraph，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - 无。
+    返回（Returns）：
+        - `Any`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    return fake.text(max_nb_chars=80).replace("\n", "")
+
+def masked_bank_number():
+    """
+    功能说明（Description）：
+        处理银行number，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - 无。
+    返回（Returns）：
+        - `Any`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    tail = "".join(random.choices("0123456789", k=4))
+    return f"****{tail}"
+
+def employee_name_from_profile(emp_ref, base):
+    """
+    功能说明（Description）：
+        处理namefromprofile，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `emp_ref` (Any): 目标业务对象的引用 ID，用于唯一定位记录。
+        - `base` (Any): 业务入参，按函数语义传入。
+    返回（Returns）：
+        - `Any`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    emp = base["employee"][emp_ref]
+    up = base["user_profile"][emp["user_profile_ref"]]
+    return up["display_name"]
+
+def employee_hire_dt(emp_ref, base):
+    """
+    功能说明（Description）：
+        处理hiredt，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `emp_ref` (Any): 目标业务对象的引用 ID，用于唯一定位记录。
+        - `base` (Any): 业务入参，按函数语义传入。
+    返回（Returns）：
+        - `Any`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    return parse_date(base["employee"][emp_ref]["hire_date"])
+
+def employee_status(emp_ref, base):
+    """
+    功能说明（Description）：
+        处理status，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `emp_ref` (Any): 目标业务对象的引用 ID，用于唯一定位记录。
+        - `base` (Any): 业务入参，按函数语义传入。
+    返回（Returns）：
+        - `Any`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    return base["employee"][emp_ref]["employment_status"]
+
+def employee_position_ref(emp_ref, base):
+    """
+    功能说明（Description）：
+        处理positionref，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `emp_ref` (Any): 目标业务对象的引用 ID，用于唯一定位记录。
+        - `base` (Any): 业务入参，按函数语义传入。
+    返回（Returns）：
+        - `Any`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    return base["employee"][emp_ref]["position_ref"]
+
+def employee_dept_ref(emp_ref, base):
+    """
+    功能说明（Description）：
+        处理deptref，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `emp_ref` (Any): 目标业务对象的引用 ID，用于唯一定位记录。
+        - `base` (Any): 业务入参，按函数语义传入。
+    返回（Returns）：
+        - `Any`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    for rec in base["department_member"].values():
+        if rec["employee_ref"] == emp_ref and rec["is_primary"]:
+            return rec["department_ref"]
+    return choose_one(base["department"].keys())
+
+def employee_manager_ref(emp_ref, base):
+    """
+    功能说明（Description）：
+        处理managerref，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `emp_ref` (Any): 目标业务对象的引用 ID，用于唯一定位记录。
+        - `base` (Any): 业务入参，按函数语义传入。
+    返回（Returns）：
+        - `Any`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    return base["employee"][emp_ref]["direct_manager_ref"]
+
+def active_employees(base):
+    """
+    功能说明（Description）：
+        处理员工列表，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `base` (Any): 业务入参，按函数语义传入。
+    返回（Returns）：
+        - `Any`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    return [
+        e_ref for e_ref, e in base["employee"].items()
+        if e["employment_status"] in ("active", "probation", "on_leave")
+    ]
+
+def all_employees(base):
+    """
+    功能说明（Description）：
+        处理员工列表，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `base` (Any): 业务入参，按函数语义传入。
+    返回（Returns）：
+        - `Any`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    return list(base["employee"].keys())
+
+def hr_employee_pool(base):
+    """
+    功能说明（Description）：
+        处理员工pool，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `base` (Any): 业务入参，按函数语义传入。
+    返回（Returns）：
+        - `Any`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    hr_position_refs = {"POS016", "POS017"}
+    return [
+        e_ref for e_ref, e in base["employee"].items()
+        if e["position_ref"] in hr_position_refs and e["employment_status"] != "terminated"
+    ] or active_employees(base)[:10]
+
+def finance_employee_pool(base):
+    """
+    功能说明（Description）：
+        处理员工pool，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `base` (Any): 业务入参，按函数语义传入。
+    返回（Returns）：
+        - `Any`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    fin_position_refs = {"POS018", "POS019"}
+    return [
+        e_ref for e_ref, e in base["employee"].items()
+        if e["position_ref"] in fin_position_refs and e["employment_status"] != "terminated"
+    ] or active_employees(base)[:10]
+
+def manager_pool(base):
+    """
+    功能说明（Description）：
+        处理pool，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `base` (Any): 业务入参，按函数语义传入。
+    返回（Returns）：
+        - `Any`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    managers = []
+    for e_ref, e in base["employee"].items():
+        if e["position_ref"] in {"POS022", "POS023", "POS024", "POS025"} and e["employment_status"] != "terminated":
+            managers.append(e_ref)
+    if not managers:
+        managers = active_employees(base)[:15]
+    return managers
+
+def file_refs_by_purpose(base, purpose=None):
+    """
+    功能说明（Description）：
+        处理refsbypurpose，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `base` (Any): 业务入参，按函数语义传入。
+        - `purpose` (Any): 业务入参，按函数语义传入。 默认值为 `None`。
+    返回（Returns）：
+        - `Any`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    refs = []
+    for f_ref, f in base["file_attachment"].items():
+        if purpose is None or f["file_purpose"] == purpose:
+            refs.append(f_ref)
+    return refs
+
+# ============================================================
+# Parse base data
+# ============================================================
+base = json.loads(base_data_json)
+
+if "employee" not in base or "department" not in base or "position" not in base or "file_attachment" not in base:
+    raise ValueError("Base data missing required tables: employee / department / position / file_attachment")
+
+employee_ids = list(base["employee"].keys())
+department_ids = list(base["department"].keys())
+position_ids = list(base["position"].keys())
+file_attachment_ids = list(base["file_attachment"].keys())
+team_ids = list(base.get("team", {}).keys())
+
+ACTIVE_EMPLOYEE_IDS = active_employees(base)
+ALL_EMPLOYEE_IDS = all_employees(base)
+
+# ============================================================
+# Output container and registries
+# ============================================================
+result = {}
+
+generated_ids = {}
+generated_rows = {}
+
+table_key_map = {
+    "salarystructures": "salary_structure",
+    "salarycomponents": "salary_component",
+    "payrollrecords": "payroll_record",
+    "payrolllineitems": "payroll_line_item",
+    "bankaccounts": "bank_account",
+    "socialinsurances": "social_insurance",
+    "housingfunds": "housing_fund",
+    "commercialinsurances": "commercial_insurance",
+    "employeecommercialinsurances": "employee_commercial_insurance",
+    "benefitplans": "benefit_plan",
+    "employeebenefitenrollments": "employee_benefit_enrollment",
+    "workschedules": "work_schedule",
+    "employeeworkschedules": "employee_work_schedule",
+    "holidaycalendars": "holiday_calendar",
+    "leavepolicies": "leave_policy",
+    "leavebalances": "leave_balance",
+    "leaverequests": "leave_request",
+    "overtimerequests": "overtime_request",
+    "contracts": "contract",
+    "employeechanges": "employee_change",
+    "approvalflows": "approval_flow",
+    "approvalsteps": "approval_step",
+    "jobrequisitions": "job_requisition",
+    "candidates": "candidate",
+    "interviews": "interview",
+    "trainingprograms": "training_program",
+    "trainingenrollments": "training_enrollment",
+    "performancecycles": "performance_cycle",
+    "performancereviews": "performance_review",
+    "equitygrants": "equity_grant",
+    "equityvestingevents": "equity_vesting_event",
+    "professionaltitles": "professional_title",
+    "talentsubsidies": "talent_subsidy",
+    "employeerecords": "employee_record",
+    "visarecords": "visa_record",
+    "taxdeclarations": "tax_declaration",
+    "taxspecialdeductions": "tax_special_deduction",
+    "compliancereports": "compliance_report",
+    "certificaterequests": "certificate_request",
+    "hrservicerequests": "hr_service_request",
+    "probationreviews": "probation_review",
+    "referrals": "referral",
+    "offers": "offer",
+    "jobapplications": "job_application",
+}
+
+prefix_map = {
+    "salarystructures": "SALSTR",
+    "salarycomponents": "SALCMP",
+    "payrollrecords": "PAYREC",
+    "payrolllineitems": "PAYLIN",
+    "bankaccounts": "BANK",
+    "socialinsurances": "SOCIN",
+    "housingfunds": "HSGFD",
+    "commercialinsurances": "COMIN",
+    "employeecommercialinsurances": "EMPCI",
+    "benefitplans": "BENPL",
+    "employeebenefitenrollments": "EMBEN",
+    "workschedules": "WSCH",
+    "employeeworkschedules": "EMWS",
+    "holidaycalendars": "HOL",
+    "leavepolicies": "LPOL",
+    "leavebalances": "LBAL",
+    "leaverequests": "LREQ",
+    "overtimerequests": "OTREQ",
+    "contracts": "CONT",
+    "employeechanges": "ECHG",
+    "approvalflows": "APFL",
+    "approvalsteps": "APST",
+    "jobrequisitions": "JREQ",
+    "candidates": "CAND",
+    "interviews": "INTV",
+    "trainingprograms": "TRPRG",
+    "trainingenrollments": "TRENR",
+    "performancecycles": "PCYC",
+    "performancereviews": "PREV",
+    "equitygrants": "EQGR",
+    "equityvestingevents": "EQVE",
+    "professionaltitles": "PTTL",
+    "talentsubsidies": "TSUB",
+    "employeerecords": "EREC",
+    "visarecords": "VISA",
+    "taxdeclarations": "TAXD",
+    "taxspecialdeductions": "TAXS",
+    "compliancereports": "COMP",
+    "certificaterequests": "CERT",
+    "hrservicerequests": "HRSR",
+    "probationreviews": "PBRV",
+    "referrals": "REFR",
+    "offers": "OFFR",
+    "jobapplications": "JAPP",
+}
+
+generation_order = [
+    'salarystructures', 'salarycomponents', 'payrollrecords', 'payrolllineitems',
+    'bankaccounts', 'socialinsurances', 'housingfunds', 'commercialinsurances',
+    'employeecommercialinsurances', 'benefitplans', 'employeebenefitenrollments',
+    'workschedules', 'employeeworkschedules', 'holidaycalendars', 'leavepolicies',
+    'leavebalances', 'leaverequests', 'overtimerequests', 'contracts',
+    'employeechanges', 'approvalflows', 'approvalsteps', 'jobrequisitions',
+    'candidates', 'interviews', 'trainingprograms', 'trainingenrollments',
+    'performancecycles', 'performancereviews', 'equitygrants',
+    'equityvestingevents', 'professionaltitles', 'talentsubsidies',
+    'employeerecords', 'visarecords', 'taxdeclarations', 'taxspecialdeductions',
+    'compliancereports', 'certificaterequests', 'hrservicerequests',
+    'probationreviews', 'referrals', 'offers', 'jobapplications'
+]
+
+fk_dependencies = {
+    'salarystructures': [('employee_ref', 'employees'), ('approved_by_ref', 'approved_bies')],
+    'salarycomponents': [('salary_structure_ref', 'salary_structures')],
+    'payrollrecords': [('employee_ref', 'employees'), ('bank_account_ref', 'bank_accounts')],
+    'payrolllineitems': [('payroll_record_ref', 'payroll_records')],
+    'bankaccounts': [('employee_ref', 'employees')],
+    'socialinsurances': [('employee_ref', 'employees')],
+    'housingfunds': [('employee_ref', 'employees')],
+    'commercialinsurances': [],
+    'employeecommercialinsurances': [('employee_ref', 'employees'), ('commercial_insurance_ref', 'commercial_insurances')],
+    'benefitplans': [],
+    'employeebenefitenrollments': [('employee_ref', 'employees'), ('benefit_plan_ref', 'benefit_plans')],
+    'workschedules': [],
+    'employeeworkschedules': [('employee_ref', 'employees'), ('work_schedule_ref', 'work_schedules')],
+    'holidaycalendars': [],
+    'leavepolicies': [],
+    'leavebalances': [('employee_ref', 'employees'), ('leave_policy_ref', 'leave_policies')],
+    'leaverequests': [('employee_ref', 'employees'), ('leave_policy_ref', 'leave_policies'), ('handover_employee_ref', 'handover_employees'), ('approval_flow_ref', 'approval_flows')],
+    'overtimerequests': [('employee_ref', 'employees'), ('approval_flow_ref', 'approval_flows')],
+    'contracts': [('employee_ref', 'employees'), ('file_attachment_ref', 'file_attachments')],
+    'employeechanges': [('employee_ref', 'employees'), ('from_department_ref', 'from_departments'), ('to_department_ref', 'to_departments'), ('from_position_ref', 'from_positions'), ('to_position_ref', 'to_positions'), ('from_manager_ref', 'from_managers'), ('to_manager_ref', 'to_managers'), ('from_salary_structure_ref', 'from_salary_structures'), ('to_salary_structure_ref', 'to_salary_structures'), ('approval_flow_ref', 'approval_flows')],
+    'approvalflows': [('related_resource_ref', 'related_resources'), ('initiator_employee_ref', 'initiator_employees')],
+    'approvalsteps': [('approval_flow_ref', 'approval_flows'), ('approver_employee_ref', 'approver_employees')],
+    'jobrequisitions': [('position_ref', 'positions'), ('department_ref', 'departments'), ('hiring_manager_ref', 'hiring_managers'), ('recruiter_ref', 'recruiters')],
+    'candidates': [('resume_file_ref', 'resume_files')],
+    'jobapplications': [('job_requisition_ref', 'job_requisitions'), ('candidate_ref', 'candidates'), ('referral_ref', 'referrals')],
+    'referrals': [('referrer_employee_ref', 'referrer_employees'), ('candidate_ref', 'candidates'), ('job_requisition_ref', 'job_requisitions')],
+    'interviews': [('job_application_ref', 'job_applications'), ('interviewer_employee_ref', 'interviewer_employees')],
+    'offers': [('job_application_ref', 'job_applications'), ('candidate_ref', 'candidates'), ('position_ref', 'positions'), ('department_ref', 'departments'), ('approval_flow_ref', 'approval_flows')],
+    'trainingprograms': [],
+    'trainingenrollments': [('training_program_ref', 'training_programs'), ('employee_ref', 'employees')],
+    'probationreviews': [('employee_ref', 'employees'), ('contract_ref', 'contracts'), ('reviewer_employee_ref', 'reviewer_employees'), ('approval_flow_ref', 'approval_flows')],
+    'performancecycles': [],
+    'performancereviews': [('performance_cycle_ref', 'performance_cycles'), ('employee_ref', 'employees'), ('reviewer_employee_ref', 'reviewer_employees')],
+    'equitygrants': [('employee_ref', 'employees')],
+    'equityvestingevents': [('equity_grant_ref', 'equity_grants')],
+    'professionaltitles': [('employee_ref', 'employees'), ('file_attachment_ref', 'file_attachments')],
+    'talentsubsidies': [('employee_ref', 'employees')],
+    'employeerecords': [('employee_ref', 'employees'), ('file_attachment_ref', 'file_attachments')],
+    'visarecords': [('employee_ref', 'employees'), ('file_attachment_ref', 'file_attachments')],
+    'taxdeclarations': [('employee_ref', 'employees')],
+    'taxspecialdeductions': [('employee_ref', 'employees')],
+    'compliancereports': [('reporter_employee_ref', 'reporter_employees'), ('involved_employee_refs', 'involved_employees'), ('investigator_employee_ref', 'investigator_employees'), ('file_attachment_refs', 'file_attachments')],
+    'certificaterequests': [('employee_ref', 'employees'), ('generated_file_ref', 'generated_files'), ('approval_flow_ref', 'approval_flows')],
+    'hrservicerequests': [('requester_employee_ref', 'requester_employees'), ('assigned_hr_employee_ref', 'assigned_hr_employees')],
+}
+
+def register_table(table_name, rows):
+    """
+    功能说明（Description）：
+        注册table，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `table_name` (Any): 业务入参，按函数语义传入。
+        - `rows` (Any): 业务入参，按函数语义传入。
+    返回（Returns）：
+        - `Any`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    key = table_key_map[table_name]
+    result[key] = rows
+    generated_rows[table_name] = rows
+    generated_ids[table_name] = list(rows.keys())
+
+def get_fk_pool(target_name):
+    """
+    功能说明（Description）：
+        获取fkpool，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `target_name` (Any): 业务入参，按函数语义传入。
+    返回（Returns）：
+        - `Any`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    target_name = target_name.lower()
+
+    # base aliases
+    if target_name in {"employees", "approved_bies", "handover_employees", "from_managers", "to_managers", "initiator_employees", "approver_employees", "hiring_managers", "recruiters", "interviewer_employees", "reviewer_employees", "referrer_employees", "reporter_employees", "involved_employees", "investigator_employees", "requester_employees", "assigned_hr_employees"}:
+        if target_name == "assigned_hr_employees":
+            return hr_employee_pool(base)
+        if target_name == "recruiters":
+            return hr_employee_pool(base)
+        if target_name == "hiring_managers":
+            return manager_pool(base)
+        return ALL_EMPLOYEE_IDS
+
+    if target_name in {"departments", "from_departments", "to_departments"}:
+        return department_ids
+
+    if target_name in {"positions", "from_positions", "to_positions"}:
+        return position_ids
+
+    if target_name in {"file_attachments", "resume_files", "generated_files"}:
+        return file_attachment_ids
+
+    # generated aliases
+    alias_to_table = {
+        "salary_structures": "salarystructures",
+        "bank_accounts": "bankaccounts",
+        "payroll_records": "payrollrecords",
+        "commercial_insurances": "commercialinsurances",
+        "benefit_plans": "benefitplans",
+        "work_schedules": "workschedules",
+        "leave_policies": "leavepolicies",
+        "approval_flows": "approvalflows",
+        "job_requisitions": "jobrequisitions",
+        "candidates": "candidates",
+        "job_applications": "jobapplications",
+        "referrals": "referrals",
+        "training_programs": "trainingprograms",
+        "performance_cycles": "performancecycles",
+        "equity_grants": "equitygrants",
+        "contracts": "contracts",
+        "related_resources": None,
+    }
+
+    if target_name == "related_resources":
+        pools = []
+        for dep in ["leaverequests", "overtimerequests", "employeechanges", "offers", "certificaterequests", "probationreviews"]:
+            if dep in generated_ids:
+                pools.extend(generated_ids[dep])
+        return pools
+
+    if target_name in alias_to_table and alias_to_table[target_name] in generated_ids:
+        return generated_ids[alias_to_table[target_name]]
+
+    return []
+
+def validate_dependencies(table_name):
+    """
+    功能说明（Description）：
+        校验dependencies，并返回可供后续流程使用的结果。
+    参数（Parameters）：
+        - `table_name` (Any): 业务入参，按函数语义传入。
+    返回（Returns）：
+        - `Any`: 函数执行后的结果；具体结构以类型标注和业务上下文为准。
+    异常（Raises）：
+        - `ValueError`: 输入不合法、资源不存在或状态不满足业务约束时抛出。
+        - `Exception`: 其他由底层依赖、类型转换或运行时错误引发的异常。
+    """
+    missing = []
+    for _, target in fk_dependencies.get(table_name, []):
+        pool = get_fk_pool(target)
+        if not pool:
+            if table_name in {"approvalflows", "approvalsteps", "leaverequests", "overtimerequests", "employeechanges", "interviews", "offers", "probationreviews", "referrals", "jobapplications", "payrollrecords"}:
+                continue
+            missing.append(target)
+    if missing:
+        raise ValueError(f"Cannot generate {table_name}: missing FK pools for {missing}")
+
+# ============================================================
+# Sizing strategy
+# ============================================================
+NUM_EMP = len(employee_ids)
+MIN_PER_EMP = 3
+HEAVY_COUNT = max(NUM_EMP * MIN_PER_EMP, SCALE)
+
+POLICY_MIN = 10
+
+# ============================================================
+# 1. salarystructures
+# ============================================================
+validate_dependencies("salarystructures")
+salarystructures = {}
+salary_struct_by_emp = {e: [] for e in employee_ids}
+salary_currency = "CNY"
+pay_frequencies = ["monthly", "bi_weekly", "weekly"]
+salary_statuses = ["active", "inactive", "expired"]
+
+idx = 1
+for emp_ref in employee_ids:
+    hire_dt = employee_hire_dt(emp_ref, base)
+    approved_pool = manager_pool(base)
+    n = 3
+    effective_dates = []
+    for k in range(n):
+        eff = clamp_dt(hire_dt + timedelta(days=30 * k + random.randint(0, 25)), low=hire_dt, high=NOW)
+        effective_dates.append(eff)
+    effective_dates = sorted(effective_dates)
+
+    for k, eff in enumerate(effective_dates):
+        ref = sequential_ref(prefix_map["salarystructures"], idx)
+        idx += 1
+
+        if k < len(effective_dates) - 1:
+            expiry = effective_dates[k + 1] - timedelta(days=1)
+            status = choose_one(["expired", "inactive"])
+        else:
+            if employee_status(emp_ref, base) == "terminated":
+                term = base["employee"][emp_ref]["termination_date"]
+                expiry = parse_date(term) if term else eff + timedelta(days=365)
+                status = "expired"
+            else:
+                expiry = None
+                status = "active"
+
+        pos_ref = employee_position_ref(emp_ref, base)
+        pos = base["position"][pos_ref]
+        level = pos["position_level"]
+        track = pos["position_track"]
+
+        base_salary = 10000 + level * 3000 + random.randint(-1500, 3000)
+        if track == "M":
+            base_salary += 12000
+        if base["employee"][emp_ref]["worker_type"] in ("intern", "campus_intern"):
+            base_salary = random.randint(3000, 8000)
+        if base["employee"][emp_ref]["worker_type"] == "contractor":
+            base_salary += 4000
+
+        created = iso_datetime(eff)
+        updated = iso_datetime(random_datetime(eff, NOW))
+
+        row = {
+            "salary_structure_ref": ref,
+            "employee_ref": emp_ref,
+            "effective_date": iso_date(eff),
+            "expiry_date": iso_date(expiry) if expiry else None,
+            "base_salary": round(float(base_salary), 2),
+            "currency": salary_currency,
+            "pay_frequency": choose_one(pay_frequencies if track != "M" else ["monthly"]),
+            "status": status,
+            "approved_by_ref": choose_one(approved_pool),
+            "created_at": created,
+            "updated_at": updated,
+        }
+        salarystructures[ref] = row
+        salary_struct_by_emp[emp_ref].append(ref)
+
+register_table("salarystructures", salarystructures)
+
+# ============================================================
+# 2. salarycomponents
+# ============================================================
+validate_dependencies("salarycomponents")
+salarycomponents = {}
+component_types = [
+    "base_salary", "housing_allowance", "meal_allowance", "transport_allowance",
+    "communication_allowance", "performance_bonus", "year_end_bonus",
+    "overtime_pay", "equity_compensation", "sign_on_bonus", "other"
+]
+component_name_map = {
+    "base_salary": "基本工资",
+    "housing_allowance": "住房补贴",
+    "meal_allowance": "餐补",
+    "transport_allowance": "交通补贴",
+    "communication_allowance": "通讯补贴",
+    "performance_bonus": "绩效奖金",
+    "year_end_bonus": "年终奖",
+    "overtime_pay": "加班费",
+    "equity_compensation": "股权激励折算",
+    "sign_on_bonus": "签约奖金",
+    "other": "其他补贴",
+}
+idx = 1
+for ss_ref, ss in salarystructures.items():
+    eff_dt = parse_date(ss["effective_date"])
+    expiry_dt = parse_date(ss["expiry_date"]) if ss["expiry_date"] else None
+
+    chosen = ["base_salary", "housing_allowance", "meal_allowance", "transport_allowance", "communication_allowance"]
+    if maybe(0.8):
+        chosen.append("performance_bonus")
+    if maybe(0.5):
+        chosen.append("year_end_bonus")
+    if maybe(0.3):
+        chosen.append("other")
+
+    for ctype in chosen:
+        ref = sequential_ref(prefix_map["salarycomponents"], idx)
+        idx += 1
+
+        if ctype == "base_salary":
+            amount = ss["base_salary"]
+            recurring = True
+            taxable = True
+        elif ctype == "housing_allowance":
+            amount = random.randint(800, 3000)
+            recurring = True
+            taxable = True
+        elif ctype == "meal_allowance":
+            amount = random.randint(300, 1200)
+            recurring = True
+            taxable = False
+        elif ctype == "transport_allowance":
+            amount = random.randint(200, 1000)
+            recurring = True
+            taxable = False
+        elif ctype == "communication_allowance":
+            amount = random.randint(100, 500)
+            recurring = True
+            taxable = False
+        elif ctype == "performance_bonus":
+            amount = random.randint(1000, 10000)
+            recurring = True
+            taxable = True
+        elif ctype == "year_end_bonus":
+            amount = random.randint(5000, 50000)
+            recurring = False
+            taxable = True
+        elif ctype == "overtime_pay":
+            amount = random.randint(200, 5000)
+            recurring = False
+            taxable = True
+        elif ctype == "equity_compensation":
+            amount = random.randint(5000, 30000)
+            recurring = False
+            taxable = True
+        elif ctype == "sign_on_bonus":
+            amount = random.randint(3000, 20000)
+            recurring = False
+            taxable = True
+        else:
+            amount = random.randint(200, 5000)
+            recurring = maybe(0.4)
+            taxable = maybe(0.7)
+
+        updated = iso_datetime(random_datetime(eff_dt, NOW))
+        row = {
+            "salary_component_ref": ref,
+            "salary_structure_ref": ss_ref,
+            "component_type": ctype,
+            "component_name": component_name_map[ctype],
+            "amount": round(float(amount), 2),
+            "currency": "CNY",
+            "is_taxable": taxable,
+            "is_recurring": recurring,
+            "effective_date": ss["effective_date"],
+            "expiry_date": ss["expiry_date"],
+            "description": f"{component_name_map[ctype]}，适用于员工薪酬结构调整与薪资核算。",
+            "created_at": ss["created_at"],
+            "updated_at": updated,
+        }
+        salarycomponents[ref] = row
+
+register_table("salarycomponents", salarycomponents)
+
+# ============================================================
+# 3. payrollrecords
+# Note: requirement says order fixed; to satisfy FK in this order,
+# we generate deterministic bank account refs first, then materialize bankaccounts later.
+# ============================================================
+validate_dependencies("payrollrecords")
+payrollrecords = {}
+bank_account_future_ref_by_emp = {emp_ref: sequential_ref(prefix_map["bankaccounts"], i + 1) for i, emp_ref in enumerate(employee_ids)}
+
+idx = 1
+for emp_ref in employee_ids:
+    hire_dt = employee_hire_dt(emp_ref, base)
+    start_month = max(datetime(2024, 1, 1), hire_dt)
+    periods = []
+    curr = datetime(start_month.year, start_month.month, 1)
+    while curr <= datetime(2025, 3, 1):
+        periods.append(curr)
+        if len(periods) >= 3:
+            break
+        year = curr.year + (1 if curr.month == 12 else 0)
+        month = 1 if curr.month == 12 else curr.month + 1
+        curr = datetime(year, month, 1)
+
+    if len(periods) < 3:
+        periods = [hire_dt + timedelta(days=30 * i) for i in range(3)]
+
+    ss_ref = salary_struct_by_emp[emp_ref][-1]
+    ss = salarystructures[ss_ref]
+    base_salary_amt = ss["base_salary"]
+
+    for p_start in periods:
+        ref = sequential_ref(prefix_map["payrollrecords"], idx)
+        idx += 1
+        p_end = (datetime(p_start.year + (1 if p_start.month == 12 else 0), 1 if p_start.month == 12 else p_start.month + 1, 1) - timedelta(days=1))
+        gross = base_salary_amt + random.randint(500, 8000)
+        deductions = gross * random.uniform(0.12, 0.25)
+        net = gross - deductions
+        pay_date = clamp_dt(p_end + timedelta(days=random.randint(1, 7)), high=NOW + timedelta(days=365))
+        if pay_date <= NOW - timedelta(days=10):
+            status = choose_one(["paid", "paid", "approved"])
+        else:
+            status = choose_one(["draft", "calculated", "approved"])
+
+        row = {
+            "payroll_record_ref": ref,
+            "employee_ref": emp_ref,
+            "pay_period_start": iso_date(p_start),
+            "pay_period_end": iso_date(p_end),
+            "gross_amount": round(float(gross), 2),
+            "net_amount": round(float(net), 2),
+            "total_deductions": round(float(deductions), 2),
+            "currency": "CNY",
+            "pay_date": iso_date(pay_date),
+            "bank_account_ref": bank_account_future_ref_by_emp[emp_ref],
+            "status": status,
+            "created_at": iso_datetime(clamp_dt(p_end - timedelta(days=random.randint(1, 5)), low=hire_dt)),
+            "updated_at": iso_datetime(clamp_dt(pay_date if status == "paid" else random_datetime(p_start, NOW))),
+        }
+        payrollrecords[ref] = row
+
+register_table("payrollrecords", payrollrecords)
+
+# ============================================================
+# 4. payrolllineitems
+# ============================================================
+validate_dependencies("payrolllineitems")
+payrolllineitems = {}
+idx = 1
+for pr_ref, pr in payrollrecords.items():
+    gross = pr["gross_amount"]
+    deduction_total = pr["total_deductions"]
+
+    items = [
+        ("earning", "base_salary", "基本工资", gross * 0.78),
+        ("earning", "allowance", "岗位补贴", gross * 0.08),
+        ("earning", "bonus", "绩效奖金", gross * 0.14),
+        ("deduction", "pension", "养老保险", deduction_total * 0.28),
+        ("deduction", "medical", "医疗保险", deduction_total * 0.18),
+        ("deduction", "unemployment", "失业保险", deduction_total * 0.05),
+        ("deduction", "housing_fund", "住房公积金", deduction_total * 0.24),
+        ("deduction", "income_tax", "个人所得税", deduction_total * 0.20),
+        ("deduction", "other_deduction", "其他扣款", deduction_total * 0.05),
+        ("employer_contribution", "pension", "单位养老保险", gross * 0.12),
+        ("employer_contribution", "medical", "单位医疗保险", gross * 0.05),
+    ]
+    for cat, itype, name, amt in items:
+        ref = sequential_ref(prefix_map["payrolllineitems"], idx)
+        idx += 1
+        payrolllineitems[ref] = {
+            "payroll_line_item_ref": ref,
+            "payroll_record_ref": pr_ref,
+            "item_category": cat,
+            "item_type": itype,
+            "item_name": name,
+            "amount": round(float(amt), 2),
+            "description": f"{name}明细，归属工资期间 {pr['pay_period_start']} 至 {pr['pay_period_end']}。",
+            "created_at": pr["created_at"],
+        }
+
+register_table("payrolllineitems", payrolllineitems)
+
+# ============================================================
+# 5. bankaccounts
+# ============================================================
+validate_dependencies("bankaccounts")
+bankaccounts = {}
+idx = 1
+banks = ["中国工商银行", "中国建设银行", "中国银行", "招商银行", "交通银行", "浦发银行", "中信银行"]
+branches = ["上海张江支行", "北京中关村支行", "深圳南山支行", "杭州滨江支行", "广州天河支行", "成都高新支行"]
+
+for emp_ref in employee_ids:
+    ref = sequential_ref(prefix_map["bankaccounts"], idx)
+    idx += 1
+    hire_dt = employee_hire_dt(emp_ref, base)
+    bankaccounts[ref] = {
+        "bank_account_ref": ref,
+        "employee_ref": emp_ref,
+        "bank_name": choose_one(banks),
+        "branch_name": choose_one(branches),
+        "account_number_masked": masked_bank_number(),
+        "account_holder_name": employee_name_from_profile(emp_ref, base),
+        "is_primary": True,
+        "status": "closed" if employee_status(emp_ref, base) == "terminated" and maybe(0.5) else "active",
+        "effective_date": iso_date(clamp_dt(hire_dt + timedelta(days=random.randint(0, 30)), low=hire_dt, high=NOW)),
+        "created_at": iso_datetime(hire_dt),
+        "updated_at": iso_datetime(random_datetime(hire_dt, NOW)),
+    }
+
+register_table("bankaccounts", bankaccounts)
+
+# ============================================================
+# 6. socialinsurances
+# ============================================================
+validate_dependencies("socialinsurances")
+socialinsurances = {}
+idx = 1
+insurance_types = ["pension", "medical", "unemployment", "work_injury", "maternity"]
+city_pool = ["上海", "北京", "深圳", "杭州", "广州", "成都", "苏州", "南京"]
+rate_map = {
+    "pension": (0.08, 0.16),
+    "medical": (0.02, 0.10),
+    "unemployment": (0.005, 0.005),
+    "work_injury": (0.00, 0.004),
+    "maternity": (0.00, 0.008),
+}
+for emp_ref in employee_ids:
+    hire_dt = employee_hire_dt(emp_ref, base)
+    city = choose_one(city_pool)
+    for ins_type in insurance_types:
+        ref = sequential_ref(prefix_map["socialinsurances"], idx)
+        idx += 1
+        base_amount = random.randint(4000, 35000)
+        er, cr = rate_map[ins_type]
+        employee_amt = round(base_amount * er, 2)
+        employer_amt = round(base_amount * cr, 2)
+        status = "active"
+        expiry = None
+        if employee_status(emp_ref, base) == "terminated":
+            status = "terminated"
+            term = base["employee"][emp_ref]["termination_date"]
+            expiry = term
+        elif employee_status(emp_ref, base) == "on_leave" and maybe(0.4):
+            status = "suspended"
+
+        socialinsurances[ref] = {
+            "social_insurance_ref": ref,
+            "employee_ref": emp_ref,
+            "insurance_city": city,
+            "insurance_type": ins_type,
+            "base_amount": round(float(base_amount), 2),
+            "employee_rate": er,
+            "employer_rate": cr,
+            "employee_amount": employee_amt,
+            "employer_amount": employer_amt,
+            "effective_date": iso_date(clamp_dt(hire_dt + timedelta(days=random.randint(0, 60)), low=hire_dt, high=NOW)),
+            "expiry_date": expiry,
+            "status": status,
+            "created_at": iso_datetime(hire_dt),
+            "updated_at": iso_datetime(random_datetime(hire_dt, NOW)),
+        }
+
+register_table("socialinsurances", socialinsurances)
+
+# ============================================================
+# 7. housingfunds
+# ============================================================
+validate_dependencies("housingfunds")
+housingfunds = {}
+idx = 1
+for emp_ref in employee_ids:
+    hire_dt = employee_hire_dt(emp_ref, base)
+    for extra in [False, True] if maybe(0.35) else [False]:
+        ref = sequential_ref(prefix_map["housingfunds"], idx)
+        idx += 1
+        base_amount = random.randint(4000, 35000)
+        rate = random.choice([0.05, 0.07, 0.08, 0.10, 0.12])
+        if extra:
+            rate = min(rate + 0.02, 0.12)
+        employee_amt = round(base_amount * rate, 2)
+        employer_amt = round(base_amount * rate, 2)
+        status = "active"
+        expiry = None
+        if employee_status(emp_ref, base) == "terminated":
+            status = "terminated"
+            expiry = base["employee"][emp_ref]["termination_date"]
+        elif employee_status(emp_ref, base) == "on_leave" and maybe(0.4):
+            status = "suspended"
+
+        housingfunds[ref] = {
+            "housing_fund_ref": ref,
+            "employee_ref": emp_ref,
+            "fund_city": choose_one(city_pool),
+            "fund_account_number": f"GF{random.randint(10000000,99999999)}",
+            "base_amount": round(float(base_amount), 2),
+            "employee_rate": rate,
+            "employer_rate": rate,
+            "employee_amount": employee_amt,
+            "employer_amount": employer_amt,
+            "is_supplementary": extra,
+            "effective_date": iso_date(clamp_dt(hire_dt + timedelta(days=random.randint(10, 90)), low=hire_dt, high=NOW)),
+            "expiry_date": expiry,
+            "status": status,
+            "created_at": iso_datetime(hire_dt),
+            "updated_at": iso_datetime(random_datetime(hire_dt, NOW)),
+        }
+
+register_table("housingfunds", housingfunds)
+
+# ============================================================
+# 8. commercialinsurances
+# ============================================================
+validate_dependencies("commercialinsurances")
+commercialinsurances = {}
+idx = 1
+commercial_categories = [
+    "supplemental_medical", "accident", "life", "critical_illness",
+    "dental", "vision", "travel", "other"
+]
+providers = ["平安保险", "中国人寿", "太平洋保险", "泰康保险", "友邦保险"]
+plan_names = ["员工补充医疗计划", "团体意外保障计划", "高端门诊保险", "家属关爱保险", "年度差旅保险", "重疾补充保障"]
+for _ in range(max(POLICY_MIN, 12)):
+    ref = sequential_ref(prefix_map["commercialinsurances"], idx)
+    idx += 1
+    created, updated = make_created_updated(BASE_DATE, NOW - timedelta(days=300))
+    commercialinsurances[ref] = {
+        "commercial_insurance_ref": ref,
+        "plan_name": f"{choose_one(plan_names)}{idx}",
+        "insurance_provider": choose_one(providers),
+        "insurance_category": choose_one(commercial_categories),
+        "coverage_description": "覆盖住院、门诊、意外及重大疾病等风险场景，支持员工及部分家属保障。",
+        "employer_paid": maybe(0.7),
+        "premium_amount": round(float(random.randint(120, 1200)), 2),
+        "currency": "CNY",
+        "plan_status": choose_one(["active", "active", "inactive", "expired"]),
+        "created_at": created,
+        "updated_at": updated,
+    }
+
+register_table("commercialinsurances", commercialinsurances)
+
+# ============================================================
+# 9. employeecommercialinsurances
+# ============================================================
+validate_dependencies("employeecommercialinsurances")
+employeecommercialinsurances = {}
+idx = 1
+commercial_refs = list(commercialinsurances.keys())
+for emp_ref in employee_ids:
+    hire_dt = employee_hire_dt(emp_ref, base)
+    for ci_ref in choose_many(commercial_refs, 1, 2):
+        ref = sequential_ref(prefix_map["employeecommercialinsurances"], idx)
+        idx += 1
+        start = clamp_dt(hire_dt + timedelta(days=random.randint(30, 180)), low=hire_dt, high=NOW)
+        end = None
+        status = "active"
+        if employee_status(emp_ref, base) == "terminated":
+            status = choose_one(["cancelled", "expired"])
+            term = base["employee"][emp_ref]["termination_date"]
+            end = term
+        elif maybe(0.15):
+            end_dt = clamp_dt(start + timedelta(days=random.randint(180, 900)), high=NOW + timedelta(days=500))
+            end = iso_date(end_dt)
+            status = choose_one(["cancelled", "expired", "active"])
+
+        employeecommercialinsurances[ref] = {
+            "employee_commercial_insurance_ref": ref,
+            "employee_ref": emp_ref,
+            "commercial_insurance_ref": ci_ref,
+            "coverage_start_date": iso_date(start),
+            "coverage_end_date": end,
+            "status": status,
+            "created_at": iso_datetime(start),
+            "updated_at": iso_datetime(random_datetime(start, NOW)),
+        }
+
+register_table("employeecommercialinsurances", employeecommercialinsurances)
+
+# ============================================================
+# 10. benefitplans
+# ============================================================
+validate_dependencies("benefitplans")
+benefitplans = {}
+idx = 1
+benefit_types = [
+    "relocation", "education", "wellness", "meal", "transport",
+    "communication", "childcare", "elderly_care", "other"
+]
+benefit_names = {
+    "relocation": "搬迁安家补贴",
+    "education": "继续教育补贴",
+    "wellness": "员工健康计划",
+    "meal": "午餐补贴计划",
+    "transport": "通勤补贴计划",
+    "communication": "通讯补贴计划",
+    "childcare": "托育补贴计划",
+    "elderly_care": "长者关怀补贴",
+    "other": "综合员工福利计划",
+}
+frequencies = ["one_time", "monthly", "quarterly", "yearly"]
+for _ in range(max(POLICY_MIN, 12)):
+    ref = sequential_ref(prefix_map["benefitplans"], idx)
+    idx += 1
+    btype = choose_one(benefit_types)
+    created, updated = make_created_updated(BASE_DATE, NOW - timedelta(days=300))
+    benefitplans[ref] = {
+        "benefit_plan_ref": ref,
+        "plan_name": benefit_names[btype],
+        "plan_type": btype,
+        "description": f"{benefit_names[btype]}，用于提升员工体验与组织吸引力。",
+        "eligibility_criteria": "正式员工优先，部分计划对试用期员工开放，具体以制度为准。",
+        "amount": round(float(random.randint(200, 5000)), 2),
+        "currency": "CNY",
+        "frequency": choose_one(frequencies),
+        "status": choose_one(["active", "active", "inactive", "expired"]),
+        "created_at": created,
+        "updated_at": updated,
+    }
+
+register_table("benefitplans", benefitplans)
+
+# ============================================================
+# 11. employeebenefitenrollments
+# ============================================================
+validate_dependencies("employeebenefitenrollments")
+employeebenefitenrollments = {}
+idx = 1
+benefit_refs = list(benefitplans.keys())
+for emp_ref in employee_ids:
+    hire_dt = employee_hire_dt(emp_ref, base)
+    for bp_ref in choose_many(benefit_refs, 1, 2):
+        ref = sequential_ref(prefix_map["employeebenefitenrollments"], idx)
+        idx += 1
+        enroll_dt = clamp_dt(hire_dt + timedelta(days=random.randint(15, 365)), low=hire_dt, high=NOW)
+        end_date = None
+        status = "active"
+        if employee_status(emp_ref, base) == "terminated":
+            end_date = base["employee"][emp_ref]["termination_date"]
+            status = choose_one(["cancelled", "expired"])
+        elif maybe(0.12):
+            end_dt = clamp_dt(enroll_dt + timedelta(days=random.randint(90, 700)))
+            end_date = iso_date(end_dt)
+            status = choose_one(["cancelled", "expired", "active"])
+
+        employeebenefitenrollments[ref] = {
+            "employee_benefit_enrollment_ref": ref,
+            "employee_ref": emp_ref,
+            "benefit_plan_ref": bp_ref,
+            "enrollment_date": iso_date(enroll_dt),
+            "end_date": end_date,
+            "status": status,
+            "created_at": iso_datetime(enroll_dt),
+            "updated_at": iso_datetime(random_datetime(enroll_dt, NOW)),
+        }
+
+register_table("employeebenefitenrollments", employeebenefitenrollments)
+
+# ============================================================
+# 12. workschedules
+# ============================================================
+validate_dependencies("workschedules")
+workschedules = {}
+idx = 1
+schedule_defs = [
+    ("标准工时制", "STD-0900", "standard", "09:00", "18:00", "12:00", "13:00", "1,2,3,4,5", 8.0, 0),
+    ("弹性工时制", "FLEX-1000", "flexible", "10:00", "19:00", "12:30", "13:30", "1,2,3,4,5", 8.0, 60),
+    ("研发早班", "SHIFT-A", "shift", "08:00", "17:00", "12:00", "13:00", "1,2,3,4,5", 8.0, 15),
+    ("研发晚班", "SHIFT-B", "shift", "13:00", "22:00", "18:00", "19:00", "1,2,3,4,5", 8.0, 15),
+    ("压缩工时制", "CMP-4D", "compressed", "09:00", "19:00", "12:00", "13:00", "1,2,3,4", 9.0, 10),
+    ("客服轮班制", "SHIFT-CS", "shift", "09:30", "18:30", "12:30", "13:30", "1,2,3,4,5,6", 8.0, 10),
+    ("财务标准班", "FIN-0900", "standard", "09:00", "18:00", "12:00", "13:00", "1,2,3,4,5", 8.0, 0),
+    ("市场弹性班", "MKT-FLEX", "flexible", "09:30", "18:30", "12:00", "13:00", "1,2,3,4,5", 8.0, 45),
+    ("数据平台值班", "DATA-SHIFT", "shift", "11:00", "20:00", "14:00", "15:00", "1,2,3,4,5", 8.0, 20),
+    ("实习生日班", "INT-0900", "standard", "09:00", "17:30", "12:00", "13:00", "1,2,3,4,5", 7.5, 0),
+]
+for sch in schedule_defs:
+    ref = sequential_ref(prefix_map["workschedules"], idx)
+    idx += 1
+    created, updated = make_created_updated(BASE_DATE, NOW - timedelta(days=500))
+    workschedules[ref] = {
+        "work_schedule_ref": ref,
+        "schedule_name": sch[0],
+        "schedule_code": sch[1],
+        "schedule_type": sch[2],
+        "work_start_time": sch[3],
+        "work_end_time": sch[4],
+        "break_start_time": sch[5],
+        "break_end_time": sch[6],
+        "work_days_per_week": sch[7],
+        "hours_per_day": sch[8],
+        "flexible_minutes": sch[9],
+        "description": f"{sch[0]}适用于对应岗位和团队排班管理。",
+        "status": choose_one(["active", "active", "inactive"]),
+        "created_at": created,
+        "updated_at": updated,
+    }
+
+register_table("workschedules", workschedules)
+
+# ============================================================
+# 13. employeeworkschedules
+# ============================================================
+validate_dependencies("employeeworkschedules")
+employeeworkschedules = {}
+idx = 1
+schedule_refs = list(workschedules.keys())
+for emp_ref in employee_ids:
+    hire_dt = employee_hire_dt(emp_ref, base)
+    picked = choose_one(schedule_refs)
+    ref = sequential_ref(prefix_map["employeeworkschedules"], idx)
+    idx += 1
+    eff_dt = clamp_dt(hire_dt + timedelta(days=random.randint(0, 30)), low=hire_dt, high=NOW)
+    expiry = None
+    status = "active"
+    if employee_status(emp_ref, base) == "terminated":
+        expiry = base["employee"][emp_ref]["termination_date"]
+        status = "inactive"
+    employeeworkschedules[ref] = {
+        "employee_work_schedule_ref": ref,
+        "employee_ref": emp_ref,
+        "work_schedule_ref": picked,
+        "effective_date": iso_date(eff_dt),
+        "expiry_date": expiry,
+        "status": status,
+        "created_at": iso_datetime(eff_dt),
+        "updated_at": iso_datetime(random_datetime(eff_dt, NOW)),
+    }
+
+register_table("employeeworkschedules", employeeworkschedules)
+
+# ============================================================
+# 14. holidaycalendars
+# ============================================================
+validate_dependencies("holidaycalendars")
+holidaycalendars = {}
+idx = 1
+holiday_templates = [
+    ("元旦", "statutory", "CN"),
+    ("春节", "statutory", "CN"),
+    ("清明节", "statutory", "CN"),
+    ("劳动节", "statutory", "CN"),
+    ("端午节", "statutory", "CN"),
+    ("中秋节", "statutory", "CN"),
+    ("国庆节", "statutory", "CN"),
+    ("公司年会假", "company", "CN"),
+    ("家庭日", "company", "CN"),
+    ("地区创新日", "regional", "CN-SH"),
+]
+years = [2024, 2025]
+month_day_pool = [
+    (1, 1), (2, 10), (2, 11), (2, 12), (4, 4),
+    (5, 1), (6, 10), (9, 17), (10, 1), (10, 2),
+    (11, 15), (12, 20)
+]
+for year in years:
+    for i, tpl in enumerate(holiday_templates):
+        ref = sequential_ref(prefix_map["holidaycalendars"], idx)
+        idx += 1
+        md = month_day_pool[(i + year) % len(month_day_pool)]
+        hdate = datetime(year, md[0], min(md[1], 28 if md[0] == 2 else md[1]))
+        swap = maybe(0.3)
+        holidaycalendars[ref] = {
+            "holiday_calendar_ref": ref,
+            "holiday_name": tpl[0],
+            "holiday_type": tpl[1],
+            "holiday_date": iso_date(hdate),
+            "is_workday_swap": swap,
+            "swap_workday_date": iso_date(hdate + timedelta(days=random.choice([-2, -1, 1, 2]))) if swap else None,
+            "year": year,
+            "region": tpl[2],
+            "description": f"{tpl[0]}放假安排，适用于{tpl[2]}区域。",
+            "created_at": iso_datetime(datetime(year - 1, 12, 1)),
+            "updated_at": iso_datetime(datetime(year - 1, 12, 15)),
+        }
+
+register_table("holidaycalendars", holidaycalendars)
+
+# ============================================================
+# 15. leavepolicies
+# ============================================================
+validate_dependencies("leavepolicies")
+leavepolicies = {}
+idx = 1
+leave_policy_defs = [
+    ("annual", "年假", 10, "yearly", True, 5, 0, True, True),
+    ("sick", "病假", 12, "yearly", False, 0, 0, True, True),
+    ("personal", "事假", 5, "yearly", False, 0, 0, False, True),
+    ("marriage", "婚假", 10, "manual", False, 0, 12, True, True),
+    ("maternity", "产假", 158, "manual", False, 0, 0, True, True),
+    ("paternity", "陪产假", 15, "manual", False, 0, 0, True, True),
+    ("bereavement", "丧假", 5, "manual", False, 0, 0, True, True),
+    ("work_injury", "工伤假", 30, "manual", False, 0, 0, True, True),
+    ("prenatal_checkup", "产检假", 8, "manual", False, 0, 0, True, True),
+    ("nursing", "护理假", 10, "manual", False, 0, 0, True, True),
+    ("compassionate", "陪护假", 7, "manual", False, 0, 6, True, True),
+    ("unpaid", "无薪假", 30, "manual", False, 0, 0, False, True),
+]
+for lp in leave_policy_defs:
+    ref = sequential_ref(prefix_map["leavepolicies"], idx)
+    idx += 1
+    created, updated = make_created_updated(BASE_DATE, NOW - timedelta(days=700))
+    leavepolicies[ref] = {
+        "leave_policy_ref": ref,
+        "leave_type": lp[0],
+        "leave_name": lp[1],
+        "default_days_per_year": float(lp[2]),
+        "accrual_rule": lp[3],
+        "carry_over_allowed": lp[4],
+        "max_carry_over_days": float(lp[5]),
+        "min_service_months": lp[6],
+        "is_paid": lp[7],
+        "requires_approval": lp[8],
+        "description": f"{lp[1]}管理政策，适用于组织统一假勤制度。",
+        "status": choose_one(["active", "active", "inactive"]),
+        "created_at": created,
+        "updated_at": updated,
+    }
+
+register_table("leavepolicies", leavepolicies)
+
+# ============================================================
+# 16. leavebalances
+# ============================================================
+validate_dependencies("leavebalances")
+leavebalances = {}
+idx = 1
+annual_like_policy_refs = [k for k, v in leavepolicies.items() if v["leave_type"] in {"annual", "sick", "personal"}]
+for emp_ref in employee_ids:
+    for year in [2024, 2025]:
+        for lp_ref in annual_like_policy_refs:
+            ref = sequential_ref(prefix_map["leavebalances"], idx)
+            idx += 1
+            policy = leavepolicies[lp_ref]
+            entitled = policy["default_days_per_year"]
+            carried = float(random.randint(0, int(min(5, entitled))))
+            used = round(random.uniform(0, entitled * 0.8), 1)
+            remaining = max(0.0, round(entitled + carried - used, 1))
+            leavebalances[ref] = {
+                "leave_balance_ref": ref,
+                "employee_ref": emp_ref,
+                "leave_policy_ref": lp_ref,
+                "year": year,
+                "entitled_days": float(entitled),
+                "used_days": float(used),
+                "remaining_days": float(remaining),
+                "carried_over_days": float(carried),
+                "created_at": iso_datetime(datetime(year, 1, 1, 9, 0, 0)),
+                "updated_at": iso_datetime(random_datetime(datetime(year, 1, 1), min(NOW, datetime(year, 12, 31, 23, 59, 59)))),
+            }
+
+register_table("leavebalances", leavebalances)
+
+# ============================================================
+# 17. leaverequests
+# Since approvalflows are generated later in required order,
+# approval_flow_ref remains null here.
+# ============================================================
+validate_dependencies("leaverequests")
+leaverequests = {}
+idx = 1
+leave_policy_refs = list(leavepolicies.keys())
+for emp_ref in employee_ids:
+    hire_dt = employee_hire_dt(emp_ref, base)
+    peers = [e for e in ACTIVE_EMPLOYEE_IDS if e != emp_ref]
+    for _ in range(3):
+        ref = sequential_ref(prefix_map["leaverequests"], idx)
+        idx += 1
+        lp_ref = choose_one(leave_policy_refs)
+        policy = leavepolicies[lp_ref]
+        start = clamp_dt(random_datetime(max(hire_dt, datetime(2024, 1, 1)), NOW), low=hire_dt)
+        duration = random.choice([0.5, 1.0, 2.0, 3.0, 5.0])
+        end = start + timedelta(hours=int(duration * 8))
+        status = choose_one(["draft", "pending", "approved", "rejected", "cancelled", "withdrawn"])
+        if start < NOW - timedelta(days=20):
+            status = choose_one(["approved", "approved", "rejected", "cancelled"])
+        leaverequests[ref] = {
+            "leave_request_ref": ref,
+            "employee_ref": emp_ref,
+            "leave_policy_ref": lp_ref,
+            "start_datetime": iso_datetime(start),
+            "end_datetime": iso_datetime(end),
+            "duration_days": float(duration),
+            "reason": f"因{policy['leave_name']}相关安排申请休假，已做好工作交接准备。",
+            "handover_employee_ref": choose_one(peers) if peers and maybe(0.7) else None,
+            "approval_flow_ref": None,
+            "status": status,
+            "created_at": iso_datetime(start - timedelta(days=random.randint(1, 10))),
+            "updated_at": iso_datetime(random_datetime(start - timedelta(days=10), NOW)),
+        }
+
+register_table("leaverequests", leaverequests)
+
+# ============================================================
+# 18. overtimerequests
+# approval_flow_ref remains null due to fixed generation order.
+# ============================================================
+validate_dependencies("overtimerequests")
+overtimerequests = {}
+idx = 1
+for emp_ref in employee_ids:
+    hire_dt = employee_hire_dt(emp_ref, base)
+    for _ in range(3):
+        ref = sequential_ref(prefix_map["overtimerequests"], idx)
+        idx += 1
+        ot_date = clamp_dt(random_datetime(max(hire_dt, datetime(2024, 1, 1)), NOW))
+        start_hour = random.choice([18, 19, 20])
+        start = datetime(ot_date.year, ot_date.month, ot_date.day, start_hour, 0, 0)
+        duration = random.choice([1.5, 2.0, 3.0, 4.0])
+        end = start + timedelta(hours=duration)
+        weekday = start.weekday()
+        ot_type = "weekday" if weekday < 5 else "weekend"
+        if maybe(0.1):
+            ot_type = "holiday"
+        status = choose_one(["draft", "pending", "approved", "rejected", "cancelled"])
+        if start < NOW - timedelta(days=20):
+            status = choose_one(["approved", "approved", "rejected", "cancelled"])
+        overtimerequests[ref] = {
+            "overtime_request_ref": ref,
+            "employee_ref": emp_ref,
+            "overtime_date": iso_date(start),
+            "start_time": iso_datetime(start),
+            "end_time": iso_datetime(end),
+            "duration_hours": float(duration),
+            "overtime_type": ot_type,
+            "compensation_type": choose_one(["pay", "time_off", "mixed"]),
+            "reason": "因项目发布、生产问题处理或跨部门协同需要申请加班。",
+            "approval_flow_ref": None,
+            "status": status,
+            "created_at": iso_datetime(start - timedelta(days=random.randint(1, 7))),
+            "updated_at": iso_datetime(random_datetime(start - timedelta(days=7), NOW)),
+        }
+
+register_table("overtimerequests", overtimerequests)
+
+# ============================================================
+# 19. contracts
+# ============================================================
+validate_dependencies("contracts")
+contracts = {}
+contract_by_emp = {e: [] for e in employee_ids}
+idx = 1
+contract_type_map = {
+    "full_time": choose_one(["fixed_term", "open_ended"]),
+    "intern": "internship",
+    "campus_recruit": "fixed_term",
+    "campus_intern": "internship",
+    "contractor": "part_time",
+}
+contract_files = file_refs_by_purpose(base, "contract") or file_attachment_ids
+for emp_ref in employee_ids:
+    hire_dt = employee_hire_dt(emp_ref, base)
+    worker_type = base["employee"][emp_ref]["worker_type"]
+    ctype = contract_type_map.get(worker_type, "fixed_term")
+    n = 1 if worker_type in ("intern", "campus_intern", "contractor") else random.choice([1, 1, 2])
+    prev_start = hire_dt
+    for k in range(n):
+        ref = sequential_ref(prefix_map["contracts"], idx)
+        idx += 1
+        start_dt = prev_start if k == 0 else prev_start + timedelta(days=1)
+        if ctype == "open_ended":
+            end_dt = None
+        else:
+            end_dt = start_dt + timedelta(days=random.choice([180, 365, 730]))
+        probation_start = None
+        probation_end = None
+        probation_status = "not_applicable"
+        if ctype in ("fixed_term", "open_ended", "internship") and worker_type != "contractor":
+            probation_start = start_dt
+            probation_end = start_dt + timedelta(days=random.choice([60, 90, 180]))
+            if employee_status(emp_ref, base) == "terminated" and base["employee"][emp_ref]["termination_date"]:
+                probation_status = choose_one(["failed", "passed"])
+            elif probation_end < NOW:
+                probation_status = choose_one(["passed", "passed", "extended"])
+            else:
+                probation_status = "in_progress"
+
+        signing_date = clamp_dt(start_dt - timedelta(days=random.randint(1, 20)), low=BASE_DATE, high=NOW)
+        signing_status = "signed"
+        status = "active"
+        if employee_status(emp_ref, base) == "terminated":
+            status = "terminated"
+            signing_status = choose_one(["signed", "terminated"])
+        elif end_dt and end_dt < NOW:
+            status = choose_one(["expired", "renewed", "active"])
+
+        row = {
+            "contract_ref": ref,
+            "employee_ref": emp_ref,
+            "contract_type": ctype,
+            "contract_number": f"LC-{start_dt.year}-{idx:04d}",
+            "start_date": iso_date(start_dt),
+            "end_date": iso_date(end_dt) if end_dt else None,
+            "probation_start_date": iso_date(probation_start) if probation_start else None,
+            "probation_end_date": iso_date(probation_end) if probation_end else None,
+            "probation_status": probation_status,
+            "renewal_count": max(0, k),
+            "signing_date": iso_date(signing_date),
+            "signing_status": signing_status,
+            "contract_entity": "智联科技有限公司",
+            "work_location": choose_one(["上海", "北京", "深圳", "杭州", "广州", "成都"]),
+            "file_attachment_ref": choose_one(contract_files) if maybe(0.7) else None,
+            "status": status,
+            "notes": "合同条款依据公司标准模板签署，具体岗位职责以录用通知和岗位说明书为准。",
+            "created_at": iso_datetime(signing_date),
+            "updated_at": iso_datetime(random_datetime(signing_date, NOW)),
+        }
+        contracts[ref] = row
+        contract_by_emp[emp_ref].append(ref)
+        if end_dt:
+            prev_start = end_dt
+
+register_table("contracts", contracts)
+
+# ============================================================
+# 20. employeechanges
+# approval_flow_ref remains null due to order.
+# ============================================================
+validate_dependencies("employeechanges")
+employeechanges = {}
+idx = 1
+change_types = [
+    "onboarding", "transfer", "promotion", "demotion", "lateral_move",
+    "salary_adjustment", "manager_change", "offboarding", "reinstatement"
+]
+for emp_ref in employee_ids:
+    hire_dt = employee_hire_dt(emp_ref, base)
+    current_dept = employee_dept_ref(emp_ref, base)
+    current_pos = employee_position_ref(emp_ref, base)
+    current_mgr = employee_manager_ref(emp_ref, base)
+    ss_refs = salary_struct_by_emp.get(emp_ref, [])
+    for cidx in range(3):
+        ref = sequential_ref(prefix_map["employeechanges"], idx)
+        idx += 1
+
+        if cidx == 0:
+            ctype = "onboarding"
+            eff_dt = hire_dt
+            from_dept = None
+            to_dept = current_dept
+            from_pos = None
+            to_pos = current_pos
+            from_mgr = None
+            to_mgr = current_mgr
+            from_ss = None
+            to_ss = ss_refs[0] if ss_refs else None
+            status = "completed"
+        else:
+            ctype = choose_one(change_types[1:7] + (["offboarding"] if employee_status(emp_ref, base) == "terminated" else []))
+            eff_dt = clamp_dt(hire_dt + timedelta(days=random.randint(90, 1200)), low=hire_dt, high=NOW)
+            from_dept = current_dept
+            to_dept = choose_one(department_ids) if ctype in {"transfer", "lateral_move"} else current_dept
+            from_pos = current_pos
+            to_pos = choose_one(position_ids) if ctype in {"promotion", "demotion", "lateral_move"} else current_pos
+            from_mgr = current_mgr
+            to_mgr = choose_one(manager_pool(base)) if ctype == "manager_change" else current_mgr
+            from_ss = choose_one(ss_refs) if ss_refs else None
+            to_ss = choose_one(ss_refs) if ss_refs else None
+            status = choose_one(["draft", "pending", "approved", "completed", "rejected", "cancelled"])
+            if ctype == "offboarding":
+                status = "completed"
+
+        employeechanges[ref] = {
+            "employee_change_ref": ref,
+            "employee_ref": emp_ref,
+            "change_type": ctype,
+            "effective_date": iso_date(eff_dt),
+            "from_department_ref": from_dept,
+            "to_department_ref": to_dept,
+            "from_position_ref": from_pos,
+            "to_position_ref": to_pos,
+            "from_manager_ref": from_mgr,
+            "to_manager_ref": to_mgr,
+            "from_salary_structure_ref": from_ss,
+            "to_salary_structure_ref": to_ss,
+            "reason": f"因组织调整、业务发展或员工职业发展需要发起{ctype}变动。",
+            "approval_flow_ref": None,
+            "status": status,
+            "notes": "变动信息已同步至员工档案、组织关系及薪酬权限配置。",
+            "created_at": iso_datetime(clamp_dt(eff_dt - timedelta(days=random.randint(1, 20)), low=hire_dt)),
+            "updated_at": iso_datetime(random_datetime(clamp_dt(eff_dt - timedelta(days=20), low=hire_dt), NOW)),
+        }
+
+register_table("employeechanges", employeechanges)
+
+# ============================================================
+# 21. approvalflows
+# Can now link to previously generated resources.
+# ============================================================
+validate_dependencies("approvalflows")
+approvalflows = {}
+idx = 1
+flow_sources = []
+for r in leaverequests.values():
+    if r["status"] in {"pending", "approved", "rejected", "cancelled", "withdrawn"}:
+        flow_sources.append(("leave_request", r["leave_request_ref"], r["employee_ref"], r["created_at"], r["status"]))
+for r in overtimerequests.values():
+    if r["status"] in {"pending", "approved", "rejected", "cancelled"}:
+        flow_sources.append(("overtime_request", r["overtime_request_ref"], r["employee_ref"], r["created_at"], r["status"]))
+for r in employeechanges.values():
+    if r["status"] in {"pending", "approved", "completed", "rejected", "cancelled"}:
+        flow_sources.append(("employee_change", r["employee_change_ref"], r["employee_ref"], r["created_at"], r["status"]))
+
+approval_flow_map = {}
+for related_type, related_ref, initiator, created_at, src_status in flow_sources:
+    ref = sequential_ref(prefix_map["approvalflows"], idx)
+    idx += 1
+    init_dt = parse_dt(created_at)
+    if src_status in {"approved", "completed"}:
+        status = "approved"
+        current_step = random.randint(2, 3)
+        total_steps = current_step
+        completed_at = iso_datetime(init_dt + timedelta(days=random.randint(1, 7)))
+    elif src_status == "rejected":
+        status = "rejected"
+        current_step = random.randint(1, 2)
+        total_steps = max(current_step, 2)
+        completed_at = iso_datetime(init_dt + timedelta(days=random.randint(1, 5)))
+    elif src_status in {"cancelled", "withdrawn"}:
+        status = choose_one(["cancelled", "withdrawn"])
+        current_step = 1
+        total_steps = random.randint(2, 3)
+        completed_at = iso_datetime(init_dt + timedelta(days=random.randint(0, 3)))
+    elif src_status == "pending":
+        status = "pending"
+        current_step = 1
+        total_steps = random.randint(2, 3)
+        completed_at = None
+    else:
+        status = "draft"
+        current_step = 1
+        total_steps = 2
+        completed_at = None
+
+    row = {
+        "approval_flow_ref": ref,
+        "flow_title": f"{related_type}审批流程",
+        "related_resource_type": related_type,
+        "related_resource_ref": related_ref,
+        "initiator_employee_ref": initiator,
+        "current_step_order": current_step,
+        "total_steps": total_steps,
+        "status": status,
+        "initiated_at": created_at,
+        "completed_at": completed_at,
+        "created_at": created_at,
+        "updated_at": completed_at or iso_datetime(random_datetime(init_dt, NOW)),
+    }
+    approvalflows[ref] = row
+    approval_flow_map[(related_type, related_ref)] = ref
+
+# backfill nullable refs
+for r in leaverequests.values():
+    key = ("leave_request", r["leave_request_ref"])
+    if key in approval_flow_map:
+        r["approval_flow_ref"] = approval_flow_map[key]
+for r in overtimerequests.values():
+    key = ("overtime_request", r["overtime_request_ref"])
+    if key in approval_flow_map:
+        r["approval_flow_ref"] = approval_flow_map[key]
+for r in employeechanges.values():
+    key = ("employee_change", r["employee_change_ref"])
+    if key in approval_flow_map:
+        r["approval_flow_ref"] = approval_flow_map[key]
+
+register_table("approvalflows", approvalflows)
+
+# ============================================================
+# 22. approvalsteps
+# ============================================================
+validate_dependencies("approvalsteps")
+approvalsteps = {}
+idx = 1
+for af_ref, af in approvalflows.items():
+    initiator = af["initiator_employee_ref"]
+    initiator_mgr = employee_manager_ref(initiator, base)
+    approver_candidates = [x for x in [initiator_mgr, choose_one(hr_employee_pool(base)), choose_one(manager_pool(base))] if x]
+    if not approver_candidates:
+        approver_candidates = choose_many(ACTIVE_EMPLOYEE_IDS, 2, 3)
+    total_steps = af["total_steps"]
+    for step_order in range(1, total_steps + 1):
+        ref = sequential_ref(prefix_map["approvalsteps"], idx)
+        idx += 1
+        approver = approver_candidates[min(step_order - 1, len(approver_candidates) - 1)]
+        if af["status"] == "pending":
+            if step_order < af["current_step_order"]:
+                status = "completed"
+                action = "approved"
+                acted_at = iso_datetime(parse_dt(af["initiated_at"]) + timedelta(days=step_order))
+                comment = "同意，符合制度要求。"
+            elif step_order == af["current_step_order"]:
+                status = "pending"
+                action = None
+                acted_at = None
+                comment = None
+            else:
+                status = "pending"
+                action = None
+                acted_at = None
+                comment = None
+        elif af["status"] == "approved":
+            status = "completed"
+            action = "approved"
+            acted_at = iso_datetime(parse_dt(af["initiated_at"]) + timedelta(days=step_order))
+            comment = "审批通过。"
+        elif af["status"] == "rejected":
+            if step_order < af["current_step_order"]:
+                status = "completed"
+                action = "approved"
+                acted_at = iso_datetime(parse_dt(af["initiated_at"]) + timedelta(days=step_order))
+                comment = "前序通过。"
+            elif step_order == af["current_step_order"]:
+                status = "completed"
+                action = "rejected"
+                acted_at = af["completed_at"] or iso_datetime(parse_dt(af["initiated_at"]) + timedelta(days=step_order))
+                comment = "申请理由或材料不足，退回修改。"
+            else:
+                status = "cancelled"
+                action = None
+                acted_at = None
+                comment = None
+        else:
+            status = "cancelled" if af["status"] in {"cancelled", "withdrawn"} else "skipped"
+            action = None
+            acted_at = None
+            comment = None
+
+        approvalsteps[ref] = {
+            "approval_step_ref": ref,
+            "approval_flow_ref": af_ref,
+            "step_order": step_order,
+            "approver_employee_ref": approver,
+            "action": action,
+            "comment": comment,
+            "acted_at": acted_at,
+            "status": status,
+            "created_at": af["created_at"],
+            "updated_at": acted_at or af["updated_at"],
+        }
+
+register_table("approvalsteps", approvalsteps)
+
+# ============================================================
+# 23. jobrequisitions
+# ============================================================
+validate_dependencies("jobrequisitions")
+jobrequisitions = {}
+idx = 1
+req_types = ["social", "campus", "internal", "headhunter"]
+urgencies = ["low", "normal", "high", "urgent"]
+recruiter_pool = hr_employee_pool(base)
+for _ in range(max(HEAVY_COUNT // 4, NUM_EMP)):
+    ref = sequential_ref(prefix_map["jobrequisitions"], idx)
+    idx += 1
+    dept_ref = choose_one(department_ids[1:])  # avoid root mostly
+    dept_name = base["department"][dept_ref]["department_name"]
+    pos_ref = choose_one(position_ids)
+    pos_title = base["position"][pos_ref]["position_title"]
+    hiring_mgr = choose_one(manager_pool(base))
+    recruiter = choose_one(recruiter_pool) if maybe(0.8) else None
+    headcount = random.randint(1, 5)
+    filled_count = random.randint(0, headcount)
+    status = choose_one(["draft", "open", "on_hold", "filled", "cancelled", "closed"])
+    opened_at = None
+    closed_at = None
+    created_dt = random_datetime(datetime(2023, 1, 1), NOW)
+    if status != "draft":
+        opened_at = iso_datetime(created_dt + timedelta(days=random.randint(0, 5)))
+    if status in {"filled", "cancelled", "closed"}:
+        closed_at = iso_datetime(parse_dt(opened_at) + timedelta(days=random.randint(15, 120))) if opened_at else iso_datetime(created_dt + timedelta(days=30))
+    jobrequisitions[ref] = {
+        "job_requisition_ref": ref,
+        "position_ref": pos_ref,
+        "department_ref": dept_ref,
+        "hiring_manager_ref": hiring_mgr,
+        "recruiter_ref": recruiter,
+        "requisition_type": choose_one(req_types),
+        "headcount": headcount,
+        "filled_count": filled_count,
+        "urgency": choose_one(urgencies),
+        "job_description": f"负责{dept_name}{pos_title}相关业务交付、项目推进与跨部门协作。",
+        "requirements": "具备相关专业背景、良好沟通能力、责任心强，有行业经验者优先。",
+        "salary_range_min": float(random.randint(8000, 25000)),
+        "salary_range_max": float(random.randint(26000, 60000)),
+        "currency": "CNY",
+        "status": status,
+        "opened_at": opened_at,
+        "closed_at": closed_at,
+        "created_at": iso_datetime(created_dt),
+        "updated_at": closed_at or iso_datetime(random_datetime(created_dt, NOW)),
+    }
+
+register_table("jobrequisitions", jobrequisitions)
+
+# ============================================================
+# 24. candidates
+# ============================================================
+validate_dependencies("candidates")
+candidates = {}
+idx = 1
+candidate_ids_list = []
+resume_candidates = file_attachment_ids
+candidate_sources = [
+    "social_recruitment", "campus_recruitment", "internal_referral",
+    "headhunter", "job_board", "company_website", "social_media", "other"
+]
+for _ in range(max(HEAVY_COUNT, NUM_EMP * 3)):
+    ref = sequential_ref(prefix_map["candidates"], idx)
+    idx += 1
+    status = choose_one(["active", "inactive", "hired", "blacklisted"])
+    created_dt = random_datetime(datetime(2023, 1, 1), NOW)
+    given = fake.first_name()
+    family = fake.last_name()
+    candidates[ref] = {
+        "candidate_ref": ref,
+        "given_name": given,
+        "family_name": family,
+        "email": fake.email(),
+        "phone": fake.phone_number(),
+        "resume_file_ref": choose_one(resume_candidates) if maybe(0.6) else None,
+        "source": choose_one(candidate_sources),
+        "status": status,
+        "notes": "候选人信息来源真实招聘场景模拟，包含简历、沟通记录与评估意见。",
+        "created_at": iso_datetime(created_dt),
+        "updated_at": iso_datetime(random_datetime(created_dt, NOW)),
+    }
+    candidate_ids_list.append(ref)
+
+register_table("candidates", candidates)
+
+# ============================================================
+# 25. interviews
+# Fixed order before jobapplications, so generate with placeholder future job_application refs.
+# ============================================================
+validate_dependencies("interviews")
+interviews = {}
+idx = 1
+future_job_app_refs = [sequential_ref(prefix_map["jobapplications"], i + 1) for i in range(max(HEAVY_COUNT, NUM_EMP * 3))]
+interview_types = [
+    "phone_screen", "technical", "behavioral", "case_study",
+    "panel", "culture_fit", "hr", "final"
+]
+interviewers = ACTIVE_EMPLOYEE_IDS
+for i, ja_future_ref in enumerate(future_job_app_refs[:max(NUM_EMP * 3, 120)]):
+    rounds = random.randint(1, 2)
+    base_dt = random_datetime(datetime(2024, 1, 1), NOW + timedelta(days=120))
+    for rnd in range(1, rounds + 1):
+        ref = sequential_ref(prefix_map["interviews"], idx)
+        idx += 1
+        start = base_dt + timedelta(days=7 * rnd)
+        end = start + timedelta(minutes=60)
+        status = choose_one(["scheduled", "in_progress", "completed", "cancelled", "no_show"])
+        actual_start = None
+        actual_end = None
+        rating = None
+        feedback = None
+        result_val = None
+        if status == "completed":
+            actual_start = iso_datetime(start)
+            actual_end = iso_datetime(end)
+            rating = random.randint(2, 5)
+            feedback = "候选人表达清晰，专业基础较好，对岗位理解充分。"
+            result_val = choose_one(["pass", "fail", "strong_pass", "borderline"])
+        elif status == "no_show":
+            result_val = "no_show"
+        interviews[ref] = {
+            "interview_ref": ref,
+            "job_application_ref": ja_future_ref,
+            "interviewer_employee_ref": choose_one(interviewers),
+            "interview_round": rnd,
+            "interview_type": choose_one(interview_types),
+            "scheduled_start": iso_datetime(start),
+            "scheduled_end": iso_datetime(end),
+            "actual_start": actual_start,
+            "actual_end": actual_end,
+            "location": choose_one(["上海总部A会议室", "北京办公室3号会议室", "深圳研发中心"]) if maybe(0.4) else None,
+            "meeting_link": f"https://meeting.example.com/{fake.uuid4()[:8]}" if maybe(0.6) else None,
+            "rating": rating,
+            "feedback": feedback,
+            "result": result_val,
+            "status": status,
+            "created_at": iso_datetime(start - timedelta(days=random.randint(1, 10))),
+            "updated_at": actual_end or iso_datetime(random_datetime(start - timedelta(days=10), NOW)),
+        }
+
+register_table("interviews", interviews)
+
+# ============================================================
+# 26. trainingprograms
+# ============================================================
+validate_dependencies("trainingprograms")
+trainingprograms = {}
+idx = 1
+training_types = ["onboarding", "technical", "leadership", "compliance", "soft_skills", "certification", "other"]
+delivery_methods = ["online", "in_person", "blended", "self_paced"]
+target_audiences = ["new_hire", "all_employees", "managers", "engineers", "specific_team", "other"]
+program_names = [
+    "新员工入职训练营", "高级Python工程实践", "管理者反馈沟通训练",
+    "信息安全合规培训", "跨部门协作工作坊", "数据治理基础课程",
+    "产品思维训练营", "财务制度与报销规范", "职场表达与演讲训练"
+]
+for _ in range(max(POLICY_MIN, 12)):
+    ref = sequential_ref(prefix_map["trainingprograms"], idx)
+    idx += 1
+    created, updated = make_created_updated(BASE_DATE, NOW - timedelta(days=200))
+    trainingprograms[ref] = {
+        "training_program_ref": ref,
+        "program_name": choose_one(program_names),
+        "program_type": choose_one(training_types),
+        "description": "培训项目覆盖入职、专业能力、管理能力和合规要求，支持线上线下多种形式。",
+        "duration_hours": float(random.choice([2, 4, 6, 8, 12, 16])),
+        "delivery_method": choose_one(delivery_methods),
+        "target_audience": choose_one(target_audiences),
+        "status": choose_one(["draft", "active", "completed", "cancelled", "archived"]),
+        "created_at": created,
+        "updated_at": updated,
+    }
+
+register_table("trainingprograms", trainingprograms)
+
+# ============================================================
+# 27. trainingenrollments
+# ============================================================
+validate_dependencies("trainingenrollments")
+trainingenrollments = {}
+idx = 1
+training_program_refs = list(trainingprograms.keys())
+for emp_ref in employee_ids:
+    for tr_ref in choose_many(training_program_refs, 1, 2):
+        ref = sequential_ref(prefix_map["trainingenrollments"], idx)
+        idx += 1
+        enrolled_dt = random_datetime(max(employee_hire_dt(emp_ref, base), datetime(2024, 1, 1)), NOW)
+        status = choose_one(["enrolled", "in_progress", "completed", "dropped", "cancelled"])
+        started_at = None
+        completed_at = None
+        progress = 0.0
+        score = None
+        result_val = None
+        if status in {"in_progress", "completed", "dropped"}:
+            started_at = iso_datetime(enrolled_dt + timedelta(days=random.randint(0, 5)))
+            progress = round(random.uniform(10, 90), 1)
+        if status == "completed":
+            progress = 100.0
+            comp_dt = clamp_dt(parse_dt(started_at) + timedelta(days=random.randint(1, 20)))
+            completed_at = iso_datetime(comp_dt)
+            score = round(random.uniform(60, 98), 1)
+            result_val = choose_one(["pass", "fail", "incomplete"])
+        trainingenrollments[ref] = {
+            "training_enrollment_ref": ref,
+            "training_program_ref": tr_ref,
+            "employee_ref": emp_ref,
+            "enrolled_at": iso_datetime(enrolled_dt),
+            "started_at": started_at,
+            "completed_at": completed_at,
+            "progress_pct": float(progress),
+            "score": score,
+            "result": result_val,
+            "status": status,
+            "created_at": iso_datetime(enrolled_dt),
+            "updated_at": completed_at or iso_datetime(random_datetime(enrolled_dt, NOW)),
+        }
+
+register_table("trainingenrollments", trainingenrollments)
+
+# ============================================================
+# 28. performancecycles
+# ============================================================
+validate_dependencies("performancecycles")
+performancecycles = {}
+idx = 1
+cycle_defs = [
+    ("2024年度绩效考核", "annual", datetime(2024, 1, 1), datetime(2024, 12, 31), datetime(2025, 1, 20)),
+    ("2025上半年绩效考核", "semi_annual", datetime(2025, 1, 1), datetime(2025, 6, 30), datetime(2025, 7, 20)),
+    ("2024Q4季度绩效", "quarterly", datetime(2024, 10, 1), datetime(2024, 12, 31), datetime(2025, 1, 15)),
+    ("2025Q1季度绩效", "quarterly", datetime(2025, 1, 1), datetime(2025, 3, 31), datetime(2025, 4, 15)),
+    ("2025Q2季度绩效", "quarterly", datetime(2025, 4, 1), datetime(2025, 6, 30), datetime(2025, 7, 15)),
+    ("2024年12月月度绩效", "monthly", datetime(2024, 12, 1), datetime(2024, 12, 31), datetime(2025, 1, 8)),
+    ("2025年1月月度绩效", "monthly", datetime(2025, 1, 1), datetime(2025, 1, 31), datetime(2025, 2, 8)),
+    ("2025年2月月度绩效", "monthly", datetime(2025, 2, 1), datetime(2025, 2, 28), datetime(2025, 3, 8)),
+    ("2025年3月月度绩效", "monthly", datetime(2025, 3, 1), datetime(2025, 3, 31), datetime(2025, 4, 8)),
+    ("2025年4月月度绩效", "monthly", datetime(2025, 4, 1), datetime(2025, 4, 30), datetime(2025, 5, 8)),
+]
+for cyc in cycle_defs:
+    ref = sequential_ref(prefix_map["performancecycles"], idx)
+    idx += 1
+    performancecycles[ref] = {
+        "performance_cycle_ref": ref,
+        "cycle_name": cyc[0],
+        "cycle_type": cyc[1],
+        "start_date": iso_date(cyc[2]),
+        "end_date": iso_date(cyc[3]),
+        "review_deadline": iso_date(cyc[4]),
+        "status": choose_one(["draft", "active", "review", "calibration", "completed", "cancelled"]),
+        "created_at": iso_datetime(cyc[2] - timedelta(days=15)),
+        "updated_at": iso_datetime(random_datetime(cyc[2] - timedelta(days=15), min(NOW, cyc[4] + timedelta(days=20)))),
+    }
+
+register_table("performancecycles", performancecycles)
+
+# ============================================================
+# 29. performancereviews
+# ============================================================
+validate_dependencies("performancereviews")
+performancereviews = {}
+idx = 1
+cycle_refs = list(performancecycles.keys())
+rating_words = ["A", "B+", "B", "C+", "C"]
+review_statuses = ["draft", "self_review", "manager_review", "calibration", "completed", "acknowledged", "appealed"]
+for emp_ref in employee_ids:
+    reviewer = employee_manager_ref(emp_ref, base) or choose_one(manager_pool(base))
+    for cyc_ref in choose_many(cycle_refs, 1, 2):
+        cyc = performancecycles[cyc_ref]
+        start_dt = parse_date(cyc["start_date"])
+        ref = sequential_ref(prefix_map["performancereviews"], idx)
+        idx += 1
+        status = choose_one(review_statuses)
+        self_rating = choose_one(rating_words) if status not in {"draft"} else None
+        manager_rating = choose_one(rating_words) if status in {"manager_review", "calibration", "completed", "acknowledged", "appealed"} else None
+        final_rating = choose_one(rating_words) if status in {"completed", "acknowledged", "appealed"} else None
+        submitted_at = iso_datetime(start_dt + timedelta(days=random.randint(30, 90))) if status not in {"draft"} else None
+        finalized_at = iso_datetime(parse_dt(submitted_at) + timedelta(days=random.randint(3, 15))) if submitted_at and final_rating else None
+        performancereviews[ref] = {
+            "performance_review_ref": ref,
+            "performance_cycle_ref": cyc_ref,
+            "employee_ref": emp_ref,
+            "reviewer_employee_ref": reviewer,
+            "self_rating": self_rating,
+            "manager_rating": manager_rating,
+            "final_rating": final_rating,
+            "self_summary": "围绕目标交付、跨团队协作和专业成长进行了自我复盘。",
+            "manager_comment": "整体表现稳定，关键项目推进有成效，建议继续提升影响力与系统性思考。",
+            "goals_achieved": "完成既定项目目标，支持团队重点任务与组织协同。",
+            "development_plan": "建议加强业务理解、项目管理和复盘总结能力建设。",
+            "status": status,
+            "submitted_at": submitted_at,
+            "finalized_at": finalized_at,
+            "created_at": iso_datetime(start_dt),
+            "updated_at": finalized_at or iso_datetime(random_datetime(start_dt, NOW)),
+        }
+
+register_table("performancereviews", performancereviews)
+
+# ============================================================
+# 30. equitygrants
+# ============================================================
+validate_dependencies("equitygrants")
+equitygrants = {}
+idx = 1
+grant_types = ["rsu", "stock_option", "espp", "sar", "phantom"]
+vesting_schedules = ["4_year_1_year_cliff", "4_year_no_cliff", "3_year_1_year_cliff", "immediate", "custom"]
+eligible_for_equity = [
+    e for e in employee_ids
+    if base["employee"][e]["worker_type"] == "full_time" and employee_position_ref(e, base) in {"POS003", "POS004", "POS005", "POS007", "POS008", "POS010", "POS012", "POS014", "POS022", "POS023", "POS024", "POS025"}
+]
+for emp_ref in eligible_for_equity[:max(20, len(eligible_for_equity))]:
+    if not maybe(0.7):
+        continue
+    ref = sequential_ref(prefix_map["equitygrants"], idx)
+    idx += 1
+    hire_dt = employee_hire_dt(emp_ref, base)
+    grant_dt = clamp_dt(hire_dt + timedelta(days=random.randint(180, 1000)), low=hire_dt, high=NOW)
+    total_units = random.choice([500, 800, 1000, 1500, 2000, 3000, 5000])
+    vested_units = random.randint(0, total_units)
+    vesting_schedule = choose_one(vesting_schedules)
+    cliff_date = None if vesting_schedule in {"immediate", "4_year_no_cliff"} else iso_date(grant_dt + timedelta(days=365))
+    expiry_date = iso_date(grant_dt + timedelta(days=365 * 4))
+    status = choose_one(["active", "fully_vested", "cancelled", "forfeited", "expired"])
+    equitygrants[ref] = {
+        "equity_grant_ref": ref,
+        "employee_ref": emp_ref,
+        "grant_type": choose_one(grant_types),
+        "grant_date": iso_date(grant_dt),
+        "total_units": total_units,
+        "vested_units": vested_units,
+        "grant_price": round(float(random.uniform(8, 35)), 2),
+        "currency": "CNY",
+        "vesting_schedule": vesting_schedule,
+        "vesting_start_date": iso_date(grant_dt),
+        "cliff_date": cliff_date,
+        "expiry_date": expiry_date,
+        "status": status,
+        "notes": "股权激励授予基于岗位价值、绩效表现及长期贡献预期综合评定。",
+        "created_at": iso_datetime(grant_dt),
+        "updated_at": iso_datetime(random_datetime(grant_dt, NOW)),
+    }
+
+register_table("equitygrants", equitygrants)
+
+# ============================================================
+# 31. equityvestingevents
+# ============================================================
+validate_dependencies("equityvestingevents")
+equityvestingevents = {}
+idx = 1
+for eg_ref, eg in equitygrants.items():
+    grant_dt = parse_date(eg["grant_date"])
+    total_units = eg["total_units"]
+    schedule = eg["vesting_schedule"]
+
+    if schedule == "immediate":
+        events = [(grant_dt, total_units)]
+    elif schedule == "3_year_1_year_cliff":
+        events = []
+        units = [total_units // 3, total_units // 3, total_units - 2 * (total_units // 3)]
+        for i in range(3):
+            events.append((grant_dt + timedelta(days=365 * (i + 1)), units[i]))
+    else:
+        events = []
+        per = total_units // 4
+        remain = total_units - per * 3
+        parts = [per, per, per, remain]
+        for i in range(4):
+            events.append((grant_dt + timedelta(days=365 * (i + 1)), parts[i]))
+
+    for vest_dt, units in events:
+        ref = sequential_ref(prefix_map["equityvestingevents"], idx)
+        idx += 1
+        status = "scheduled"
+        vesting_price = None
+        if vest_dt <= NOW:
+            status = choose_one(["vested", "vested", "forfeited"])
+            vesting_price = round(float(random.uniform(10, 45)), 2)
+        equityvestingevents[ref] = {
+            "equity_vesting_event_ref": ref,
+            "equity_grant_ref": eg_ref,
+            "vesting_date": iso_date(vest_dt),
+            "units_vested": units,
+            "vesting_price": vesting_price,
+            "status": status,
+            "created_at": eg["created_at"],
+            "updated_at": iso_datetime(random_datetime(parse_dt(eg["created_at"]), NOW)),
+        }
+
+register_table("equityvestingevents", equityvestingevents)
+
+# ============================================================
+# 32. professionaltitles
+# ============================================================
+validate_dependencies("professionaltitles")
+professionaltitles = {}
+idx = 1
+title_levels = ["junior", "intermediate", "senior", "principal", "fellow"]
+title_names = ["软件设计师", "系统架构师", "高级项目管理师", "数据分析师", "高级人力资源管理师", "网络工程师"]
+doc_file_refs = file_attachment_ids
+for emp_ref in employee_ids:
+    for _ in range(random.choice([1, 1, 2])):
+        ref = sequential_ref(prefix_map["professionaltitles"], idx)
+        idx += 1
+        issue_dt = random_datetime(employee_hire_dt(emp_ref, base), NOW)
+        expiry_dt = issue_dt + timedelta(days=random.choice([365 * 3, 365 * 5]))
+        status = choose_one(["active", "expired", "revoked"])
+        professionaltitles[ref] = {
+            "professional_title_ref": ref,
+            "employee_ref": emp_ref,
+            "title_name": choose_one(title_names),
+            "title_level": choose_one(title_levels),
+            "issuing_authority": choose_one(["人力资源和社会保障部门", "工业和信息化部授权机构", "行业协会", "职业资格评审委员会"]),
+            "certificate_number": f"CERT-{random.randint(100000,999999)}",
+            "issue_date": iso_date(issue_dt),
+            "expiry_date": iso_date(expiry_dt) if maybe(0.7) else None,
+            "file_attachment_ref": choose_one(doc_file_refs) if maybe(0.6) else None,
+            "status": status,
+            "created_at": iso_datetime(issue_dt),
+            "updated_at": iso_datetime(random_datetime(issue_dt, NOW)),
+        }
+
+register_table("professionaltitles", professionaltitles)
+
+# ============================================================
+# 33. talentsubsidies
+# ============================================================
+validate_dependencies("talentsubsidies")
+talentsubsidies = {}
+idx = 1
+subsidy_types = ["housing", "education", "relocation", "settlement", "talent_award", "other"]
+subsidy_names = {
+    "housing": "人才住房补贴",
+    "education": "学历提升补贴",
+    "relocation": "异地搬迁补贴",
+    "settlement": "落户安家补贴",
+    "talent_award": "关键人才激励",
+    "other": "专项人才津贴",
+}
+for emp_ref in employee_ids:
+    if not maybe(0.45):
+        continue
+    ref = sequential_ref(prefix_map["talentsubsidies"], idx)
+    idx += 1
+    start_dt = random_datetime(employee_hire_dt(emp_ref, base), NOW)
+    end_dt = start_dt + timedelta(days=random.choice([180, 365, 730]))
+    status = choose_one(["active", "suspended", "expired", "cancelled"])
+    stype = choose_one(subsidy_types)
+    talentsubsidies[ref] = {
+        "talent_subsidy_ref": ref,
+        "employee_ref": emp_ref,
+        "subsidy_type": stype,
+        "subsidy_name": subsidy_names[stype],
+        "amount": round(float(random.randint(1000, 12000)), 2),
+        "currency": "CNY",
+        "frequency": choose_one(["one_time", "monthly", "quarterly", "yearly"]),
+        "start_date": iso_date(start_dt),
+        "end_date": iso_date(end_dt) if maybe(0.7) else None,
+        "status": status,
+        "notes": "用于支持重点人才引进、保留与长期发展。",
+        "created_at": iso_datetime(start_dt),
+        "updated_at": iso_datetime(random_datetime(start_dt, NOW)),
+    }
+
+register_table("talentsubsidies", talentsubsidies)
+
+# ============================================================
+# 34. employeerecords
+# ============================================================
+validate_dependencies("employeerecords")
+employeerecords = {}
+idx = 1
+record_types = [
+    "hukou", "education", "work_history", "emergency_contact",
+    "id_document", "health_check", "background_check", "other"
+]
+for emp_ref in employee_ids:
+    for _ in range(3):
+        ref = sequential_ref(prefix_map["employeerecords"], idx)
+        idx += 1
+        rtype = choose_one(record_types)
+        eff_dt = random_datetime(employee_hire_dt(emp_ref, base), NOW)
+        expiry = None
+        record_data = {}
+        if rtype == "hukou":
+            record_data = {"city": choose_one(["上海", "北京", "杭州", "南京", "成都"]), "type": choose_one(["城镇", "农村"])}
+        elif rtype == "education":
+            record_data = {"school": fake.company() + "大学", "degree": choose_one(["本科", "硕士", "博士"]), "major": choose_one(["计算机科学", "软件工程", "人力资源", "财务管理", "市场营销"])}
+        elif rtype == "work_history":
+            record_data = {"company": fake.company(), "title": choose_one(["工程师", "产品经理", "设计师", "HR专员"]), "years": random.randint(1, 8)}
+        elif rtype == "emergency_contact":
+            record_data = {"name": fake.name(), "relationship": choose_one(["配偶", "父亲", "母亲", "朋友", "兄弟姐妹"]), "phone": fake.phone_number()}
+        elif rtype == "id_document":
+            expiry = iso_date(eff_dt + timedelta(days=365 * 10))
+            record_data = {"document_type": "身份证", "number_masked": "***************1234"}
+        elif rtype == "health_check":
+            record_data = {"result": choose_one(["合格", "需复查"]), "hospital": choose_one(["瑞金医院", "华山医院", "协和医院"])}
+        elif rtype == "background_check":
+            record_data = {"agency": choose_one(["第三方背调机构A", "第三方背调机构B"]), "result": choose_one(["通过", "待补材料"])}
+        else:
+            record_data = {"note": "其他员工档案信息"}
+        status = choose_one(["active", "archived", "expired"])
+        employeerecords[ref] = {
+            "employee_record_ref": ref,
+            "employee_ref": emp_ref,
+            "record_type": rtype,
+            "record_data": record_data,
+            "effective_date": iso_date(eff_dt),
+            "expiry_date": expiry,
+            "file_attachment_ref": choose_one(file_attachment_ids) if maybe(0.5) else None,
+            "status": status,
+            "created_at": iso_datetime(eff_dt),
+            "updated_at": iso_datetime(random_datetime(eff_dt, NOW)),
+        }
+
+register_table("employeerecords", employeerecords)
+
+# ============================================================
+# 35. visarecords
+# ============================================================
+validate_dependencies("visarecords")
+visarecords = {}
+idx = 1
+visa_types = [
+    "work_permit", "residence_permit", "business_visa", "tourist_visa",
+    "student_visa", "dependent_visa", "permanent_residence", "other"
+]
+foreign_candidate_emps = choose_many(employee_ids, 15, 25)
+for emp_ref in foreign_candidate_emps:
+    ref = sequential_ref(prefix_map["visarecords"], idx)
+    idx += 1
+    issue_dt = random_datetime(datetime(2023, 1, 1), NOW)
+    expiry_dt = issue_dt + timedelta(days=random.choice([180, 365, 730]))
+    renewal_dt = expiry_dt - timedelta(days=60)
+    status = choose_one(["active", "expired", "revoked", "pending_renewal"])
+    visarecords[ref] = {
+        "visa_record_ref": ref,
+        "employee_ref": emp_ref,
+        "visa_type": choose_one(visa_types),
+        "document_number": f"V{random.randint(1000000,9999999)}",
+        "issuing_country": choose_one(["CN", "US", "JP", "SG", "HK"]),
+        "nationality": choose_one(["US", "JP", "KR", "SG", "CA", "UK"]),
+        "issue_date": iso_date(issue_dt),
+        "expiry_date": iso_date(expiry_dt),
+        "entry_count": choose_one(["single", "double", "multiple"]),
+        "sponsoring_entity": "智联科技有限公司" if maybe(0.7) else None,
+        "file_attachment_ref": choose_one(file_attachment_ids) if maybe(0.6) else None,
+        "renewal_reminder_date": iso_date(renewal_dt) if maybe(0.8) else None,
+        "status": status,
+        "notes": "签证与居留信息用于涉外员工合规管理与到期提醒。",
+        "created_at": iso_datetime(issue_dt),
+        "updated_at": iso_datetime(random_datetime(issue_dt, NOW)),
+    }
+
+register_table("visarecords", visarecords)
+
+# ============================================================
+# 36. taxdeclarations
+# ============================================================
+validate_dependencies("taxdeclarations")
+taxdeclarations = {}
+idx = 1
+for emp_ref in employee_ids:
+    for ym in [(2025, 1), (2025, 2), (2025, 3)]:
+        ref = sequential_ref(prefix_map["taxdeclarations"], idx)
+        idx += 1
+        taxable_income = random.randint(6000, 60000)
+        tax_deductions = random.randint(5000, 8000)
+        special = random.randint(0, 3000)
+        taxable_base = max(0, taxable_income - tax_deductions - special)
+        tax_amount = round(taxable_base * random.uniform(0.03, 0.18), 2)
+        declaration_status = choose_one(["draft", "filed", "amended", "cancelled"])
+        filed_at = None
+        created_dt = datetime(ym[0], ym[1], 25, 10, 0, 0)
+        if declaration_status in {"filed", "amended"}:
+            filed_at = iso_datetime(created_dt + timedelta(days=random.randint(1, 15)))
+        taxdeclarations[ref] = {
+            "tax_declaration_ref": ref,
+            "employee_ref": emp_ref,
+            "tax_year": ym[0],
+            "tax_month": ym[1],
+            "taxable_income": float(taxable_income),
+            "tax_deductions": float(tax_deductions),
+            "special_deductions": float(special),
+            "tax_amount": float(tax_amount),
+            "cumulative_tax_paid": float(round(tax_amount * ym[1] * random.uniform(0.9, 1.2), 2)),
+            "currency": "CNY",
+            "declaration_status": declaration_status,
+            "filed_at": filed_at,
+            "created_at": iso_datetime(created_dt),
+            "updated_at": filed_at or iso_datetime(random_datetime(created_dt, NOW)),
+        }
+
+register_table("taxdeclarations", taxdeclarations)
+
+# ============================================================
+# 37. taxspecialdeductions
+# ============================================================
+validate_dependencies("taxspecialdeductions")
+taxspecialdeductions = {}
+idx = 1
+deduction_types = [
+    "children_education", "continuing_education", "housing_loan_interest",
+    "housing_rent", "elderly_care", "infant_care", "serious_illness"
+]
+for emp_ref in employee_ids:
+    for d_type in choose_many(deduction_types, 1, 2):
+        ref = sequential_ref(prefix_map["taxspecialdeductions"], idx)
+        idx += 1
+        amount_map = {
+            "children_education": 1000,
+            "continuing_education": 400,
+            "housing_loan_interest": 1000,
+            "housing_rent": 1500,
+            "elderly_care": 2000,
+            "infant_care": 1000,
+            "serious_illness": 1500,
+        }
+        status = choose_one(["active", "inactive", "expired"])
+        taxspecialdeductions[ref] = {
+            "tax_special_deduction_ref": ref,
+            "employee_ref": emp_ref,
+            "deduction_type": d_type,
+            "deduction_amount": float(amount_map[d_type]),
+            "tax_year": 2025,
+            "effective_start_month": random.randint(1, 6),
+            "effective_end_month": random.randint(7, 12),
+            "supporting_info": "已提交专项附加扣除说明及相关证明材料。",
+            "status": status,
+            "created_at": iso_datetime(datetime(2025, 1, 1, 9, 0, 0)),
+            "updated_at": iso_datetime(random_datetime(datetime(2025, 1, 1), NOW)),
+        }
+
+register_table("taxspecialdeductions", taxspecialdeductions)
+
+# ============================================================
+# 38. compliancereports
+# ============================================================
+validate_dependencies("compliancereports")
+compliancereports = {}
+idx = 1
+comp_types = ["violation", "ethics", "safety", "harassment", "fraud", "other"]
+channels = ["anonymous_hotline", "email", "in_person", "online_form", "manager_report"]
+severity_levels = ["low", "medium", "high", "critical"]
+for _ in range(max(NUM_EMP, 80)):
+    ref = sequential_ref(prefix_map["compliancereports"], idx)
+    idx += 1
+    is_anon = maybe(0.35)
+    reporter = None if is_anon else choose_one(employee_ids)
+    involved = choose_many(employee_ids, 1, 3)
+    investigator = choose_one(hr_employee_pool(base)) if maybe(0.8) else None
+    status = choose_one(["open", "in_progress", "closed", "dismissed"])
+    inv_status = {"open": "pending", "in_progress": "investigating", "closed": "resolved", "dismissed": "dismissed"}[status]
+    created_dt = random_datetime(datetime(2024, 1, 1), NOW)
+    resolved_at = None
+    resolution = None
+    if status in {"closed", "dismissed"}:
+        resolved_at = iso_datetime(created_dt + timedelta(days=random.randint(7, 45)))
+        resolution = choose_one([
+            "经调查确认问题成立，已完成整改与责任认定。",
+            "经复核证据不足，予以结案。",
+            "相关流程已优化，并完成合规提醒培训。"
+        ])
+    compliancereports[ref] = {
+        "compliance_report_ref": ref,
+        "reporter_employee_ref": reporter,
+        "report_type": choose_one(comp_types),
+        "report_channel": choose_one(channels),
+        "is_anonymous": is_anon,
+        "subject": choose_one(["流程合规疑问", "疑似违规操作举报", "职场行为投诉", "安全隐患上报", "商业道德问题反馈"]),
+        "description": "针对组织管理、业务流程或员工行为中发现的合规问题进行正式报告，等待核查处理。",
+        "involved_employee_refs": involved,
+        "severity": choose_one(severity_levels),
+        "investigator_employee_ref": investigator,
+        "investigation_status": inv_status,
+        "resolution": resolution,
+        "resolved_at": resolved_at,
+        "file_attachment_refs": choose_many(file_attachment_ids, 0, 3),
+        "status": status,
+        "created_at": iso_datetime(created_dt),
+        "updated_at": resolved_at or iso_datetime(random_datetime(created_dt, NOW)),
+    }
+
+register_table("compliancereports", compliancereports)
+
+# ============================================================
+# 39. certificaterequests
+# approval_flow_ref remains null here; generated file can use base file refs.
+# ============================================================
+validate_dependencies("certificaterequests")
+certificaterequests = {}
+idx = 1
+cert_types = [
+    "employment_proof", "income_proof", "resignation_proof",
+    "social_insurance_proof", "housing_fund_proof", "reference_letter", "other"
+]
+for emp_ref in employee_ids:
+    for _ in range(3):
+        ref = sequential_ref(prefix_map["certificaterequests"], idx)
+        idx += 1
+        req_dt = random_datetime(datetime(2024, 1, 1), NOW)
+        status = choose_one(["draft", "pending", "approved", "issued", "rejected", "cancelled"])
+        issued_at = None
+        if status == "issued":
+            issued_at = iso_datetime(req_dt + timedelta(days=random.randint(1, 5)))
+        certificaterequests[ref] = {
+            "certificate_request_ref": ref,
+            "employee_ref": emp_ref,
+            "certificate_type": choose_one(cert_types),
+            "purpose": choose_one(["落户办理", "贷款申请", "签证办理", "租房证明", "子女入学", "背景调查"]),
+            "language": choose_one(["zh-CN", "en-US"]),
+            "additional_info": "需加盖公司公章并体现任职时间与岗位信息。" if maybe(0.5) else None,
+            "generated_file_ref": choose_one(file_attachment_ids) if status == "issued" and maybe(0.7) else None,
+            "approval_flow_ref": None,
+            "status": status,
+            "requested_at": iso_datetime(req_dt),
+            "issued_at": issued_at,
+            "created_at": iso_datetime(req_dt),
+            "updated_at": issued_at or iso_datetime(random_datetime(req_dt, NOW)),
+        }
+
+register_table("certificaterequests", certificaterequests)
+
+# ============================================================
+# 40. hrservicerequests
+# ============================================================
+validate_dependencies("hrservicerequests")
+hrservicerequests = {}
+idx = 1
+service_categories = [
+    "hotline", "policy_inquiry", "document_request", "system_issue",
+    "complaint", "suggestion", "onboarding_support", "offboarding_support", "other"
+]
+priorities = ["low", "normal", "high", "urgent"]
+hr_pool = hr_employee_pool(base)
+for emp_ref in employee_ids:
+    for _ in range(3):
+        ref = sequential_ref(prefix_map["hrservicerequests"], idx)
+        idx += 1
+        created_dt = random_datetime(datetime(2024, 1, 1), NOW)
+        status = choose_one(["open", "in_progress", "resolved", "closed", "cancelled"])
+        assigned = choose_one(hr_pool) if maybe(0.8) else None
+        resolution = None
+        resolved_at = None
+        satisfaction = None
+        if status in {"resolved", "closed"}:
+            resolved_at = iso_datetime(created_dt + timedelta(days=random.randint(1, 10)))
+            resolution = choose_one(["已完成政策解答并同步处理结果。", "问题已定位，系统配置已修复。", "所需证明材料已出具并发送给员工。"])
+            satisfaction = random.randint(3, 5)
+        hrservicerequests[ref] = {
+            "hr_service_request_ref": ref,
+            "requester_employee_ref": emp_ref,
+            "service_category": choose_one(service_categories),
+            "priority": choose_one(priorities),
+            "subject": choose_one(["社保咨询", "入职材料问题", "请假制度咨询", "组织关系变更咨询", "系统权限申请", "离职流程咨询"]),
+            "description": "员工围绕制度、流程、材料或系统问题向HR发起服务请求，需要跟进与反馈。",
+            "assigned_hr_employee_ref": assigned,
+            "resolution": resolution,
+            "resolved_at": resolved_at,
+            "satisfaction_rating": satisfaction,
+            "status": status,
+            "created_at": iso_datetime(created_dt),
+            "updated_at": resolved_at or iso_datetime(random_datetime(created_dt, NOW)),
+        }
+
+register_table("hrservicerequests", hrservicerequests)
+
+# ============================================================
+# 41. probationreviews
+# approval_flow_ref remains null due to order.
+# ============================================================
+validate_dependencies("probationreviews")
+probationreviews = {}
+idx = 1
+ratings = ["exceeds_expectations", "meets_expectations", "below_expectations", "unsatisfactory"]
+recommends = ["pass", "continue", "extend", "terminate"]
+eligible_probation = [e for e in employee_ids if base["employee"][e]["worker_type"] in {"full_time", "intern", "campus_recruit", "campus_intern"}]
+for emp_ref in eligible_probation:
+    contracts_for_emp = contract_by_emp.get(emp_ref, [])
+    if not contracts_for_emp:
+        continue
+    reviewer = employee_manager_ref(emp_ref, base) or choose_one(manager_pool(base))
+    n = random.choice([1, 1, 2])
+    for round_no in range(1, n + 1):
+        ref = sequential_ref(prefix_map["probationreviews"], idx)
+        idx += 1
+        contract_ref = contracts_for_emp[0]
+        contract = contracts[contract_ref]
+        psd = parse_date(contract["probation_start_date"]) if contract["probation_start_date"] else employee_hire_dt(emp_ref, base)
+        ped = parse_date(contract["probation_end_date"]) if contract["probation_end_date"] else psd + timedelta(days=90)
+        review_dt = clamp_dt(psd + timedelta(days=30 * round_no), low=psd, high=ped if ped <= NOW else NOW)
+        status = choose_one(["draft", "pending", "completed", "cancelled"])
+        probationreviews[ref] = {
+            "probation_review_ref": ref,
+            "employee_ref": emp_ref,
+            "contract_ref": contract_ref,
+            "reviewer_employee_ref": reviewer,
+            "review_date": iso_date(review_dt),
+            "review_round": round_no,
+            "rating": choose_one(ratings),
+            "strengths": "学习能力较强，能够快速融入团队并承担基础工作任务。",
+            "improvements": "建议提升业务理解深度、沟通主动性和任务拆解能力。",
+            "recommendation": choose_one(recommends),
+            "approval_flow_ref": None,
+            "status": status,
+            "created_at": iso_datetime(review_dt - timedelta(days=3)),
+            "updated_at": iso_datetime(random_datetime(review_dt - timedelta(days=3), NOW)),
+        }
+
+register_table("probationreviews", probationreviews)
+
+# ============================================================
+# 42. referrals
+# ============================================================
+validate_dependencies("referrals")
+referrals = {}
+idx = 1
+jr_refs = list(jobrequisitions.keys())
+candidate_refs = list(candidates.keys())
+used_cands = set()
+for _ in range(max(50, NUM_EMP)):
+    cand = choose_one(candidate_refs)
+    if cand in used_cands and maybe(0.6):
+        continue
+    used_cands.add(cand)
+    ref = sequential_ref(prefix_map["referrals"], idx)
+    idx += 1
+    created_dt = random_datetime(datetime(2024, 1, 1), NOW)
+    bonus_status = choose_one(["pending", "approved", "paid", "cancelled"])
+    bonus_paid_at = iso_datetime(created_dt + timedelta(days=random.randint(60, 180))) if bonus_status == "paid" else None
+    referrals[ref] = {
+        "referral_ref": ref,
+        "referrer_employee_ref": choose_one(ACTIVE_EMPLOYEE_IDS),
+        "candidate_ref": cand,
+        "job_requisition_ref": choose_one(jr_refs),
+        "referral_bonus_amount": float(random.choice([1000, 2000, 3000, 5000])) if maybe(0.8) else None,
+        "currency": "CNY",
+        "bonus_status": bonus_status,
+        "bonus_paid_at": bonus_paid_at,
+        "relationship": choose_one(["former_colleague", "classmate", "friend", "family", "professional_network", "other"]),
+        "recommendation": "候选人专业能力较强，职业稳定性较好，推荐进入后续流程。",
+        "status": choose_one(["active", "inactive", "cancelled"]),
+        "created_at": iso_datetime(created_dt),
+        "updated_at": bonus_paid_at or iso_datetime(random_datetime(created_dt, NOW)),
+    }
+
+register_table("referrals", referrals)
+
+# ============================================================
+# 43. offers
+# fixed order before jobapplications; use future application refs.
+# ============================================================
+validate_dependencies("offers")
+offers = {}
+idx = 1
+future_job_app_refs_for_offers = future_job_app_refs
+for cand_ref in choose_many(candidate_refs, 40, 80):
+    ref = sequential_ref(prefix_map["offers"], idx)
+    idx += 1
+    jreq_ref = choose_one(jr_refs)
+    jreq = jobrequisitions[jreq_ref]
+    candidate_obj = candidates[cand_ref]
+    app_future_ref = choose_one(future_job_app_refs_for_offers)
+    created_dt = random_datetime(datetime(2024, 1, 1), NOW)
+    status = choose_one(["draft", "pending", "approved", "issued", "accepted", "rejected", "withdrawn", "expired"])
+    issued_at = iso_datetime(created_dt + timedelta(days=random.randint(1, 10))) if status in {"issued", "accepted", "rejected", "withdrawn", "expired"} else None
+    responded_at = iso_datetime(parse_dt(issued_at) + timedelta(days=random.randint(1, 14))) if issued_at and status in {"accepted", "rejected", "withdrawn"} else None
+    offers[ref] = {
+        "offer_ref": ref,
+        "job_application_ref": app_future_ref,
+        "candidate_ref": cand_ref,
+        "position_ref": jreq["position_ref"],
+        "department_ref": jreq["department_ref"],
+        "offered_salary": float(random.randint(10000, 50000)),
+        "currency": "CNY",
+        "offered_position_title": base["position"][jreq["position_ref"]]["position_title"],
+        "offered_worker_type": choose_one(["full_time", "intern", "campus_recruit", "campus_intern", "contractor"]),
+        "expected_hire_date": iso_date(created_dt + timedelta(days=random.randint(15, 60))),
+        "offer_valid_until": iso_date(created_dt + timedelta(days=random.randint(7, 21))),
+        "sign_on_bonus": float(random.choice([0, 0, 3000, 5000, 10000])),
+        "special_terms": "试用期三个月，具体入职安排以HR通知为准。" if maybe(0.5) else None,
+        "status": status,
+        "issued_at": issued_at,
+        "responded_at": responded_at,
+        "approval_flow_ref": None,
+        "created_at": iso_datetime(created_dt),
+        "updated_at": responded_at or issued_at or iso_datetime(random_datetime(created_dt, NOW)),
+    }
+
+register_table("offers", offers)
+
+# ============================================================
+# 44. jobapplications
+# final table in required order; can now optionally link referrals
+# ============================================================
+validate_dependencies("jobapplications")
+jobapplications = {}
+idx = 1
+referral_by_candidate = {}
+for r_ref, r in referrals.items():
+    referral_by_candidate.setdefault(r["candidate_ref"], []).append(r_ref)
+
+application_stages = ["screening", "phone_screen", "interview", "assessment", "offer", "hired", "rejected", "withdrawn"]
+application_statuses = ["in_progress", "on_hold", "closed"]
+
+# Build enough applications to align some existing interview/offer future refs
+candidate_cycle = candidate_refs[:]
+random.shuffle(candidate_cycle)
+jreq_cycle = jr_refs[:]
+random.shuffle(jreq_cycle)
+
+total_apps = max(len(future_job_app_refs), max(HEAVY_COUNT, NUM_EMP * 3))
+for i in range(total_apps):
+    ref = sequential_ref(prefix_map["jobapplications"], idx)
+    idx += 1
+    cand_ref = candidate_cycle[i % len(candidate_cycle)]
+    jreq_ref = jreq_cycle[i % len(jreq_cycle)]
+    stage = choose_one(application_stages)
+    app_status = "closed" if stage in {"hired", "rejected", "withdrawn"} else choose_one(application_statuses)
+    applied_dt = random_datetime(datetime(2024, 1, 1), NOW)
+    referrals_for_cand = referral_by_candidate.get(cand_ref, [])
+    referral_ref = choose_one(referrals_for_cand) if referrals_for_cand and maybe(0.7) else None
+    jobapplications[ref] = {
+        "job_application_ref": ref,
+        "job_requisition_ref": jreq_ref,
+        "candidate_ref": cand_ref,
+        "referral_ref": referral_ref,
+        "application_stage": stage,
+        "application_status": app_status,
+        "applied_at": iso_datetime(applied_dt),
+        "notes": "申请记录包含筛选、沟通、面试及录用环节的过程信息。",
+        "created_at": iso_datetime(applied_dt),
+        "updated_at": iso_datetime(random_datetime(applied_dt, NOW)),
+    }
+
+register_table("jobapplications", jobapplications)
+
+# ============================================================
+# Post-fix interviews/offers to real job_application_refs
+# ============================================================
+real_job_app_refs = list(jobapplications.keys())
+future_to_real = {}
+for i, future_ref in enumerate(future_job_app_refs):
+    future_to_real[future_ref] = real_job_app_refs[i % len(real_job_app_refs)]
+
+for row in interviews.values():
+    if row["job_application_ref"] in future_to_real:
+        row["job_application_ref"] = future_to_real[row["job_application_ref"]]
+
+for row in offers.values():
+    if row["job_application_ref"] in future_to_real:
+        row["job_application_ref"] = future_to_real[row["job_application_ref"]]
+
+# ============================================================
+# Post-fix approval flows for certificate requests / probation reviews / offers if desired
+# Since they were generated after approvalflows in required order, keep null to preserve order integrity.
+# ============================================================
+
+# ============================================================
+# Final JSON output
+# ============================================================
+print(json.dumps(result, ensure_ascii=False, indent=2))

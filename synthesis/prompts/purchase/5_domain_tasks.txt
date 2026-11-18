@@ -1,0 +1,98 @@
+You are designing benchmark tasks for a Work Collaboration System (类钉钉工作协作模块).
+
+## Context
+
+Tools available (the agent can ONLY use these):
+```
+{tool_code}
+```
+
+Base office system database (employees, departments, teams, positions — READ ONLY):
+```
+{base_content}
+```
+
+WORK domain database content (projects, tasks, documents, schedules, OKRs, pull requests, etc.):
+```
+{domain_content}
+```
+
+## Task
+
+Generate ONE realistic benchmark task with the purpose: **{purpose}**
+
+## Difficulty Levels (assign one to `difficulty`):
+- **L1**: Single READ (parameters are directly known)
+- **L2**: Multi-step READ (look up a ref first, then query details)
+- **L3**: READ + WRITE (query first, then create/update based on result)
+- **L4**: Multi-step WRITE with conditional logic (query result decides next action)
+- **L5**: Adversarial/error handling (task already done, permission denied, invalid state transition, duplicate entry)
+
+## Rules
+
+**Actions (CRITICAL):**
+- Every argument value containing a `_ref` or ID MUST be a real value from the provided database content above.
+- Do NOT invent or hallucinate any IDs. Cross-check against `{base_content}` and `{domain_content}`.
+- Use `compare_args` to specify which arguments are the essential ones to check (e.g., skip optional note/comment fields).
+- Each action must map to a real function in `{tool_code}`.
+
+**initial_state:**
+- For pure READ tasks (L1/L2): set to `null`.
+- For any task with WRITE operations (L3/L4/L5): MUST describe the prerequisite DB state. Example: "项目 PROJ-001 的里程碑（milestone_ref: 'MS-00012'）状态为 pending，截止日期为 2025-03-31".
+- The initial_state description should be specific enough that the evaluation environment can verify the starting condition.
+
+**nl_assertions:**
+- Write 2-4 short, precise, verifiable statements about what MUST be true after the task is completed.
+- Use concrete values from the database (names, IDs, amounts, counts).
+- Good: "PR pull_request_ref 'PR-00023' 的状态已从 open 变更为 merged，merged_at 字段已填写"
+- Bad: "PR 已合并" (too vague)
+
+**communicate_info:** Always set to `null`. (Deprecated — nl_assertions replaces this.)
+
+**reward_basis:**
+- L1/L2 (pure READ): `["NL_ASSERTION", "ACTION"]`
+- L3/L4/L5 (involves WRITE): `["DB", "NL_ASSERTION"]`
+
+## Output Format
+
+Output a single valid JSON object (no list, no extra text):
+
+```json
+{
+    "id": "...",
+    "difficulty": "L1",
+    "description": {
+        "purpose": "{purpose}",
+        "relevant_policies": "... or null",
+        "notes": "... or null"
+    },
+    "user_scenario": {
+        "persona": "真实员工姓名和职位（从数据库中选取）",
+        "instructions": {
+            "task_instructions": "以第一人称描述任务目标（不能泄露 unknown_info 中的内容）",
+            "reason_for_call": "为什么需要完成这个任务",
+            "known_info": "用户已知的信息（姓名、部门等）",
+            "unknown_info": "用户不知道的信息（具体 ID、进度数值、权限状态等）",
+            "domain": "WORK"
+        }
+    },
+    "initial_state": null,
+    "evaluation_criteria": {
+        "actions": [
+            {
+                "action_id": "action_1",
+                "name": "tool_function_name",
+                "arguments": {
+                    "param1": "value_from_real_db"
+                },
+                "compare_args": ["param1"]
+            }
+        ],
+        "communicate_info": null,
+        "nl_assertions": [
+            "精确、可验证的结果断言（含具体数值或 ID）"
+        ],
+        "reward_basis": ["NL_ASSERTION", "ACTION"]
+    }
+}
+```

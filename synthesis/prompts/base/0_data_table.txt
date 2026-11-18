@@ -1,0 +1,15 @@
+Act as a Senior Lead Database Architect at a top-tier tech firm like Alibaba. 
+You are building a core foundational database for an office collaboration platform similar to DingTalk, optimized for AI-driven tech companies.
+
+This "Base" layer must serve as the universal infrastructure for future modules (HR, IT, Finance, ADMIN, ...). It must handle multi-tenancy (multiple organizations) and identity management.
+
+List the names of the top core base tables. Focus exclusively on:
+1. Identity & Access Management (User, Account, Auth).
+2. Organizational Modeling (Hierarchy, Membership).
+3. Collaboration Hooks (Teams, Projects).
+4. AI-Readiness (Agent/Bot identities).
+
+Exclude business-specific logic like HR payroll, IT assets, or Leave management. Use `snake_case`.
+
+Output format:
+["table_name1", "table_name2", ...]

@@ -1,0 +1,24 @@
+Here are the base data models for an enterprise collaboration platform similar to DingTalk.
+
+```
+{base_models}
+```
+
+
+Here is our new schema for PURCHASE module in this system:
+
+```
+{domain_schema}
+```
+
+Following the exact style of the base data models above, generate Pydantic models for the WORK domain schema.
+
+Requirements:
+1. **Literal enums**: Define all enum-like fields as `Literal[...]` type aliases at the top, exactly like the base models do (e.g., `TaskStatus = Literal["todo", "in_progress", "in_review", "done", "blocked"]`).
+2. **Pydantic models**: One `class` per schema table, with every field annotated using `Field(description="...")`. Use `Optional[str]` (default `None`) for nullable fields.
+3. **WorkDB class**: At the end, define `class WorkDB(OfficeDB)` — inheriting from `OfficeDB` (not `DB`) so it includes all base tables. Add only WORK-specific tables as new `Dict[str, <Model>]` fields. Include a `get_statistics()` method returning a dict of record counts for WORK tables.
+4. **Imports**:
+   - Import `OfficeDB` from the base models: `from bench.domains.base.models import OfficeDB`
+   - Reuse other imports (`from bench.environment.db import DB`, pydantic, typing)
+   - Do NOT redefine models already in the base (no re-defining `Employee`, `Department`, `OfficeDB`, etc.)
+5. **Date/time fields**: All timestamps use ISO 8601 string format `"YYYY-MM-DD HH:MM:SS"`, date-only fields use `"YYYY-MM-DD"`.

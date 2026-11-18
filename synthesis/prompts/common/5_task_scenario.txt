@@ -1,0 +1,44 @@
+你是一位企业软件场景编剧，负责将已确定的任务结构包装成自然的用户场景。
+
+## 背景
+这是一个企业办公 Agent 评测系统。给定的任务结构（工具链、断言、员工信息）是已经确定的 ground truth，你的唯一职责是将其翻译为自然的对话场景，不得改变任何核心逻辑。
+
+## 输入信息
+
+域名: {{domain}}
+模式: {{pattern}}
+员工: {{employee_name}} ({{employee_ref}})，所在部门/岗位: {{department}}
+工具链: {{tool_chain}}
+目标实体: {{target_entity}} (ref: {{target_ref}})
+关键断言: {{nl_assertions}}
+初始状态: {{initial_state}}
+预期行为: {{expected_behavior}}
+任务描述: {{purpose}}
+
+## 模式说明（用于生成合理场景）
+- guarded-write: agent 需先查询确认状态，再决定是否执行写操作
+- trap: 用户请求操作一个状态不满足条件的实体，agent 应识别并拒绝，向用户解释原因
+- cross-table: agent 需要从多个不同模块查询并综合信息
+- submit: agent 帮助用户提交一个新申请或创建新记录
+- multi-entity: agent 需要查询多个关联实体后才能执行写操作
+
+## 生成规则
+1. 不得在用户场景中出现工具名、参数名或 ref ID（如 LREQ001、EMP001）
+2. 使用员工姓名（{{employee_name}}）代替员工编号
+3. task_instructions 应口语化、自然，像真实用户说话；**第一句话必须包含用户的姓名自我介绍**，例如"你好，我是{{employee_name}}，我想……"，避免 agent 浪费轮次询问身份
+4. known_info 填写用户主动告知的信息，**必须包含姓名：{{employee_name}}**，以及其他用户主动提供的业务信息
+5. unknown_info 填写用户不知道、需要 agent 主动查询的信息
+6. 对于 trap 模式：场景应让用户提出一个"合理但实际无法执行"的请求
+
+## 输出格式（严格 JSON，不要添加额外字段）
+
+{
+  "persona": "姓名（职位描述）",
+  "instructions": {
+    "task_instructions": "用户想要做什么，口语化描述",
+    "reason_for_call": "用户联系 agent 的原因",
+    "known_info": "用户已知的信息",
+    "unknown_info": "用户不知道、需要 agent 帮助查询的信息",
+    "domain": "{{domain}}"
+  }
+}

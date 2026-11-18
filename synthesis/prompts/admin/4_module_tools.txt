@@ -1,0 +1,54 @@
+BASE domain tools (OfficeTools) — AdminTools will inherit from this class:
+```python
+{base_tools}
+```
+
+Data models of {domain} domain:
+```python
+{model_code}
+```
+
+Based on the BASE tools above, write a complete `AdminTools` class for the {domain} domain.
+
+### Class declaration
+
+`AdminTools` MUST inherit from `OfficeTools` (not `ToolKitBase` directly):
+
+```python
+from generated.domains.BASE.tools import OfficeTools
+
+class AdminTools(OfficeTools):
+    """Toolkit for the ADMIN domain, extending OfficeTools with administrative operations."""
+    db: AdminDB
+
+    def __init__(self, db: AdminDB) -> None:
+        super().__init__(db)
+```
+
+All BASE tools (`calculate`, `transfer_to_human_agents`, `get_employee_details`, `find_employee_ref_by_name`, `find_employee_ref_by_email`, `get_department_details`, `list_employees`, etc.) are already inherited — do NOT redefine them.
+
+### Requirements
+
+**Coverage rules (mandatory):**
+1. Every ADMIN table defined in the data models MUST have at least one READ tool that queries it directly (by ref or by employee_ref).
+2. Every ADMIN table that supports user-initiated state changes (create / update / approve / reject / cancel) MUST have the corresponding WRITE tool(s).
+3. Tools must be grouped with section comments matching the business function they serve.
+
+**Completeness checklist — implement ALL of the following:**
+{function_description}
+
+**Tool design rules (follow the patterns in OfficeTools exactly):**
+- READ tools: pure lookups, no side effects. Return the model object or a list.
+- WRITE tools: validate inputs first, raise `ValueError` with a clear message on invalid state. Docstring must note that the agent must ask for explicit user confirmation before calling.
+- Helper methods (prefixed `_get_`) for each frequently-accessed ADMIN table; NOT decorated with `@is_tool`.
+- Each `@is_tool` method must have a complete Google-style docstring: summary, Args, Returns, Raises.
+- New ref generation: iterate existing keys, extract max numeric suffix, increment by 1.
+- Use `datetime.now(timezone.utc).isoformat()` for timestamps (consistent with OfficeTools).
+
+**Before finalizing, verify against the checklist above:**
+- Every function name in the checklist exists as an `@is_tool` method.
+- Every table listed has at least one READ tool.
+- Every WRITE item is implemented with the specified parameters.
+- No BASE tool is redefined.
+
+Wrap the entire python code within ```.

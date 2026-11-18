@@ -1,0 +1,154 @@
+Here is the database schema for a restaurant
+```
+{
+    "menu_board": {
+        "AAAAAAA": {  // dish_ref
+            "title": "Dish title",
+            "dish_ref": "AAAAAAA",
+            "selections": {
+                "BBBBBBB": {  // plate_ref
+                    "plate_ref": "BBBBBBB",
+                    "modifiers": {
+                        "spice_level": "...",
+                        "portion": "...",
+                        "protein": "...",
+                        "preparation": "..."
+                    },
+                    "served_today": "...", // true or false
+                    "cost": ...
+                }
+            }
+        }
+    },
+    "patron_registry": {
+        "CCCCCCC": {  // guest_ref
+            "guest_ref": "CCCCCCC",
+            "identity": {
+                "given": "...",
+                "family": "..."
+            },
+            "location": {
+                "line_one": "...",
+                "line_two": "...",
+                "municipality": "...",
+                "nation": "...",
+                "province": "...",
+                "postal_code": "..."
+            },
+            "contact_email": "...",
+            "saved_instruments": {
+                "DDDDDDD": {  // instrument_ref
+                    "origin": "...",
+                    "instrument_ref": "DDDDDDD",
+                    "metadata": {
+                        "issuer": "...",
+                        "tail_digits": "..."
+                    }
+                }
+            },
+            "ticket_log": [
+                "..."
+            ]
+        }
+    },
+    "service_tickets": {
+        "EEEEEEE": {  // ticket_ref
+            "ticket_ref": "EEEEEEE",
+            "guest_ref": "...",
+            "service_mode": "...",  // dine_in, takeout, delivery
+            "dropoff": {  // only for delivery
+                "line_one": "...",
+                "line_two": "...",
+                "municipality": "...",
+                "nation": "...",
+                "province": "...",
+                "postal_code": "..."
+            },
+            "table_info": {  // only for dine-in
+                "zone": "...",
+                "table_no": "...",
+                "seat_count": ...
+            },
+            "line_entries": [
+                {
+                    "label": "...",
+                    "dish_ref": "...",
+                    "plate_ref": "...",
+                    "cost": ...,
+                    "mods": {
+                        "heat": "...",
+                        "sauce": "...",
+                        "side": "..."
+                    }
+                }
+            ],
+            "state": "...",
+            "prep_batches": [
+                {
+                    "parcel_tags": [
+                        "..."
+                    ],
+                    "plate_refs": [
+                        "..."
+                    ]
+                }
+            ],
+            "charges": [
+                {
+                    "kind": "...",
+                    "total": ...,
+                    "instrument_ref": "..."
+                }
+            ]
+        }
+    }
+}
+```
+
+Based on the provided restaurant schema format, design a database schema for the "Base Layer" of an office collaboration software (DingTalk style) for AI tech companies.
+
+### Core Requirements:
+1. **Target Structure**: Use the same nested dictionary format where the primary key (ref_id) is the key for each object.
+2. **Mandatory Keys**: [
+    "user_profile",      # 个人信息：姓名、头像、简介、手机号、账号状态、时区等。不含密码/MFA等纯认证字段，无独立 user 表
+    "employee",          # 公司身份：工号、入职日期、在职状态、直接主管 ID等。是 user_profile 与组织的桥梁
+    "department",        # 组织架构：部门树、部门属性等（负责人通过 department_member 表达，department 本身不含 head 字段）
+    "department_member", # 员工-部门归属，membership_role 表达负责人（head | deputy_head | member）
+    "position",          # 职级体系：职级（P/M）、岗位序列等
+    "team",              # 虚拟小组：跨部门协作（如办公智能组、HR组）等
+    "team_member",       # 小组成员关系，team_role 表达组长（lead | member | observer）
+    "mentorship",        # Mentor 机制：mentor_ref、mentee_ref、起止日期、状态
+    "role",              # 角色定义（管理员、普通员工、实习生）等
+    "permission",        # 权限原子：具体资源操作权限 (ACL)等
+    "role_permission",   # 角色-权限绑定等
+    "employee_role",     # 员工-角色分配（scope 仅在此表定义，role 表本身不含 scope）
+    "audit_log",         # 操作审计记录等
+    "file_attachment",   # 统一文件引用等
+], you can add other tables accordingly.
+3. **Linkage Focus**: These tables must act as anchors for future modules (HR, IT). For example, `employee` should contain IDs that an HR system can later reference for payroll or performance.
+4. **Data Types**: Use Python-friendly ISO 8601 format (YYYY-MM-DD HH:MM:SS) for all timestamps.
+5. **Enum Fields**: For ALL fields with a fixed set of allowed values, you MUST add an inline comment listing every valid option. Example: `"status": "active",  // active | inactive | suspended | deleted`. No exceptions — if a field has an enum, it must have a comment.
+
+### Field Boundary Rules (strictly follow):
+- `user_profile`: personal info — given_name, family_name, display_name, avatar_file_ref, bio, phone, account_status, preferred_locale, timezone, created_at, updated_at. Do NOT add password_state, mfa_enabled, last_login_at (no auth logic needed), work_location, or emergency_contact (those are HR domain).
+- `employee`: the single bridge between user_profile and org. Must include:
+  - `user_profile_ref` (link back to user_profile)
+  - `worker_type`: employee classification, one of: full_time | intern | campus_recruit | campus_intern | contractor
+  - `external_ids`: an open-ended nested object for cross-domain anchor refs. The keys are not fixed — new domains add their own key here without changing the employee schema. Example: `{"hris_person_ref": "...", "asset_profile_ref": "...", "finance_profile_ref": "..."}`. Do NOT add these as flat top-level fields.
+  - Do NOT add `primary_department_ref` — primary department is expressed solely via `department_member.is_primary = true`.
+  - Do NOT add payroll_profile_ref or performance_profile_ref as top-level fields.
+- `department`: Do NOT add a `department_head_ref` field. The head is expressed solely via `department_member.membership_role = "head"`.
+- `department_member`: Must include `left_at` (null if still active) and `status` (active | removed) to support membership history tracking.
+- `team_member`: Must include `left_at` (null if still active) and `status` (active | removed) to support membership history tracking. `team_role` must include `tech_lead` as a valid option (lead | tech_lead | member | observer).
+- `mentorship`: Must include mentor_ref, mentee_ref, start_date, end_date (null if ongoing), status (active | completed | terminated).
+- `role`: Do NOT add `scope` or `scope_ref` fields. Scope is an assignment-time concern, defined only in `employee_role`.
+- `employee_role`: Must include `scope` (global | department | team) and `scope_ref` (null when global).
+- `permission`: Must include `scope_constraint` (all | self | department | team) to support fine-grained access control (e.g. "can only read employees in own department").
+- `role_permission`: Must include `granted_by_ref`, `expires_at` (null = no expiration), and `status` (active | revoked | expired).
+- `position`: must include job_family (e.g. Engineering / Product / HR) in addition to position_level — downstream HR modules rely on this for compensation and promotion logic.
+- `team`: org collaboration unit only. Do NOT reference external subsystems (no chat_space_ref, knowledge_space_ref).
+- `file_attachment`: use a single storage_uri field instead of provider-specific fields (storage_provider, storage_bucket, storage_path).
+
+Generate the json format schema only, wrap with
+```
+```

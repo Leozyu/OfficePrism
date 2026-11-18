@@ -1,0 +1,106 @@
+**Role:**
+You are an expert Python Data Engineer specialized in generating synthetic datasets for enterprise OA/HR systems.
+
+**Task:**
+Write a robust Python script to generate comprehensive test data for the BASE layer of an office collaboration system (similar to DingTalk). The BASE layer is self-contained — it has no external dependencies and covers the shared "organizational world": employees, departments, positions, teams, roles/permissions, etc.
+
+**Inputs:**
+1. **Data Models:** `{model_code}` (Pydantic models for all BASE tables).
+2. **Table Generation Order:** `{table_order}` (Must follow this order to satisfy foreign key dependencies).
+3. **Foreign Key Dependencies:** `{dependency_info}` (Each table's `*_ref` / `*_refs` fields and their target tables).
+
+**Script Requirements:**
+
+1. **Reproducibility (CRITICAL):**
+   - The script MUST start with:
+     ```python
+     SEED = 42
+     random.seed(SEED)
+     from faker import Faker
+     fake = Faker("zh_CN")
+     Faker.seed(SEED)
+     ```
+   - Every random decision must use `random` or `fake`, never `uuid` or `os.urandom`.
+
+2. **Libraries:** Use `faker` (with `zh_CN` locale), `json`, `random`, and `datetime`.
+
+3. **Data Volume:**
+   - `position`: 20+ records covering P-track (P5–P9) and M-track (M1–M4) across all job families.
+   - `user_profile` / `employee`: 70+ active employees, mix of worker types (full_time, intern, contractor), with ~5% on_leave.
+   - `department`: 8–12 departments forming a **3-level hierarchy** (level 1 = company root, level 2 = business lines, level 3 = sub-teams). Use `parent_department_ref` to build the tree.
+   - `department_member`: every active employee must appear in exactly one department as a `member`; department heads have `membership_role = "head"`.
+   - `team`: 20+ teams with mixed `team_type` (project, interest, committee, taskforce).
+   - `team_member`: each team has 3–8 members; each employee belongs to at least one team.
+   - `mentorship`: 15+ records; only active employees can be mentors/mentees.
+   - `role`: 6–8 roles (e.g., system_admin, hr_manager, employee, intern, dept_head, team_lead).
+   - `permission`: 20+ permissions covering CRUD actions on key resources (employee, department, team, file_attachment, audit_log).
+   - `role_permission`: bind permissions to roles in a sensible RBAC pattern.
+   - `employee_role`: every employee has at least one role; senior employees may have multiple.
+   - `audit_log`: 30+ records logging realistic create/update/approve actions.
+   - `file_attachment`: 20+ records (avatars, documents, contracts).
+   - `org_config`: 10+ key-value entries (company_name, logo, fiscal_year_start, etc.).
+   - `notification`: 30+ records across different channels and types.
+
+4. **Referential Integrity (CRITICAL):**
+   - **Follow table generation order strictly:** Generate each table only after all its dependencies exist.
+   - **Foreign key sampling:** For every `*_ref` / `*_refs` field:
+     - Look up the target table in `{dependency_info}`.
+     - Sample ONLY from IDs already generated in that table.
+     - For `Optional` fields: 70% probability of setting a value, 30% null.
+     - For `List[str]` fields (`*_refs`): sample 1–3 IDs.
+   - **Self-references** (e.g., `parent_department_ref`, `parent_team_ref`, `direct_manager_ref`): assign `null` to root records and reference earlier-generated records for children.
+
+5. **ID Format:**
+   - Use descriptive prefixes: `EMP001`, `DEPT001`, `POS001`, `TEAM001`, `ROLE001`, `PERM001`, `UPROF001`, `DMBR001`, `TMBR001`, `MNTR001`, `RPRM001`, `EMRL001`, `ALOG001`, `FILE001`, `OCFG001`, `NOTF001`.
+   - Each table uses its own counter starting from 001.
+
+6. **Business Logic:**
+   - **Dates:** Use ISO 8601 (`YYYY-MM-DD HH:MM:SS`). Ensure `updated_at >= created_at`, `termination_date > hire_date`, `end_date > start_date`.
+   - **Status consistency:** `termination_date` is set only when `employment_status == "terminated"`. `left_at` is set only when membership/team `status == "removed"`.
+   - **Org hierarchy:** Department `department_level` must equal `parent_department_level + 1`. Root department has `parent_department_ref = null` and `department_level = 1`.
+   - **Manager chain:** `direct_manager_ref` must point to an active employee with a higher position level. Top-level manager has `direct_manager_ref = null`.
+   - **Localization:** Chinese names, Beijing/Shanghai/Shenzhen addresses, CNY currency, `zh-CN` locale.
+
+7. **Output Format:**
+   - Print a single valid JSON string to stdout.
+   - Structure: `{"table_name": {"ID001": {...}, "ID002": {...}}, ...}`
+   - Include ALL tables listed in `{table_order}`.
+
+**Example Script Skeleton:**
+
+```python
+import json
+import random
+from datetime import datetime, timedelta
+from faker import Faker
+
+SEED = 42
+random.seed(SEED)
+fake = Faker("zh_CN")
+Faker.seed(SEED)
+
+result = {}
+
+# --- Generate tables in dependency order ---
+# 1. position (no FK deps)
+positions = {}
+for i in range(1, 25):
+    ref = f"POS{i:03d}"
+    positions[ref] = {
+        "position_ref": ref,
+        "position_title": fake.job(),
+        # ... other fields ...
+    }
+result["position"] = positions
+
+# 2. user_profile (no FK deps)
+# 3. employee (depends on user_profile, position)
+# 4. department (self-reference: generate roots first, then children)
+# 5. department_member (depends on department, employee)
+# ... continue for all tables in order ...
+
+print(json.dumps(result, ensure_ascii=False, indent=2))
+```
+
+**Output:**
+Provide the complete, runnable Python script. Do NOT include any explanation outside the code block.

@@ -1,0 +1,263 @@
+{
+    "user_profile": {
+        "UPROF001": {
+            "user_profile_ref": "UPROF001",
+            "given_name": "...",
+            "family_name": "...",
+            "display_name": "...",
+            "avatar_file_ref": "...",  // file_attachment_ref, null if not set
+            "bio": "...",
+            "phone": "...",
+            "account_status": "active",  // active | inactive | suspended | deleted
+            "preferred_locale": "zh-CN",  // zh-CN | en-US | ja-JP | ko-KR | zh-TW
+            "timezone": "Asia/Shanghai",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "employee": {
+        "EMP001": {
+            "employee_ref": "EMP001",
+            "user_profile_ref": "UPROF001",
+            "employee_number": "AI-2025-0001",
+            "worker_type": "full_time",  // full_time | intern | campus_recruit | campus_intern | contractor
+            "hire_date": "2025-01-15",
+            "termination_date": null,  // null if currently employed, ISO 8601 date otherwise
+            "employment_status": "active",  // active | on_leave | terminated | probation
+            "direct_manager_ref": "EMP000",  // employee_ref of direct manager, null if top-level
+            "position_ref": "POS001",
+            "external_ids": {
+                "hris_person_ref": "...",
+                "asset_profile_ref": "...",
+                "finance_profile_ref": "..."
+            },
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "department": {
+        "DEPT001": {
+            "department_ref": "DEPT001",
+            "department_name": "...",
+            "department_code": "...",
+            "parent_department_ref": null,  // null if root department, department_ref otherwise
+            "department_level": 1,  // depth in org tree, root = 1
+            "department_type": "business",  // business | functional | virtual
+            "department_status": "active",  // active | dissolved | merging
+            "description": "...",
+            "display_order": 1,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "department_member": {
+        "DMBR001": {
+            "department_member_ref": "DMBR001",
+            "department_ref": "DEPT001",
+            "employee_ref": "EMP001",
+            "membership_role": "member",  // head | deputy_head | member
+            "is_primary": true,  // true if this is the employee's primary department
+            "joined_at": "2025-01-15 09:00:00",
+            "left_at": null,  // null if still active, ISO 8601 timestamp otherwise
+            "status": "active",  // active | removed
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "position": {
+        "POS001": {
+            "position_ref": "POS001",
+            "position_title": "...",
+            "position_code": "...",
+            "position_track": "P",  // P | M (Professional | Management)
+            "position_level": 7,  // numeric level within track, e.g. P7, M3
+            "job_family": "Engineering",  // Engineering | Product | Design | HR | Finance | Legal | Marketing | Operations | Data | Research
+            "job_subfamily": "...",  // e.g. Backend, Frontend, ML, Infrastructure — free text
+            "position_status": "active",  // active | deprecated
+            "description": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "team": {
+        "TEAM001": {
+            "team_ref": "TEAM001",
+            "team_name": "...",
+            "team_code": "...",
+            "team_type": "project",  // project | interest | committee | taskforce
+            "team_status": "active",  // active | archived | dissolved
+            "description": "...",
+            "owner_employee_ref": "EMP001",  // employee_ref of team owner/creator
+            "parent_team_ref": null,  // null if top-level team, team_ref otherwise
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "team_member": {
+        "TMBR001": {
+            "team_member_ref": "TMBR001",
+            "team_ref": "TEAM001",
+            "employee_ref": "EMP001",
+            "team_role": "member",  // lead | tech_lead | member | observer
+            "joined_at": "2025-01-15 09:00:00",
+            "left_at": null,  // null if still active, ISO 8601 timestamp otherwise
+            "status": "active",  // active | removed
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "mentorship": {
+        "MNTR001": {
+            "mentorship_ref": "MNTR001",
+            "mentor_ref": "EMP001",  // employee_ref of mentor
+            "mentee_ref": "EMP002",  // employee_ref of mentee
+            "mentorship_type": "onboarding",  // onboarding | career | technical | leadership
+            "start_date": "2025-01-15",
+            "end_date": null,  // null if ongoing, ISO 8601 date otherwise
+            "status": "active",  // active | completed | terminated
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "role": {
+        "ROLE001": {
+            "role_ref": "ROLE001",
+            "role_name": "...",
+            "role_code": "...",
+            "role_type": "system",  // system | custom
+            "role_status": "active",  // active | deprecated
+            "description": "...",
+            "is_default": false,  // true if auto-assigned to new employees
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "permission": {
+        "PERM001": {
+            "permission_ref": "PERM001",
+            "permission_code": "...",  // e.g. employee:read, department:write, team:delete
+            "resource": "...",  // e.g. employee, department, team, file, audit_log
+            "action": "read",  // create | read | update | delete | export | approve
+            "scope_constraint": "all",  // all | self | department | team
+            "description": "...",
+            "permission_status": "active",  // active | deprecated
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "role_permission": {
+        "RPRM001": {
+            "role_permission_ref": "RPRM001",
+            "role_ref": "ROLE001",
+            "permission_ref": "PERM001",
+            "granted_by_ref": "EMP001",  // employee_ref of the person who granted this binding
+            "granted_at": "2025-01-15 09:00:00",
+            "expires_at": null,  // null = no expiration, ISO 8601 timestamp otherwise
+            "status": "active",  // active | revoked | expired
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "employee_role": {
+        "EMRL001": {
+            "employee_role_ref": "EMRL001",
+            "employee_ref": "EMP001",
+            "role_ref": "ROLE001",
+            "scope": "global",  // global | department | team
+            "scope_ref": null,  // null when scope is global; department_ref when scope is department; team_ref when scope is team
+            "assigned_by_ref": "EMP000",  // employee_ref of the person who made the assignment
+            "assigned_at": "2025-01-15 09:00:00",
+            "expires_at": null,  // null = no expiration, ISO 8601 timestamp otherwise
+            "status": "active",  // active | revoked | expired
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "audit_log": {
+        "ALOG001": {
+            "audit_log_ref": "ALOG001",
+            "actor_employee_ref": "EMP001",  // employee_ref of the person who performed the action, null for system actions
+            "actor_type": "employee",  // employee | system | api_client
+            "action": "create",  // create | read | update | delete | login | logout | export | approve | reject | assign | revoke
+            "resource_type": "...",  // e.g. employee, department, team, role, permission, file_attachment
+            "resource_ref": "...",  // the ref id of the affected resource
+            "description": "...",
+            "changes": {
+                "field_name": {
+                    "before": "...",
+                    "after": "..."
+                }
+            },
+            "ip_address": "...",
+            "user_agent": "...",
+            "request_id": "...",  // trace id for correlating distributed requests
+            "result": "success", // success | failure | partial
+            "occurred_at": "2025-01-15 09:00:00",
+            "created_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "file_attachment": {
+        "FILE001": {
+            "file_attachment_ref": "FILE001",
+            "file_name": "...",
+            "file_extension": "...",  // e.g. pdf, png, jpg, docx, xlsx, csv, zip
+            "mime_type": "...",  // e.g. application/pdf, image/png
+            "file_size_bytes": 0,
+            "storage_uri": "...",  // unified storage URI, e.g. s3://bucket/path/to/file or oss://bucket/path/to/file
+            "checksum": "...",  // SHA-256 hash of file content
+            "uploaded_by_ref": "EMP001",  // employee_ref of uploader
+            "associated_resource_type": "...",  // e.g. employee, department, team, user_profile — the entity this file belongs to
+            "associated_resource_ref": "...",  // ref id of the associated entity
+            "file_purpose": "avatar",  // avatar | document | contract | certificate | attachment | export | other
+            "file_status": "active",  // active | archived | deleted
+            "uploaded_at": "2025-01-15 09:00:00",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "org_config": {
+        "OCFG001": {
+            "org_config_ref": "OCFG001",
+            "config_key": "...",  // e.g. company_name, logo_file_ref, default_timezone, fiscal_year_start
+            "config_value": "...",
+            "config_type": "string",  // string | integer | boolean | json
+            "description": "...",
+            "updated_by_ref": "EMP001",  // employee_ref of last editor
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "notification": {
+        "NOTF001": {
+            "notification_ref": "NOTF001",
+            "recipient_employee_ref": "EMP001",
+            "sender_type": "system",  // system | employee
+            "sender_employee_ref": null,  // employee_ref if sender_type is employee, null if system
+            "notification_type": "system",  // system | mention | approval | assignment | reminder | announcement
+            "channel": "in_app",  // in_app | email | sms | push
+            "title": "...",
+            "body": "...",
+            "related_resource_type": "...",  // e.g. employee, team, department, audit_log
+            "related_resource_ref": "...",
+            "read_status": "unread",  // unread | read | dismissed
+            "read_at": null,  // null if unread, ISO 8601 timestamp otherwise
+            "created_at": "2025-01-15 09:00:00"
+        }
+    }
+}

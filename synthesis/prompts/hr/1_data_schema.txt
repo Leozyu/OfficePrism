@@ -1,0 +1,90 @@
+You are a database schema designer for an enterprise HR management system similar to DingTalk.
+
+**Base Schema Reference:**
+```json
+{base_schema}
+```
+
+## Task:
+Generate a comprehensive database schema that covers ALL the following HR modules in a single, integrated design:
+
+## Modules to Include:
+
+### 薪酬与福利 (Compensation & Benefits)
+工资、奖金、津贴、社保公积金、商业保险、异地福利、工资卡（银行账户绑定与变更）
+
+Functions: 基本工资查询、奖金咨询、津贴补贴、社保管理、公积金管理、商业保险、工资卡管理（查询/变更工资发放银行账户）
+
+### 工作安排与假期 (Work Schedule & Leave)
+排班制度、法定节假日、福利假、请假、加班
+
+Functions: 排班查询、法定节假日咨询、公司福利假咨询、请假管理、加班管理
+
+> Must include: `work_schedule`（排班规则）+ `employee_work_schedule`（员工排班绑定）两张表，支持标准/弹性/轮班等多种工时制。
+
+### 入职与离职管理 (Onboarding & Offboarding)
+入职、离职、岗位调整、晋升、劳动合同签署与续签
+
+Functions: 入职管理、离职管理、转岗管理、晋升管理、劳动合同管理
+
+> Must include: `contract`（劳动合同）表，含合同类型、起止日期、试用期、续签次数、签署状态等字段。审批历史需要 `approval_flow` + `approval_step` 两张表（通用审批链路，`related_resource_type` 字段区分业务类型）。
+
+### 招聘与引进 (Recruitment)
+校招、社招、内推、外包管理、实习生
+
+Functions: 校招、社招、内推、外包入职、实习生招聘、面试、入职
+
+> Must include: `referral`（内推记录）表，含推荐人、候选人、内推奖金金额与发放状态。
+> Must include: `offer`（Offer 记录）独立表，含薪资、岗位、入职日期、有效期、接受/拒绝状态等字段，通过 `job_application_ref` 关联申请。不要把 offer 字段折叠进 `job_application`。
+
+### 培训与发展 (Training & Development)
+新人培训、职业发展、试用期考核、导师制度
+
+Functions: 新人培训、试用期考核、导师/师兄制度
+
+> Note: `mentorship` table (mentor_ref, mentee_ref, mentorship_type, start_date, end_date, status) is already defined in base_schema. Do NOT recreate it. HR domain only needs to reference it.
+
+### 绩效与激励 (Performance & Incentives)
+绩效考核、股权激励、人才补贴、职称管理
+
+Functions: 绩效管理、股权激励、长期激励
+
+### 档案与证明 (Records & Certificates)
+人事档案、户口管理、居住证明、党团关系、签证管理
+
+Functions: 人事档案、居住证明、签证管理
+
+### 税务与合规 (Tax & Compliance)
+个税申报、个税测算、违规举报
+
+Functions: 个税申报、违规举报
+
+### HR服务 (HR Services)
+热线、服务台、证明开具等
+
+Functions: HR热线查询、HR服务台查询、证明开具
+
+## Requirements:
+
+1. **Unified Schema**: Design tables that can support multiple modules, ** avoiding redundancy table! ** (including check redundancy with base_schema)
+
+2. **Relational Structure**: Ensure proper foreign key relationships between modules
+
+3. **Date/Time Format**: Use datetime format (ISO 8601: YYYY-MM-DD HH:MM:SS) for all date and timestamp fields
+
+4. **Simplicity**: Keep the schema as simple as possible while maintaining necessary functionality
+   - Salary components (薪资组件)
+   - Benefits (福利)
+   - Leave records (请假记录)
+   - Performance records (绩效记录)
+   - Training records (培训记录)
+   - Recruitment records (招聘记录)
+   - Documents (文档/证明)
+   - Compliance records (合规记录)
+   - ...
+
+5. For date for timestamp, always use datetime format in python, ISO 8601 format (YYYY-MM-DD HH:MM:SS).
+
+## Output Format:
+Generate another schema of similar formats for this HR domain. 
+Make it as simple as possible.

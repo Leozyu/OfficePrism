@@ -1,0 +1,787 @@
+{
+    "salary_structure": {
+        "SSTR001": {
+            "salary_structure_ref": "SSTR001",
+            "employee_ref": "EMP001",
+            "effective_date": "2025-01-15",
+            "expiry_date": null,
+            "base_salary": 30000.00,
+            "currency": "CNY",
+            "pay_frequency": "monthly",
+            "status": "active",
+            "approved_by_ref": "EMP000",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "salary_component": {
+        "SCMP001": {
+            "salary_component_ref": "SCMP001",
+            "salary_structure_ref": "SSTR001",
+            "component_type": "base_salary",
+            "component_name": "基本工资",
+            "amount": 30000.00,
+            "currency": "CNY",
+            "is_taxable": true,
+            "is_recurring": true,
+            "effective_date": "2025-01-15",
+            "expiry_date": null,
+            "description": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "payroll_record": {
+        "PYRL001": {
+            "payroll_record_ref": "PYRL001",
+            "employee_ref": "EMP001",
+            "pay_period_start": "2025-01-01",
+            "pay_period_end": "2025-01-31",
+            "gross_amount": 35000.00,
+            "net_amount": 28000.00,
+            "total_deductions": 7000.00,
+            "currency": "CNY",
+            "pay_date": "2025-02-10",
+            "bank_account_ref": "BANK001",
+            "status": "paid",
+            "created_at": "2025-02-10 09:00:00",
+            "updated_at": "2025-02-10 09:00:00"
+        }
+    },
+
+    "payroll_line_item": {
+        "PYLI001": {
+            "payroll_line_item_ref": "PYLI001",
+            "payroll_record_ref": "PYRL001",
+            "item_category": "earning",
+            "item_type": "base_salary",
+            "item_name": "基本工资",
+            "amount": 30000.00,
+            "description": "...",
+            "created_at": "2025-02-10 09:00:00"
+        }
+    },
+
+    "bank_account": {
+        "BANK001": {
+            "bank_account_ref": "BANK001",
+            "employee_ref": "EMP001",
+            "bank_name": "中国工商银行",
+            "branch_name": "北京中关村支行",
+            "account_number_masked": "****1234",
+            "account_holder_name": "...",
+            "is_primary": true,
+            "status": "active",
+            "effective_date": "2025-01-15",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "social_insurance": {
+        "SINS001": {
+            "social_insurance_ref": "SINS001",
+            "employee_ref": "EMP001",
+            "insurance_city": "北京",
+            "insurance_type": "pension",
+            "base_amount": 30000.00,
+            "employee_rate": 0.08,
+            "employer_rate": 0.16,
+            "employee_amount": 2400.00,
+            "employer_amount": 4800.00,
+            "effective_date": "2025-01-01",
+            "expiry_date": null,
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "housing_fund": {
+        "HFND001": {
+            "housing_fund_ref": "HFND001",
+            "employee_ref": "EMP001",
+            "fund_city": "北京",
+            "fund_account_number": "...",
+            "base_amount": 30000.00,
+            "employee_rate": 0.12,
+            "employer_rate": 0.12,
+            "employee_amount": 3600.00,
+            "employer_amount": 3600.00,
+            "is_supplementary": false,
+            "effective_date": "2025-01-01",
+            "expiry_date": null,
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "commercial_insurance": {
+        "CINS001": {
+            "commercial_insurance_ref": "CINS001",
+            "plan_name": "补充医疗保险A",
+            "insurance_provider": "中国平安",
+            "insurance_category": "supplemental_medical",
+            "coverage_description": "...",
+            "employer_paid": true,
+            "premium_amount": 500.00,
+            "currency": "CNY",
+            "plan_status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "employee_commercial_insurance": {
+        "ECIN001": {
+            "employee_commercial_insurance_ref": "ECIN001",
+            "employee_ref": "EMP001",
+            "commercial_insurance_ref": "CINS001",
+            "coverage_start_date": "2025-01-15",
+            "coverage_end_date": "2025-12-31",
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "benefit_plan": {
+        "BPLN001": {
+            "benefit_plan_ref": "BPLN001",
+            "plan_name": "异地福利补贴",
+            "plan_type": "relocation",
+            "description": "...",
+            "eligibility_criteria": "...",
+            "amount": 2000.00,
+            "currency": "CNY",
+            "frequency": "monthly",
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "employee_benefit_enrollment": {
+        "EBEN001": {
+            "employee_benefit_enrollment_ref": "EBEN001",
+            "employee_ref": "EMP001",
+            "benefit_plan_ref": "BPLN001",
+            "enrollment_date": "2025-01-15",
+            "end_date": null,
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "work_schedule": {
+        "WSCH001": {
+            "work_schedule_ref": "WSCH001",
+            "schedule_name": "标准工时制",
+            "schedule_code": "STD_9_6",
+            "schedule_type": "standard",
+            "work_start_time": "09:00",
+            "work_end_time": "18:00",
+            "break_start_time": "12:00",
+            "break_end_time": "13:00",
+            "work_days_per_week": "1,2,3,4,5",
+            "hours_per_day": 8.0,
+            "flexible_minutes": 0,
+            "description": "...",
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "employee_work_schedule": {
+        "EWSC001": {
+            "employee_work_schedule_ref": "EWSC001",
+            "employee_ref": "EMP001",
+            "work_schedule_ref": "WSCH001",
+            "effective_date": "2025-01-15",
+            "expiry_date": null,
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "holiday_calendar": {
+        "HCAL001": {
+            "holiday_calendar_ref": "HCAL001",
+            "holiday_name": "春节",
+            "holiday_type": "statutory",
+            "holiday_date": "2025-01-29",
+            "is_workday_swap": false,
+            "swap_workday_date": null,
+            "year": 2025,
+            "region": "CN",
+            "description": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "leave_policy": {
+        "LPOL001": {
+            "leave_policy_ref": "LPOL001",
+            "leave_type": "annual",
+            "leave_name": "年假",
+            "default_days_per_year": 10.0,
+            "accrual_rule": "yearly",
+            "carry_over_allowed": true,
+            "max_carry_over_days": 5.0,
+            "min_leave_unit": "half_day",
+            "max_consecutive_days": 5,
+            "advance_notice_days": 3,
+            "min_service_months": 0,
+            "is_paid": true,
+            "requires_approval": true,
+            "description": "...",
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "leave_balance": {
+        "LBAL001": {
+            "leave_balance_ref": "LBAL001",
+            "employee_ref": "EMP001",
+            "leave_policy_ref": "LPOL001",
+            "year": 2025,
+            "entitled_days": 10.0,
+            "used_days": 2.0,
+            "remaining_days": 8.0,
+            "carried_over_days": 0.0,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "leave_request": {
+        "LREQ001": {
+            "leave_request_ref": "LREQ001",
+            "employee_ref": "EMP001",
+            "leave_policy_ref": "LPOL001",
+            "start_datetime": "2025-02-01 09:00:00",
+            "end_datetime": "2025-02-03 18:00:00",
+            "duration_days": 3.0,
+            "reason": "...",
+            "handover_employee_ref": null,
+            "approval_flow_ref": "APFL001",
+            "status": "approved",
+            "created_at": "2025-01-20 09:00:00",
+            "updated_at": "2025-01-20 15:00:00"
+        }
+    },
+
+    "overtime_request": {
+        "OTREQ001": {
+            "overtime_request_ref": "OTREQ001",
+            "employee_ref": "EMP001",
+            "overtime_date": "2025-01-18",
+            "start_time": "2025-01-18 19:00:00",
+            "end_time": "2025-01-18 22:00:00",
+            "duration_hours": 3.0,
+            "overtime_type": "weekday",
+            "compensation_type": "pay",
+            "reason": "...",
+            "approval_flow_ref": "APFL002",
+            "status": "approved",
+            "created_at": "2025-01-17 09:00:00",
+            "updated_at": "2025-01-17 15:00:00"
+        }
+    },
+
+    "contract": {
+        "CNTR001": {
+            "contract_ref": "CNTR001",
+            "employee_ref": "EMP001",
+            "contract_type": "fixed_term",
+            "contract_number": "LC-2025-0001",
+            "start_date": "2025-01-15",
+            "end_date": "2028-01-14",
+            "probation_start_date": "2025-01-15",
+            "probation_end_date": "2025-07-14",
+            "probation_status": "in_progress",
+            "renewal_count": 0,
+            "signing_date": "2025-01-14",
+            "signing_status": "signed",
+            "contract_entity": "北京XX科技有限公司",
+            "work_location": "北京",
+            "file_attachment_ref": "FILE010",
+            "status": "active",
+            "notes": "...",
+            "created_at": "2025-01-14 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "employee_change": {
+        "ECHG001": {
+            "employee_change_ref": "ECHG001",
+            "employee_ref": "EMP001",
+            "change_type": "onboarding",
+            "effective_date": "2025-01-15",
+            "from_department_ref": null,
+            "to_department_ref": "DEPT001",
+            "from_position_ref": null,
+            "to_position_ref": "POS001",
+            "from_manager_ref": null,
+            "to_manager_ref": "EMP000",
+            "from_salary_structure_ref": null,
+            "to_salary_structure_ref": "SSTR001",
+            "reason": "新员工入职",
+            "approval_flow_ref": "APFL003",
+            "status": "completed",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "approval_flow": {
+        "APFL001": {
+            "approval_flow_ref": "APFL001",
+            "flow_title": "请假审批 - 张三",
+            "related_resource_type": "leave_request",
+            "related_resource_ref": "LREQ001",
+            "initiator_employee_ref": "EMP001",
+            "current_step_order": 2,
+            "total_steps": 2,
+            "status": "approved",
+            "initiated_at": "2025-01-20 09:00:00",
+            "completed_at": "2025-01-20 15:00:00",
+            "created_at": "2025-01-20 09:00:00",
+            "updated_at": "2025-01-20 15:00:00"
+        }
+    },
+
+    "approval_step": {
+        "APST001": {
+            "approval_step_ref": "APST001",
+            "approval_flow_ref": "APFL001",
+            "step_order": 1,
+            "approver_employee_ref": "EMP000",
+            "action": "approved",
+            "comment": "同意",
+            "acted_at": "2025-01-20 10:00:00",
+            "status": "completed",
+            "created_at": "2025-01-20 09:00:00",
+            "updated_at": "2025-01-20 10:00:00"
+        }
+    },
+
+    "job_requisition": {
+        "JREQ001": {
+            "job_requisition_ref": "JREQ001",
+            "position_ref": "POS001",
+            "department_ref": "DEPT001",
+            "hiring_manager_ref": "EMP000",
+            "recruiter_ref": "EMP010",
+            "requisition_type": "social",
+            "headcount": 2,
+            "filled_count": 0,
+            "urgency": "normal",
+            "job_description": "...",
+            "requirements": "...",
+            "salary_range_min": 25000.00,
+            "salary_range_max": 40000.00,
+            "currency": "CNY",
+            "status": "open",
+            "opened_at": "2025-01-15 09:00:00",
+            "closed_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "candidate": {
+        "CAND001": {
+            "candidate_ref": "CAND001",
+            "given_name": "...",
+            "family_name": "...",
+            "email": "...",
+            "phone": "...",
+            "resume_file_ref": "FILE020",
+            "source": "social_recruitment",
+            "status": "active",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "job_application": {
+        "JAPP001": {
+            "job_application_ref": "JAPP001",
+            "job_requisition_ref": "JREQ001",
+            "candidate_ref": "CAND001",
+            "referral_ref": null,
+            "application_stage": "interview",
+            "application_status": "in_progress",
+            "applied_at": "2025-01-16 09:00:00",
+            "notes": "...",
+            "created_at": "2025-01-16 09:00:00",
+            "updated_at": "2025-01-20 09:00:00"
+        }
+    },
+
+    "referral": {
+        "REFR001": {
+            "referral_ref": "REFR001",
+            "referrer_employee_ref": "EMP005",
+            "candidate_ref": "CAND001",
+            "job_requisition_ref": "JREQ001",
+            "referral_bonus_amount": 5000.00,
+            "currency": "CNY",
+            "bonus_status": "pending",
+            "bonus_paid_at": null,
+            "relationship": "former_colleague",
+            "recommendation": "...",
+            "status": "active",
+            "created_at": "2025-01-16 09:00:00",
+            "updated_at": "2025-01-16 09:00:00"
+        }
+    },
+
+    "interview": {
+        "INTV001": {
+            "interview_ref": "INTV001",
+            "job_application_ref": "JAPP001",
+            "interviewer_employee_ref": "EMP000",
+            "interview_round": 1,
+            "interview_type": "technical",
+            "scheduled_start": "2025-01-20 14:00:00",
+            "scheduled_end": "2025-01-20 15:00:00",
+            "actual_start": "2025-01-20 14:00:00",
+            "actual_end": "2025-01-20 14:50:00",
+            "location": "会议室A",
+            "meeting_link": null,
+            "rating": 4,
+            "feedback": "...",
+            "result": "pass",
+            "status": "completed",
+            "created_at": "2025-01-18 09:00:00",
+            "updated_at": "2025-01-20 15:00:00"
+        }
+    },
+
+    "offer": {
+        "OFFR001": {
+            "offer_ref": "OFFR001",
+            "job_application_ref": "JAPP001",
+            "candidate_ref": "CAND001",
+            "position_ref": "POS001",
+            "department_ref": "DEPT001",
+            "offered_salary": 35000.00,
+            "currency": "CNY",
+            "offered_position_title": "高级后端工程师",
+            "offered_worker_type": "full_time",
+            "expected_hire_date": "2025-03-01",
+            "offer_valid_until": "2025-02-15",
+            "sign_on_bonus": 0.00,
+            "special_terms": "...",
+            "status": "pending",
+            "issued_at": "2025-01-25 09:00:00",
+            "responded_at": null,
+            "approval_flow_ref": "APFL010",
+            "created_at": "2025-01-25 09:00:00",
+            "updated_at": "2025-01-25 09:00:00"
+        }
+    },
+
+    "training_program": {
+        "TPRG001": {
+            "training_program_ref": "TPRG001",
+            "program_name": "新员工入职培训",
+            "program_type": "onboarding",
+            "description": "...",
+            "duration_hours": 40.0,
+            "delivery_method": "blended",
+            "target_audience": "new_hire",
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "training_enrollment": {
+        "TENR001": {
+            "training_enrollment_ref": "TENR001",
+            "training_program_ref": "TPRG001",
+            "employee_ref": "EMP001",
+            "enrolled_at": "2025-01-15 09:00:00",
+            "started_at": "2025-01-16 09:00:00",
+            "completed_at": null,
+            "progress_pct": 50.0,
+            "score": null,
+            "result": null,
+            "status": "in_progress",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-20 09:00:00"
+        }
+    },
+
+    "probation_review": {
+        "PROB001": {
+            "probation_review_ref": "PROB001",
+            "employee_ref": "EMP001",
+            "contract_ref": "CNTR001",
+            "reviewer_employee_ref": "EMP000",
+            "review_date": "2025-04-15",
+            "review_round": 1,
+            "rating": "meets_expectations",
+            "strengths": "...",
+            "improvements": "...",
+            "recommendation": "continue",
+            "approval_flow_ref": "APFL011",
+            "status": "completed",
+            "created_at": "2025-04-15 09:00:00",
+            "updated_at": "2025-04-15 15:00:00"
+        }
+    },
+
+    "performance_cycle": {
+        "PCYC001": {
+            "performance_cycle_ref": "PCYC001",
+            "cycle_name": "2025 H1 绩效考核",
+            "cycle_type": "semi_annual",
+            "start_date": "2025-01-01",
+            "end_date": "2025-06-30",
+            "review_deadline": "2025-07-31",
+            "status": "active",
+            "created_at": "2025-01-01 09:00:00",
+            "updated_at": "2025-01-01 09:00:00"
+        }
+    },
+
+    "performance_review": {
+        "PREV001": {
+            "performance_review_ref": "PREV001",
+            "performance_cycle_ref": "PCYC001",
+            "employee_ref": "EMP001",
+            "reviewer_employee_ref": "EMP000",
+            "self_rating": "B+",
+            "manager_rating": "B+",
+            "final_rating": "B+",
+            "self_summary": "...",
+            "manager_comment": "...",
+            "goals_achieved": "...",
+            "development_plan": "...",
+            "status": "completed",
+            "submitted_at": "2025-07-10 09:00:00",
+            "finalized_at": "2025-07-20 09:00:00",
+            "created_at": "2025-07-01 09:00:00",
+            "updated_at": "2025-07-20 09:00:00"
+        }
+    },
+
+    "equity_grant": {
+        "EQGR001": {
+            "equity_grant_ref": "EQGR001",
+            "employee_ref": "EMP001",
+            "grant_type": "rsu",
+            "grant_date": "2025-01-15",
+            "total_units": 10000,
+            "vested_units": 0,
+            "grant_price": 10.00,
+            "currency": "CNY",
+            "vesting_schedule": "4_year_1_year_cliff",
+            "vesting_start_date": "2025-01-15",
+            "cliff_date": "2026-01-15",
+            "expiry_date": "2035-01-15",
+            "status": "active",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "equity_vesting_event": {
+        "EQVE001": {
+            "equity_vesting_event_ref": "EQVE001",
+            "equity_grant_ref": "EQGR001",
+            "vesting_date": "2026-01-15",
+            "units_vested": 2500,
+            "vesting_price": 12.00,
+            "status": "scheduled",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "professional_title": {
+        "PTIT001": {
+            "professional_title_ref": "PTIT001",
+            "employee_ref": "EMP001",
+            "title_name": "高级工程师",
+            "title_level": "senior",
+            "issuing_authority": "北京市人力资源和社会保障局",
+            "certificate_number": "...",
+            "issue_date": "2024-06-01",
+            "expiry_date": null,
+            "file_attachment_ref": "FILE030",
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "talent_subsidy": {
+        "TSUB001": {
+            "talent_subsidy_ref": "TSUB001",
+            "employee_ref": "EMP001",
+            "subsidy_type": "housing",
+            "subsidy_name": "人才住房补贴",
+            "amount": 3000.00,
+            "currency": "CNY",
+            "frequency": "monthly",
+            "start_date": "2025-01-15",
+            "end_date": "2027-01-14",
+            "status": "active",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "employee_record": {
+        "EREC001": {
+            "employee_record_ref": "EREC001",
+            "employee_ref": "EMP001",
+            "record_type": "hukou",
+            "record_data": {
+                "hukou_type": "居民户口",
+                "hukou_location": "北京市海淀区",
+                "hukou_number": "...",
+                "transfer_date": null
+            },
+            "effective_date": "2025-01-15",
+            "expiry_date": null,
+            "file_attachment_ref": null,
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "visa_record": {
+        "VISA001": {
+            "visa_record_ref": "VISA001",
+            "employee_ref": "EMP001",
+            "visa_type": "work_permit",
+            "document_number": "...",
+            "issuing_country": "CN",
+            "nationality": "US",
+            "issue_date": "2025-01-01",
+            "expiry_date": "2026-12-31",
+            "entry_count": "multiple",
+            "sponsoring_entity": "北京XX科技有限公司",
+            "file_attachment_ref": "FILE040",
+            "renewal_reminder_date": "2026-10-01",
+            "status": "active",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "tax_declaration": {
+        "TAXD001": {
+            "tax_declaration_ref": "TAXD001",
+            "employee_ref": "EMP001",
+            "tax_year": 2025,
+            "tax_month": 1,
+            "taxable_income": 30000.00,
+            "tax_deductions": 5000.00,
+            "special_deductions": 4000.00,
+            "tax_amount": 2590.00,
+            "cumulative_tax_paid": 2590.00,
+            "currency": "CNY",
+            "declaration_status": "filed",
+            "filed_at": "2025-02-15 09:00:00",
+            "created_at": "2025-02-15 09:00:00",
+            "updated_at": "2025-02-15 09:00:00"
+        }
+    },
+
+    "tax_special_deduction": {
+        "TXSD001": {
+            "tax_special_deduction_ref": "TXSD001",
+            "employee_ref": "EMP001",
+            "deduction_type": "housing_rent",
+            "deduction_amount": 1500.00,
+            "tax_year": 2025,
+            "effective_start_month": 1,
+            "effective_end_month": 12,
+            "supporting_info": "...",
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "compliance_report": {
+        "CRPT001": {
+            "compliance_report_ref": "CRPT001",
+            "reporter_employee_ref": "EMP001",
+            "report_type": "violation",
+            "report_channel": "anonymous_hotline",
+            "is_anonymous": true,
+            "subject": "...",
+            "description": "...",
+            "involved_employee_refs": ["EMP010"],
+            "severity": "medium",
+            "investigator_employee_ref": "EMP020",
+            "investigation_status": "investigating",
+            "resolution": null,
+            "resolved_at": null,
+            "file_attachment_refs": [],
+            "status": "open",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "certificate_request": {
+        "CERT001": {
+            "certificate_request_ref": "CERT001",
+            "employee_ref": "EMP001",
+            "certificate_type": "employment_proof",
+            "purpose": "签证申请",
+            "language": "zh-CN",
+            "additional_info": "...",
+            "generated_file_ref": null,
+            "approval_flow_ref": "APFL020",
+            "status": "pending",
+            "requested_at": "2025-01-15 09:00:00",
+            "issued_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "hr_service_request": {
+        "HSRQ001": {
+            "hr_service_request_ref": "HSRQ001",
+            "requester_employee_ref": "EMP001",
+            "service_category": "hotline",
+            "priority": "normal",
+            "subject": "...",
+            "description": "...",
+            "assigned_hr_employee_ref": "EMP020",
+            "resolution": null,
+            "resolved_at": null,
+            "satisfaction_rating": null,
+            "status": "open",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    }
+}

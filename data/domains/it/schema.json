@@ -1,0 +1,872 @@
+{
+    "it_system": {
+        "ISYS001": {
+            "it_system_ref": "ISYS001",
+            "system_name": "...",
+            "system_code": "...",
+            "system_type": "business_app",
+            "system_url": "...",
+            "system_status": "active",
+            "owner_employee_ref": "EMP001",
+            "admin_employee_ref": "EMP001",
+            "department_ref": "DEPT001",
+            "description": "...",
+            "sso_enabled": true,
+            "mfa_required": false,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "it_system_account": {
+        "IACC001": {
+            "it_system_account_ref": "IACC001",
+            "it_system_ref": "ISYS001",
+            "employee_ref": "EMP001",
+            "account_username": "...",
+            "account_type": "personal",
+            "account_status": "active",
+            "role_in_system": "user",
+            "password_last_changed_at": "2025-01-15 09:00:00",
+            "password_expires_at": null,
+            "last_login_at": null,
+            "mfa_enabled": false,
+            "locked_at": null,
+            "lock_reason": null,
+            "provisioned_at": "2025-01-15 09:00:00",
+            "deprovisioned_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "it_system_account_permission": {
+        "IAPERM001": {
+            "it_system_account_permission_ref": "IAPERM001",
+            "it_system_account_ref": "IACC001",
+            "permission_name": "...",
+            "permission_level": "read",
+            "scope": "...",
+            "granted_by_ref": "EMP001",
+            "granted_at": "2025-01-15 09:00:00",
+            "expires_at": null,
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "access_anomaly": {
+        "AANM001": {
+            "access_anomaly_ref": "AANM001",
+            "it_system_ref": "ISYS001",
+            "it_system_account_ref": "IACC001",
+            "employee_ref": "EMP001",
+            "anomaly_type": "login_failure",
+            "severity": "medium",
+            "source_ip": "...",
+            "user_agent": "...",
+            "description": "...",
+            "resolution_status": "open",
+            "resolved_by_ref": null,
+            "resolved_at": null,
+            "resolution_notes": null,
+            "occurred_at": "2025-01-15 09:00:00",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "account_migration": {
+        "AMIG001": {
+            "account_migration_ref": "AMIG001",
+            "employee_ref": "EMP001",
+            "source_system_ref": "ISYS001",
+            "source_account_ref": "IACC001",
+            "target_system_ref": "ISYS002",
+            "target_account_ref": null,
+            "migration_type": "transfer",
+            "migration_status": "pending",
+            "data_scope": "...",
+            "requested_by_ref": "EMP001",
+            "executed_by_ref": null,
+            "requested_at": "2025-01-15 09:00:00",
+            "completed_at": null,
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "email_account": {
+        "EMAL001": {
+            "email_account_ref": "EMAL001",
+            "employee_ref": "EMP001",
+            "email_address": "...",
+            "email_type": "primary",
+            "mailbox_provider": "exchange",
+            "account_status": "active",
+            "quota_bytes": 5368709120,
+            "used_bytes": 0,
+            "forwarding_address": null,
+            "auto_reply_enabled": false,
+            "auto_reply_message": null,
+            "last_login_at": null,
+            "security_level": "standard",
+            "spam_filter_level": "medium",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "email_distribution_list": {
+        "EDLS001": {
+            "email_distribution_list_ref": "EDLS001",
+            "list_address": "...",
+            "list_name": "...",
+            "list_type": "department",
+            "owner_employee_ref": "EMP001",
+            "department_ref": null,
+            "member_count": 0,
+            "status": "active",
+            "description": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "email_distribution_list_member": {
+        "EDLM001": {
+            "email_distribution_list_member_ref": "EDLM001",
+            "email_distribution_list_ref": "EDLS001",
+            "email_account_ref": "EMAL001",
+            "role": "member",
+            "status": "active",
+            "added_by_ref": "EMP001",
+            "added_at": "2025-01-15 09:00:00",
+            "removed_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "email_security_event": {
+        "ESEV001": {
+            "email_security_event_ref": "ESEV001",
+            "email_account_ref": "EMAL001",
+            "event_type": "phishing_detected",
+            "severity": "high",
+            "source_address": "...",
+            "subject": "...",
+            "description": "...",
+            "action_taken": "quarantined",
+            "status": "resolved",
+            "resolved_by_ref": null,
+            "resolved_at": null,
+            "occurred_at": "2025-01-15 09:00:00",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "code_repository": {
+        "REPO001": {
+            "code_repository_ref": "REPO001",
+            "repository_name": "...",
+            "repository_slug": "...",
+            "repository_url": "...",
+            "platform": "gitlab",
+            "visibility": "internal",
+            "default_branch": "main",
+            "owner_employee_ref": "EMP001",
+            "team_ref": null,
+            "department_ref": null,
+            "language_primary": "...",
+            "description": "...",
+            "repository_status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "code_repository_member": {
+        "RMBR001": {
+            "code_repository_member_ref": "RMBR001",
+            "code_repository_ref": "REPO001",
+            "employee_ref": "EMP001",
+            "access_level": "developer",
+            "granted_by_ref": "EMP001",
+            "granted_at": "2025-01-15 09:00:00",
+            "revoked_at": null,
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "code_branch": {
+        "BRNC001": {
+            "code_branch_ref": "BRNC001",
+            "code_repository_ref": "REPO001",
+            "branch_name": "...",
+            "branch_type": "feature",
+            "source_branch": "main",
+            "created_by_ref": "EMP001",
+            "is_protected": false,
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "merge_request": {
+        "MR001": {
+            "merge_request_ref": "MR001",
+            "code_repository_ref": "REPO001",
+            "merge_request_number": 1,
+            "title": "...",
+            "description": "...",
+            "source_branch": "...",
+            "target_branch": "main",
+            "author_employee_ref": "EMP001",
+            "assignee_employee_ref": null,
+            "merge_request_status": "open",
+            "merge_status": "can_be_merged",
+            "is_draft": false,
+            "labels": [],
+            "parent_merge_request_ref": null,
+            "related_merge_request_refs": [],
+            "pipeline_ref": null,
+            "merged_by_ref": null,
+            "merged_at": null,
+            "closed_by_ref": null,
+            "closed_at": null,
+            "close_reason": null,
+            "lines_added": 0,
+            "lines_removed": 0,
+            "files_changed": 0,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "merge_request_reviewer": {
+        "MRRV001": {
+            "merge_request_reviewer_ref": "MRRV001",
+            "merge_request_ref": "MR001",
+            "reviewer_employee_ref": "EMP001",
+            "reviewer_role": "reviewer",
+            "review_status": "pending",
+            "review_comment": null,
+            "assigned_by_ref": "EMP001",
+            "assigned_at": "2025-01-15 09:00:00",
+            "reviewed_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "merge_request_activity": {
+        "MRAC001": {
+            "merge_request_activity_ref": "MRAC001",
+            "merge_request_ref": "MR001",
+            "actor_employee_ref": "EMP001",
+            "activity_type": "created",
+            "description": "...",
+            "changes": null,
+            "occurred_at": "2025-01-15 09:00:00",
+            "created_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "ci_cd_pipeline": {
+        "PIPE001": {
+            "ci_cd_pipeline_ref": "PIPE001",
+            "pipeline_name": "...",
+            "code_repository_ref": "REPO001",
+            "pipeline_type": "ci",
+            "config_file_path": ".gitlab-ci.yml",
+            "trigger_type": "push",
+            "owner_employee_ref": "EMP001",
+            "status": "active",
+            "description": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "pipeline_execution": {
+        "PEXE001": {
+            "pipeline_execution_ref": "PEXE001",
+            "ci_cd_pipeline_ref": "PIPE001",
+            "execution_number": 1,
+            "trigger_type": "push",
+            "trigger_ref": "...",
+            "branch": "...",
+            "commit_sha": "...",
+            "triggered_by_ref": "EMP001",
+            "execution_status": "running",
+            "started_at": "2025-01-15 09:00:00",
+            "finished_at": null,
+            "duration_seconds": null,
+            "artifact_file_refs": [],
+            "log_uri": "...",
+            "error_message": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "deployment": {
+        "DEPL001": {
+            "deployment_ref": "DEPL001",
+            "pipeline_execution_ref": "PEXE001",
+            "deploy_environment_ref": "DENV001",
+            "version_tag": "...",
+            "commit_sha": "...",
+            "deployed_by_ref": "EMP001",
+            "deployment_status": "success",
+            "deployment_strategy": "rolling",
+            "rollback_ref": null,
+            "started_at": "2025-01-15 09:00:00",
+            "finished_at": "2025-01-15 09:05:00",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "deploy_environment": {
+        "DENV001": {
+            "deploy_environment_ref": "DENV001",
+            "environment_name": "...",
+            "environment_code": "...",
+            "environment_type": "production",
+            "environment_url": "...",
+            "owner_employee_ref": "EMP001",
+            "team_ref": null,
+            "status": "active",
+            "description": "...",
+            "config_params": {},
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "it_resource": {
+        "IRES001": {
+            "it_resource_ref": "IRES001",
+            "resource_name": "...",
+            "resource_type": "server",
+            "resource_identifier": "...",
+            "specification": {},
+            "location": "...",
+            "owner_employee_ref": "EMP001",
+            "department_ref": null,
+            "resource_status": "in_use",
+            "allocated_to_ref": null,
+            "allocated_to_type": null,
+            "description": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "it_resource_request": {
+        "IREQ001": {
+            "it_resource_request_ref": "IREQ001",
+            "requester_employee_ref": "EMP001",
+            "resource_type": "server",
+            "request_category": "new_allocation",
+            "title": "...",
+            "description": "...",
+            "specifications": {},
+            "business_justification": "...",
+            "urgency": "normal",
+            "request_status": "pending",
+            "approved_by_ref": null,
+            "approved_at": null,
+            "fulfilled_resource_ref": null,
+            "fulfilled_at": null,
+            "rejected_reason": null,
+            "expires_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "dev_environment": {
+        "DEVN001": {
+            "dev_environment_ref": "DEVN001",
+            "environment_name": "...",
+            "environment_type": "local",
+            "employee_ref": "EMP001",
+            "os_type": "macos",
+            "os_version": "...",
+            "tools_installed": [],
+            "env_variables": {},
+            "database_connections": [],
+            "status": "active",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "data_source": {
+        "DSRC001": {
+            "data_source_ref": "DSRC001",
+            "source_name": "...",
+            "source_type": "database",
+            "connection_type": "mysql",
+            "host": "...",
+            "port": 3306,
+            "database_name": "...",
+            "owner_employee_ref": "EMP001",
+            "department_ref": null,
+            "sensitivity_level": "internal",
+            "status": "active",
+            "description": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "data_access_grant": {
+        "DAGR001": {
+            "data_access_grant_ref": "DAGR001",
+            "data_source_ref": "DSRC001",
+            "grantee_employee_ref": "EMP001",
+            "access_level": "read",
+            "scope": "...",
+            "granted_by_ref": "EMP001",
+            "granted_at": "2025-01-15 09:00:00",
+            "expires_at": null,
+            "status": "active",
+            "business_justification": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "data_asset": {
+        "DAST001": {
+            "data_asset_ref": "DAST001",
+            "data_source_ref": "DSRC001",
+            "asset_name": "...",
+            "asset_type": "table",
+            "schema_name": "...",
+            "field_definitions": [],
+            "owner_employee_ref": "EMP001",
+            "steward_employee_ref": null,
+            "department_ref": null,
+            "sensitivity_level": "internal",
+            "update_frequency": "daily",
+            "row_count": null,
+            "last_updated_at": null,
+            "tags": [],
+            "description": "...",
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "data_transfer_job": {
+        "DTRN001": {
+            "data_transfer_job_ref": "DTRN001",
+            "job_name": "...",
+            "transfer_type": "import",
+            "source_data_source_ref": null,
+            "target_data_source_ref": null,
+            "source_file_ref": null,
+            "target_file_ref": null,
+            "data_format": "csv",
+            "record_count": null,
+            "file_size_bytes": null,
+            "initiated_by_ref": "EMP001",
+            "job_status": "pending",
+            "started_at": null,
+            "completed_at": null,
+            "error_message": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "network_zone": {
+        "NZON001": {
+            "network_zone_ref": "NZON001",
+            "zone_name": "...",
+            "zone_type": "corporate",
+            "cidr_range": "...",
+            "location": "...",
+            "vlan_id": null,
+            "gateway": "...",
+            "dns_servers": [],
+            "status": "active",
+            "description": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "vpn_connection": {
+        "VPNC001": {
+            "vpn_connection_ref": "VPNC001",
+            "employee_ref": "EMP001",
+            "vpn_profile": "...",
+            "assigned_ip": "...",
+            "connection_status": "disconnected",
+            "last_connected_at": null,
+            "last_disconnected_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "guest_wifi_credential": {
+        "GWFC001": {
+            "guest_wifi_credential_ref": "GWFC001",
+            "guest_name": "...",
+            "guest_company": "...",
+            "guest_phone": "...",
+            "host_employee_ref": "EMP001",
+            "ssid": "...",
+            "access_code": "...",
+            "network_zone_ref": null,
+            "valid_from": "2025-01-15 09:00:00",
+            "valid_until": "2025-01-15 18:00:00",
+            "max_devices": 2,
+            "bandwidth_limit_mbps": null,
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "network_access_rule": {
+        "NACR001": {
+            "network_access_rule_ref": "NACR001",
+            "rule_name": "...",
+            "subject_type": "employee",
+            "subject_ref": "...",
+            "network_zone_ref": "NZON001",
+            "target_resource": "...",
+            "protocol": "tcp",
+            "port_range": "...",
+            "action": "allow",
+            "priority": 100,
+            "status": "active",
+            "granted_by_ref": "EMP001",
+            "expires_at": null,
+            "description": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "network_incident": {
+        "NINC001": {
+            "network_incident_ref": "NINC001",
+            "reporter_employee_ref": "EMP001",
+            "network_zone_ref": null,
+            "incident_type": "connectivity_loss",
+            "severity": "medium",
+            "affected_scope": "...",
+            "description": "...",
+            "diagnosis": null,
+            "resolution": null,
+            "status": "open",
+            "assigned_to_ref": null,
+            "resolved_at": null,
+            "occurred_at": "2025-01-15 09:00:00",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "software_catalog": {
+        "SCAT001": {
+            "software_catalog_ref": "SCAT001",
+            "software_name": "...",
+            "software_code": "...",
+            "vendor": "...",
+            "category": "office",
+            "current_version": "...",
+            "supported_os": [],
+            "download_uri": "...",
+            "installation_guide_uri": null,
+            "is_core": true,
+            "requires_license": true,
+            "requires_approval": false,
+            "security_reviewed": true,
+            "compliance_status": "approved",
+            "description": "...",
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "software_license": {
+        "SLIC001": {
+            "software_license_ref": "SLIC001",
+            "software_catalog_ref": "SCAT001",
+            "license_key": "...",
+            "license_type": "per_seat",
+            "total_seats": 100,
+            "used_seats": 0,
+            "vendor_contract_ref": "...",
+            "purchase_date": "2025-01-15",
+            "expiry_date": "2026-01-15",
+            "cost_per_unit": 0.00,
+            "currency": "CNY",
+            "auto_renew": false,
+            "status": "active",
+            "managed_by_ref": "EMP001",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "software_license_assignment": {
+        "SLCA001": {
+            "software_license_assignment_ref": "SLCA001",
+            "software_license_ref": "SLIC001",
+            "employee_ref": "EMP001",
+            "assigned_by_ref": "EMP001",
+            "assigned_at": "2025-01-15 09:00:00",
+            "revoked_at": null,
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "software_installation": {
+        "SINST001": {
+            "software_installation_ref": "SINST001",
+            "software_catalog_ref": "SCAT001",
+            "employee_ref": "EMP001",
+            "device_name": "...",
+            "installed_version": "...",
+            "installation_status": "installed",
+            "installed_at": "2025-01-15 09:00:00",
+            "uninstalled_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "software_filing": {
+        "SFIL001": {
+            "software_filing_ref": "SFIL001",
+            "software_catalog_ref": null,
+            "software_name": "...",
+            "vendor": "...",
+            "version": "...",
+            "purpose": "...",
+            "data_sensitivity": "internal",
+            "filed_by_ref": "EMP001",
+            "department_ref": "DEPT001",
+            "security_review_status": "pending",
+            "compliance_review_status": "pending",
+            "reviewed_by_ref": null,
+            "reviewed_at": null,
+            "filing_status": "pending",
+            "rejection_reason": null,
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "printer": {
+        "PRNT001": {
+            "printer_ref": "PRNT001",
+            "printer_name": "...",
+            "printer_model": "...",
+            "manufacturer": "...",
+            "serial_number": "...",
+            "ip_address": "...",
+            "location_building": "...",
+            "location_floor": "...",
+            "location_area": "...",
+            "capabilities": [],
+            "supports_color": true,
+            "supports_duplex": true,
+            "supports_scan": false,
+            "driver_download_uri": "...",
+            "printer_status": "online",
+            "department_ref": null,
+            "managed_by_ref": "EMP001",
+            "description": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "printer_supply": {
+        "PSUP001": {
+            "printer_supply_ref": "PSUP001",
+            "printer_ref": "PRNT001",
+            "supply_type": "toner",
+            "supply_name": "...",
+            "supply_model": "...",
+            "remaining_percent": 80,
+            "stock_quantity": 5,
+            "reorder_threshold": 2,
+            "unit_cost": 0.00,
+            "currency": "CNY",
+            "supplier": "...",
+            "last_replaced_at": null,
+            "status": "normal",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "printer_incident": {
+        "PINC001": {
+            "printer_incident_ref": "PINC001",
+            "printer_ref": "PRNT001",
+            "reporter_employee_ref": "EMP001",
+            "incident_type": "paper_jam",
+            "description": "...",
+            "diagnosis": null,
+            "resolution": null,
+            "status": "open",
+            "assigned_to_ref": null,
+            "resolved_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "file_transfer": {
+        "FTRF001": {
+            "file_transfer_ref": "FTRF001",
+            "file_attachment_ref": "FILE001",
+            "transfer_type": "upload",
+            "source": "...",
+            "destination": "...",
+            "initiated_by_ref": "EMP001",
+            "recipient_employee_refs": [],
+            "encryption_applied": false,
+            "encryption_method": null,
+            "transfer_status": "completed",
+            "file_size_bytes": 0,
+            "expires_at": null,
+            "access_password_set": false,
+            "download_count": 0,
+            "max_downloads": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "file_security_policy": {
+        "FSEC001": {
+            "file_security_policy_ref": "FSEC001",
+            "policy_name": "...",
+            "classification_level": "confidential",
+            "encryption_required": true,
+            "encryption_algorithm": "AES-256",
+            "allowed_share_scope": "department",
+            "watermark_required": false,
+            "download_restricted": false,
+            "print_restricted": false,
+            "retention_days": null,
+            "applicable_file_types": [],
+            "department_ref": null,
+            "status": "active",
+            "description": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "it_service_ticket": {
+        "ITKT001": {
+            "it_service_ticket_ref": "ITKT001",
+            "ticket_number": "IT-2025-00001",
+            "requester_employee_ref": "EMP001",
+            "ticket_category": "incident",
+            "ticket_subcategory": "software_fault",
+            "related_system_ref": null,
+            "related_printer_ref": null,
+            "related_email_account_ref": null,
+            "title": "...",
+            "description": "...",
+            "urgency": "medium",
+            "impact": "individual",
+            "priority": "P3",
+            "ticket_status": "open",
+            "assigned_to_ref": null,
+            "assigned_group": null,
+            "escalation_level": 0,
+            "resolution_summary": null,
+            "resolution_category": null,
+            "satisfaction_rating": null,
+            "satisfaction_comment": null,
+            "sla_due_at": null,
+            "first_responded_at": null,
+            "resolved_at": null,
+            "closed_at": null,
+            "reopened_count": 0,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "it_service_ticket_comment": {
+        "ITKC001": {
+            "it_service_ticket_comment_ref": "ITKC001",
+            "it_service_ticket_ref": "ITKT001",
+            "author_employee_ref": "EMP001",
+            "comment_type": "reply",
+            "content": "...",
+            "is_internal": false,
+            "attachment_file_refs": [],
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "it_service_contact": {
+        "ITSC001": {
+            "it_service_contact_ref": "ITSC001",
+            "contact_name": "...",
+            "contact_type": "hotline",
+            "phone_number": "...",
+            "email": "...",
+            "service_hours": "...",
+            "location": "...",
+            "supported_categories": [],
+            "description": "...",
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "it_knowledge_article": {
+        "ITKA001": {
+            "it_knowledge_article_ref": "ITKA001",
+            "article_title": "...",
+            "article_category": "faq",
+            "related_categories": [],
+            "content": "...",
+            "author_employee_ref": "EMP001",
+            "view_count": 0,
+            "helpful_count": 0,
+            "tags": [],
+            "status": "published",
+            "published_at": "2025-01-15 09:00:00",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    }
+}

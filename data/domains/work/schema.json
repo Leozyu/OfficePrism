@@ -1,0 +1,524 @@
+{
+    "work_arrangement": {
+        "WARR001": {
+            "work_arrangement_ref": "WARR001",
+            "employee_ref": "EMP001",
+            "arrangement_type": "remote",
+            "arrangement_status": "active",
+            "start_date": "2025-01-15",
+            "end_date": null,
+            "recurrence_rule": null,
+            "work_days": ["monday", "tuesday", "wednesday", "thursday", "friday"],
+            "work_start_time": "09:00",
+            "work_end_time": "18:00",
+            "timezone": "Asia/Shanghai",
+            "work_location": "home",
+            "location_detail": "...",
+            "reason": "...",
+            "approved_by_ref": "EMP000",
+            "approved_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "team_activity": {
+        "TACT001": {
+            "team_activity_ref": "TACT001",
+            "activity_name": "...",
+            "activity_type": "team_building",
+            "description": "...",
+            "organizer_employee_ref": "EMP001",
+            "department_ref": null,
+            "team_ref": null,
+            "venue_name": "...",
+            "venue_address": "...",
+            "start_time": "2025-03-01 09:00:00",
+            "end_time": "2025-03-01 18:00:00",
+            "headcount_limit": 50,
+            "budget_amount": 10000.00,
+            "budget_currency": "CNY",
+            "actual_cost": null,
+            "activity_status": "draft",
+            "agenda": "...",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "team_activity_participant": {
+        "TAPT001": {
+            "team_activity_participant_ref": "TAPT001",
+            "team_activity_ref": "TACT001",
+            "employee_ref": "EMP001",
+            "participant_role": "participant",
+            "rsvp_status": "pending",
+            "check_in_at": null,
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "project": {
+        "PROJ001": {
+            "project_ref": "PROJ001",
+            "project_name": "...",
+            "project_code": "...",
+            "description": "...",
+            "project_type": "development",
+            "project_status": "active",
+            "priority": "high",
+            "owner_employee_ref": "EMP001",
+            "department_ref": null,
+            "team_ref": null,
+            "planned_start_date": "2025-01-15",
+            "planned_end_date": "2025-06-30",
+            "actual_start_date": null,
+            "actual_end_date": null,
+            "progress_percent": 0,
+            "budget_amount": null,
+            "budget_currency": "CNY",
+            "risk_level": "low",
+            "parent_project_ref": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "project_member": {
+        "PMBR001": {
+            "project_member_ref": "PMBR001",
+            "project_ref": "PROJ001",
+            "employee_ref": "EMP001",
+            "project_role": "member",
+            "joined_at": "2025-01-15 09:00:00",
+            "left_at": null,
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "project_milestone": {
+        "PMST001": {
+            "project_milestone_ref": "PMST001",
+            "project_ref": "PROJ001",
+            "milestone_name": "...",
+            "description": "...",
+            "planned_date": "2025-03-01",
+            "actual_date": null,
+            "milestone_status": "pending",
+            "owner_employee_ref": "EMP001",
+            "display_order": 1,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "project_task": {
+        "PTSK001": {
+            "project_task_ref": "PTSK001",
+            "project_ref": "PROJ001",
+            "project_milestone_ref": null,
+            "parent_task_ref": null,
+            "task_title": "...",
+            "task_description": "...",
+            "task_type": "development",
+            "task_status": "todo",
+            "priority": "medium",
+            "assignee_employee_ref": "EMP001",
+            "reporter_employee_ref": "EMP002",
+            "planned_start_date": "2025-01-15",
+            "planned_end_date": "2025-01-31",
+            "actual_start_date": null,
+            "actual_end_date": null,
+            "estimated_hours": 8.0,
+            "actual_hours": null,
+            "progress_percent": 0,
+            "display_order": 1,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "project_risk": {
+        "PRSK001": {
+            "project_risk_ref": "PRSK001",
+            "project_ref": "PROJ001",
+            "risk_title": "...",
+            "risk_description": "...",
+            "risk_level": "medium",
+            "probability": "medium",
+            "impact": "high",
+            "mitigation_plan": "...",
+            "owner_employee_ref": "EMP001",
+            "risk_status": "open",
+            "identified_at": "2025-01-15 09:00:00",
+            "resolved_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "schedule_event": {
+        "SEVT001": {
+            "schedule_event_ref": "SEVT001",
+            "organizer_employee_ref": "EMP001",
+            "event_title": "...",
+            "event_description": "...",
+            "event_type": "meeting",
+            "event_status": "confirmed",
+            "start_time": "2025-01-15 10:00:00",
+            "end_time": "2025-01-15 11:00:00",
+            "timezone": "Asia/Shanghai",
+            "is_all_day": false,
+            "recurrence_rule": null,
+            "location": "...",
+            "meeting_ref": null,
+            "visibility": "default",
+            "related_resource_type": null,
+            "related_resource_ref": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "schedule_event_attendee": {
+        "SEAT001": {
+            "schedule_event_attendee_ref": "SEAT001",
+            "schedule_event_ref": "SEVT001",
+            "employee_ref": "EMP001",
+            "attendee_role": "required",
+            "rsvp_status": "accepted",
+            "responded_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "todo_item": {
+        "TODO001": {
+            "todo_item_ref": "TODO001",
+            "owner_employee_ref": "EMP001",
+            "title": "...",
+            "description": "...",
+            "todo_status": "pending",
+            "priority": "medium",
+            "due_date": "2025-01-20 18:00:00",
+            "completed_at": null,
+            "related_resource_type": null,
+            "related_resource_ref": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "reminder_rule": {
+        "RMDR001": {
+            "reminder_rule_ref": "RMDR001",
+            "employee_ref": "EMP001",
+            "related_resource_type": "schedule_event",
+            "related_resource_ref": "SEVT001",
+            "remind_at": "2025-01-15 09:45:00",
+            "offset_minutes": 15,
+            "channel": "in_app",
+            "reminder_status": "pending",
+            "triggered_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "meeting": {
+        "MEET001": {
+            "meeting_ref": "MEET001",
+            "meeting_title": "...",
+            "meeting_type": "video",
+            "meeting_status": "scheduled",
+            "organizer_employee_ref": "EMP001",
+            "schedule_event_ref": "SEVT001",
+            "start_time": "2025-01-15 10:00:00",
+            "end_time": "2025-01-15 11:00:00",
+            "timezone": "Asia/Shanghai",
+            "meeting_platform": "internal",
+            "meeting_link": "...",
+            "meeting_password": "...",
+            "meeting_room": "...",
+            "is_recorded": false,
+            "recording_file_ref": null,
+            "allow_screen_share": true,
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "meeting_participant": {
+        "MPRT001": {
+            "meeting_participant_ref": "MPRT001",
+            "meeting_ref": "MEET001",
+            "employee_ref": "EMP001",
+            "participant_role": "attendee",
+            "join_time": null,
+            "leave_time": null,
+            "attendance_status": "invited",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "okr_objective": {
+        "OKRO001": {
+            "okr_objective_ref": "OKRO001",
+            "owner_employee_ref": "EMP001",
+            "objective_title": "...",
+            "description": "...",
+            "okr_scope": "individual",
+            "scope_ref": null,
+            "period_type": "quarterly",
+            "period_label": "2025-Q1",
+            "start_date": "2025-01-01",
+            "end_date": "2025-03-31",
+            "parent_objective_ref": null,
+            "progress_percent": 0,
+            "objective_status": "active",
+            "score": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "okr_key_result": {
+        "OKRK001": {
+            "okr_key_result_ref": "OKRK001",
+            "okr_objective_ref": "OKRO001",
+            "key_result_title": "...",
+            "description": "...",
+            "metric_type": "percentage",
+            "target_value": 100.0,
+            "current_value": 0.0,
+            "start_value": 0.0,
+            "unit": "%",
+            "progress_percent": 0,
+            "key_result_status": "active",
+            "owner_employee_ref": "EMP001",
+            "score": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "work_report": {
+        "WRPT001": {
+            "work_report_ref": "WRPT001",
+            "author_employee_ref": "EMP001",
+            "report_type": "weekly",
+            "report_title": "...",
+            "period_start_date": "2025-01-13",
+            "period_end_date": "2025-01-17",
+            "summary": "...",
+            "accomplishments": "...",
+            "issues_and_risks": "...",
+            "next_period_plan": "...",
+            "report_status": "draft",
+            "submitted_at": null,
+            "related_okr_objective_ref": null,
+            "related_project_ref": null,
+            "recipients": ["EMP000"],
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "document": {
+        "DOCS001": {
+            "document_ref": "DOCS001",
+            "document_title": "...",
+            "document_type": "project",
+            "document_category": "technical_spec",
+            "description": "...",
+            "content": "...",
+            "document_status": "published",
+            "version": "1.0",
+            "owner_employee_ref": "EMP001",
+            "scope_type": "project",
+            "scope_ref": "PROJ001",
+            "parent_document_ref": null,
+            "file_attachment_ref": null,
+            "access_level": "internal",
+            "tags": ["backend", "api"],
+            "view_count": 0,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "document_collaborator": {
+        "DCOL001": {
+            "document_collaborator_ref": "DCOL001",
+            "document_ref": "DOCS001",
+            "employee_ref": "EMP001",
+            "collaborator_role": "editor",
+            "granted_by_ref": "EMP001",
+            "granted_at": "2025-01-15 09:00:00",
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "product_requirement": {
+        "PREQ001": {
+            "product_requirement_ref": "PREQ001",
+            "requirement_title": "...",
+            "requirement_code": "PRD-2025-0001",
+            "description": "...",
+            "requirement_type": "feature",
+            "requirement_status": "draft",
+            "priority": "high",
+            "business_value": "...",
+            "acceptance_criteria": "...",
+            "owner_employee_ref": "EMP001",
+            "project_ref": null,
+            "software_product_ref": null,
+            "parent_requirement_ref": null,
+            "target_version": "...",
+            "planned_release_date": null,
+            "impact_analysis": "...",
+            "change_reason": null,
+            "closed_at": null,
+            "voided_at": null,
+            "document_ref": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "software_product": {
+        "SPRD001": {
+            "software_product_ref": "SPRD001",
+            "product_name": "...",
+            "product_code": "...",
+            "description": "...",
+            "product_type": "internal",
+            "product_status": "active",
+            "current_version": "...",
+            "access_url": "...",
+            "documentation_url": "...",
+            "owner_employee_ref": "EMP001",
+            "owner_department_ref": null,
+            "support_contact": "...",
+            "features_summary": "...",
+            "platform": "web",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "certification": {
+        "CERT001": {
+            "certification_ref": "CERT001",
+            "certification_name": "...",
+            "certification_code": "...",
+            "issuing_authority": "...",
+            "description": "...",
+            "certification_type": "professional",
+            "validity_period_months": 24,
+            "exam_required": true,
+            "training_required": false,
+            "certification_status": "active",
+            "related_job_family": "Engineering",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "employee_certification": {
+        "ECRT001": {
+            "employee_certification_ref": "ECRT001",
+            "employee_ref": "EMP001",
+            "certification_ref": "CERT001",
+            "certificate_number": "...",
+            "obtained_date": "2025-01-15",
+            "expiry_date": "2027-01-15",
+            "certification_status": "active",
+            "score": null,
+            "certificate_file_ref": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "exam_schedule": {
+        "EXAM001": {
+            "exam_schedule_ref": "EXAM001",
+            "certification_ref": "CERT001",
+            "exam_name": "...",
+            "exam_date": "2025-03-01 09:00:00",
+            "registration_deadline": "2025-02-15 23:59:59",
+            "location": "...",
+            "capacity": 50,
+            "exam_status": "open",
+            "description": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "exam_registration": {
+        "EXRG001": {
+            "exam_registration_ref": "EXRG001",
+            "exam_schedule_ref": "EXAM001",
+            "employee_ref": "EMP001",
+            "registration_status": "registered",
+            "exam_result": null,
+            "score": null,
+            "registered_at": "2025-01-20 09:00:00",
+            "completed_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "manager_snapshot": {
+        "MSNP001": {
+            "manager_snapshot_ref": "MSNP001",
+            "manager_employee_ref": "EMP001",
+            "snapshot_date": "2025-01-15",
+            "snapshot_type": "daily",
+            "department_ref": "DEPT001",
+            "team_headcount": 15,
+            "active_projects_count": 5,
+            "overdue_tasks_count": 2,
+            "pending_approvals_count": 3,
+            "open_risks_count": 1,
+            "avg_okr_progress_percent": 45,
+            "upcoming_milestones_count": 4,
+            "on_leave_count": 1,
+            "remote_work_count": 3,
+            "snapshot_data": {
+                "top_risks": [],
+                "overdue_items": [],
+                "key_metrics": {}
+            },
+            "created_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "company_info": {
+        "CINF001": {
+            "company_info_ref": "CINF001",
+            "info_key": "company_name",
+            "info_value": "...",
+            "info_type": "string",
+            "info_category": "basic",
+            "description": "...",
+            "is_public": true,
+            "updated_by_ref": "EMP001",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    }
+}

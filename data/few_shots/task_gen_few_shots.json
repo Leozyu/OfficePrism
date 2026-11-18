@@ -1,0 +1,237 @@
+{
+  "hr": {
+    "L1": [
+      {
+        "tool_names": [
+          "find_employee_ref_by_name",
+          "get_employee_salary_structures"
+        ],
+        "content": "{\n  \"business_scenario\": \"同事临时要补一份人事口径，想确认某位员工当前生效中的基本工资，任务目标单一且不需要额外判断。\",\n  \"question\": \"帮我看一下何桂芳现在生效中的基本工资是多少，我这边要补一份人事说明。\",\n  \"answer\": \"[find_employee_ref_by_name(display_name='何桂芳'), get_employee_salary_structures(employee_ref='EMP003')]\",\n  \"final_answer\": \"31901.0\"\n}"
+      }
+    ],
+    "L2": [
+      {
+        "tool_names": [
+          "find_employee_ref_by_name",
+          "get_employee_details",
+          "get_employee_leave_balances",
+          "calculate"
+        ],
+        "content": "{\n  \"business_scenario\": \"提问者在安排孟萍这条线后续的评审和审批窗口，担心她直属主管后面若集中休假会拖慢节奏，所以想先确认这位主管今年剩余假期的大致总量。\",\n  \"question\": \"这周在排孟萍这条线后面的评审节奏，担心她直属领导下半年如果集中休假会把窗口卡住。帮我看下她老板今年大概还剩多少假可以休，给我一个总数就行，我好预留时间。\",\n  \"answer\": \"[find_employee_ref_by_name(display_name='孟萍'), get_employee_details(employee_ref='EMP002'), get_employee_leave_balances(employee_ref='EMP001', year=2024), calculate(expression='9.0 + 14.3 + 9.0')]\",\n  \"final_answer\": \"孟萍的直属主管王龙在2024年的假期余额合计还有32.3天。\"\n}"
+      }
+    ],
+    "L3": [
+      {
+        "tool_names": [
+          "find_employee_ref_by_name",
+          "get_employee_tax_special_deductions"
+        ],
+        "content": "{\n  \"business_scenario\": \"财务正在补做一轮专项附加扣除复核，只需确认几位指定员工里谁当前仍有生效中的大病医疗扣除，以便继续追后续材料。\",\n  \"question\": \"财务这边在补做专项附加扣除复核。麻烦看一下王龙、孟萍、何桂芳和唐玉华这几个人里，谁当前还有生效中的大病医疗扣除；有的话直接把名字给我，如果都没有就回我“无生效记录”。\",\n  \"answer\": \"[find_employee_ref_by_name(display_name='王龙'), get_employee_tax_special_deductions(employee_ref='EMP001'), find_employee_ref_by_name(display_name='孟萍'), get_employee_tax_special_deductions(employee_ref='EMP002'), find_employee_ref_by_name(display_name='何桂芳'), get_employee_tax_special_deductions(employee_ref='EMP003'), find_employee_ref_by_name(display_name='唐玉华'), get_employee_tax_special_deductions(employee_ref='EMP006')]\",\n  \"final_answer\": \"王龙、唐玉华\"\n}"
+      }
+    ]
+  },
+  "admin": {
+    "L1": [
+      {
+        "tool_names": [
+          "list_parking_spaces"
+        ],
+        "content": "{\n  \"business_scenario\": \"员工只想确认某个园区当前有没有空闲停车位，属于单次列表查询，不需要跨实体推断。\",\n  \"question\": \"帮我看下上海创新园区现在还有没有空着的停车位，有的话把能用的列给我。\",\n  \"answer\": \"[list_parking_spaces(campus_ref='CAMP001', status='available')]\",\n  \"final_answer\": \"上海创新园区目前有2个空闲停车位：PS002（B区，小型车位，支持充电桩）和PS009（地下停车区，标准车位）。\"\n}"
+      }
+    ],
+    "L2": [
+      {
+        "tool_names": [
+          "find_employee_ref_by_name",
+          "list_workstations",
+          "assign_workstation"
+        ],
+        "content": "{\n  \"business_scenario\": \"新同事要在指定楼层区域落位，提问者已经给出了区域约束，系统需要先确认员工，再确认该区域确实有可用工位后执行分配。\",\n  \"question\": \"姚凯这两天会去 1 楼西区设备区办公，麻烦帮他看看那边现在还有没有能直接用的热桌工位；如果有，就顺手安排一个给他，不用再回我确认。\",\n  \"answer\": \"[find_employee_ref_by_name(display_name='姚凯'), list_workstations(building_ref='BLDG001', floor_ref='FLR001', zone_ref='ZONE004', workstation_type='hot_desk', status='available'), assign_workstation(workstation_ref='WS001', employee_ref='EMP008')]\",\n  \"final_answer\": \"已将工位WS001分配给姚凯（EMP008）。\"\n}"
+      }
+    ],
+    "L3": [
+      {
+        "tool_names": [
+          "find_department_ref_by_name",
+          "find_employee_ref_by_name",
+          "get_employee_details",
+          "list_campuses",
+          "list_buildings",
+          "list_floors",
+          "list_workstations",
+          "assign_workstation"
+        ],
+        "content": "{\n  \"business_scenario\": \"行政正在给同部门两位同事统一调整办公位，希望一次性把两人的站立工位都落到同一栋楼的同一楼层，减少来回沟通成本。\",\n  \"question\": \"后端开发组这边准备统一调一下办公位。麻烦帮唐玉华和姚凯都安排到上海那栋楼 1 楼还能用的站立工位里，尽量一次性处理完；安排好之后把分配结果和工位编号一起发我。\",\n  \"answer\": \"[find_department_ref_by_name(department_name='后端开发组'), find_employee_ref_by_name(display_name='唐玉华'), find_employee_ref_by_name(display_name='姚凯'), get_employee_details(employee_ref='EMP006'), get_employee_details(employee_ref='EMP008'), list_campuses(city='上海'), list_buildings(campus_ref='CAMP001'), list_floors(building_ref='BLDG001'), list_workstations(floor_ref='FLR001', building_ref='BLDG001', campus_ref='CAMP001', status='available'), assign_workstation(workstation_ref='WS006', employee_ref='EMP006'), assign_workstation(workstation_ref='WS007', employee_ref='EMP008')]\",\n  \"final_answer\": \"共分配了2个站立式工位：WS006 给唐玉华，WS007 给姚凯。\"\n}"
+      }
+    ]
+  },
+  "it": {
+    "L1": [
+      {
+        "tool_names": [
+          "search_software_catalog",
+          "list_software_licenses"
+        ],
+        "content": "{\n  \"business_scenario\": \"员工想确认某个常用软件在公司目录里有没有可分配许可证，本质是先搜软件目录再下钻许可证记录。\",\n  \"question\": \"帮我查一下公司里 Postman 现在还有没有能分出去的许可证，我这边想给同事补一个席位。\",\n  \"answer\": \"[search_software_catalog(keyword='Postman'), list_software_licenses(software_catalog_ref='SWC008', status='active')]\",\n  \"final_answer\": \"Postman 在软件目录里有条目（SWC008），但没有查到 active 状态的独立许可证记录。\"\n}"
+      }
+    ],
+    "L2": [
+      {
+        "tool_names": [
+          "find_team_ref_by_name",
+          "get_team_details",
+          "find_code_repository_ref_by_name",
+          "add_code_repository_member"
+        ],
+        "content": "{\n  \"business_scenario\": \"项目组想把负责人补进指定代码仓库，提问者只给了团队和仓库名，需要系统先找到团队 owner，再执行成员授权。\",\n  \"question\": \"AI 算法项目组那个 `ticket-engine-6` 仓库需要补权限，直接把这个组现在的负责人加进去，权限给 developer，授权人记我就行。\",\n  \"answer\": \"[find_team_ref_by_name(team_name='AI算法项目组'), get_team_details(team_ref='TEAM004'), find_code_repository_ref_by_name(repository_name='ticket-engine-6'), add_code_repository_member(code_repository_ref='REPO006', employee_ref='EMP018', access_level='developer', granted_by_ref='EMP021')]\",\n  \"final_answer\": \"已将AI算法项目组负责人EMP018以developer权限加入ticket-engine-6仓库，授权人为EMP021。\"\n}"
+      }
+    ],
+    "L3": [
+      {
+        "tool_names": [
+          "find_team_ref_by_name",
+          "list_team_members",
+          "get_employee_details",
+          "list_it_system_accounts_for_employee",
+          "find_department_ref_by_name",
+          "list_email_distribution_lists",
+          "create_it_service_ticket"
+        ],
+        "content": "{\n  \"business_scenario\": \"提问者在收一轮安全整改尾项，既要确认某个团队里是否还有活跃账号没开 MFA，也要顺手处理一个部门邮件组可能失效的问题，避免后面继续遗漏。\",\n  \"question\": \"这边在收一轮安全整改尾项，麻烦把篮球兴趣小组里还在用的系统账号看一下，哪些人有活跃账号但没开 MFA，整理成清单给我。另外后端开发组邮件组也顺手确认下状态，如果现在不是正常可用的，就直接帮我提个恢复工单。\",\n  \"answer\": \"[find_team_ref_by_name(team_name='篮球兴趣小组'), list_team_members(team_ref='TEAM011'), get_employee_details(employee_ref='EMP022'), list_it_system_accounts_for_employee(employee_ref='EMP022', account_status='active'), get_employee_details(employee_ref='EMP035'), list_it_system_accounts_for_employee(employee_ref='EMP035', account_status='active'), get_employee_details(employee_ref='EMP048'), list_it_system_accounts_for_employee(employee_ref='EMP048', account_status='active'), find_department_ref_by_name(department_name='后端开发组'), list_email_distribution_lists(department_ref='DEPT009'), create_it_service_ticket(requester_employee_ref='EMP022', ticket_category='service_request', ticket_subcategory='email_issue', title='后端开发组邮件组状态异常需要恢复', description='后端开发组邮件组（eng-be@groups.zhiliankj.com）当前状态为dissolved，需要恢复为active状态以保证组内正常通知和协作沟通。', urgency='medium', impact='team', priority='P3')]\",\n  \"final_answer\": \"后端开发组邮件组当前状态异常，已创建恢复工单；篮球兴趣小组中未开MFA的活跃账号需按查询结果汇总输出。\"\n}"
+      }
+    ]
+  },
+  "work": {
+    "L1": [
+      {
+        "tool_names": [
+          "list_todo_items_for_employee"
+        ],
+        "content": "{\n  \"business_scenario\": \"员工只想看自己名下待办，没有任何额外筛选或跨实体依赖，caller 身份本身就是查询条件。\",\n  \"question\": \"帮我把我名下现在还没清掉的待办拉一下，我准备集中处理。\",\n  \"answer\": \"[list_todo_items_for_employee(employee_ref='EMP005')]\",\n  \"final_answer\": \"共2条待办：1. 处理缺陷单；2. 完成设计评审。\"\n}"
+      }
+    ],
+    "L2": [
+      {
+        "tool_names": [
+          "find_team_ref_by_name",
+          "list_team_members",
+          "get_employee_details",
+          "list_todo_items_for_employee",
+          "create_todo_item"
+        ],
+        "content": "{\n  \"business_scenario\": \"提问者准备把一个新的跟进事项直接压给项目组负责人，但在落任务前希望确认当前负责人是谁，以及对方是否已经有在推进中的待办，避免安排错人。\",\n  \"question\": \"核心平台项目组这边要补一个跟进项，我想直接压给现在在带这个组的人。你帮我看看负责人是谁；如果他手上已经有正在推进的待办，就再给他补一条高优先级待办，标题叫“平台架构评审跟进”，截止到 2025-08-01。\",\n  \"answer\": \"[find_team_ref_by_name(team_name='核心平台项目组'), list_team_members(team_ref='TEAM001'), get_employee_details(employee_ref='EMP011'), list_todo_items_for_employee(employee_ref='EMP011', todo_status='in_progress'), create_todo_item(owner_employee_ref='EMP011', title='平台架构评审跟进', description='请跟进核心平台架构评审会议的后续行动项', priority='high', due_date='2025-08-01')]\",\n  \"final_answer\": \"已为核心平台项目组组长EMP011创建高优先级待办“平台架构评审跟进”，截止日期为2025-08-01。\"\n}"
+      }
+    ],
+    "L3": [
+      {
+        "tool_names": [
+          "find_team_ref_by_name",
+          "list_projects",
+          "list_project_risks",
+          "get_project_details"
+        ],
+        "content": "{\n  \"business_scenario\": \"团队负责人准备开一次项目风险同步会，想先把当前真正卡住推进的项目和对应风险整理出来，避免会上再临时翻记录。\",\n  \"question\": \"数据平台项目组这边最近有几个项目一直没推进，我要拉一个风险同步。麻烦把当前还处在草稿或搁置状态的项目找出来，再把这些项目还没处理完的风险标题也带上，方便我直接拿去开会。\",\n  \"answer\": \"[find_team_ref_by_name(team_name='数据平台项目组'), list_projects(team_ref='TEAM003', project_status='draft'), list_projects(team_ref='TEAM003', project_status='on_hold'), list_project_risks(project_ref='PROJ001', risk_status='open'), list_project_risks(project_ref='PROJ001', risk_status='accepted'), get_project_details(project_ref='PROJ001')]\",\n  \"final_answer\": \"数据平台项目组当前命中的项目是“会议效率提升专项专项”（PROJ001），状态为草稿，风险等级为high，未关闭风险包括“需求频繁变更”。\"\n}"
+      }
+    ]
+  },
+  "finance": {
+    "L1": [
+      {
+        "tool_names": [
+          "list_budgets",
+          "get_budget_utilization"
+        ],
+        "content": "{\n  \"business_scenario\": \"业务同学只知道预算编号，想看这笔预算的使用情况和剩余额度，需要先从预算列表定位再查看使用概览。\",\n  \"question\": \"帮我看下预算编号 BG-2025-0001 现在用了多少、还剩多少，我要回领导一个口径。\",\n  \"answer\": \"[list_budgets(fiscal_year=2025, budget_status='approved'), get_budget_utilization(budget_ref='BUDG001')]\",\n  \"final_answer\": \"预算BG-2025-0001当前总额为2646943.94元，已支出520476.50元，冻结7982.85元，剩余可用额度约2118484.59元。\"\n}"
+      }
+    ],
+    "L2": [
+      {
+        "tool_names": [
+          "get_employee_details",
+          "list_budgets",
+          "get_budget_utilization"
+        ],
+        "content": "{\n  \"business_scenario\": \"提问者正在核一笔与某同事相关的费用，希望顺着这位同事所在部门确认当前预算空间，判断后续还能不能继续走这条预算线。\",\n  \"question\": \"姚凯上个月有笔报销挂在设计部这条线，我现在要确认后面的预算空间。帮我看下他归哪个部门，以及那个部门当前在用预算的使用情况，给我一个能直接回人的口径。\",\n  \"answer\": \"[get_employee_details(employee_ref='EMP008'), list_budgets(scope_type='department', scope_ref='DEPT004'), get_budget_utilization(budget_ref='BUDG010')]\",\n  \"final_answer\": \"姚凯所在部门是设计部，对应预算BUDG010当前总额517215.58元，已使用176243.75元，冻结8312.06元，剩余约332659.77元。\"\n}"
+      }
+    ],
+    "L3": [
+      {
+        "tool_names": [
+          "find_department_ref_by_name",
+          "list_employee_loans",
+          "get_employee_details",
+          "list_payment_requests"
+        ],
+        "content": "{\n  \"business_scenario\": \"财务在清一个部门当前的挂账与待支付情况，希望同时看清已批准借款和未真正提交出去的付款申请，方便判断是否需要继续追催。\",\n  \"question\": \"财务这边在清市场营销部的挂账情况。麻烦把这个部门现在已经批准的员工借款整理一下，每笔带上借款人和金额；另外再看一下他们名下还有没有停在草稿里的付款申请，如果没有就直接写“暂无草稿付款申请”。\",\n  \"answer\": \"[find_department_ref_by_name(department_name='市场营销部'), list_employee_loans(department_ref='DEPT007', loan_status='approved'), get_employee_details(employee_ref='EMP048'), get_employee_details(employee_ref='EMP011'), list_payment_requests(department_ref='DEPT007', request_status='draft')]\",\n  \"final_answer\": \"市场营销部已批准借款共2笔：姚凯46718.04元，EMP011对应借款34031.46元；暂无草稿付款申请。\"\n}"
+      }
+    ]
+  },
+  "law": {
+    "L1": [
+      {
+        "tool_names": [
+          "get_approval_flow_details",
+          "list_approval_steps",
+          "get_employee_details"
+        ],
+        "content": "{\n  \"business_scenario\": \"发起人想追一条审批流第一步卡在谁手里，需要先确认审批流存在，再查看步骤和审批人信息。\",\n  \"question\": \"我之前提过一条合同审批，编号是 LAF007。你帮我看下第一步现在是谁在审，我好去催一下。\",\n  \"answer\": \"[get_approval_flow_details(approval_flow_ref='LAF007'), list_approval_steps(approval_flow_ref='LAF007'), get_employee_details(employee_ref='EMP008')]\",\n  \"final_answer\": \"LAF007 审批流的第一步审批人是姚凯（EMP008）。\"\n}"
+      }
+    ],
+    "L2": [
+      {
+        "tool_names": [
+          "find_employee_ref_by_name",
+          "list_seal_usage_requests",
+          "get_seal_details",
+          "find_department_ref_by_name",
+          "get_department_details"
+        ],
+        "content": "{\n  \"business_scenario\": \"提问者正在确认一枚合同章当前归属谁在管理，只记得某位同事曾经用过这枚章，因此想顺着历史用印记录把所属部门和部门信息补齐。\",\n  \"question\": \"姚凯之前经手过 SEAL-007 那枚合同章，我现在要确认这枚章归谁在管。帮我把它当前所属部门和那个部门的基本信息一起带回来。\",\n  \"answer\": \"[find_employee_ref_by_name(display_name='姚凯'), list_seal_usage_requests(applicant_employee_ref='EMP008', seal_ref='LSEAL007', request_status='used'), get_seal_details(seal_ref='LSEAL007'), find_department_ref_by_name(department_name='前端开发组'), get_department_details(department_ref='DEPT010')]\",\n  \"final_answer\": \"SEAL-007 当前归前端开发组（DEPT010）管理，部门编码为 ENG-FE，状态为 active。\"\n}"
+      }
+    ],
+    "L3": [
+      {
+        "tool_names": [
+          "find_team_ref_by_name",
+          "list_team_members",
+          "list_ip_assets_by_inventor",
+          "get_ip_asset_details",
+          "list_ip_rewards"
+        ],
+        "content": "{\n  \"business_scenario\": \"法务在收一批知识产权奖励发放事项，想先把一个团队里仍然有效的 IP 资产和对应未发放奖励梳理干净，避免后续漏发。\",\n  \"question\": \"法务这边在收一批知识产权奖励，核心平台项目组这条线想先梳理干净。麻烦把组里成员名下目前还有效的 IP 资产找出来，再把这些资产下面还没发出去的奖励一起汇总下，告诉我一共有几条、涉及哪些人。\",\n  \"answer\": \"[find_team_ref_by_name(team_name='核心平台项目组'), list_team_members(team_ref='TEAM001'), list_ip_assets_by_inventor(employee_ref='EMP011'), list_ip_assets_by_inventor(employee_ref='EMP002'), list_ip_assets_by_inventor(employee_ref='EMP029'), list_ip_assets_by_inventor(employee_ref='EMP026'), list_ip_assets_by_inventor(employee_ref='EMP017'), get_ip_asset_details(ip_asset_ref='LIPA002'), get_ip_asset_details(ip_asset_ref='LIPA004'), get_ip_asset_details(ip_asset_ref='LIPA006'), get_ip_asset_details(ip_asset_ref='LIPA007'), get_ip_asset_details(ip_asset_ref='LIPA008'), list_ip_rewards(ip_asset_ref='LIPA002', reward_status='pending'), list_ip_rewards(ip_asset_ref='LIPA004', reward_status='pending'), list_ip_rewards(ip_asset_ref='LIPA006', reward_status='pending'), list_ip_rewards(ip_asset_ref='LIPA007', reward_status='pending'), list_ip_rewards(ip_asset_ref='LIPA008', reward_status='pending')]\",\n  \"final_answer\": \"当前共命中1条待支付IP奖励：LIPRWD006，涉及员工EMP018，对应资产LIPA004，金额47236.13元。\"\n}"
+      }
+    ]
+  },
+  "purchase": {
+    "L1": [
+      {
+        "tool_names": [
+          "find_supplier_ref_by_name",
+          "list_supplier_contacts"
+        ],
+        "content": "{\n  \"business_scenario\": \"采购同学只想确认某家供应商当前主联系人是谁以及联系方式，先定位供应商，再查联系人列表即可。\",\n  \"question\": \"鑫博腾飞信息有限公司网络有限公司那边现在主要联系人是谁？电话和邮箱也一起给我，我要拉个会。\",\n  \"answer\": \"[find_supplier_ref_by_name(supplier_name='鑫博腾飞信息有限公司网络有限公司'), list_supplier_contacts(supplier_ref='SUP001', status='active')]\",\n  \"final_answer\": \"主要联系人是商帅，电话16786210781，邮箱proczt62px@126.com。\"\n}"
+      }
+    ],
+    "L2": [
+      {
+        "tool_names": [
+          "find_supplier_ref_by_name",
+          "list_supplier_evaluations",
+          "get_supplier_evaluation_details",
+          "list_supplier_categories"
+        ],
+        "content": "{\n  \"business_scenario\": \"采购负责人正在复核一家供应商近期合作情况，想同时确认最近一次已通过评估的结果和当前挂载的采购品类，方便一次性判断是否继续沿用。\",\n  \"question\": \"帮我把四通传媒有限公司设备有限公司最近那份已经通过的季度评估捞出来，综合分和评级给我一下；另外把它现在挂着的采购品类也一并带上，我这边要一起复核。\",\n  \"answer\": \"[find_supplier_ref_by_name(supplier_name='四通传媒有限公司设备有限公司'), list_supplier_evaluations(supplier_ref='SUP003', status='approved'), get_supplier_evaluation_details(supplier_evaluation_ref='SPE004'), list_supplier_categories(supplier_ref='SUP003')]\",\n  \"final_answer\": \"这家供应商 2024 年 Q4 评估综合得分 90.16，评级 A；当前关联品类为 PCAT023 和 PCAT026。\"\n}"
+      }
+    ],
+    "L3": [
+      {
+        "tool_names": [
+          "list_suppliers",
+          "get_supplier_details",
+          "list_supplier_evaluations"
+        ],
+        "content": "{\n  \"business_scenario\": \"采购团队正在处理一批合作风险偏高的供应商，希望先把仍处于高风险但合作已获批准的对象筛出来，再补齐最近已通过的评估结论，方便决定后续跟进动作。\",\n  \"question\": \"采购这边现在在看合作风险，麻烦把已经批准合作但风险等级还高的供应商筛出来。每家如果已经有通过的评估，就把最新的评分和评级一起带上；如果没有，也直接标明。\",\n  \"answer\": \"[list_suppliers(cooperation_status='approved', risk_level='high'), get_supplier_details(supplier_ref='SUP007'), get_supplier_details(supplier_ref='SUP010'), list_supplier_evaluations(supplier_ref='SUP007', status='approved'), list_supplier_evaluations(supplier_ref='SUP010', status='approved')]\",\n  \"final_answer\": \"当前命中2家高风险已批准合作供应商：SUP007 和 SUP010；两家都没有已审批通过的评估记录。\"\n}"
+      }
+    ]
+  }
+}

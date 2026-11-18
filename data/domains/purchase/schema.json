@@ -1,0 +1,574 @@
+{
+    "procurement_category": {
+        "PCAT001": {
+            "procurement_category_ref": "PCAT001",
+            "category_name": "...",
+            "category_code": "...",
+            "parent_category_ref": null,
+            "category_level": 1,
+            "category_status": "active",
+            "description": "...",
+            "display_order": 1,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "supplier": {
+        "SUPL001": {
+            "supplier_ref": "SUPL001",
+            "supplier_name": "...",
+            "supplier_code": "...",
+            "supplier_type": "standard",
+            "unified_social_credit_code": "...",
+            "legal_representative": "...",
+            "registered_address": "...",
+            "business_address": "...",
+            "country": "CN",
+            "bank_name": "...",
+            "bank_account": "...",
+            "tax_id": "...",
+            "cooperation_status": "pending",
+            "risk_level": "low",
+            "onboarding_date": null,
+            "blacklist_reason": null,
+            "notes": "...",
+            "registered_by_ref": "EMP001",
+            "approved_by_ref": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "supplier_contact": {
+        "SCON001": {
+            "supplier_contact_ref": "SCON001",
+            "supplier_ref": "SUPL001",
+            "contact_name": "...",
+            "contact_title": "...",
+            "phone": "...",
+            "email": "...",
+            "is_primary": true,
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "supplier_qualification": {
+        "SQUA001": {
+            "supplier_qualification_ref": "SQUA001",
+            "supplier_ref": "SUPL001",
+            "qualification_type": "business_license",
+            "qualification_name": "...",
+            "certificate_number": "...",
+            "issuing_authority": "...",
+            "issue_date": "2025-01-15",
+            "expiry_date": "2026-01-15",
+            "file_attachment_ref": "FILE001",
+            "verification_status": "verified",
+            "verified_by_ref": "EMP001",
+            "verified_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "supplier_category": {
+        "SCAG001": {
+            "supplier_category_ref": "SCAG001",
+            "supplier_ref": "SUPL001",
+            "procurement_category_ref": "PCAT001",
+            "is_preferred": false,
+            "status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "supplier_evaluation": {
+        "SEVL001": {
+            "supplier_evaluation_ref": "SEVL001",
+            "supplier_ref": "SUPL001",
+            "evaluation_period": "2025-Q1",
+            "quality_score": 0,
+            "delivery_score": 0,
+            "price_score": 0,
+            "service_score": 0,
+            "overall_score": 0,
+            "rating": "A",
+            "evaluator_ref": "EMP001",
+            "comments": "...",
+            "status": "draft",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "sourcing_project": {
+        "SRCP001": {
+            "sourcing_project_ref": "SRCP001",
+            "project_title": "...",
+            "project_code": "...",
+            "sourcing_type": "competitive_bid",
+            "procurement_category_ref": "PCAT001",
+            "procurement_method": "centralized",
+            "budget_amount": 0.00,
+            "currency": "CNY",
+            "description": "...",
+            "requirements": "...",
+            "bid_document_file_ref": null,
+            "submission_deadline": "2025-02-15 17:00:00",
+            "evaluation_criteria": {},
+            "owner_employee_ref": "EMP001",
+            "project_status": "draft",
+            "awarded_supplier_ref": null,
+            "award_date": null,
+            "cancel_reason": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "sourcing_supplier": {
+        "SRCS001": {
+            "sourcing_supplier_ref": "SRCS001",
+            "sourcing_project_ref": "SRCP001",
+            "supplier_ref": "SUPL001",
+            "invitation_status": "invited",
+            "qualification_check": "passed",
+            "evaluation_score": null,
+            "evaluation_rank": null,
+            "evaluation_comments": "...",
+            "status": "active",
+            "invited_at": "2025-01-15 09:00:00",
+            "responded_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "quotation": {
+        "QUOT001": {
+            "quotation_ref": "QUOT001",
+            "quotation_code": "...",
+            "sourcing_project_ref": null,
+            "supplier_ref": "SUPL001",
+            "procurement_category_ref": "PCAT001",
+            "currency": "CNY",
+            "total_amount": 0.00,
+            "tax_rate": 0.00,
+            "tax_amount": 0.00,
+            "validity_date": "2025-03-15",
+            "payment_terms": "...",
+            "delivery_terms": "...",
+            "quotation_file_ref": null,
+            "submitted_by_ref": "EMP001",
+            "quotation_status": "submitted",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "quotation_item": {
+        "QITM001": {
+            "quotation_item_ref": "QITM001",
+            "quotation_ref": "QUOT001",
+            "item_name": "...",
+            "item_description": "...",
+            "specification": "...",
+            "unit": "piece",
+            "quantity": 0,
+            "unit_price": 0.00,
+            "line_amount": 0.00,
+            "delivery_days": 0,
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "purchase_requisition": {
+        "PREQ001": {
+            "purchase_requisition_ref": "PREQ001",
+            "requisition_code": "...",
+            "requisition_type": "standard",
+            "procurement_category_ref": "PCAT001",
+            "department_ref": "DEPT001",
+            "requestor_ref": "EMP001",
+            "procurement_method": "centralized",
+            "currency": "CNY",
+            "estimated_amount": 0.00,
+            "required_date": "2025-02-15",
+            "business_justification": "...",
+            "special_requirements": "...",
+            "suggested_supplier_ref": null,
+            "requisition_status": "draft",
+            "submitted_at": null,
+            "approved_at": null,
+            "rejected_reason": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "requisition_item": {
+        "RITM001": {
+            "requisition_item_ref": "RITM001",
+            "purchase_requisition_ref": "PREQ001",
+            "item_name": "...",
+            "item_description": "...",
+            "specification": "...",
+            "unit": "piece",
+            "quantity": 0,
+            "estimated_unit_price": 0.00,
+            "estimated_line_amount": 0.00,
+            "required_date": "2025-02-15",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "purchase_contract": {
+        "PCTR001": {
+            "purchase_contract_ref": "PCTR001",
+            "contract_code": "...",
+            "contract_title": "...",
+            "contract_type": "fixed_price",
+            "supplier_ref": "SUPL001",
+            "procurement_category_ref": "PCAT001",
+            "sourcing_project_ref": null,
+            "currency": "CNY",
+            "total_amount": 0.00,
+            "tax_rate": 0.00,
+            "payment_terms": "...",
+            "delivery_terms": "...",
+            "effective_date": "2025-01-15",
+            "expiry_date": "2026-01-15",
+            "auto_renew": false,
+            "contract_file_ref": null,
+            "owner_employee_ref": "EMP001",
+            "signer_employee_ref": "EMP001",
+            "signed_at": null,
+            "contract_status": "draft",
+            "consumed_amount": 0.00,
+            "termination_reason": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "contract_item": {
+        "CITM001": {
+            "contract_item_ref": "CITM001",
+            "purchase_contract_ref": "PCTR001",
+            "item_name": "...",
+            "item_description": "...",
+            "specification": "...",
+            "unit": "piece",
+            "contracted_quantity": 0,
+            "unit_price": 0.00,
+            "line_amount": 0.00,
+            "ordered_quantity": 0,
+            "received_quantity": 0,
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "purchase_order": {
+        "PORD001": {
+            "purchase_order_ref": "PORD001",
+            "order_code": "...",
+            "order_type": "standard",
+            "purchase_requisition_ref": null,
+            "purchase_contract_ref": null,
+            "supplier_ref": "SUPL001",
+            "procurement_category_ref": "PCAT001",
+            "department_ref": "DEPT001",
+            "requestor_ref": "EMP001",
+            "buyer_ref": "EMP001",
+            "currency": "CNY",
+            "total_amount": 0.00,
+            "tax_rate": 0.00,
+            "tax_amount": 0.00,
+            "payment_terms": "...",
+            "delivery_address": "...",
+            "expected_delivery_date": "2025-02-15",
+            "priority": "normal",
+            "order_status": "draft",
+            "submitted_at": null,
+            "approved_at": null,
+            "sent_to_supplier_at": null,
+            "supplier_confirmed_at": null,
+            "completed_at": null,
+            "cancelled_at": null,
+            "cancel_reason": null,
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "purchase_order_item": {
+        "PITM001": {
+            "purchase_order_item_ref": "PITM001",
+            "purchase_order_ref": "PORD001",
+            "contract_item_ref": null,
+            "requisition_item_ref": null,
+            "item_name": "...",
+            "item_description": "...",
+            "specification": "...",
+            "unit": "piece",
+            "quantity": 0,
+            "unit_price": 0.00,
+            "line_amount": 0.00,
+            "received_quantity": 0,
+            "accepted_quantity": 0,
+            "expected_delivery_date": "2025-02-15",
+            "item_status": "pending",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "purchase_change_request": {
+        "PCHR001": {
+            "purchase_change_request_ref": "PCHR001",
+            "change_code": "...",
+            "change_target_type": "purchase_order",
+            "change_target_ref": "PORD001",
+            "change_type": "quantity_adjustment",
+            "change_reason": "...",
+            "change_details": {
+                "field_name": {
+                    "before": "...",
+                    "after": "..."
+                }
+            },
+            "impact_amount": 0.00,
+            "requestor_ref": "EMP001",
+            "change_status": "pending",
+            "approved_at": null,
+            "rejected_reason": null,
+            "executed_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "goods_receipt": {
+        "GRCP001": {
+            "goods_receipt_ref": "GRCP001",
+            "receipt_code": "...",
+            "purchase_order_ref": "PORD001",
+            "supplier_ref": "SUPL001",
+            "receiver_ref": "EMP001",
+            "receipt_date": "2025-02-15",
+            "delivery_note_number": "...",
+            "warehouse_location": "...",
+            "receipt_status": "pending_inspection",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "goods_receipt_item": {
+        "GRIT001": {
+            "goods_receipt_item_ref": "GRIT001",
+            "goods_receipt_ref": "GRCP001",
+            "purchase_order_item_ref": "PITM001",
+            "item_name": "...",
+            "received_quantity": 0,
+            "rejected_quantity": 0,
+            "unit": "piece",
+            "item_condition": "good",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "acceptance_record": {
+        "ACPT001": {
+            "acceptance_record_ref": "ACPT001",
+            "acceptance_code": "...",
+            "goods_receipt_ref": "GRCP001",
+            "purchase_order_ref": "PORD001",
+            "inspector_ref": "EMP001",
+            "inspection_date": "2025-02-16",
+            "inspection_type": "full",
+            "overall_result": "accepted",
+            "accepted_quantity": 0,
+            "rejected_quantity": 0,
+            "defect_description": null,
+            "corrective_action": null,
+            "acceptance_report_file_ref": null,
+            "acceptance_status": "completed",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "acceptance_item": {
+        "ACIT001": {
+            "acceptance_item_ref": "ACIT001",
+            "acceptance_record_ref": "ACPT001",
+            "goods_receipt_item_ref": "GRIT001",
+            "item_name": "...",
+            "inspected_quantity": 0,
+            "accepted_quantity": 0,
+            "rejected_quantity": 0,
+            "result": "accepted",
+            "defect_description": null,
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "approval_flow_template": {
+        "AFLT001": {
+            "approval_flow_template_ref": "AFLT001",
+            "template_name": "...",
+            "template_code": "...",
+            "applicable_type": "purchase_requisition",
+            "condition_rules": {
+                "amount_threshold": 0,
+                "department_ref": null,
+                "procurement_category_ref": null
+            },
+            "priority": 1,
+            "template_status": "active",
+            "description": "...",
+            "created_by_ref": "EMP001",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "approval_flow_node": {
+        "AFND001": {
+            "approval_flow_node_ref": "AFND001",
+            "approval_flow_template_ref": "AFLT001",
+            "node_sequence": 1,
+            "node_name": "...",
+            "approver_type": "employee",
+            "approver_ref": "EMP001",
+            "fallback_approver_ref": null,
+            "auto_approve_hours": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "approval_instance": {
+        "APVI001": {
+            "approval_instance_ref": "APVI001",
+            "approval_flow_template_ref": "AFLT001",
+            "target_type": "purchase_requisition",
+            "target_ref": "PREQ001",
+            "initiator_ref": "EMP001",
+            "current_node_sequence": 1,
+            "approval_status": "in_progress",
+            "submitted_at": "2025-01-15 09:00:00",
+            "completed_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "approval_action": {
+        "APVA001": {
+            "approval_action_ref": "APVA001",
+            "approval_instance_ref": "APVI001",
+            "node_sequence": 1,
+            "approver_ref": "EMP001",
+            "action": "approve",
+            "comments": "...",
+            "acted_at": "2025-01-15 10:00:00",
+            "created_at": "2025-01-15 10:00:00"
+        }
+    },
+
+    "procurement_permission_rule": {
+        "PPRL001": {
+            "procurement_permission_rule_ref": "PPRL001",
+            "rule_name": "...",
+            "rule_code": "...",
+            "employee_ref": null,
+            "role_ref": null,
+            "department_ref": null,
+            "procurement_category_ref": null,
+            "max_single_amount": null,
+            "max_monthly_amount": null,
+            "currency": "CNY",
+            "allowed_operations": ["create_requisition", "create_order", "approve"],
+            "rule_status": "active",
+            "created_by_ref": "EMP001",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "procurement_training_course": {
+        "PTCR001": {
+            "procurement_training_course_ref": "PTCR001",
+            "course_title": "...",
+            "course_code": "...",
+            "course_type": "process_training",
+            "content_summary": "...",
+            "duration_hours": 0,
+            "is_certification_required": false,
+            "certification_validity_months": null,
+            "material_file_ref": null,
+            "course_status": "active",
+            "created_by_ref": "EMP001",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "procurement_training_record": {
+        "PTRC001": {
+            "procurement_training_record_ref": "PTRC001",
+            "procurement_training_course_ref": "PTCR001",
+            "employee_ref": "EMP001",
+            "enrollment_date": "2025-01-15",
+            "completion_date": null,
+            "score": null,
+            "certification_number": null,
+            "certification_expiry_date": null,
+            "certificate_file_ref": null,
+            "record_status": "enrolled",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "procurement_issue_ticket": {
+        "PITK001": {
+            "procurement_issue_ticket_ref": "PITK001",
+            "ticket_code": "...",
+            "issue_type": "system_error",
+            "related_resource_type": null,
+            "related_resource_ref": null,
+            "title": "...",
+            "description": "...",
+            "severity": "medium",
+            "reporter_ref": "EMP001",
+            "assignee_ref": null,
+            "resolution": null,
+            "ticket_status": "open",
+            "resolved_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    }
+}

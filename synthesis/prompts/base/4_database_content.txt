@@ -1,0 +1,38 @@
+Data model
+```
+{base_models}
+```
+
+Following the data model and schema above, generate test data with these requirements:
+
+**Data Volume:**
+- Generate at least 5 records for departments
+- Gernrate at least 20 teams, projects.
+- Generate 5 records for roles and permissions.
+- Generate at least 70 employees with different roles.
+- Generate at least 10 records for the rest of EACH tables.
+
+**ID Assignment:**
+- Use sequential IDs: id001, id002, id003, etc.
+- Each table uses its own ID sequence starting from id001
+
+**Localization:**
+- Use China as the country
+- Use CNY (¥) as the currency
+- Use appropriate Chinese names and locations where applicable
+
+**Data Consistency:**
+- Ensure foreign key references are valid (e.g., employee.department_id must exist in departments)
+- Maintain referential integrity across all tables
+- Make sure use correct field names ** strictly ** defined in the model.
+
+
+Use the following format to output:
+```
+{
+    "table1": ...,
+    "table2": ...,
+    ...
+}
+```
+Wrap the dictionary within ```.

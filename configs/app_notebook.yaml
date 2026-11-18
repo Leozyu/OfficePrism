@@ -1,0 +1,15 @@
+# ===================================================================
+llm:
+  # Provider: 'openai' or 'vllm'
+  provider: vllm
+  api_key: "${oc.env:LLM_API_KEY,null}"
+  base_url: "${oc.env:LLM_BASE_URL,https://dashscope.aliyuncs.com/compatible-mode/v1}"
+  # model_name: gemini-3.1-pro-preview
+  model_name: qwen4-max
+
+  # Generation parameters
+  temperature: 0.6
+  max_tokens: 128000
+  top_p: 1
+  max_concurrent: 20
+  timeout: 600

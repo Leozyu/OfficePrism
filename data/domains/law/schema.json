@@ -1,0 +1,733 @@
+{
+    "law_contract_template": {
+        "CTPL001": {
+            "contract_template_ref": "CTPL001",
+            "template_name": "...",
+            "template_code": "...",
+            "contract_category": "sales",
+            "template_version": "1.0",
+            "template_content": "...",
+            "template_file_ref": "FILE001",
+            "template_status": "active",
+            "created_by_ref": "EMP001",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_contract_party": {
+        "CPTY001": {
+            "contract_party_ref": "CPTY001",
+            "party_name": "...",
+            "party_type": "enterprise",
+            "unified_social_credit_code": "...",
+            "legal_representative": "...",
+            "registered_address": "...",
+            "contact_name": "...",
+            "contact_phone": "...",
+            "contact_email": "...",
+            "bank_name": "...",
+            "bank_account": "...",
+            "party_status": "active",
+            "risk_level": "low",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_contract": {
+        "CNTR001": {
+            "contract_ref": "CNTR001",
+            "contract_number": "...",
+            "contract_title": "...",
+            "contract_category": "sales",
+            "contract_type": "standard",
+            "template_ref": null,
+            "parent_contract_ref": null,
+            "our_entity_ref": null,
+            "currency": "CNY",
+            "total_amount": 0.00,
+            "effective_date": "2025-01-15",
+            "expiry_date": "2026-01-15",
+            "signing_date": null,
+            "termination_date": null,
+            "contract_status": "draft",
+            "risk_level": "low",
+            "owner_employee_ref": "EMP001",
+            "department_ref": "DEPT001",
+            "contract_file_ref": null,
+            "summary": "...",
+            "special_terms": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_contract_party_link": {
+        "CPLK001": {
+            "contract_party_link_ref": "CPLK001",
+            "contract_ref": "CNTR001",
+            "contract_party_ref": "CPTY001",
+            "party_role": "party_b",
+            "signing_status": "pending",
+            "signed_at": null,
+            "signer_name": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_contract_amendment": {
+        "CAMD001": {
+            "contract_amendment_ref": "CAMD001",
+            "contract_ref": "CNTR001",
+            "amendment_type": "modification",
+            "amendment_number": "...",
+            "amendment_title": "...",
+            "reason": "...",
+            "changes_summary": "...",
+            "amount_change": 0.00,
+            "new_expiry_date": null,
+            "amendment_status": "draft",
+            "amendment_file_ref": null,
+            "initiated_by_ref": "EMP001",
+            "effective_date": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_contract_transfer": {
+        "CTRF001": {
+            "contract_transfer_ref": "CTRF001",
+            "contract_ref": "CNTR001",
+            "transfer_type": "owner_change",
+            "from_employee_ref": "EMP001",
+            "to_employee_ref": "EMP002",
+            "from_department_ref": null,
+            "to_department_ref": null,
+            "reason": "...",
+            "transfer_status": "pending",
+            "transferred_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_contract_milestone": {
+        "CMST001": {
+            "contract_milestone_ref": "CMST001",
+            "contract_ref": "CNTR001",
+            "milestone_title": "...",
+            "milestone_type": "payment",
+            "due_date": "2025-06-15",
+            "completed_date": null,
+            "amount": 0.00,
+            "milestone_status": "pending",
+            "responsible_employee_ref": "EMP001",
+            "description": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_contract_risk": {
+        "CRSK001": {
+            "contract_risk_ref": "CRSK001",
+            "contract_ref": "CNTR001",
+            "risk_title": "...",
+            "risk_category": "legal",
+            "risk_level": "medium",
+            "risk_description": "...",
+            "affected_clause": "...",
+            "mitigation_plan": "...",
+            "risk_status": "open",
+            "identified_by_ref": "EMP001",
+            "identified_at": "2025-01-15 09:00:00",
+            "resolved_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_contract_loan": {
+        "CLOA001": {
+            "contract_loan_ref": "CLOA001",
+            "contract_ref": "CNTR001",
+            "borrower_employee_ref": "EMP001",
+            "loan_purpose": "...",
+            "loan_status": "pending",
+            "approved_by_ref": null,
+            "borrowed_at": null,
+            "due_return_at": null,
+            "returned_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_approval_flow": {
+        "LAFL001": {
+            "approval_flow_ref": "LAFL001",
+            "subject_type": "contract",
+            "subject_ref": "CNTR001",
+            "flow_title": "...",
+            "flow_type": "contract_approval",
+            "flow_status": "in_progress",
+            "initiated_by_ref": "EMP001",
+            "current_step": 1,
+            "total_steps": 3,
+            "initiated_at": "2025-01-15 09:00:00",
+            "completed_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_approval_step": {
+        "LAST001": {
+            "approval_step_ref": "LAST001",
+            "approval_flow_ref": "LAFL001",
+            "step_order": 1,
+            "step_name": "...",
+            "approver_employee_ref": "EMP001",
+            "step_status": "pending",
+            "decision": null,
+            "comments": "...",
+            "decided_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_seal": {
+        "SEAL001": {
+            "seal_ref": "SEAL001",
+            "seal_name": "...",
+            "seal_type": "corporate",
+            "seal_code": "...",
+            "custodian_employee_ref": "EMP001",
+            "department_ref": "DEPT001",
+            "seal_status": "active",
+            "description": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_seal_usage_request": {
+        "SLRQ001": {
+            "seal_usage_request_ref": "SLRQ001",
+            "seal_ref": "SEAL001",
+            "applicant_employee_ref": "EMP001",
+            "usage_type": "contract",
+            "related_resource_type": "contract",
+            "related_resource_ref": "CNTR001",
+            "document_title": "...",
+            "usage_purpose": "...",
+            "copies_count": 1,
+            "request_status": "pending",
+            "used_at": null,
+            "document_file_ref": null,
+            "stamped_file_ref": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_ip_asset": {
+        "IPAS001": {
+            "ip_asset_ref": "IPAS001",
+            "ip_type": "patent",
+            "ip_name": "...",
+            "ip_number": "...",
+            "registration_number": "...",
+            "ip_status": "active",
+            "application_date": null,
+            "grant_date": null,
+            "expiry_date": null,
+            "owner_type": "company",
+            "owner_entity_ref": null,
+            "responsible_employee_ref": "EMP001",
+            "department_ref": "DEPT001",
+            "ip_class": "...",
+            "description": "...",
+            "certificate_file_ref": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_ip_inventor": {
+        "IPIV001": {
+            "ip_inventor_ref": "IPIV001",
+            "ip_asset_ref": "IPAS001",
+            "employee_ref": "EMP001",
+            "inventor_role": "primary",
+            "contribution_ratio": 50.00,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_ip_application": {
+        "IPAP001": {
+            "ip_application_ref": "IPAP001",
+            "ip_asset_ref": "IPAS001",
+            "application_type": "new_registration",
+            "applicant_employee_ref": "EMP001",
+            "agency_name": "...",
+            "application_status": "drafting",
+            "submitted_at": null,
+            "accepted_at": null,
+            "granted_at": null,
+            "rejected_at": null,
+            "rejection_reason": null,
+            "application_file_ref": null,
+            "estimated_cost": 0.00,
+            "actual_cost": 0.00,
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_ip_authorization": {
+        "IPAU001": {
+            "ip_authorization_ref": "IPAU001",
+            "ip_asset_ref": "IPAS001",
+            "authorization_type": "license",
+            "licensee_name": "...",
+            "licensee_party_ref": null,
+            "scope": "...",
+            "territory": "...",
+            "exclusive": false,
+            "effective_date": "2025-01-15",
+            "expiry_date": "2026-01-15",
+            "fee": 0.00,
+            "authorization_status": "active",
+            "contract_ref": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_ip_reward": {
+        "IPRW001": {
+            "ip_reward_ref": "IPRW001",
+            "ip_asset_ref": "IPAS001",
+            "employee_ref": "EMP001",
+            "reward_type": "application_bonus",
+            "reward_amount": 0.00,
+            "reward_status": "pending",
+            "approved_by_ref": null,
+            "paid_at": null,
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_integrity_declaration": {
+        "INTD001": {
+            "integrity_declaration_ref": "INTD001",
+            "employee_ref": "EMP001",
+            "declaration_type": "commitment",
+            "declaration_period": "2025",
+            "declaration_content": {},
+            "declaration_status": "draft",
+            "submitted_at": null,
+            "reviewed_by_ref": null,
+            "reviewed_at": null,
+            "review_result": null,
+            "review_comments": "...",
+            "declaration_file_ref": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_violation_report": {
+        "VRPT001": {
+            "violation_report_ref": "VRPT001",
+            "reporter_employee_ref": null,
+            "is_anonymous": true,
+            "violation_type": "bribery",
+            "reported_employee_ref": null,
+            "reported_department_ref": null,
+            "title": "...",
+            "description": "...",
+            "occurred_at": "2025-01-15 09:00:00",
+            "evidence_summary": "...",
+            "report_status": "submitted",
+            "severity": "medium",
+            "investigator_employee_ref": null,
+            "investigation_result": null,
+            "investigation_notes": "...",
+            "closed_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_legal_case": {
+        "LCSN001": {
+            "legal_case_ref": "LCSN001",
+            "case_number": "...",
+            "case_title": "...",
+            "case_type": "litigation",
+            "case_category": "contract_dispute",
+            "our_role": "plaintiff",
+            "counterparty_name": "...",
+            "counterparty_party_ref": null,
+            "court_or_institution": "...",
+            "jurisdiction": "...",
+            "filing_date": null,
+            "hearing_date": null,
+            "claim_amount": 0.00,
+            "case_status": "filed",
+            "risk_level": "medium",
+            "responsible_employee_ref": "EMP001",
+            "external_counsel": "...",
+            "related_contract_ref": null,
+            "outcome": null,
+            "outcome_summary": "...",
+            "settlement_amount": null,
+            "closed_at": null,
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_case_event": {
+        "LCSE001": {
+            "case_event_ref": "LCSE001",
+            "legal_case_ref": "LCSN001",
+            "event_type": "hearing",
+            "event_title": "...",
+            "event_date": "2025-03-15 09:00:00",
+            "description": "...",
+            "outcome": "...",
+            "document_file_ref": null,
+            "recorded_by_ref": "EMP001",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_evidence": {
+        "LEVD001": {
+            "evidence_ref": "LEVD001",
+            "related_resource_type": "legal_case",
+            "related_resource_ref": "LCSN001",
+            "evidence_title": "...",
+            "evidence_type": "document",
+            "evidence_description": "...",
+            "file_attachment_ref": "FILE001",
+            "notarization_status": "none",
+            "notarization_number": null,
+            "notarization_date": null,
+            "notarization_institution": null,
+            "notarized_file_ref": null,
+            "submitted_by_ref": "EMP001",
+            "evidence_status": "active",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_legal_consultation": {
+        "LCON001": {
+            "legal_consultation_ref": "LCON001",
+            "requester_employee_ref": "EMP001",
+            "consultation_type": "contract_review",
+            "channel": "service_desk",
+            "title": "...",
+            "description": "...",
+            "urgency": "normal",
+            "assigned_to_ref": null,
+            "consultation_status": "open",
+            "response_summary": "...",
+            "related_resource_type": null,
+            "related_resource_ref": null,
+            "resolved_at": null,
+            "satisfaction_rating": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_compliance_review": {
+        "CREV001": {
+            "compliance_review_ref": "CREV001",
+            "review_title": "...",
+            "review_type": "business_compliance",
+            "review_scope": "...",
+            "target_resource_type": null,
+            "target_resource_ref": null,
+            "department_ref": null,
+            "reviewer_employee_ref": "EMP001",
+            "review_status": "in_progress",
+            "risk_level": "low",
+            "findings": "...",
+            "recommendations": "...",
+            "review_result": null,
+            "review_date": "2025-01-15",
+            "next_review_date": null,
+            "report_file_ref": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_corporate_entity": {
+        "CENT001": {
+            "corporate_entity_ref": "CENT001",
+            "entity_name": "...",
+            "entity_type": "subsidiary",
+            "unified_social_credit_code": "...",
+            "legal_representative": "...",
+            "registered_capital": "...",
+            "registered_address": "...",
+            "business_scope": "...",
+            "establishment_date": "2025-01-15",
+            "entity_status": "active",
+            "parent_entity_ref": null,
+            "responsible_employee_ref": "EMP001",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_entity_change": {
+        "ECHG001": {
+            "entity_change_ref": "ECHG001",
+            "corporate_entity_ref": "CENT001",
+            "change_type": "name_change",
+            "change_description": "...",
+            "before_value": "...",
+            "after_value": "...",
+            "change_status": "pending",
+            "effective_date": null,
+            "applied_by_ref": "EMP001",
+            "approved_at": null,
+            "document_file_ref": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_qualification_certificate": {
+        "QCRT001": {
+            "qualification_certificate_ref": "QCRT001",
+            "certificate_name": "...",
+            "certificate_type": "business_license",
+            "certificate_number": "...",
+            "issuing_authority": "...",
+            "holder_type": "company",
+            "holder_entity_ref": null,
+            "holder_employee_ref": null,
+            "issue_date": "2025-01-15",
+            "expiry_date": "2030-01-15",
+            "renewal_reminder_days": 90,
+            "certificate_status": "active",
+            "certificate_file_ref": null,
+            "custodian_employee_ref": "EMP001",
+            "storage_location": "...",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_license_usage_request": {
+        "LURQ001": {
+            "license_usage_request_ref": "LURQ001",
+            "qualification_certificate_ref": "QCRT001",
+            "applicant_employee_ref": "EMP001",
+            "usage_purpose": "...",
+            "usage_type": "original",
+            "usage_start_date": "2025-01-15",
+            "usage_end_date": "2025-01-20",
+            "request_status": "pending",
+            "approved_by_ref": null,
+            "borrowed_at": null,
+            "returned_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_related_party": {
+        "RPTY001": {
+            "related_party_ref": "RPTY001",
+            "party_name": "...",
+            "party_type": "enterprise",
+            "relationship_type": "shareholder",
+            "relationship_description": "...",
+            "related_entity_ref": null,
+            "related_employee_ref": null,
+            "contact_info": "...",
+            "party_status": "active",
+            "risk_level": "low",
+            "identified_by_ref": "EMP001",
+            "identified_at": "2025-01-15 09:00:00",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_related_party_transaction": {
+        "RPTX001": {
+            "related_party_transaction_ref": "RPTX001",
+            "related_party_ref": "RPTY001",
+            "transaction_type": "procurement",
+            "transaction_description": "...",
+            "transaction_amount": 0.00,
+            "currency": "CNY",
+            "transaction_date": "2025-01-15",
+            "contract_ref": null,
+            "compliance_status": "pending_review",
+            "reviewed_by_ref": null,
+            "reviewed_at": null,
+            "review_comments": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_innovation_proposal": {
+        "INPV001": {
+            "innovation_proposal_ref": "INPV001",
+            "proposer_employee_ref": "EMP001",
+            "department_ref": "DEPT001",
+            "proposal_title": "...",
+            "proposal_category": "product",
+            "description": "...",
+            "expected_benefit": "...",
+            "feasibility_assessment": "...",
+            "proposal_status": "submitted",
+            "reviewer_employee_ref": null,
+            "review_score": null,
+            "review_comments": "...",
+            "ip_asset_ref": null,
+            "proposal_file_ref": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_supplier_assessment": {
+        "SPAS001": {
+            "supplier_assessment_ref": "SPAS001",
+            "supplier_name": "...",
+            "supplier_party_ref": null,
+            "assessment_type": "qualification",
+            "assessor_employee_ref": "EMP001",
+            "assessment_date": "2025-01-15",
+            "financial_score": null,
+            "compliance_score": null,
+            "quality_score": null,
+            "overall_score": null,
+            "risk_level": "low",
+            "risk_findings": "...",
+            "recommendations": "...",
+            "assessment_status": "completed",
+            "report_file_ref": null,
+            "next_assessment_date": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_high_risk_software": {
+        "HRSW001": {
+            "high_risk_software_ref": "HRSW001",
+            "software_name": "...",
+            "software_version": "...",
+            "vendor": "...",
+            "risk_level": "high",
+            "risk_category": "security_vulnerability",
+            "risk_description": "...",
+            "affected_departments": [],
+            "usage_status": "restricted",
+            "mitigation_measures": "...",
+            "alternative_software": "...",
+            "compliance_status": "non_compliant",
+            "assessed_by_ref": "EMP001",
+            "assessed_at": "2025-01-15 09:00:00",
+            "review_due_date": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_business_risk": {
+        "BRSK001": {
+            "business_risk_ref": "BRSK001",
+            "risk_title": "...",
+            "risk_category": "market",
+            "risk_level": "medium",
+            "risk_description": "...",
+            "risk_source": "...",
+            "affected_department_ref": null,
+            "probability": "medium",
+            "impact": "high",
+            "mitigation_plan": "...",
+            "contingency_plan": "...",
+            "risk_status": "open",
+            "owner_employee_ref": "EMP001",
+            "identified_at": "2025-01-15 09:00:00",
+            "review_due_date": null,
+            "resolved_at": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_policy": {
+        "LPOL001": {
+            "policy_ref": "LPOL001",
+            "policy_title": "...",
+            "policy_code": "...",
+            "policy_category": "parking",
+            "policy_scope": "company_wide",
+            "scope_department_ref": null,
+            "content": "...",
+            "version": "1.0",
+            "effective_date": "2025-01-15",
+            "expiry_date": null,
+            "policy_status": "active",
+            "issued_by_ref": "EMP001",
+            "approved_by_ref": null,
+            "policy_file_ref": null,
+            "supersedes_ref": null,
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    },
+
+    "law_domain_asset": {
+        "LDOM001": {
+            "domain_asset_ref": "LDOM001",
+            "domain_name": "...",
+            "registrar": "...",
+            "registration_date": "2025-01-15",
+            "expiry_date": "2026-01-15",
+            "auto_renew": true,
+            "dns_provider": "...",
+            "ssl_certificate_expiry": null,
+            "owner_entity_ref": null,
+            "responsible_employee_ref": "EMP001",
+            "domain_status": "active",
+            "usage_purpose": "...",
+            "notes": "...",
+            "created_at": "2025-01-15 09:00:00",
+            "updated_at": "2025-01-15 09:00:00"
+        }
+    }
+}

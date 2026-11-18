@@ -1,0 +1,51 @@
+Functions:
+```
+{tool_code}
+```
+
+Base database content of an office collaboration system (员工、部门、团队、职位、角色、权限、通知等基础数据):
+```
+{base_content}
+```
+
+Propose a realistic user request with the purpose: {purpose}.
+Make a realistic context for the query based on the database content above (use real employee_refs, department_refs, team_refs etc. from the data).
+The user has some known information and some unknown information.
+Make sure the context and details are aligned with the database content and the provided functions can solve the request. Use the following format to output:
+```
+{
+    "id": "...",
+    "description": {
+      "purpose": "",
+      "relevant_policies": "... or null",
+      "notes": "... or null"
+    },
+    "user_scenario": {
+      "persona": "... or null",
+      "instructions": {
+        "task_instructions": "...",
+        "reason_for_call": "...",
+        "known_info": "...",
+        "unknown_info": "...",
+        "domain": "BASE"
+      }
+    },
+    "initial_state": "... or null",
+    "evaluation_criteria": {
+      "actions": [
+        {
+          "arguments": {
+             "parameter1": value1,
+             "parameter2": value2,
+             ...
+          },
+          "name": "...",
+          "action_id": "xxx"
+        },
+        ...
+      ],
+      "communicate_info": [], // key words that should appear in the communication
+      "nl_assertions": []  // short sentences to describe a fact if the user request is resolved
+    }
+}
+```
