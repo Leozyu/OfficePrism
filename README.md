@@ -1,21 +1,23 @@
 # OfficePrism
 
-面向办公场景的 LLM Agent 评测基准（KDD 2027）。
+**Benchmarking Agents on Single-Domain Operations Across Enterprise Business Functions** (KDD 2027)
 
-OfficePrism 在模拟的企业办公环境中评测 Agent 完成真实业务任务的能力：Agent 需要理解用户诉求、追问缺失信息、调用业务工具读写数据库，并把结果清楚地传达给用户。评测不仅看"答没答对"，更看"做没做对"——以数据库终态为核心完成判据，输出可解释的多维得分。
+Paper: [arXiv:2611.22262](https://arxiv.org/abs/2611.22262)
 
-## 亮点
+OfficePrism evaluates LLM agents' ability to complete realistic business tasks in a simulated enterprise office environment: the agent must understand user requests, ask for missing information, invoke business tools to read and write databases, and communicate results clearly. Beyond "did it answer correctly", OfficePrism measures "did it actually get the job done" — the final database state is the core completion criterion, and scoring is multi-dimensional and interpretable.
 
-- **7 个业务域、420 条任务**：人事（hr）、财务（finance）、行政（admin）、信息技术（it）、法务（law）、采购（purchase）、综合办公（work），难度分 L1 / L2 / L3 三档。
-- **完整的模拟办公环境**：每个域拥有结构化业务数据库、读/写工具集与业务规则（Policy），跨表引用一致、状态机完整；默认以单 agent 仿真执行（solo 模式：agent 亦可调用用户侧工具）。
-- **过程 + 结果双轨判分**：ACTION（关键工具调用）、NL_ASSERTION（自然语言断言，LLM 判定）、DB_STATUS（数据库终态与黄金参照重放对比），失败原因可定位、可分桶。
-- **开箱即用**：内置 3 种 Agent 实现，一条命令跑通评测；同时提供多种外部 Agent 基线适配器，模型可任意切换（OpenAI 兼容端点）。
+## Highlights
 
-## 评测集：task_v1
+- **7 business domains, 420 tasks**: Human Resources (hr), Finance (finance), Administration (admin), IT (it), Legal (law), Procurement (purchase), and General Office (work), across three difficulty tiers L1 / L2 / L3.
+- **Complete simulated office environment**: each domain ships a structured business database, a read/write toolset, and business policies, with consistent cross-table references and complete state machines. Tasks run in single-agent simulation (solo mode: the agent may also invoke user-side tools).
+- **Process + outcome dual-track scoring**: ACTION (key tool calls), NL_ASSERTION (natural-language assertions judged by an LLM), and DB_STATUS (final database state compared against a golden reference replay). Failures can be localized and bucketed by cause.
+- **Out of the box**: 3 built-in agent implementations, one command to run the full evaluation; adapters for external agent baselines; any model reachable through an OpenAI-compatible endpoint.
 
-评测集位于 `data/tasks_eval/task_v1.json`，共 420 条任务：
+## Evaluation Set: task_v1
 
-| 域 | 条数 | | 难度 | 条数 |
+The evaluation set lives at `data/tasks_eval/task_v1.json` and contains 420 tasks:
+
+| Domain | Tasks | | Level | Tasks |
 |---|---|---|---|---|
 | hr | 60 | | L1 | 105 |
 | finance | 58 | | L2 | 140 |
@@ -25,78 +27,78 @@ OfficePrism 在模拟的企业办公环境中评测 Agent 完成真实业务任�
 | purchase | 55 | | | |
 | work | 55 | | | |
 
-每条任务的字段：
+Task fields:
 
-| 字段 | 说明 |
+| Field | Description |
 |---|---|
-| `task_id` | 任务唯一标识（如 `l1_56a218f4`） |
-| `level` / `domain` | 难度档（L1/L2/L3）与所属业务域 |
-| `business_scenario` | 业务场景背景 |
-| `question` | 用户任务指令 |
-| `caller` | 发起人身份与已知信息 |
-| `tool_chain` | 黄金参照工具链（参考解法，判分不要求逐字复现） |
-| `expected_answer` | 参考答案 |
-| `metadata` | 工具/表子集与分组信息（`tool_subset`、`table_subset`、`group`） |
-| `verified` | 任务可解性校验标记 |
+| `task_id` | Unique task identifier (e.g. `l1_56a218f4`) |
+| `level` / `domain` | Difficulty tier (L1/L2/L3) and home business domain |
+| `business_scenario` | Business scenario background |
+| `question` | User task instruction |
+| `caller` | Requester identity and known information |
+| `tool_chain` | Golden reference tool chain (a reference solution; scoring does not require verbatim reproduction) |
+| `expected_answer` | Reference answer |
+| `metadata` | Tool/table subsets and grouping (`tool_subset`, `table_subset`, `group`) |
+| `verified` | Task solvability verification flag |
 
-环境与数据均为合成构建，不含任何真实企业或个人数据。
+Each task belongs to a single business domain. The default entry `cross` loads all 420 tasks and routes each task to its home-domain environment (database, tool pool, and policies are all domain-local); entries such as `--domain hr` run only the specified domain. A merged cross-domain tool pool is available only via `--pool-domains` for tool-scaling experiments — it is not the default behavior.
 
-每条任务归属单一业务域。默认评测入口 `cross` 加载全部 420 条任务，并把每条任务路由到其所属域的单域环境执行（数据库、工具池与业务规则均为本域）；`--domain hr` 等入口只运行指定域环境。跨域合并工具池仅用于 `--pool-domains` 的 tool-scaling 实验，非默认行为。
+All environments and data are synthetically constructed; no real enterprise or personal data is included.
 
-## 判分口径
+## Scoring
 
-仿真结束后，评测器输出 `reward` 与分维度 `breakdown`：
+After each simulation, the evaluator outputs a `reward` and a per-dimension `breakdown`:
 
-- **ACTION**：关键工具调用是否发生、参数是否正确（过程约束）。
-- **NL_ASSERTION**：任务声明的自然语言断言是否成立，由 LLM 裁判判定（语义/沟通质量）。
-- **DB_STATUS**：在干净数据库上重放黄金工具链得到参照终态，与 Agent 执行后的数据库终态对比。结构化字段做精确比对（结构分），自由文本字段由 LLM 判定语义等价（文案分），两者相乘得 1.0 / 0。
+- **ACTION**: whether the key tool calls occurred with correct arguments (process constraint).
+- **NL_ASSERTION**: whether the task's natural-language assertions hold, judged by an LLM (semantic / communication quality).
+- **DB_STATUS**: the golden tool chain is replayed on a clean database to obtain a reference final state, which is compared against the database state after the agent's run. Structured fields are compared exactly (structural score); free-text fields are judged for semantic equivalence by an LLM (textual score). The two are multiplied into a 1.0 / 0 verdict.
 
-`reward` 按任务声明的 `reward_basis` 聚合：写操作任务为 ACTION + NL_ASSERTION，只读/跨域任务以 NL_ASSERTION 为依据；DB_STATUS 独立输出。结果文件中提供四种成功口径：
+`reward` is aggregated according to the task's declared `reward_basis`: write tasks use ACTION + NL_ASSERTION, while read-only tasks use NL_ASSERTION; DB_STATUS is reported separately. Result files provide four success criteria:
 
-| 口径 | 定义 |
+| Criterion | Definition |
 |---|---|
 | `strict_success` | `reward > 0.5` |
-| `success` | 只读任务按 NL_ASSERTION > 0.5（答案优先）；写操作任务同 strict |
-| `success_w_db` | `success` 且 `DB_STATUS ≥ 1.0` |
-| `strict_success_w_db` | `strict_success` 且 `DB_STATUS ≥ 1.0`（过程与终态双达标） |
+| `success` | Read-only tasks: NL_ASSERTION > 0.5 (answer-first); write tasks: same as strict |
+| `success_w_db` | `success` and `DB_STATUS ≥ 1.0` |
+| `strict_success_w_db` | `strict_success` and `DB_STATUS ≥ 1.0` (both process and final state correct) |
 
-## 安装
+## Installation
 
-要求 Python 3.10+。
+Requires Python 3.10+.
 
 ```bash
 pip install -r requirements.txt
-# 如需运行外部 Agent 基线，另装：
+# Optional, for external agent baselines:
 pip install -r requirements-external.txt
 ```
 
-配置模型与密钥：编辑 `configs/app.yaml` 中 `evaluation.llm.agent` 段：
+Configure the model and API key in the `evaluation.llm.agent` section of `configs/app.yaml`:
 
 ```yaml
 agent:
-  model: "qwen4-max"          # 任意 OpenAI 兼容端点上的模型名
-  api_key: YOUR_DASHSCOPE_API_KEY   # 替换为你的 API key
+  model: "qwen4-max"          # any model name on an OpenAI-compatible endpoint
+  api_key: YOUR_DASHSCOPE_API_KEY   # replace with your API key
   base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
 ```
 
-- 默认指向 DashScope 的 OpenAI 兼容端点，可改为任何兼容服务；
-- LLM 裁判（评测器）模型同样在 `app.yaml` 中配置；
-- 支持 `.env` 文件（启动时自动加载），也可用命令行 `--api-key / --base-url / --model` 临时覆盖。
+- The default points to DashScope's OpenAI-compatible endpoint; any compatible service works.
+- The LLM judge (evaluator) model is configured in `app.yaml` as well.
+- `.env` files are supported (loaded automatically at startup); `--api-key / --base-url / --model` provide one-off CLI overrides.
 
-## 快速开始
+## Quick Start
 
 ```bash
-# 冒烟试跑：第一条任务 × 启用的 agent
+# Smoke test: first task × enabled agents
 ./eval.sh --dry-run
 
-# 全量评测：420 条任务 × 启用的 agent（默认 cross 入口 + react_agent）
+# Full evaluation: 420 tasks × enabled agents (default: cross entry + react_agent)
 ./eval.sh
 ```
 
-等价的手动命令：
+Equivalent manual commands:
 
 ```bash
-# 单 agent 评测（cross 入口：每条任务路由到所属域的单域环境）
+# Single-agent evaluation (cross entry: each task is routed to its home-domain environment)
 python -m bench.run_domain_eval \
     --domain cross \
     --task-path data/tasks_eval/task_v1.json \
@@ -104,85 +106,89 @@ python -m bench.run_domain_eval \
     --max-steps 50 \
     --save-to data/results/cross/task_v1_react_agent_qwen4-max.json
 
-# 多 agent × 多模型批量评测
+# Multi-agent × multi-model batch evaluation
 python -m bench.run_benchmark \
     --domain cross \
     --agents react_agent fc_agent plan_execute_agent \
     --models qwen4-max \
     --task-path data/tasks_eval/task_v1.json
 
-# 结果统计与对比
+# Statistics and comparison
 python -m bench.eval_stats --result-path data/results/cross/task_v1_react_agent_qwen4-max.json
 python -m bench.eval_stats --pattern "data/results/cross/*.json"
 ```
 
-结果写入 `data/results/{domain}/`，每条记录包含 reward、分维度 breakdown、四种成功口径、完整对话与工具调用轨迹、token 用量。
+Results are written to `data/results/{domain}/`. Each record contains the reward, per-dimension breakdown, the four success criteria, the full conversation and tool-call trajectory, and token usage.
 
-## 支持的 Agent
+## Supported Agents
 
-**内置（开箱即用）**：`react_agent`、`fc_agent`（function-calling）、`plan_execute_agent`。
+**Built-in (out of the box)**: `react_agent`, `fc_agent` (function-calling), `plan_execute_agent`.
 
-**外部基线（需先自行部署对应服务）**：AutoGen 系列（code_action / llmcompiler / reflexion / supervisor / swarm / debate / round_robin / moa）、OpenClaw、Claude Code、Hermes、DeerFlow、AgentZero 等。启用方式见 `eval.sh` 中的注释列表，依赖见 `requirements-external.txt`，各适配器的服务地址与认证在 `configs/app.yaml` 中配置。
+**External baselines (require self-hosting the corresponding service)**: the AutoGen family (code_action / llmcompiler / reflexion / supervisor / swarm / debate / round_robin / moa), OpenClaw, Claude Code, Hermes, DeerFlow, AgentZero, and more. See the commented list in `eval.sh` for how to enable them, `requirements-external.txt` for dependencies, and `configs/app.yaml` for service endpoints and credentials.
 
-## 评测流程
+## Evaluation Pipeline
 
 ```mermaid
 flowchart LR
-  A[任务 + 所属域单域环境<br/>DB / Tools / Policy] --> B[仿真执行<br/>Agent ↔ 环境（单 agent 模式）]
-  B --> C[ACTION<br/>关键动作]
-  B --> D[NL_ASSERTION<br/>LLM 判定断言]
-  B --> E[DB_STATUS<br/>终态 vs 黄金重放]
-  C --> F[reward + breakdown<br/>+ 成功口径]
+  A[Task + home-domain environment<br/>DB / Tools / Policy] --> B[Simulation<br/>Agent ↔ Environment single-agent mode]
+  B --> C[ACTION<br/>key tool calls]
+  B --> D[NL_ASSERTION<br/>LLM-judged assertions]
+  B --> E[DB_STATUS<br/>final state vs golden replay]
+  C --> F[reward + breakdown<br/>+ success criteria]
   D --> F
   E --> F
-  F --> G[eval_stats 统计对比]
+  F --> G[eval_stats aggregation]
 ```
 
-## 目录结构
+## Repository Structure
 
 ```
 OfficePrism/
 ├── bench/
-│   ├── agent/               # 内置 agent 与外部适配器（external/）
-│   ├── data_model/          # 任务/消息/断言等数据模型
-│   ├── domains/             # 各域工具实现与环境逻辑
-│   ├── environment/         # 通用环境（DB 执行、序列化）
-│   ├── evaluator/           # 多维评测器（ACTION/DB/NL）
-│   ├── run_domain_eval.py   # 单 agent 评测入口
-│   ├── run_benchmark.py     # 多 agent × 多模型批量入口
-│   └── eval_stats.py        # 结果统计
+│   ├── agent/               # Built-in agents and external adapters (external/)
+│   ├── data_model/          # Task / message / assertion data models
+│   ├── domains/             # Per-domain tool implementations and environment logic
+│   ├── environment/         # Generic environment (DB execution, serialization)
+│   ├── evaluator/           # Multi-dimensional evaluators (ACTION/DB/NL)
+│   ├── run_domain_eval.py   # Single-agent evaluation entry
+│   ├── run_benchmark.py     # Multi-agent × multi-model batch entry
+│   └── eval_stats.py        # Result statistics
 ├── configs/
-│   ├── app.yaml             # 模型/密钥/仿真参数配置
+│   ├── app.yaml             # Model / credential / simulation configuration
 │   └── config_loader.py
 ├── data/
-│   ├── domains/             # 各域数据库与规则（base 为共享底座）
+│   ├── domains/             # Per-domain databases and policies (base = shared foundation)
 │   ├── tasks_eval/task_v1.json
-│   └── user_simulator/      # 模拟用户行为准则
-├── eval.sh                  # 一键评测脚本
+│   └── user_simulator/      # Simulated-user behavior guidelines
+├── eval.sh                  # One-command evaluation script
 ├── requirements.txt
 └── requirements-external.txt
 ```
 
-## 扩展新业务域
+## Extending to New Domains
 
-评测框架与业务域解耦，新增域遵循最小改动原则：
+The evaluation framework is decoupled from business domains. Adding a domain follows a minimal-change principle:
 
-- 复用 `data/domains/base` 的组织/人员/权限底座，只增量添加域数据与工具；
-- 在 `bench/domains/` 下实现域工具与环境，注册域名；
-- 任务与判分差异通过任务 JSON 和断言表达，评测器无需修改。
+- Reuse the organization / personnel / permission foundation in `data/domains/base`; add only domain-incremental data and tools.
+- Implement domain tools and environment under `bench/domains/` and register the domain name.
+- Express task and scoring differences through task JSON and assertions; the evaluator needs no changes.
 
-## 引用
+## Citation
 
-论文发表于 KDD 2027，引用信息将在论文正式出版后更新：
+If you find OfficePrism useful in your research, please cite:
 
 ```bibtex
-@inproceedings{officeprism2027,
-  title     = {OfficePrism},
-  booktitle = {Proceedings of the ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD)},
-  year      = {2027}
+@misc{liu2026officeprismbenchmarkingagentssingledomain,
+      title={OfficePrism: Benchmarking Agents on Single-Domain Operations Across Enterprise Business Functions},
+      author={Hanfeng Liu and Zhenyu Luo and Dongchao Zhang and Zexi Liu and Zulong Chen and Jinxin Hu and Jia Xu and Zeyi Wen},
+      year={2026},
+      eprint={2611.22262},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2611.22262},
 }
 ```
 
-## 许可证
+## License
 
 [Apache License 2.0](LICENSE)
